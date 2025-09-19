@@ -1,0 +1,190 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{geometry}     
+% задание полей текста
+\geometry{left=10mm,right=10mm,top=20mm,bottom=20mm}
+\usepackage{listings}
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}	% локализация и переносы
+% \usepackage{stix2}
+\usepackage{natbib}
+
+\usepackage{graphicx}
+\graphicspath{{pix/}}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows}
+\pgfplotsset{width=10cm,compat=newest}
+\pgfkeys{/pgf/trig format=rad}
+
+\everymath{\displaystyle}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[normalem]{ulem}
+\setlength\parindent{0pt}
+
+
+\usepackage{mathtools, nccmath}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+\sloppy                     % строго соблюдать границы текста
+\linespread{1.3}            % коэффициент межстрочного интервала
+\setlength{\parskip}{0.5em} % вертик. интервал между абзацами
+
+\setcounter{secnumdepth}{0} % отключение нумерации разделов
+\binoppenalty=1000          % уменьшение переносов в формулах
+
+% объявление новых макрокоманд
+
+\newcommand{\Def}{\textbf{Определение.} }
+\newcommand{\Th}{\textbf{Теорема.} }
+\newcommand{\Thbd}{\textbf{Теорема (б/д).} }
+\newcommand{\Theor}[1]{\textbf{Теорема ({#1}).} }
+\newcommand{\Theorbd}[1]{\textbf{Теорема ({#1}) (б/д).} }
+\newcommand{\Consequence}{\textbf{Следствие.} }
+\newcommand{\Remind}{\textbf{Напоминание.} }
+\newcommand{\Note}{\textbf{Note.} }
+\newcommand{\Statement}{\textbf{Утверждение.} }
+\newcommand{\Prop}{\textbf{Свойство:} }
+\newcommand{\Props}{\textbf{Свойства:} }
+\newcommand{\Proof}{\textbf{$\square$} }
+\newcommand{\End}{\textbf{$\blacksquare$} }
+\newcommand{\Prooff}{\textbf{Доказать:} }
+\newcommand{\Solution}{\textbf{Решение:} }
+\newcommand{\Alg}{\textbf{Algorithm.} }
+\newcommand{\Lemma}{\textbf{Лемма.} }
+\newcommand{\Lem}[1]{\textbf{Лемма ({#1}).} }
+\newcommand{\Example}{\textbf{Пример:} }
+\newcommand{\Task}{\textbf{Задача.} }
+\newcommand{\Solve}{\textbf{Решение:} }
+\newcommand{\Examples}{\textbf{Примеры.} }
+
+\allowdisplaybreaks[4]
+
+%\renewcommand\thesection{\arabic{section}}
+
+\newcommand{\Endproof}{$\blacksquare$ }
+
+\newcommand{\tr}{\text{tr}}
+\newcommand{\Le}{\leqslant}                % русский стиль нестрогих неравенств
+\newcommand{\Ge}{\geqslant}
+% облегчение математических обозначений
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\kukarek}{\textit{(КуКаРеК) }}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Gs}{\mathcal{G}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Norm}{\mathcal{N}}
+%\newcommand{\C}{\mathbb{C}}
+\newcommand{\ind}{\perp \!\!\! \perp}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{{\mathbb{E}}}
+\newcommand{\D} { {\mathbb{D}}}
+\newcommand{\x}{\overline{x}}
+\newcommand{\y}{\overline{y}}
+\newcommand{\soch}[2]{\text{$C_{#1}^{#2}$}}
+\newcommand{\X}{\text{$\mathcal{X}$}}
+\newcommand{\VC}[2]{\text{$VC\left(#1; #2\right)$}}
+\renewcommand{\P}{\text{$\mathcal{P}$}}
+\newcommand{\B}{\text{$\mathcal{B}$}}
+\newcommand{\brackets}[1]{\left({#1}\right)} % автоматический размер скобочек
+\newcommand{\abs}[1]{\left|{#1}\right|} % автоматический размер модуля
+\newcommand{\norm}[1]{\left\|{#1}\right\|} % автоматический размер нормы
+\newcommand{\set}[1]{\left\{{#1}\right\}} % автоматический размер множества
+\newcommand{\condset}[2]{\set{#1 \ | \ #2}} % определение множества
+
+\newcommand{\distrfamily}{\condset{P_\theta}{\theta \in \Theta}}
+
+\newcommand{\htheta}{\hat{\theta}}
+\newcommand{\hthetax}{\htheta(X)}
+\newcommand{\hthetanx}{\htheta_n(X)}
+\newcommand{\stheta}{\theta^*}
+\newcommand{\sthetax}{\stheta(X)}
+\newcommand{\taut}{\tau(\theta)}
+\newcommand{\pt}{p_\theta}
+\newcommand{\Pt}{P_\theta}
+\newcommand{\Et}{\E_\theta}
+\newcommand{\Utx}{\text{U}_\theta(X)}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Vart}{\Var_\theta}
+
+\newcommand{\samp}[2]{{#1}_1, \ldots, {#1}_{#2}}
+\newcommand{\observation}{X = (\samp{X}{n})}
+\newcommand{\infsamp}[1]{{#1}_1, {#1}_2, \ldots}
+\newcommand{\sampf}[3]{{#1}_1(#3), \ldots, {#1}_{#2}(#3)}
+
+\newcommand{\charac}[2]{\varphi_{#1}\brackets{#2}} % Хар.функция от распределения с.в. от аргумента
+\newcommand{\proj}[2]{\text{proj}_{{#1}} {#2}}
+
+\newcommand{\pn}{\text{п.н.}}
+\newcommand{\pnt}{\text{P$_\theta$-п.н.}}
+\newcommand{\pnto}{\xrightarrow{\pn}}
+\newcommand{\pntto}{\xrightarrow{\pnt}}
+\newcommand{\pto}{\xrightarrow{\text{P}}}
+\newcommand{\ptto}{\xrightarrow{\text{P$_\theta$}}}
+\newcommand{\lpto}{\xrightarrow{\text{L$_p$}}}
+\newcommand{\dto}{\xrightarrow{\text{d}}}
+\newcommand{\dtto}{\xrightarrow{\text{d$_\theta$}}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Eps}{\mathcal{E}}
+\newcommand{\probspace}{(\Omega,\: \F,\: \P)}
+\newcommand{\ddfrac}[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+\newcommand{\todo}[1]{\section{TODO}
+\begin{center}
+    \LARGE #1
+\end{center}}
+
+\newcommand{\drawsome}[1]{
+    \begin{figure}[h!]
+            \centering
+            \includegraphics[scale=0.7]{#1}
+            \label{fig:first}
+    \end{figure}
+}
+
+\newcommand{\drawsomemedium}[1]{
+    \begin{figure}[h!]
+            \centering
+            \includegraphics[scale=0.45]{#1}
+            \label{fig:first}
+    \end{figure}
+}
+
+\newcommand{\drawsomesmall}[1]{
+    \begin{figure}[h!]
+            \centering
+            \includegraphics[scale=0.3]{#1}
+            \label{fig:first}
+    \end{figure}
+}
+
+
+\hypersetup{
+    pdfstartview=FitH,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\usepackage{titleps}                       % колонтитулы
+
+\newpagestyle{main}{
+  \setheadrule{.4pt}                      
+  \sethead{\coursename}{}{\hyperlink{intro}{\;Назад к содержанию}}
+  \setfootrule{.4pt}                       
+  \setfoot{\coursedate \; ВШПИ МФТИ}{}{\thepage} 
+}      
+
+\pagestyle{main}
