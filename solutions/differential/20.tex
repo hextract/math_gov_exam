@@ -1,1 +1,455 @@
 \subsection{Линейные обыкновенные дифференциальные уравнения с постоянными коэффициентами и правой частью – квазимногочленом.}
+
+\subsubsection{Roadmap}
+
+\begin{enumerate}
+    \item Сначала докажем теорему Коши, на которой базируются все доказательства
+    \item Затем рассмотрим однородные уравнения (в правой части 0)
+    \begin{enumerate}
+        \item Рассмотрим простой случай (n различных корней характеристического уравнения)
+        \item Введем небольшую теорию дифференциальных операторов
+        \item Рассмотрим общий случай
+    \end{enumerate}
+    \item Наконец, рассмотрим неоднородные уравнения (в правой части квазимногочлен)
+    \begin{enumerate}
+        \item Введем ФСР, поймем почему для неоднородных достаточно искать только частное решение
+        \item Научимся искать частное решение, когда правая часть -- квазимногочлен
+    \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Теорема Коши}
+
+\Def Уравнение $F(x, y, y', \dots, y^{(n)}) = 0$ называется ДУ, разрешенным относительно старшей производной, если $\exists \Phi: y^{(n)} = \Phi(x, y, y', \dots, y^{(n-1)})$
+
+\Def Система ДУ называется системой в нормальной форме, если она может быть представлена в виде
+
+\begin{align*}
+    y_1'&= f_1(x, y_1, \dots, y_n) \\
+    y_2'&= f_2(x, y_1, \dots, y_n) \\
+    &\dots \\
+    y_n'&= f_n(x, y_1, \dots, y_n)
+\end{align*}
+
+где $I \subset \R; y_j: I \rightarrow \R, y: I \rightarrow \R^n, y = (y_1, \dots, y_n)^T; f_j: G \rightarrow \R; f: G \rightarrow \R^n; f = (f_1, \dots, f_n)^T; G \subset \R^{n+1}$ -- область.
+
+В этих обозначениях систему можно записать как $y'(x) = f(x, y)$
+
+\Statement Любое ДУ, разрешимое относительно старшей производной, может быть записано в виде системы ДУ в нормальной форме
+
+\Proof
+
+\begin{align*}
+    y_1 &\coloneqq y \\
+    y_2 &\coloneqq y_1' \\
+    &\dots \\
+    y_n &\coloneqq y_ {n-1}' \\
+\end{align*}
+
+Тогда
+\begin{align*}
+    y_1' &= y_2 \\
+    y_2' &= y_3 \\
+    &\dots \\
+    y_{n-1}' &= y_n \\
+    y_n' &= y^{(n)} = \Phi(x, y', y'', \dots, y^{(n-1)}) = \Phi(x, y_1, y_2, \dots, y_n)
+\end{align*}
+
+Получим $f(x, y) = (y_2, y_3, \dots, y_n, \Phi(x, y))^T$
+
+\Endproof
+
+\Def \textbf{Задача Коши}:
+\begin{equation*}
+    \begin{cases}
+        y' = f(x, y), \\
+        y(x_0) = y_0,
+    \end{cases}
+\end{equation*}
+где $(x_0, y_0) \in G$.
+
+\Def $f$ липшицева в $G$ по совокупности $y$, если $\exists L > 0\quad\forall (x, y_1), (x, y_2) \in G \hookrightarrow |f(x, y_1) - f(x, y_2)| \leq L |y_1 - y_2|$
+
+\Theor{Коши о существовании и единственности решения задачи Коши}
+
+Пусть $f \in C(G), f \in Lip_y(G), G \in \R^{n+1}$ - область.
+
+Тогда $\forall (x_0, y_0) \in G \quad \exists I \subset \R, x_0 \in I, y: I \rightarrow \R^n$ такие, что $y$ является решением задачи Коши в окрестности $I$ точки $x_0$, причем любое другое решение задачи Коши локально совпадает с $y(x)$ в точке $x_0$.
+
+
+
+\Def Линейным однородным дифференциальным уравнением n-й степени с постоянными коэффициентами называется уравнение вида
+
+\begin{equation}
+    y^{(n)} + a_1 y^{(n-1)} + a_2 y^{(n-2)} + \dots + a_{n-1} y' + a_n y = 0
+    \label{eq:lin_diff_eq_const_coef}
+\end{equation}
+
+где $a_i \in \Cmp$
+
+\Def $\chi(\lambda) = \lambda^n + a_1 \lambda^{n-1} + \dots + a_{n-1} \lambda + a_n$ -- характеристический многочлен, соответствующий уравнению~\ref{eq:lin_diff_eq_const_coef}.
+
+\Def $\chi(\lambda) = 0$ -- характеристическое уравнение
+
+\subsubsection{Случай однородного уравнения с n различными корнями характеристического уравнения}
+
+В случае простых корней характеристический многочлен имеет $n$ различных корней.
+
+\Th Пусть $\lambda_1, \dots, \lambda_n$ - корни характеристического многочлена, причем $\lambda_i \neq \lambda_j (i \neq j)$. Тогда общее решение уравнения~\ref{eq:lin_diff_eq_const_coef} имеет вид
+
+\begin{equation}
+    y(x) = \sum_{k=1}^n c_k e^{\lambda_k x},\qquad c_k \in \Cmp
+    \label{eq:lin_diff_eq_const_coef_simple_sol}
+\end{equation}
+
+\Proof
+
+\paragraph{($\Rightarrow$)} Покажем, что любая функция вида~\ref{eq:lin_diff_eq_const_coef_simple_sol} является решением.
+
+Несложно заметить, в силу линейности уравнения, что множество решений уравнения~\ref{eq:lin_diff_eq_const_coef_simple_sol} является линейным пространством: если $y_1$ и $y_2$ -- решения~\ref{eq:lin_diff_eq_const_coef}, то $C_1 y_1 + C_2 y_2$ тоже является решением ($C_1, C_2 \in \Cmp$).
+
+Тогда достаточно показать, что каждое $e^{\lambda_k x}$ является решением. Проверим:
+
+\begin{align*}
+\left(e^{\lambda x}\right)^{(n)} + a_1 \left(e^{\lambda x}\right)^{(n-1)} + \dots + a_{n-1} \left(e^{\lambda x}\right)' + a_n e^{\lambda x} = \\
+    e^{\lambda x} \cdot (\lambda^n + a_1 \lambda^{n-1} + \dots + a_{n-1} \lambda + a_n) = e^{\lambda x} (\lambda) \cdot 0 = 0
+\end{align*}
+
+\paragraph{($\Leftarrow$)} Покажем, что любое решение уравнения~\ref{eq:lin_diff_eq_const_coef} может быть записано в виде~\ref{eq:lin_diff_eq_const_coef_simple_sol}.
+
+Пусть $\hat{y}(x)$ -- решение. Зададим начальное условие $\hat{y}(0) = \hat{y}_0; \hat{y}'(0) = \hat{y}'_0; \dots; \hat{y}^{(n-1)}(0) = \hat{y}^{(n-1)}_0$.
+
+Определим $\tilde{y}(x) = \sum_{k=1}^n c_k e^{\lambda_k x}$, константы $c_i$ подберем так, чтобы для $\tilde{y}$ в нуле выполнялись те же начальные условия:
+
+\begin{align*}
+    \tilde{y}(0) &= c_1 + c_2 + \dots + c_n = \hat{y}_0 \\
+    \tilde{y}'(0) &= \lambda_1 c_1 + \lambda_2 c_2 + \dots + \lambda_n c_n = \hat{y}'_0 \\
+    &\dots \\
+    \tilde{y}^{(n-1)}(0) &= \lambda_1^{n-1} c_1 + \lambda_2^{n-1} c_2 + \dots + \lambda_n^{n-1} c_n = \hat{y}^{(n-1)}_0
+\end{align*}
+
+Эта система имеет единственное решение, так как ее определитель -- это определитель Вандермонда:
+
+\begin{equation*}
+    \underbrace{
+        \begin{pmatrix}
+            1 & 1 & \dots & 1 \\
+            \lambda_1 & \lambda_2 & \dots & \lambda_n \\
+            \vdots & \vdots & \ddots & \vdots \\
+            \lambda_1^{\,n-1} & \lambda_2^{\,n-1} & \dots & \lambda_n^{\,n-1}
+        \end{pmatrix}}_{\text{Вандермондова матрица } V}
+    \begin{pmatrix}
+        c_1 \\ c_2 \\ \vdots \\ c_n
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \hat{y}_0 \\ \hat{y}'_0 \\ \vdots \\ \hat{y}^{(n-1)}_0
+    \end{pmatrix}.
+\end{equation*}
+
+Итого имеем функцию $\tilde{y}(x)$, которая является решением исходного уравнения (по п.1 доказательства) с теми же начальными условиями, что и $\hat{y}(x)$.
+Следовательно, по теореме Коши они равны.
+А значит для произвольного решения $\tilde{y}(x)$ мы нашли представление в виде~\ref{eq:lin_diff_eq_const_coef_simple_sol}.
+
+\Endproof
+
+\textbf{Овеществление решений}
+
+\Statement \textit{(из алгебры)} Все корни многочлена с вещественными коэффициентами делятся на вещественные и попарно комплексно сопряженные.
+
+\Statement Пусть $\overline{\lambda}_1 = \lambda_2, \dots, \overline{\lambda}_{2m-1} = \lambda_{2m}$; $\lambda_{2m+1}, \dots, \lambda_n \in \R$. Тогда функция $y(x)$, заданная уравнением~\ref{eq:lin_diff_eq_const_coef_simple_sol}, является вещественнозначной тогда и только тогда, когда
+
+\begin{equation*}
+    \overline{c}_1 = c_2, \dots, \overline{c}_{2m-1} = c_{2m}; c_{2m+1}, \dots, c_n \in \R
+\end{equation*}
+
+\Proof
+
+\paragraph{($\Leftarrow$)} Для $\overline{\lambda}_{2s-1} = \lambda_{2s} \in \Cmp$ запишем
+
+\begin{align*}
+    c_{2s-1} e^{\lambda_{2s-1} x} + c_{2s} e^{\lambda_{2s} x} = \\
+    = \overline{c}_{2s} e^{\overline{\lambda}_{2s} x} + c_{2s} e^{\lambda_{2s} x} = \\
+    = \overline{c_{2s} e^{\lambda_{2s} x}} + c_{2s} e^{\lambda_{2s} x} \in \R
+\end{align*}
+
+А для $\lambda_p \in \R$, выполнено $c_p e^{\lambda_p x} \in \R$
+
+\paragraph{($\Rightarrow$)} $\overline{y(x)} = y(x) \forall x \in \R$ распишем явно:
+
+\begin{align*}
+    \sum_{s=1}^m \left(c_{2s-1} e^{\lambda_{2s-1} x} + c_{2s} e^{\lambda_{2s} x}\right) + \sum_{s=2m+1}^n c_s e^{\lambda_s x} = \\
+    = \sum_{s=1}^m \left(\overline{c}_{2s} e^{\lambda_{2s} x} + \overline{c}_{2s} e^{\lambda_{2s-1} x}\right) + \sum_{s=2m+1}^n \overline{c}_k e^{\lambda_k x} = \\
+\end{align*}
+
+Пользуясь ЛНЗ системы $e^{\lambda_1 x}, \dots, e^{\lambda_n x}$, эти две суммы равны $\iff$ все коэффициенты $c$ в них равны, то есть $\overline{c}_{2s} = c_{2s-1} \forall s=1,\dots,m; \qquad c_p \in \R \forall p=2m+1,\dots, n$
+
+\Endproof
+
+\subsubsection{Теория дифференциальных операторов}
+
+\Def $D = \frac{d}{dx}: C^\infty(\R) \rightarrow C^\infty(\R)$.
+
+\Def $D^k = D \circ D \dots \circ D = \frac{d^k}{dx^k}$; $D^0 = I$.
+
+\Def Дифференциальным оператором $P(D)$, порожденным многочленом $P(\lambda) = p_0\lambda^n + p_1 \lambda^{n-1} + \dots + p_n$ будем называть оператор $P(D) = p_0 D^n + p_1 D^{n-1} + \dots + p_{n-1} D + p_n I$.
+
+\Lemma $P(\lambda) = Q(\lambda) \cdot R(\lambda) \Rightarrow P(D) = Q(D) \circ R(D)$
+
+\Proof
+
+Из определения легко расписывается, что
+
+\begin{enumerate}
+    \item $\left(aD^k\right) \circ \left(bD^n\right) = abD^{k+n}$
+    \item $D^k \circ (R_1(D) + R_2(D)) = D^k \circ R_1(D) + D^k \circ R_2(D)$
+    \item $(Q_1(D) + Q_2(D)) \circ R(D) = Q_1(D) \circ R(D) + Q_2(D) \circ R(D)$
+\end{enumerate}
+
+После этого расписываем произведение многочленов $Q$ и $R$ с помощью этих пунктов.
+
+\Endproof
+
+\Lem{о сдвиге} $P(D)(e^{\lambda x}f(x)) = e^{\lambda x} P(D + \lambda I)(f(x))$
+
+\Proof
+
+\begin{equation*}
+    D(e^{\lambda x} f(x)) = \lambda e^{\lambda x}f(x) + e^{\lambda x}D(f(x)) = e^{\lambda x}(D + \lambda I)(f(x))
+\end{equation*}
+
+\begin{equation*}
+    D^k(e^{\lambda x} f(x)) = D(D^{k-1}(e^{\lambda x} f(x))) = \lambda e^{\lambda x} (D + \lambda I)^{k-1}(f) + e^{\lambda x} D \circ (D + \lambda I)^{k-1}(f) = e^{\lambda x}(D + \lambda I)^k (f)
+\end{equation*}
+
+Далее расписываем многочлен $P(D)$, пользуясь дистрибутивность и линейностью.
+
+\Endproof
+
+\Lemma $P(D)(e^{\mu x} x^k) \equiv 0 \qquad \Rightarrow \qquad \mu$ -- корень уравнения $P(\lambda) = 0$ кратности $\geq k+1$.
+
+\Proof
+
+Пусть $q_1, \dots, q_n$ - корни $P(\lambda)$.
+
+$P(\lambda) = p_0 (\lambda - q_1) (\lambda - q_2) \dots (\lambda - q_n)$
+
+По предыдущей лемме, $P(D)(e^{\mu x} x^k) = e^{\mu x} (D + (\mu - q_1) I) \circ \dots \circ (D + (\mu - q_n) I) (x^k)$
+
+Если $m \neq q_i$, то применение оператора дифференцирования не понижает степень $x^k$, а если $m = q_i$, то $(D + (\mu - q_n I)) (x^p) = x^p' = px^{p-1}$ -- степень понизилась на 1.
+
+Так как мы хотим в итоге получить константный ноль, то значит $\mu = q_i$ для как минимум $k+1$ различных индексов $i$ (Пояснение: чтобы $x_k$ превратился в 0 его нужно продифференцировать хотя бы $k+1$ раз).
+
+\Endproof
+
+\subsubsection{Общий случай однородного уравнения}
+
+\Th Пусть $\lambda_1, \dots, \lambda_m$ -- различные корни характеристического уравнения кратностями $k_1, \dots, k_m$ ($k_1 + \dots + k_m = n$).
+Тогда общее решение уравнения записывается в виде
+
+\begin{equation}
+    y(x) = \sum_{j=1}^m P_j(x) e^{\lambda_j x},
+    \label{eq:lin_diff_eq_const_coef_full_sol}
+\end{equation}
+
+где $P_j$ -- многочлен кратности $\leq k_j - 1$.
+
+\Proof
+
+\paragraph{($\Leftarrow$)} Пусть $\mu$ - корень кратности $k$. Покажем, что $x^s e^{\mu x}$ является решением для $\forall s=0, \dots, k-1$.
+
+Так как $\mu$ -- корень кратности $k$, то по теореме Безу $\chi(\lambda) = \eta(\lambda) \cdot (\lambda - \mu)^k$.
+
+\begin{align*}
+    \chi(D)(x^s e^{\mu x}) &= e^{\mu x} \chi(D + \mu I)(x^s) \\
+    &= e^{\mu x} \eta (D + \mu I) \circ
+    \underbrace{D^k (x^s)}_{= 0, \text{т.к. } s<k} = 0
+\end{align*}
+
+\paragraph{($\Leftarrow$)} Покажем, что любое решение представимо в искомом виде.
+
+Введем
+\begin{align*}
+    &y_1(x) = e^{\lambda_1 x}, y_2(x) = xe^{\lambda_1 x}, \dots, y_{k_1}(x) = x^{k_1-1}e^{\lambda_1 x}; \\
+    &y_{k_1+1}(x) = e^{\lambda_2 x}, y_{k_1+2}(x) = xe^{\lambda_2 x}, \dots, y_{k_1 + k_2}(x) = x^{k_2 - 1}e^{\lambda_2 x}; \\
+    &\dots\\
+    &y_{k_1+\dots+k_{m-1}+1}(x)=e^{\lambda_m x}, y_{k_1+\dots+k_{m-1}+2}(x)=xe^{\lambda_m x}, \dots, y_n(x)=x^{k_m-1}e^{\lambda_m x}.
+\end{align*}
+
+Заметим, что искомый вид~\ref{eq:lin_diff_eq_const_coef_full_sol} является суммой, в которой каждое слагаемое -- это экспонента в степени $\lambda_j x$, умноженная на $x$ в степени не более $k_j - 1$ (и еще на константу).
+Значит мы можем переписать это в виде:
+
+\begin{equation}
+    y(x) = \sum_{k=1}^n c_k y_k(x),
+    \label{eq:lin_diff_eq_const_coef_full_sol_rewritten}
+\end{equation}
+
+где $c_k \in \Cmp$ -- некоторые коэффициенты, а $y_k$ -- определенные выше функции. Тогда достаточно показать, что такие константы $c_k$ действительно найдутся, и тем самым мы покажем, что произвольно взятое решение $y$ представимо в искомой форме.
+
+Обозначим начальные условия решения $y(x)$: $y(x_0) \eqqcolon y_0; y'(x_0) \eqqcolon y'_0; \dots; y^{(n-1)}(x_0) \eqqcolon y^{(n-1)}_0$.
+
+Перепишем эти начальные условия, подставив вместо функции $y$ ее представление через сумму~\ref{eq:lin_diff_eq_const_coef_full_sol_rewritten}:
+
+\begin{align*}
+    \sum_{k=1}^n c_k y_k^{(j)}(x_0) = y^{(j)}_0, \qquad j = 0, \dots, n-1.
+\end{align*}
+
+Запишем матрицу получившейся системы:
+
+\begin{equation*}
+    \begin{pmatrix}
+        y_1(x) & y_2(x) & \dots & y_n(x) \\
+        y_1'(x) & y_2'(x) & \dots & y_n'(x) \\
+        \vdots       & \vdots       & \ddots & \vdots       \\
+        y_1^{(n-1)}(x) & y_2^{(n-1)}(x) & \dots & y_n^{(n-1)}(x)
+    \end{pmatrix}
+\end{equation*}
+
+Предположим, что эта матрица вырождена. Тогда ее строки линейно зависимы, то есть $\exists b_0, b_1, \dots, b_{n-1} \in \Cmp: \sum b_i^2 > 0$, что
+
+\begin{equation}
+    \sum_{i=0}^{n-1} y_j^{(i)} b_{n-1-i} = 0 \quad \forall j = 1, 2, \dots, n.
+    \label{eq:lin_diff_eq_const_coef_full_sol_eq}
+\end{equation}
+
+Введем многочлен $P(\lambda) = \sum_{i=0}^{n-1} \lambda^i b_{n-1-i}$.
+
+Тогда заметим, что выражение $(P(D)(y_j(x)))|_{x=x_0} = 0 \quad \forall j = 1, 2, \dots, n$ -- это то же самое, что и~\ref{eq:lin_diff_eq_const_coef_full_sol_eq}.
+(То есть мы берем дифференциальный оператор, порожденный многочленом, применяем его к функции $y_j$ и берем значение получившейся функции в точке $x_0$)
+
+Ранее была доказана лемма, что если $P(D)(x^k e^{\mu x}) \equiv 0$, то $\mu$ -- корень $P$ кратности хотя бы $k+1$.
+Значит, подставляя в полученное выражение $j=k_1$, получим, что $\lambda_1$ -- корень $P$ кратности хотя бы $(k_1-1)+1=k_1$.
+Аналогично, подставляя $\lambda = k_1 + k_2$, $\lambda_2$ -- корень кратноти хотя бы $k_2$.
+Аналогично для всех лямбд.
+
+Тогда у многочлена $P$ всего корней с учетом кратности хотя бы $k_1 + k_2 + \dots + k_m = n$, но это $deg P \leq n-1$.
+Противоречие.
+Значит таких коэффициентов $b_0, \dots, b_{n-1}$ нет, а значит строки линейно независимы, а значит система уравнений имеет единственное решение, а значит искомые коэффициенты $c_k$ существуют.
+
+\Endproof
+
+\Theor{Об овеществлении решение} Пусть $\lambda_1, \dots, \lambda_m$ -- различные корни характеристического многочлена кратностей $k_1, \dots, k_m$.
+Пусть первые $2m$ корней -- комплексные (они идут парами: $\lambda_{2j-1}=\alpha_j + i\beta_j, \lambda_{2j}=\alpha_j-i\beta_j$), а $\lambda_{2m+1}, \dots, \lambda_n \in \R$.
+
+Тогда общее решение может быть записано в виде
+
+\begin{equation*}
+    y(x) = \sum_{j=1}^l e^{\alpha_j x} \left(P_j (x) \cos{\beta_j x} + Q_j(x) \sin{\beta_j x} \right) + \sum_{s = 2l+1}^n R_s(x) e^{\lambda_s x},
+\end{equation*}
+
+где $\deg P_j, Q_j \leq k_j - 1; \deg R_s \leq k_s - 1$ и $P, Q, R$ -- многочлены с вещественными коэффициентами.
+
+Теорема доказывается аналогично теореме об овеществлении решений для простого случая.
+
+\subsubsection{ФСР}
+
+\Def Фундаментальная система решений (ФСР) -- это набор линейно независимых функций $z_1(x), \dots, z_d(x): \R \rightarrow \R$, таких что любое решение уравнения является их линейной комбинацией.
+
+\Statement ФСР уравнения~\ref{eq:lin_diff_eq_const_coef} имеет размерность $n$, так как любое решение может быть расписано через функции $y_1, \dots, y_n$, введенные выше.
+
+\subsubsection{Случай неоднородного уравнения с правой частью -- квазимногочленом}
+
+\Def Линейным дифференциальным неоднородным уравнением с постоянными коэффициентами называется уравнение вида
+
+\begin{equation}
+    a_0 y^{(n)} + a_1 y^{(n-1)} + \dots + a_{n-1} y' + a_n y = F(x)
+    \label{eq:lin_diff_unodn_eq_const_coef}
+\end{equation}
+
+c $F \in C(I)$.
+
+\Note
+\begin{enumerate}
+    \item Если $y_1$ -- решение неоднородного уравнения~\ref{eq:lin_diff_unodn_eq_const_coef}, а $y_2$ -- решение соответствующего ему однородного, то $y_1+y_2$ -- решение~\ref{eq:lin_diff_unodn_eq_const_coef};
+    \item Если $y_1, y_2$ -- решения неоднородного уравнения~\ref{eq:lin_diff_unodn_eq_const_coef}, то $y_1-y_2$ -- решение соответствующего однородного;
+    \item Таким образом, любое решение~\ref{eq:lin_diff_unodn_eq_const_coef} -- это общее решение соответствующего однородного + частное решение неоднородного.
+\end{enumerate}
+
+Значит нужно научиться искать частное решение неоднородного, так как решать соответствующее однородное решать мы уже умеем.
+В общем случае это сложно, однако если $F(x)$ -- это квазимногочлен, то есть алгоритм.
+
+\Def $\R_n[x]$ будем обозначать пространство многочленов над полем $\R$ степени не выше $n$ от $x$. $\R[x]$ будем обозначать кольцо многочленов над $\R$ любой степени от переменной $x$.
+
+\Def Будем говорить, что $F$ -- квазимногочлен степени $m \in \N \cup 0$ с показателем $\lambda = \alpha + i\beta$, если
+
+\begin{equation*}
+    F(x) = e^{\alpha x} \left( p(x) \cos{\beta x} + q(x) \sin{\beta x}\right),
+\end{equation*}
+
+где $p, q \in \R[x]$, $m = \max{\deg p, \deg q}$.
+
+\Def Пространство квазимногочленов степени $m$ с показателем $\lambda$: $Q_{\lambda, m} \coloneqq \{r(x) \quad | \quad r(x) = e^{\alpha x} \left( p(x) \cos{\beta x} + q(x) \sin{\beta x} \right); \quad p, q \in \R_{m-1}[x]\}$.
+
+\Def $Q_{\lambda, m}^k = \{\hat{r}(x) \quad | \quad \hat{r}(x) = x^k r(x); \quad r(x) \in Q_{\lambda, m}\}$.
+
+\Note $Q_{\lambda, m}^k \subset Q_{\lambda, m+k}$.
+
+\Note $Q_{\lambda, m} = Q_{\overline{\lambda}, m}$.
+
+\Note Если $\lambda \in \R$, то $Q_{\lambda, m} = \langle e^{\lambda x}, x e^{\lambda x}, \dots, x^{m-1} e^{\lambda x} \rangle $.
+
+Если $\lambda \notin \R$, то $Q_{\lambda, m} = \langle e^{\alpha x} x^j \cos{\beta x}, e^{\alpha x} x^j \sin{\beta x} \quad|\quad j = 0, 1, \dots, m-1 \rangle$.
+
+\Th Пусть $F \in Q_{\mu, m}$, а $\mu$ -- корень $\chi(\lambda)$ кратности $s \geq 0$ (если $s=0$, то имеется в виду, что $\mu$ -- не корень).
+Тогда существует частное решение $y(x) \in Q_{\lambda, m}^s$.
+
+\Proof
+
+Для простоты рассмотрим $\mu \in \R$.
+
+$\chi(\lambda) = \xi(\lambda) \cdot (\lambda - \mu)^s$, где $\xi(\mu) \neq 0$.
+
+Уравнение~\ref{eq:lin_diff_unodn_eq_const_coef} эквивалентно $\chi(D)(y(x)) = F(x)$.
+
+Покажем, что $\chi(D): Q_{\mu, m}^s \rightarrow Q_{\mu, m}$ -- биекция.
+
+\begin{enumerate}
+    \item Возьмем базис $e_j(x) = \frac{e^{\mu x} x^{j-1}}{(j-1)!}, j=1, \dots, m $ в $Q_{\mu, m+s}$.
+    \begin{align*}
+        D(e_1(x)) &= \mu e_1(x),\\
+        D(e_j(x)) &= \mu e_j(x) + e_{j-1}(x), \quad j \geq 2.
+    \end{align*}
+
+    Тогда матрица оператора $D$ имеет вид:
+    \begin{equation*}
+        \begin{pmatrix}
+            \mu & 1   & 0   & \dots & 0 \\
+            0   & \mu & 1   & \dots & 0 \\
+            0   & 0   & \mu & \ddots & \vdots \\
+            \vdots & \vdots & \ddots & \ddots & 1 \\
+            0   & 0   & \dots & 0 & \mu
+        \end{pmatrix}
+        = J_{m+s}(x) = \mu E_{m+s} + N_{m+s}
+    \end{equation*}
+
+    При возведении $N$ в степени диагональ единичек ''уезжает'' на одну диагональ вверх.
+
+    Тогда матрица оператора $(D - \mu I)^s$ имеет вид:
+    \begin{equation*}
+        (J_{m+s}(\mu) - \mu E_{m+s})^s = N_{m+s}^s =
+        \left(
+            \begin{array}{c@{\;}c}
+                0_{m\times s} & E_m \\[6pt]
+                0_{s\times s} & 0_{s\times m}
+            \end{array}
+        \right)
+    \end{equation*}
+
+    Матрицей оператора $(D-\mu I)^s$, ограниченной на $Q_{\mu, m}^s$, является $E_m$, поэтому $(D-\mu I)^s$ -- это биекция.
+
+    \item $J_m(\mu)$ -- матрица $D$ во взятом базисе.
+
+    $\xi(D)=\sum_{j=0}^{n-s}(b_j D^{s-j})$ имеет в этом базисе матрицу вида:
+    \begin{equation*}
+        \begin{pmatrix}
+            \xi(\mu) & ? & ?  & \dots & ? \\
+            0   & \xi(\mu) & ?   & \dots & ? \\
+            0   & 0   & \xi(\mu) & \ddots & \vdots \\
+            \vdots & \vdots & \ddots & \ddots & ? \\
+            0   & 0   & \dots & 0 & \xi(\mu)
+        \end{pmatrix}
+    \end{equation*}
+
+    Так как $\mu$ -- не корень $xi$, то это матрица с ненулевой диагональю и она невырождена, и $\xi(D)$ -- тоже биекция.
+\end{enumerate}
+
+\Endproof
