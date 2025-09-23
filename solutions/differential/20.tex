@@ -24,15 +24,17 @@
 \Def Система ДУ называется системой в нормальной форме, если она может быть представлена в виде
 
 \begin{align*}
-    y_1'&= f_1(x, y_1, \dots, y_n) \\
-    y_2'&= f_2(x, y_1, \dots, y_n) \\
-    &\dots \\
-    y_n'&= f_n(x, y_1, \dots, y_n)
+    \begin{cases}
+        y_1'&= f_1(x, y_1, \dots, y_n) \\
+        y_2'&= f_2(x, y_1, \dots, y_n) \\
+        &\dots \\
+        y_n'&= f_n(x, y_1, \dots, y_n)
+    \end{cases}
 \end{align*}
 
-где $I \subset \R; y_j: I \rightarrow \R, y: I \rightarrow \R^n, y = (y_1, \dots, y_n)^T; f_j: G \rightarrow \R; f: G \rightarrow \R^n; f = (f_1, \dots, f_n)^T; G \subset \R^{n+1}$ -- область.
+где $y_j: I \rightarrow \R, I \subset \R; f_j: G \rightarrow \R; G \subset \R^{n+1}$ -- область.
 
-В этих обозначениях систему можно записать как $y'(x) = f(x, y)$
+Или более кратко $y'(x) = f(x, y)$, где $y$ и $f$ -- столбцы $y_j$, $f_j$.
 
 \Statement Любое ДУ, разрешимое относительно старшей производной, может быть записано в виде системы ДУ в нормальной форме
 
@@ -58,7 +60,7 @@
 
 \Endproof
 
-\Def \textbf{Задача Коши}:
+\Def \textbf{Задача Коши}: Найти функцию $y$, удовлетворяющую ДУ с начальными условиями:
 \begin{equation*}
     \begin{cases}
         y' = f(x, y), \\
@@ -116,7 +118,9 @@
 
 \paragraph{($\Leftarrow$)} Покажем, что любое решение уравнения~\ref{eq:lin_diff_eq_const_coef} может быть записано в виде~\ref{eq:lin_diff_eq_const_coef_simple_sol}.
 
-Пусть $\hat{y}(x)$ -- решение. Зададим начальное условие $\hat{y}(0) = \hat{y}_0; \hat{y}'(0) = \hat{y}'_0; \dots; \hat{y}^{(n-1)}(0) = \hat{y}^{(n-1)}_0$.
+Пусть $\hat{y}(x)$ -- решение.
+Обозначим значения этой функции и ее производных в точке 0: $\hat{y}(0) = \hat{y}_0; \hat{y}'(0) = \hat{y}'_0; \dots; \hat{y}^{(n-1)}(0) = \hat{y}^{(n-1)}_0$.
+Тогда $\hat{y}(x)$ -- решение задачи Коши с указанными начальными условиями.
 
 Определим $\tilde{y}(x) = \sum_{k=1}^n c_k e^{\lambda_k x}$, константы $c_i$ подберем так, чтобы для $\tilde{y}$ в нуле выполнялись те же начальные условия:
 
@@ -167,8 +171,8 @@
 \paragraph{($\Leftarrow$)} Для $\overline{\lambda}_{2s-1} = \lambda_{2s} \in \Cmp$ запишем
 
 \begin{align*}
-    c_{2s-1} e^{\lambda_{2s-1} x} + c_{2s} e^{\lambda_{2s} x} = \\
-    = \overline{c}_{2s} e^{\overline{\lambda}_{2s} x} + c_{2s} e^{\lambda_{2s} x} = \\
+    c_{2s-1} e^{\lambda_{2s-1} x} + c_{2s} e^{\lambda_{2s} x} =
+    = \overline{c}_{2s} e^{\overline{\lambda}_{2s} x} + c_{2s} e^{\lambda_{2s} x} =
     = \overline{c_{2s} e^{\lambda_{2s} x}} + c_{2s} e^{\lambda_{2s} x} \in \R
 \end{align*}
 
