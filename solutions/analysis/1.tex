@@ -1,1 +1,121 @@
 \subsection{Теорема Больцано-Вейерштрасса и критерий Коши сходимости числовой последовательности.}
+
+\subsubsection{Теорема Больцано-Вейерштрасса}
+
+\Def Числовую последовательность $\{x_n\}$ будем называть ограниченной, если $\exists M > 0: \forall n \in \N \hookrightarrow |x_n| \leq M$.
+
+\Def Пусть дана числовая последовательность $\{x_n\} \subset \R$. $\{y_k\}$ будем называть подпоследовательностью $\{x_n\}$, если существует строго возрастающая последовательность $\{n_k\} \subset \N$:
+\begin{equation*}
+    \forall k \in \N \hookrightarrow x_{n_k} = y_k
+\end{equation*}
+
+\Def Будем говорить, что $A \in \overline{\R}$ - частичный предел последовательности $\{x_n\}$, если $\exists \{x_{n_k}\}$ подпоследовательность $\{x_n\}$, такая что
+\begin{equation*}
+    \lim\limits_{k \to \infty} x_{n_k} = A
+\end{equation*}
+
+\Theor{Критерий частичного предела} Пусть дана числовая последовательность $\{x_n\}$, $A \in \overline{\R}$. Следующие утверждения эквивалентны:
+\begin{enumerate}
+    \item $A$ - частичный предел $\{x_n\}$
+    \item $\forall \varepsilon > 0$ в $U_\varepsilon(A)$ содержатся значения бесконечного количества элементов $\{x_n\}$
+    \item $\forall \varepsilon > 0 \; \forall N \in \N \; \exists n \geq N: x_n \in U_\varepsilon(A)$
+\end{enumerate}
+
+\Theor{Больцано-Вейерштрасса}  Пусть $\{x_n\}$ - ограниченная числовая последовательность. Тогда существует хотя бы один конечный частичный предел $\{x_n\}$.
+
+\Proof
+
+$\{x_n\}$ - ограниченная числовая последовательность $\overset{def}{\Rightarrow} \exists M > 0: \forall n \in \N \hookrightarrow |x_n| \leq M$.
+
+Далее будем считать, что $M > 0$, т.к. если $M = 0 \Rightarrow \forall n \in \N \hookrightarrow x_n = 0 \Rightarrow \lim\limits_{n \to \infty} x_n = 0$, а, значит, утверждение доказано.
+
+Построим последовательность отрезков $\{\mathcal{I}^n\}$. Положим $\mathcal{I}^1 \overset{def}{=} [-M, M]$. Заметим, что в $\mathcal{I}^1$ содержатся значения бесконечного количества элементов $\{x_n\}$.
+
+Будем строить последовательность так, чтобы в каждом $\mathcal{I}^n$ содержались значения бесконечного количества элементов $\{x_n\}$. 
+
+Пусть построили последовательность до $n_0 - 1$ ($n_0 \geq 2$), которая удовлетворяет данному свойству. Построим $\mathcal{I}^{n_0}$.
+
+Рассмотрим отрезок $\mathcal{I}^{n_0 - 1}$. По построению, он содержит значения бесконечного количества элементов $\{x_n\}$. Разделим его пополам. 
+Заметим, что хотя бы одна половина содержит значения бесконечного количества элементов $\{x_n\}$.
+Предположим противное, тогда получим что левая, что правая половины содержат конечное количество элементов последовательности, что противоречит построению.
+Положим ту половину, в которой содержатся значения бесконечного количества элементов $\{x_n\}$, за $\mathcal{I}^{n_0}$.
+
+Построили $\{\mathcal{I}^n\}$ по индукции с требуемым свойством. Заметим, что, по построению, $\mathcal{I}^1 \supset \mathcal{I}^2 \supset \mathcal{I}^3 \dots$
+И более того, легко видеть, что $|\mathcal{I}^k| = \frac{|\mathcal{I}^1|}{2^{k - 1}}$. А значит последовательность $\{\mathcal{I}^n\}$ - стягивающаяся. 
+Следовательно по лемме Кантора $\exists! x^* = \bigcap\limits_{n \in \N} \mathcal{I}^n$.
+
+Покажем, что $x^*$ действительно частичный предел. Заметим, т.к. отрезки стягиваются:
+\begin{equation*}
+    \forall \varepsilon > 0 \; \exists n \in \N: \mathcal{I}^n \subset U_\varepsilon(x^*)
+\end{equation*}
+
+Но в $\mathcal{I}^n$ содержатся содержатся значения бесконечного количества элементов $\{x_n\}$. А значит и в $U_\varepsilon(x^*)$ в частности. Получается, что $\forall \varepsilon > 0$ в $U_\varepsilon(x^*)$ содержатся значения бесконечного количества элементов $\{x_n\}$.
+А это в свою очередь, по критерию частичного предела, значит, что $x^*$ - частичный предел.
+
+\Endproof
+
+\subsubsection{Критерий Коши}
+
+\Def Пусть дана числовая последовательность $\{x_n\}$. Будем говорить, что она фундаментальна, если
+\begin{equation*}
+    \forall \varepsilon > 0 \; \exists N \in \N: \forall n, m \geq N \hookrightarrow |x_n - x_m| < \varepsilon
+\end{equation*}
+
+\Lemma Пусть дана сходящаяся к $A$ числовая последовательность $\{x_n\}$. Тогда она фундаментальна.
+
+\Proof
+
+$\{x_n\}$ сходится к $A$, а значит, по определению:
+\begin{equation*}
+    \forall \varepsilon > 0 \; \exists N \in \N: \forall n \geq N \hookrightarrow |x_n - A| < \frac{\varepsilon}{2}
+\end{equation*}
+
+Тогда:
+\begin{equation*}
+    \forall \varepsilon > 0 \; \exists N \in \N: \forall n, m \geq N \hookrightarrow |x_n - x_m| = |x_n - A - (x_m - A)| \leq |x_n - A| + |x_m - A| \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+\end{equation*}
+
+\Endproof
+
+\Lemma Если числовая последовательность $\{x_n\}$ фундаментальна, значит она ограничена.
+
+\Proof
+
+\begin{equation*}
+    \forall \varepsilon > 0 \; \exists N(\varepsilon) \in \N: \forall n, m \geq N(\varepsilon) \hookrightarrow |x_n - x_m| < \varepsilon
+\end{equation*}
+
+Положим $\varepsilon = 1$:
+\begin{equation*}
+    \exists N(1) \in \N: \forall n, m \geq N(1) \hookrightarrow |x_n - x_m| < 1
+\end{equation*}
+
+А значит:
+\begin{equation*}
+    \forall n \geq N(1) \hookrightarrow |x_n - x_{N(1)}| < 1
+\end{equation*}
+
+А значит, по неравенству треугольника, $|x_n| - |x_{N(1)}|  \leq |x_n - x_{N(1)}| < 1$. А значит $|x_n| < 1 + |x_{N(1)}|$.
+
+А значит положим $M = \max \left\{1 + |x_{N(1)}|, \max\limits_{n \in 1 \dots N(1) - 1} x_n  \right\}$ и получим требуемое.
+
+\Endproof
+
+\Theor{Критерий Коши} Числовая последовательность $\{x_n\}$ фундаментальна $\iff$ $\{x_n\}$ сходится.
+
+\Proof
+
+Влево показали. Покажем вправо. Пусть $\{x_n\}$ фундаментальна. Значит она ограниченная, а значит, по теореме Больцано-Вейерштрасса, существует частичный предел $x^*$.
+Покажем, что на самом деле он является пределом.
+\begin{equation*}
+    \forall \varepsilon > 0 \; \exists N(\varepsilon) \in \N: \forall n, m \geq N(\varepsilon) \hookrightarrow |x_n - x_m| < \frac{\varepsilon}{2}
+\end{equation*}
+В частности, в силу $\lim\limits_{k \to \infty} x_{n_k} = x^* \Rightarrow \exists k(\varepsilon) \in \N: n_k \geq N(\varepsilon), |x_{n_{k(\varepsilon)}} - x^*| \leq \frac{\varepsilon}{2}$.
+
+А значит:
+\begin{equation*}
+    \forall \varepsilon > 0 \; \exists N(\varepsilon) \in \N: \forall n, m \geq N(\varepsilon) \hookrightarrow |x_n - x^*| \leq |x_n - x_{n_{k(\varepsilon)}}| + |x_{n_{k(\varepsilon)}} - x^*| < \varepsilon
+\end{equation*}
+
+\Endproof
+

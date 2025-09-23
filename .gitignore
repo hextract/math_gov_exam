@@ -1,4 +1,9 @@
 **/.DS_Store
-.idea/
-out/
-auxil/
+**/*.gz
+**/*.log
+**/*.aux
+**/*.out
+**/*.pdf
+**/*.toc
+**/*.fdb_latexmk
+**/*.fls
