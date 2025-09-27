@@ -1,0 +1,489 @@
+\subsection{Дифференциальные уравнения}
+
+\fbox{
+    \begin{minipage}{0.9\linewidth}
+        Большая часть содержимого этого раздела сгенерирована. \\
+        Стоит обращать внимание на общие методы решения, а не на числовые выкладки.
+    \end{minipage}
+}
+
+\subsubsection{Уравнения с разделяющимися переменными}
+
+\textbf{Общий вид}
+
+\begin{equation*}
+    \frac{dy}{dx} = f(x)g(y)
+\end{equation*}
+
+\textbf{Примеры}
+
+Решить уравнение:
+
+\begin{equation*}
+    \frac{dy}{dx} = y \sin x
+\end{equation*}
+
+Решение:
+
+\begin{align*}
+    \frac{dy}{y} &= \sin x \, dx \\
+    \int \frac{1}{y} \, dy &= \int \sin x \, dx \\
+    \ln |y| &= -\cos x + C \\
+    y &= (\pm e^{C}) e^{-\cos x} = C_1 e^{-\cos x}
+\end{align*}
+
+\subsubsection{Однородные уравнения 1-го порядка}
+
+\textbf{Общий вид}
+
+\begin{equation*}
+    \frac{dy}{dx} = F\left(\frac{y}{x}\right)
+\end{equation*}
+
+\textbf{Примеры}
+
+Решить уравнение:
+
+\begin{equation*}
+    \frac{dy}{dx} = \frac{x+y}{x}
+\end{equation*}
+
+Решение:
+
+\begin{align*}
+    \frac{dy}{dx} &= \frac{x + y}{x} \\
+    \text{Замена: } y = vx \quad &\Rightarrow \quad \frac{dy}{dx} = v + x\frac{dv}{dx} \\
+    v + x \frac{dv}{dx} &= \frac{x + vx}{x} = 1 + v \\
+    x \frac{dv}{dx} &= 1 + v - v = 1 \\
+    \frac{dv}{dx} &= \frac{1}{x} \\
+\end{align*}
+
+Свели к уравнению с разделяющимися:
+
+\begin{align*}
+    \int dv &= \int \frac{1}{x} dx \\
+    v &= \ln|x| + C \\
+    y &= vx = x(\ln|x| + C)
+\end{align*}
+
+\subsubsection{Уравнения в полных дифференциалах}
+
+\textbf{Общий вид}
+
+\begin{equation*}
+    M(x,y)dx + N(x,y)dy = 0
+\end{equation*}
+
+где \(\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}\) — условие полной дифференциальности.
+
+\textbf{Примеры}
+
+Решить уравнение:
+
+\begin{equation*}
+(2xy + 1)dx + (x^2 + 3y^2)dy = 0
+\end{equation*}
+
+Решение:
+
+Проверим условие полной дифференциальности:
+
+\begin{align*}
+    \frac{\partial M}{\partial y} &= \frac{\partial}{\partial y}(2xy + 1) = 2x \\
+    \frac{\partial N}{\partial x} &= \frac{\partial}{\partial x}(x^2 + 3y^2) = 2x
+\end{align*}
+
+Условие выполнено, уравнение полное.
+
+Ищем функцию $F(x,y)$, такую что $\frac{\partial F}{\partial x} = M; \frac{\partial F}{\partial y} = N$.
+
+\begin{align*}
+    \begin{cases}
+        \frac{\partial F}{\partial x} &= 2xy + 1 \quad \Rightarrow \quad F(x,y) = x^2 y + x + \phi(y) \\
+        \\
+        \frac{\partial F}{\partial y} &= x^2 + 3y^2 \quad \Rightarrow \quad \frac{\partial}{\partial y}(x^2 y + x + \phi(y)) = x^2 + \phi'(y) = x^2 + 3y^2 \\
+    \end{cases}
+\end{align*}
+
+\begin{align*}
+    \phi'(y) &= 3y^2 \quad \Rightarrow \quad \phi(y) = y^3\\
+\end{align*}
+
+Следовательно, $F(x,y) = x^2 y + x + y^3$.
+
+Общее решение: $F(x,y) = C \quad \Rightarrow \quad x^2 y + x + y^3 = C$.
+
+\subsubsection{Линейные уравнения 1-го порядка}
+
+\textbf{Общий вид}
+
+\begin{equation*}
+    \frac{dy}{dx} + P(x)y = Q(x)
+\end{equation*}
+
+\textbf{Примеры}
+
+Решить уравнение:
+
+\begin{equation*}
+    y' + y = e^x
+\end{equation*}
+
+Найти интегрирующий множитель -- такую функцию, при умножении уравнения на которую левая часть станет полной производной:
+
+\begin{equation*}
+    \frac{d}{dx} [\mu(x)y] = \mu(x) Q(x)
+\end{equation*}
+
+Для данного уравнения интегрирующий множитель $e^x$:
+
+\begin{align*}
+    e^x \frac{dy}{dx} + e^x y &= e^{2x} \\
+    \frac{d}{dx}(y e^x) &= e^{2x}
+\end{align*}
+
+Интегрируем обе части:
+
+\begin{align*}
+    \int \frac{d}{dx}(y e^x) dx &= \int e^{2x} dx \\
+    y e^x &= \frac{1}{2} e^{2x} + C
+\end{align*}
+
+Выражаем $y$:
+
+\begin{align*}
+    y &= \frac{1}{2} e^x + C e^{-x}
+\end{align*}
+
+\subsubsection{Линейные уравнения второго порядка с постоянными коэффициентами}
+
+\textbf{Общий вид}
+
+\begin{equation*}
+    y'' + a y' + b y = f(x)
+\end{equation*}
+
+\textbf{Пример}
+
+Решить уравнение:
+
+\begin{equation*}
+    y'' - 3y' + 2y = e^{2x}
+\end{equation*}
+
+Решаем однородное уравнение:
+
+\begin{align*}
+    y_h'' - 3y_h' + 2y_h &= 0 \\ \\
+    r^2 - 3r + 2 &= 0 \\
+    r_1 = 1, &\quad r_2 = 2 \\
+    y_h = C_1 e^x &+ C_2 e^{2x}
+\end{align*}
+
+Ищем частное решение в виде:
+
+\begin{equation*}
+    y_p = u_1(x) e^x + u_2(x) e^{2x}
+\end{equation*}
+
+где \(u_1(x)\) и \(u_2(x)\) — функции, которые нужно определить.
+
+Составляем систему для \(u_1'\) и \(u_2'\):
+
+\begin{align*}
+    u_1' e^x + u_2' e^{2x} &= 0 \\
+    u_1' e^x + 2 u_2' e^{2x} &= e^{2x}
+\end{align*}
+
+Решение системы:
+
+\begin{align*}
+    u_2' &= 1 \quad \Rightarrow \quad u_2 = \int 1 dx = x \\
+    u_1' &= - u_2' e^x = - e^x \quad \Rightarrow \quad u_1 = \int - e^x dx = - e^x
+\end{align*}
+
+Итак: частное решение
+
+\begin{align*}
+    y_p &= u_1 e^x + u_2 e^{2x} \\
+    y_p &= (- e^x) e^x + x e^{2x} \\
+    y_p &= - e^{2x} + x e^{2x} = (x-1) e^{2x}
+\end{align*}
+
+Общее решение:
+
+\begin{align*}
+    y &= y_h + y_p \\
+    y &= C_1 e^x + C_2 e^{2x} + (x-1) e^{2x}
+\end{align*}
+
+(Можно переписать как $y &= C_1 e^x + C_3 e^{2x} + xe^{2x}$)
+
+\subsubsection{Однородное линейное уравнение с корнем кратности 3}
+
+Решить уравнение:
+
+\begin{equation*}
+    y''' - 6y'' + 12y' - 8y = 0
+\end{equation*}
+
+Характеристическое уравнение:
+
+\begin{align*}
+    r^3 - 6r^2 + 12r - 8 &= 0 \\
+    (r - 2)^3 &= 0 \\
+    r_1 = r_2 = r_3 &= 2
+\end{align*}
+
+Общее решение:
+
+\begin{align*}
+    y_h &= (C_1 + C_2 x + C_3 x^2) e^{r x} \\
+    y_h &= (C_1 + C_2 x + C_3 x^2) e^{2x}
+\end{align*}
+
+\subsubsection{Система линейных дифференциальных уравнений}
+
+Решить систему:
+
+\begin{equation*}
+    \begin{cases}
+        x'(t) = 2x + y \\
+        y'(t) = x + 2y + z \\
+        z'(t) = y + 2z
+    \end{cases}
+\end{equation*}
+
+\textbf{Решение}
+
+Сначала записываем систему в матричной форме:
+
+\begin{equation*}
+    \begin{pmatrix} x' \\ y' \\ z' \end{pmatrix} =
+    \begin{pmatrix}
+        2 & 1 & 0 \\
+        1 & 2 & 1 \\
+        0 & 1 & 2
+    \end{pmatrix}
+    \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+\end{equation*}
+
+Находим собственные значения матрицы \(A\) из характеристического уравнения:
+
+\begin{align*}
+    \det(A - \lambda I) &=
+    \begin{vmatrix}
+        2-\lambda & 1 & 0 \\
+        1 & 2-\lambda & 1 \\
+        0 & 1 & 2-\lambda
+    \end{vmatrix} = 0
+\end{align*}
+
+Вычисляя определитель, получаем:
+
+\begin{equation*}
+(2-\lambda)((2-\lambda)^2 - 1) - 1((2-\lambda)\cdot 0 - 1\cdot 0) + 0 = 0
+\end{equation*}
+
+\begin{equation*}
+(2-\lambda)((2-\lambda)^2 - 1) = 0
+\end{equation*}
+
+\begin{equation*}
+(2-\lambda)(\lambda^2 - 4\lambda + 3) = 0
+\end{equation*}
+
+Отсюда собственные значения:
+
+\begin{equation*}
+    \lambda_1 = 1, \quad \lambda_2 = 2, \quad \lambda_3 = 3
+\end{equation*}
+
+Для каждого собственного значения находим собственный вектор \(v_i\):
+
+\begin{align*}
+    \lambda_1 = 1: & \quad v_1 = \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} \\
+    \lambda_2 = 2: & \quad v_2 = \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} \\
+    \lambda_3 = 3: & \quad v_3 = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+\end{align*}
+
+Общее решение системы записывается как линейная комбинация собственных решений:
+
+\begin{equation*}
+    \begin{pmatrix} x(t) \\ y(t) \\ z(t) \end{pmatrix} =
+    C_1
+    \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} e^{t} +
+    C_2
+    \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} e^{2t} +
+    C_3
+    \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} e^{3t}
+\end{equation*}
+
+где \(C_1, C_2, C_3\) — произвольные константы.
+
+\subsubsection{Система линейных дифференциальных уравнений с комплексными собственными значениями}
+
+Решить систему:
+
+\begin{equation*}
+    \begin{cases}
+        x'(t) = -y \\
+        y'(t) = x
+    \end{cases}
+\end{equation*}
+
+Решение:
+
+Сначала записываем систему в матричной форме:
+
+\begin{equation*}
+    \begin{pmatrix} x' \\ y' \end{pmatrix} =
+    \begin{pmatrix}
+        0 & -1 \\
+        1 & 0
+    \end{pmatrix}
+    \begin{pmatrix} x \\ y \end{pmatrix}
+\end{equation*}
+
+Находим собственные значения матрицы \(A\):
+
+\begin{align*}
+    \det(A - \lambda I) &=
+    \begin{vmatrix}
+        -\lambda & -1 \\
+        1 & -\lambda
+    \end{vmatrix} = \lambda^2 + 1 = 0
+\end{align*}
+
+Отсюда:
+
+\begin{equation*}
+    \lambda_{1,2} = \pm i
+\end{equation*}
+
+Для \(\lambda = i\) находим собственный вектор \(v_1 = \begin{pmatrix} 1 \\ -i \end{pmatrix}\), для \(\lambda = -i\) — \(v_2 = \begin{pmatrix} 1 \\ i \end{pmatrix}\).
+
+Общее комплексное решение:
+
+\begin{equation*}
+    \begin{pmatrix} x(t) \\ y(t) \end{pmatrix} = C_1
+    \begin{pmatrix} 1 \\ -i \end{pmatrix} e^{i t} +
+    C_2
+    \begin{pmatrix} 1 \\ i \end{pmatrix} e^{-i t}
+\end{equation*}
+
+Овеществление решения:
+
+Используем формулу Эйлера \(e^{i t} = \cos t + i \sin t\) и разложим комплексные экспоненты:
+
+\begin{align*}
+    C_1
+    \begin{pmatrix} 1 \\ -i \end{pmatrix} e^{i t} +
+    C_2
+    \begin{pmatrix} 1 \\ i \end{pmatrix} e^{-i t}
+    &= C_1
+    \begin{pmatrix} 1 \\ -i \end{pmatrix} (\cos t + i \sin t) +
+    C_2
+    \begin{pmatrix} 1 \\ i \end{pmatrix} (\cos t - i \sin t) \\
+    &= (C_1 + C_2)
+    \begin{pmatrix} \cos t \\ \sin t \end{pmatrix} +
+    i(C_1 - C_2)
+    \begin{pmatrix} \sin t \\ -\cos t \end{pmatrix}
+\end{align*}
+
+Вводим новые вещественные константы \(A = C_1 + C_2\), \(B = i(C_1 - C_2)\), получаем вещественное решение:
+
+\begin{align*}
+    x(t) &= A \cos t + B \sin t \\
+    y(t) &= A \sin t - B \cos t
+\end{align*}
+
+\subsubsection{Система второго порядка с кратным вещественным корнем}
+
+Рассмотрим систему:
+
+\begin{equation*}
+    \begin{cases}
+        x'(t) = 2x + y \\
+        y'(t) = -4x - 2y
+    \end{cases}
+\end{equation*}
+
+Сначала записываем систему в матричной форме:
+
+\begin{equation*}
+    \begin{pmatrix} x' \\ y' \end{pmatrix} =
+    \begin{pmatrix}
+        2 & 1 \\
+        -4 & -2
+    \end{pmatrix}
+    \begin{pmatrix} x \\ y \end{pmatrix}
+\end{equation*}
+
+Находим собственные значения матрицы \(A\):
+
+\begin{align*}
+    \det(A - \lambda I) &=
+    \begin{vmatrix}
+        2-\lambda & 1 \\
+        -4 & -2-\lambda
+    \end{vmatrix}
+    = (2-\lambda)(-2-\lambda) - (-4) = \lambda^2 = 0
+\end{align*}
+
+Отсюда:
+
+\begin{equation*}
+    \lambda = 0 \quad \text{(кратность 2)}
+\end{equation*}
+
+Находим обычный собственный вектор \(v_1\):
+
+\begin{equation*}
+(A - 0 I)v_1 = 0 \quad \Rightarrow \quad v_1 = \begin{pmatrix} 1 \\ -2 \end{pmatrix}
+\end{equation*}
+
+Так как кратность корня = 2, а собственный вектор один, находим обобщённый собственный вектор \(v_2\):
+
+\begin{equation*}
+(A - 0 I)v_2 = v_1 \quad \Rightarrow \quad v_2 = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\end{equation*}
+
+Общее решение системы с учётом кратного корня и цепочки обобщённых векторов:
+
+\begin{equation*}
+    \begin{pmatrix} x(t) \\ y(t) \end{pmatrix} =
+    C_1 v_1 + C_2 (v_1 t + v_2)
+    = C_1 \begin{pmatrix} 1 \\ -2 \end{pmatrix} +
+    C_2 \left( t \begin{pmatrix} 1 \\ -2 \end{pmatrix} + \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right)
+\end{equation*}
+
+В раскрытом виде по компонентам:
+
+\begin{align*}
+    x(t) &= C_1 + C_2 t \\
+    y(t) &= -2 C_1 - 2 C_2 t + C_2 = -2 C_1 + C_2 (1 - 2 t)
+\end{align*}
+
+где \(C_1, C_2\) — произвольные константы.
+
+\Note
+Если система $X' = A X$ имеет вещественный собственный корень \(\lambda\) кратности \(k\), а собственный вектор всего 1, то необходимо строить цепочку обобщённых собственных векторов:
+
+\begin{align*}
+(A - \lambda I)v_1 &= 0, \\
+(A - \lambda I)v_2 &= v_1, \\
+(A - \lambda I)v_3 &= v_2, \\
+&\dots \\
+(A - \lambda I)v_k &= v_{k-1}.
+\end{align*}
+
+Общее решение, соответствующее кратному корню \(\lambda\), имеет вид:
+\begin{equation*}
+    X(t) = \Big(C_1 v_1 + C_2 (v_1 t + v_2) + C_3 \big(v_1 \frac{t^2}{2} + v_2 t + v_3\big) + \dots + C_k \big(v_1 \frac{t^{k-1}}{(k-1)!} + v_2 \frac{t^{k-2}}{(k-2)!} + \dots + v_k\big)\Big) e^{\lambda t},
+\end{equation*}
+где \(C_1, C_2, \dots, C_k\) — произвольные константы.
+
+\subsubsection{Линейное уравнение второго порядка с переменными коэффициентами}
+
+TODO
