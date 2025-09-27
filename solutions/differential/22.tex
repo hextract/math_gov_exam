@@ -1,1 +1,179 @@
 \subsection{Линейные обыкновенные дифференциальные уравнения с переменными коэффициентами. Фундаментальная система решений. Определитель Вронского. Формула Лиувилля - Остроградского.}
+
+\Def Линейным обыкновенным дифференциальным уравнением с переменными коэффициентами называется уравнение вида
+
+\begin{equation}
+    \dot{x} = A(t)x + F(t),
+\end{equation}
+
+где $t \in I \subset \R, \; F:I \rightarrow \R^n;\; A(t) \in Matr_{n \times n}(\R) \; \forall t \in I;$.
+
+\Theorbd{О существовании и единственности решения ЗК для этого уравнения}
+Пусть $a_{a_{i,j}}, F_i \in C(I)$.
+
+Тогда $\forall (t_0, x_0) \in I \times \R^n \; \exists!$ непродолжаемое решение ЗК
+
+\begin{align*}
+    \begin{cases}
+        \dot{x} = A(t)x + F(t), \\
+        x(t_0) = x_0,
+    \end{cases}
+\end{align*}
+
+которое определено на $I$.
+
+\Remind Уравнение вида $y^{(n)} + a_1(t)y^{(n-1)} + \dots + a_{n-1}(t)y' + a_n(t)y = f(t)$ -- это уравнение, разрешенное относительно старшей производной, и его можно переписать в виде $\dot{x} = A(t)x + F(t)$.
+
+Далее рассматриваем однородное уравнение: $\dot{x} = A(t)x$, так как частное решение неоднородного находится методом вариации постоянных так же, как и с уравнениями с постоянными коэффициентами.
+
+\Theorbd{Об изоморфизме}
+
+Пусть $\mathcal{L}$ -- пространство решений.
+
+Тогда $\mathcal{L}$ -- линейное пространство, такое что отображение $\phi_{t_0}:\mathcal{L} \rightarrow \R^n$, определенное как $\phi_{t_0}(x) = x(t_0)$ (это отображение переводит решение уравнения в значение этого решения в точке $t_0$), является изоморфизмом между $\mathcal{L}$ и $\R^n$.
+
+\Proof
+
+$\phi$ -- биекция, так как $\forall a\in \R^n \;\exists!$ решение $x(t)$, такое что $x(t_0) = a$, по теореме Коши.
+
+$\phi$ -- гомоморфизм, так как сохраняет линейность:
+
+\begin{equation*}
+    \phi_{t_0}(c_1 x_1 + c_2 x_2) = (c_1 x_1 + c_2 x_2) (t_0) = c_1 x_1(t_0) + c_2 x_2(t_0) = c_1 \phi_{t_0}(x_1) + c_2\phi_{t_0}(x_2)
+\end{equation*}
+
+\Endproof
+
+\Consequence $\dim \mathcal{L} = n$.
+
+\Consequence В качестве ФСР можно взять любое базис в $\mathcal{L}$.
+
+\Note Определение ФСР есть в предыдущем билете.
+Кратко, это множество ЛНЗ решений, через которые линейно выражается любое решение.
+
+\Def Вронскиан системы функций $\mathcal{F} = \{f: I \rightarrow \R^n\}$ -- это определитель матрицы, столбцами которой являются значения функций в точке $t$:
+
+\begin{equation*}
+    W_{f_1, \dots, f_n}(t) = |f_1(t) \quad f_2(t) \quad\dots\quad f_n(t)| =
+    \begin{vmatrix}
+             f_{11}(t)& f_{21}(t) & \cdots & f_{n1}(t) \\
+             f_{12}(t) & f_{22}(t) & \cdots & f_{n2}(t) \\
+             \vdots & \vdots & \ddots & \vdots \\
+             f_{1n}(t) & f_{2n}(t) & \cdots & f_{nn}(t)
+    \end{vmatrix}
+\end{equation*}
+
+\Statement Если $f_1, \dots, f_n$ - ЛЗ, то $W_{f_1, \dots, f_n}(t) \equiv 0$.
+
+Это верно, так как определитель матрицы, имеющей ЛЗ столбцы, равен 0.
+
+\Th Пусть $x_1, \dots, x_n$ - решения уравнения. Тогда следующие утверждения эквивалентны:
+
+\begin{enumerate}
+    \item $x_1, \dots, x_n$ - ЛЗ;
+    \item $W_{x_1, \dots, x_n}(t) \equiv 0$;
+    \item $\exists t_i \in I: W_{x_1, \dots, x_n}(t_0) = 0$.
+\end{enumerate}
+
+\Proof
+
+$(1\rightarrow 2)$: Из утверждения выше.
+
+$(2\rightarrow 3)$: Тривиально верно.
+
+$(3\rightarrow 1)$: Пусть $\exists t_i \in I: W_{x_1, \dots, x_n}(t_0) = 0$.
+Тогда $\exists c_1, \dots, c_n \left(\sum c_i^2 > 0\right): \sum_{k=1}^n c_k x_k(t_0) = 0$.
+
+Рассмотрим $x(t) = \sum_{k=1}^n c_k x_k(t)$ и $\hat{x}(t) \equiv 0$.
+Обе функции являются решениями $\dot{x} = A(t)x$, причем $x(t_0) = \hat{x}(t_0) = 0$, а следовательно они совпадают.
+Раз $x \equiv 0$, значит $x_1, \dots, x_n$ - ЛЗ.
+
+\Lemma
+$\hat{W}(t) = \tr A(t) \cdot W(t)$
+
+\Proof
+
+Пусть $\mathcal{X}(t)$ - матрица, столбцами которой являются $x_1, \dots, x_n$.
+Тогда $W(t) = \det \mathcal{X}(t)$.
+
+Помимо этого $\dot{\mathcal{X}} = A\mathcal{X}$.
+Обозначив $\xi_k$ -- $k$-ю строку $\mathcal{X}$, а $a^k$ -- $k$-ю строку $A$, это же равенство можно записать как $\dot{\xi_k} = a^k \mathcal{X}$.
+
+По формуле Лейбница для определителя матрицы, его можно расписать через сумму n матриц, в каждой из которых продиференцирована одна строка
+
+\begin{align*}
+    \dot{W} =
+        \begin{vmatrix}
+            \dot{\xi_1} \\
+            \xi_2 \\
+            \vdots \\
+            \xi_{n-1} \\
+            \xi_n \\
+        \end{vmatrix}
+    + &\dots +
+        \begin{vmatrix}
+            \xi_1 \\
+            \xi_2 \\
+            \vdots \\
+            \xi_{n-1} \\
+            \dot{\xi_n} \\
+        \end{vmatrix}
+    = \\ =
+        \begin{vmatrix}
+            a_{11}\xi_1 + \dots + a_{1n} \xi_n \\
+            \xi_2 \\
+            \vdots \\
+            \xi_{n-1} \\
+            \xi_n \\
+        \end{vmatrix}
+    + &\dots +
+        \begin{vmatrix}
+            \xi_1 \\
+            \xi_2 \\
+            \vdots \\
+            \xi_{n-1} \\
+            a_{n1}\xi_1 + \dots + a_{nn} \xi_n \\
+        \end{vmatrix}
+    = \\ = \text{\{Каждый определитель разбивается на n, в }&\text{каждом из которых ненулевой только один\}} = \\ =
+        \begin{vmatrix}
+            a_{11}\xi_1 \\
+            \xi_2 \\
+            \vdots \\
+            \xi_{n-1} \\
+            \xi_n \\
+        \end{vmatrix}
+    + &\dots +
+        \begin{vmatrix}
+            \xi_1 \\
+            \xi_2 \\
+            \vdots \\
+            \xi_{n-1} \\
+            a_{nn} \xi_n \\
+        \end{vmatrix}
+    = \\ \\ = (a_{11} + \dots + a_{nn}) &W(t) = \tr A(t) W(t).
+\end{align*}
+
+\Endproof
+
+\Theor{Формула Лиувилля-Остроградского}
+Пусть $x_1, \dots, x_n$ - решения уравнения.
+
+Тогда $\forall t \in I \hookrightarrow W(t) = W(t_0) e^{\int_{t_0}^t \tr A(t) dt}$
+
+\Proof
+
+Из предыдущей леммы:
+
+\begin{align*}
+    \dot{W}(t) &= \tr A(t) \cdot W(t) \\
+    \frac{dW}{W} &= \tr A(t) dt \\
+    \int_{t_0}^t \frac{dW}{W} &= \int_{t_0}^t  \tr A(t) dt \\
+    \ln |W(t)| - \ln |W(t_0)| &= \int_{t_0}^t  \tr A(t) dt \\
+    \ln \left|\frac{W(t)}{W(t_0)}\right| &= \int_{t_0}^t  \tr A(t) dt \\
+    \frac{W(t)}{W(t_0)} &= e^{\int_{t_0}^t  \tr A(t) dt}
+\end{align*}
+
+Модуль можно опустить, так как числитель и знаменатель будут одного знака
+
+\Endproof
+
