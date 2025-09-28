@@ -8,11 +8,12 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
+  actions: read
 
 jobs:
   build_latex:
     runs-on: ubuntu-latest
-
     steps: 
       - name: Set up Git repository
         uses: actions/checkout@v4
@@ -22,7 +23,13 @@ jobs:
         with:
           root_file: main.tex
 
-      - name: Create Release and Upload PDF
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF-Document
+          path: main.pdf
+
+      - name: Create Release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
@@ -33,3 +40,22 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ github.token }}
+
+  comment_pdf_link:
+    if: github.event_name == 'pull_request'
+    needs: build_latex
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Add PDF link to PR
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ## 📄 Generated PDF Document
+
+            PDF has been successfully built. You can download it from the link below.
+
+            🔗 **Download:** [PDF-Document](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
