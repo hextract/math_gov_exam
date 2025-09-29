@@ -1,1 +1,57 @@
 \subsection{Теоремы о промежуточных значениях непрерывной функции.}
+
+\Theor{Больцано-Коши о промежуточных значениях} Пусть $f \in C([a, b])$. 
+Тогда $\forall y^* \in \left[f(a), f(b)\right] \; \exists x^* \in [a, b]: f(x^*) = y^*$.
+
+\Proof
+
+Положим $\mathcal{I}^0 := [a, b]$. Пусть $c_1 = \frac{a + b}{2}$. Легко видеть, что:
+\begin{equation*}
+    \left[
+    \begin{array}{l}
+        y^* \in [f(a), f(c_1)] \\
+        y^* \in [f(c_1), f(b)]
+    \end{array}
+    \right.
+\end{equation*}
+Положим $\mathcal{I}^1$ тот отрезок, куда попала $y^*$. Далее всюду $\mathcal{I}^k := [a_k, b_k]$. 
+Будем строить вложенную стягивающуюся систему отрезков, в каждом из которых лежит $y^*$.
+Пусть мы построили систему из $k_0 - 1$ отрезков $\mathcal{I}^1 \supset \mathcal{I}^1 \supset \dots \supset \mathcal{I}^{k_0 - 1}$. Построим $\mathcal{I}^{k_0}$.
+
+Пусть $c_{k_0} = \frac{a_{k_0 - 1} + b_{k_0 - 1}}{2}$. В силу того, что $y^* \in \mathcal{I}^{k_0 - 1}$, еще более легко видеть:
+\begin{equation*}
+    \left[
+    \begin{array}{l}
+        y^* \in [f(a_{k_0 - 1}), f(c_{k_0})] \\
+        y^* \in [f(c_{k_0}), f(b_{k_0 - 1})]
+    \end{array}
+    \right.
+\end{equation*}
+
+Положим $\mathcal{I}^{k_0}$ тем отрезком, в который попадает $y^*$.
+
+Построили вложенную последовательность отрезков $\{\mathcal{I}^{n}\}$. Заметим, что она стягивающаяся, так как $|\mathcal{I}^{n}| = \frac{|\mathcal{I}^{1}|}{2^{n - 1}}$.
+
+Значит, по лемме Кантора существует и единственная точка $x^* \in \bigcap\limits_{n=1}^\infty \mathcal{I}^{n}$. Покажем, что $x^*$ искомая.
+
+Заметим, что $\{a_n\}$ и $\{b_n\}$ последовательности Гейне для $x^*$, а также $x^* \in [a, b]$ и $f \in C([a, b])$. Значит, по эквивалентному определению предела функции по Гейне и по теореме о милиционерах:
+\begin{equation*}
+    y^* = \lim\limits_{n \to \infty} f(a_n) = \lim\limits_{n \to \infty} f(b_n) = f(x^*) = y^*
+\end{equation*}
+
+\Endproof
+
+\Def Всякий интервал, отрезок, полуинтервал на числовой прямой мы будем называть промежутком.
+
+\Def Всюду далее будем обозначать промежуток как $\lfloor a, b\rceil$.
+
+\Theor{Обобщенная о промежуточных значениях} Пусть $f \in C(\lfloor a, b\rceil)$. $m = \inf\limits_{x \in \lfloor a, b\rceil} f(x), M = \sup\limits_{x \in \lfloor a, b\rceil} f(x)$.
+Тогда $\forall y^* \in (m, M) \; \exists x^* \in \lfloor a, b\rceil: f(x^*) = y^*$.
+
+\Proof
+
+По определению инфинума $\exists a' \in \lfloor a, b\rceil: m \geq f(a) < y^*$, аналогично, по определению супремума $\exists b' \in \lfloor a, b\rceil: y^* < f(b) \leq M$.
+
+Заметим, что $[a', b'] \subset (m, M)$, значит $f \in C([a', b'])$, а также $f(a') < y^* < f(b')$. Значит, по теореме Больцано-Коши, получаем требуемое.
+
+\Endproof

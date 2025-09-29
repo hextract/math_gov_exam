@@ -1,5 +1,23 @@
 \subsection{Ограниченность функции, непрерывной на отрезке, достижение точных верхней и нижней граней.}
 
+\Def $\hat \R := \R \cup \{ -\infty, +\infty, \infty \}$
+
+\Def Пусть $x_0, A \in \hat\R, \delta_0 > 0, f: \mathring U_{\delta_0}(x_0) \to \R$. Будем говорить, что $A$ - предел функции $f$ в точке $x_0$ и записывать $\lim\limits_{x \to x_0} f(x_0) = A$, если
+\begin{equation*}
+    \forall \varepsilon > 0 \; \exists \delta_\varepsilon < \delta_0: \forall x \in \mathring U_{\delta_\varepsilon}(x_0) \hookrightarrow f(x) \in U_\varepsilon(A)
+\end{equation*}
+
+\Def Последовательностью Гейне в точке $x_0 \in \hat\R$ называется такая последовательность $\{x_n\} \subset \R$:
+\begin{enumerate}
+    \item $x_n \to x_0, n \to \infty$
+    \item $\forall n \in N \hookrightarrow x_n \neq x_0$
+\end{enumerate}
+
+\Def Пусть $x_0 \in \hat\R, A \in \hat\R$. Пусть $f: \mathring U_{\delta_0}(x_0) \to \R$. 
+Будем говорить, что $A$ - предел функции $f$ в точке $x_0$ и записывать $\lim\limits_{x \to x_0} f(x_0) = A$, если для всякой последовательности Гейне $\{x_n\} \subset \mathring U_{\delta_0}(x_0)$ в точке $x_0$ выполнено, что $f(x_n) \to A, n \to \infty$.
+
+\Th Определения пределов функций выше эквивалентны.
+
 \Def Пусть $\delta_0 > 0$, $x_0 \in \mathbb{R}$, $f: U_{\delta_0} (x_0) \to \R$. Будем говорить, что $f$ непрерывна в точке $x_0$, если $\exists \lim\limits_{x \to x_0} f(x) = f(x_0)$.
 
 \Def Пусть $\delta_0 > 0$, $x_0 \in \mathbb{R}$, $f: U_{\delta_0} (x_0) \to \R$.Будем говорить, что $f$ разрывна в точке $x_0$, если она не непрерывна в точке $x_0$.
