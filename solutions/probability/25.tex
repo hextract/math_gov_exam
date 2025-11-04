@@ -1,1 +1,77 @@
 \subsection{Неравенство Чебышева и закон больших чисел.}
+
+\textbf{Неравенство Маркова.}
+Если $\mathbb{E}|\xi| < \infty$, то для любого $x > 0$
+\[
+\mathbb{P}(|\xi| \geq x) \leq \frac{\mathbb{E}|\xi|}{x}.
+\]
+
+\Proof
+
+\textbf{Напоминание:} называем случайную величину $I$ индикатором события $A$, если $I=1$, если А произошло, а иначе $I=0$. Нужно помнить, что это Бернуллевская случайная величина, с параметром (и матожиданием) $p = P(I(A) = 1) = P(A)$. Другой, важный для доказательства факт: $I(A) + I(\overline{A}) = 1$
+
+\[
+|\xi| = |\xi| \cdot I(|\xi| < x) + |\xi| \cdot I(|\xi| \geq x) = |\xi| (I(|\xi| < x) + I(|\xi| \geq x)) \geq |\xi| \cdot I(|\xi| \geq x) \geq x \cdot I(|\xi| \geq x).
+\]
+
+В первом переходе к неравенству воспользуемся свойством выше, во втором фактом того, что $|\xi| \geq x$ (ну или это выражение в любом случае = 0)
+
+Тогда $\mathbb{E}|\xi| \geq \mathbb{E}(x \cdot I(|\xi| \geq x)) = x \cdot \mathbb{P}(|\xi| \geq x)$.
+
+Осталось разделить обе части этого неравенства на положительное число $x$.
+
+\End
+
+\textbf{Неравенство Чебышева.}
+Если существует $D\xi$, то $\forall \varepsilon > 0$ верно
+\[
+\mathbb{P}(|\xi - \mathbb{E}\xi| \geq \varepsilon) \leq \frac{D\xi}{\varepsilon^2}.
+\]
+
+\Proof
+
+Для $\varepsilon > 0$ неравенство $|\xi - \mathbb{E}\xi| \geq \varepsilon \iff (\xi - \mathbb{E}\xi)^2 \geq \varepsilon^2$,
+поэтому
+\[
+\mathbb{P}(|\xi - \mathbb{E}\xi| \geq \varepsilon)
+= \mathbb{P}((\xi - \mathbb{E}\xi)^2 \geq \varepsilon^2)
+\leq \frac{\mathbb{E}(\xi - \mathbb{E}\xi)^2}{\varepsilon^2}
+= \frac{D\xi}{\varepsilon^2}.
+\]
+
+Первый переход сделан по неравенству Маркова, второй по определению дисперсии
+
+\End
+
+
+\textbf{Закон больших чисел (Чебышева)}
+Для любой последовательности $\xi_1, \xi_2, \ldots$ попарно независимых и одинаково распределённых случайных величин с конечным вторым моментом (квадратом матожидания) $\mathbb{E}\xi_1^2 < \infty$ имеет место сходимость
+\[
+\frac{\xi_1 + \cdots + \xi_n}{n} \xrightarrow{p} \mathbb{E}\xi_1.
+\]
+
+\Proof
+
+Обозначим через $S_n = \xi_1 + \cdots + \xi_n$ сумму первых $n$ случайных величин.
+Из линейности матожидания получим
+\[
+\mathbb{E}\left(\frac{S_n}{n}\right) = \frac{\mathbb{E}\xi_1 + \cdots + \mathbb{E}\xi_n}{n}
+= \frac{n\mathbb{E}\xi_1}{n} = \mathbb{E}\xi_1.
+\]
+
+Возьмем произвольное $\varepsilon > 0$. Воспользуемся неравенством Чебышёва:
+\[
+\mathbb{P}\left(\left| \frac{S_n}{n} - \mathbb{E}\left(\frac{S_n}{n}\right) \right| \geq \varepsilon\right)
+\leq \frac{D\left(\frac{S_n}{n}\right)}{\varepsilon^2}
+= \frac{DS_n}{n^2 \varepsilon^2}
+= \frac{D\xi_1 + \cdots + D\xi_n}{n^2 \varepsilon^2}
+\]
+\[
+= \frac{n D\xi_1}{n^2 \varepsilon^2}
+= \frac{D\xi_1}{n \varepsilon^2}
+\longrightarrow_{n \to +\infty} 0,
+\]
+
+Все переходы по свойствам дисперсии.
+
+\End
