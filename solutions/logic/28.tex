@@ -1,1 +1,83 @@
 \subsection{Факторгруппы. Теорема о гомоморфизме.}
+
+\Def \textit{Группой} называется множество $G$ и заданная на ней бинарная операция $\circ : G \times G \to G$:
+
+\begin{enumerate}
+    \item $a \circ ( b \circ c ) = ( a \circ  b ) \circ c \quad \forall a, b, c \in G$
+    \item $\exists e \in G : \forall a \in G \quad a \circ e = e \circ a = a$
+    \item $\forall a \in G \; \exists a^{-1} \in G : a \circ a^{-1} = a^{-1} \circ a = e$
+\end{enumerate}
+
+\Def \textit{Подгруппой} группы $\langle G, \circ \rangle$ называется $H \subset G$, если $H$ образует группу относительно операции $\circ$.
+
+\Def Пусть $g \in G$, $H$ --- подгруппа $G$. Тогда $gH := \{ g \circ h | h \in H \}$ называется \textit{левым смежным классом} $g$ по подгруппе $H$.
+Аналогично определяется \textit{правый смежный класс} $Hg$. 
+
+\Statement Критерий подгруппы.
+
+$H < G \iff a \circ b^{-1} \in H  \quad \forall a, b \in H$
+
+$\square$
+
+$\Rightarrow$ Следует из того, что $H$ является группой.
+
+$\Leftarrow$ Проверим аксиомы группы для $H$:
+
+\begin{enumerate}
+    % \setcounter{enumi}{-1}
+    \item Возьмем произвольное $a \in H$. Тогда $a \circ a^{-1} = e \in H$. Получим наличие нейтрального элемента
+    \item Возмьем $a, e \in H$. Тогда $e \circ a^{-1} = a^{-1} \in H$. Следовательно у любого элемента есть обратный в $H$.
+    \item Из второго пункта получаем и замкнутость $H$ относительно $\circ$.
+\end{enumerate}
+
+$\blacksquare$
+
+\Def \textit{Нормальной подгруппой} группы $G$ ( $H \lhd G$ ) называется такая подгруппа $H$, что $gH = Hg \quad \forall g \in G$.
+
+\Def Пусть $H \lhd G$. Введем операцию $*$ над классами смежности $H$ по $G$: $(gH)*(tH) := ((g \circ t) H)$. Получим группу.
+
+$\square$
+
+\begin{enumerate}
+    \item $(gH * tH) * fH = ((gt)f) H = (g(tf)) H = gH * (tH * fH)$
+    \item $eH * gH = gH * eH = (eg)H = gH \quad \forall g \in G$
+    \item $gH * g^{-1}H = g^{-1}H * gH = (g \circ g^{-1}) H = eH \quad \forall g \in G$.
+\end{enumerate}
+
+$\blacksquare$
+
+Такую группу называют \textit{факторгруппой} $G$ по $H$ и обозначают  $G/H$.
+
+\Def Пусть заданы 2 группы $\langle G, \circ \rangle$ и $\langle H, * \rangle$. \textit{Гомоморфизмом} называют такое отображение $\varphi : G \to H$, что $\forall u, v \in G \quad \varphi(u \circ v) = \varphi(u) * \varphi(v)$.
+
+$\text{Ker} \varphi := \{g \in G | \varphi(g) = e_H\}$ --- \textit{ядро}.
+
+$\text{Im} \varphi := \{ \varphi(g) | g \in G \}$ --- \textit{образ}.
+
+\Def $G \cong H$, если между ними существует биективный гомоморфизм, называемый \textit{изоморфизмом}.
+
+\Th 
+
+\[
+G / \text{Ker} \varphi \cong \text{Im} \varphi
+\]
+
+$\square$
+
+\begin{enumerate}
+    \item $\text{Ker} \varphi < G$. По критерию подргуппы $\forall a, b \in \text{Ker} \varphi \quad \varphi(a \circ b^{-1}) = \varphi(a) * \varphi({b^{-1}}) = e_{\varphi(G)} * e_{\varphi(G)} = e_{\varphi(G)} \Rightarrow a \circ b^{-1} \in \text{Ker} \varphi$.
+    \item $\text{Ker} \varphi \lhd G$, то есть $a (\text{Ker} \varphi) = (\text{Ker} \varphi) a \quad \forall a \in G$, так как $\forall t \in \text{Ker} \; \exists r \in \text{Ker} \varphi : a \circ t = r \circ a$. А это следует из того, что $\forall t \in \text{Ker} \varphi \; \exists r \in G = a t a^{-1}$, тогда $\varphi(r) = \varphi(a) * e_{\varphi(G)} * \varphi(a^{-1}) = \varphi(a \circ a^{-1})  = e_{\varphi(G)}$
+\end{enumerate}
+
+Теперь рассмотрим отображение $\psi: G / \text{Ker}\varphi \to \text{Im}\varphi$. $\psi(a \text{Ker} \varphi) := \varphi(a)$. Пусть в этой факторгруппе введена операция $\bullet$. Тогда $\psi(a \text{Ker} \varphi \bullet b \text{Ker} \varphi) = \psi((a \circ b) \text{Ker} \varphi) = \varphi(a \circ b) = \varphi(a) * \varphi(b)$. Значит $\psi$ --- гомоморфизм.
+
+Докажем, что это еще и биекция.
+
+\begin{itemize}
+    \item Если для $a, b \in G$ выполнено $\varphi(a) = \psi(a \text{Ker} \varphi) = \psi(b\text{Ker} \varphi) = \varphi(b)$, то $\varphi(a^{-1} b) = \varphi(a)^{-1} * \varphi(b) = e_{\varphi(G)}$. Значит $a^{-1} b \in \text{Ker} \varphi$, но смежные классы не пересекаются, либо совпадают. А т. к. $e_{\varphi(G)} \in \text{Ker} \varphi$ (т. е. оба смежных класса содержат $b$), то $a \text{Ker} \varphi = b \text{Ker} \varphi$. Значит $\psi$ --- инъекция.
+    \item Если $g' \in \varphi(G)$, то $g' = \varphi(g)$ для некоторого $g \in G$, т. к. $\varphi$ сюръективно. Значит $g' = \varphi(g) = \psi(g \text{Ker} \varphi)$. Значит $\psi$ --- сюръекция.
+\end{itemize}
+
+Следоватально это изоморфизм по определению.
+
+$\blacksquare$
