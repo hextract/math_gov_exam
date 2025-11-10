@@ -1,1 +1,101 @@
 \subsection{Теоремы о среднем Ролля, Лагранжа и Коши для дифференцируемых функций.}
+
+\Def Пусть $f: U_{\delta_0} (x_0) \to \R$. Тогда производной функции $f$ точке $x_0$ будем называть следующий предел:
+\begin{equation*}
+    f'(x_0) = \lim\limits_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}
+\end{equation*}
+
+\Def Будем говорить, что $f: U_{\delta_0} (x_0) \to \R$ диффернцируема в точке $x_0$ $\iff$ $\exists f'(x_0) \in \R$.
+
+\Def Пусть $f: X \to \R$. Будем говорить, что $x_0 \in X$ - точка локального минимума, если выполнены следующие условия:
+\begin{equation*}
+    \exists \delta_0 > 0: \forall x \in U_{\delta_0}(x_0) \hookrightarrow f(x_0) \leq f(x)
+\end{equation*}
+
+Аналогично определяется локальный максимум, строгий локальный минимум/максимум.
+
+\Lemma Пусть $f: [a, b] \to \R$. Пусть $x_0$ - точка локального минимума.
+\begin{itemize}
+    \item $\exists f'_+ (x_0) \in \R \Rightarrow f'_+(x_0) \geq 0$
+    \item $\exists f'_- (x_0) \in \R \Rightarrow f'_-(x_0) \leq 0$
+\end{itemize}
+
+\Proof
+
+Покажем первый пункт, т.к. второй доказывается аналогично.
+
+По определнию локального минимума, $\exists \delta_0 > 0: \forall x \in U_{\delta_0}(x_0) \hookrightarrow f(x) \geq f(x_0) \iff f(x) - f(x_0) \geq 0$.
+
+Значит верно, что:
+\begin{equation*}
+    \forall x \in (x_0, x_0 + \delta_0) \hookrightarrow \frac{f(x) - f(x_0)}{x - x_0} \geq 0
+\end{equation*}
+
+Перейдя к пределу в неравенстве:
+\begin{equation*}
+    f'_+(x_0) \overset{def}{=} \lim\limits_{x \to x_0 + 0} \frac{f(x) - f(x_0)}{x - x_0} \geq 0
+\end{equation*}
+
+\Endproof
+
+\Def Пусть $f: U_{\delta_0} (x_0) \to \R$. Будем говорить, что $x_0$ - точка локального экстремума, если и только если они точка локального минимума, либо максимума.
+
+\Theor{Ферма} Пусть $f: U_{\delta_0} (x_0) \to \R$ диффернцируема в $x_0$. Тогда коль скоро $x_0$ - точка локального экстремума, то $f'(x_0) = 0$.
+
+\Proof
+
+Для определённости будем считать, что $x_0$ - точка локального максимума (для минимума аналогично).
+
+$f$ диффернцируема в $x_0$, тогда $0 \leq f'_-(x_0) = f'(x_0) = f'_+(x_0) \leq 0 \Rightarrow f'(x_0) = 0$.
+
+\Endproof
+
+
+Для локального максимума формулируется аналогичная теорема.
+
+\Theor{Ролля о среднем} Пусть $f \in C([a, b], \R)$, $f$ - диффернцируема на $(a, b)$, а также $f(a) = f(b)$. 
+Коль скоро это так, то $\exists \xi \in (a, b): f'(\xi) = 0$.
+
+\Proof
+
+Случай $f \overset{[a, b]}{\equiv} C, C \in \R$ тривиален. Поэтому будем считать функцию неконстантой.
+
+В силу непрерывности на отрезке, $f$ достигает наибольшего значения на нём, обозначим эту точку $\xi \in [a, b]$. $\xi$ - является точкой локального экстремума для $f$ и в силу диффернцируемости на интервале, по теореме Ферма, получаем $f'(\xi) = 0$.
+
+\Endproof
+
+\Theor{Коши о среднем} Пусть $f, g \in C([a, b], \R)$, $f, g$ - диффернцируемы на $(a, b)$. Также $\forall x \in (a, b) \hookrightarrow g'(x) \neq 0$. 
+Тогда $\exists \xi \in (a, b): \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\xi)}{g'(\xi)}$.
+
+\Proof
+
+Положим $h(x) = f(x) - \frac{f(b) - f(a)}{g(b) - g(a)} g(x)$. Заметим следующее:
+
+\begin{multline*}
+    h(a) = f(a) - \frac{f(b) - f(a)}{g(b) - g(a)} g(a) = \frac{f(a) g(b) - f(a) g(a) - g(a) f(b) + g(a) f(a)}{g(b) - g(a)} = \frac{g(a)f(a) - g(a) f(b)}{g(b) - g(a)} = \\
+    = \frac{f(a) g(b) - f(b) g(b) - g(a) f(b) + g(b) f(b)}{g(b) - g(a)} =
+    \frac{(f(a) g(b) - f(b) g(b)) - (g(a) f(b) - g(b) f(b))}{g(b) - g(a)} = \\
+    =\frac{(f(a) - f(b)) g(b) - (g(a) - g(b)) f(b)}{g(b) - g(a)} = f(b) - \frac{f(b) - f(a)}{g(b) - g(a)} g(b) = h(b)
+\end{multline*}
+
+Заметим, что выполняются условия теоремы Ролля для $h$, значит $\exists \xi \in (a, b): h'(\xi) = 0$:
+\begin{equation*}
+    h'(\xi) = f'(\xi) - \frac{f(b) - f(a)}{g(b) - g(a)} g'(\xi) = 0
+\end{equation*}
+\begin{equation*}
+    f'(\xi) = \frac{f(b) - f(a)}{g(b) - g(a)} g'(\xi)
+\end{equation*}
+\begin{equation*}
+    \frac{f'(\xi)}{g'(\xi)} = \frac{f(b) - f(a)}{g(b) - g(a)}
+\end{equation*}
+
+\Endproof
+
+\Theor{Лангранжа о среднем} Пусть $f in C([a, b], \R)$, $f, g$ - диффернцируемы на $(a, b)$.
+Тогда $\exists \xi \in (a, b): \frac{f(b) - f(a)}{b - a} = f'(\xi)$.
+
+\Proof
+
+Применяем теорему Коши о среднем для $f$ и $g(x) = x$ и получаем требуемое.
+
+\Endproof
