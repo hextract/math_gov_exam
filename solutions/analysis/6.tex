@@ -113,7 +113,7 @@
 
 \subsubsection{Выпуклость и точки перегиба}
 
-\Def Функция $f: (a, b) \rightarrow \R$ называется выпуклой вниз на $(a, b)$, если $forall x_1, x_2 \in (a, b) \forall t \in [0, 1] \hookrightarrow f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t) f(x_2)$.
+\Def Функция $f: (a, b) \rightarrow \R$ называется выпуклой вниз на $(a, b)$, если $\forall x_1, x_2 \in (a, b) \forall t \in [0, 1] \hookrightarrow f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t) f(x_2)$.
 
 Аналогично для выпуклой вверх функции.
 
@@ -168,7 +168,7 @@ $x_1 = x_0 - u; x_2 = x_0 + u$. $x_0 = \frac{x_1 + x_2}{2}$.
 
 \begin{gather*}    
     tf(x_1) + (1-t)f(x_2) \geq tf(x_0) + (1-t)f(x_0) + tf'(x_0)(x_1 - x_0) + (1-t)f'(x_0)(x_2-x_0) = \\ 
-    = f(x_0) + f'(x_0)((fx_1 + (1-t)x_2) + (tx_0 + (1-t)x_0)) = f(x_0) + f''(x_0) * (x_0 - x_0) = f(x_0).
+    = f(x_0) + f'(x_0)((tx_1 + (1-t)x_2) + (tx_0 + (1-t)x_0)) = f(x_0) + f''(x_0) * (x_0 - x_0) = f(x_0).
 \end{gather*}
 
 \Endproof
@@ -177,7 +177,7 @@ $x_1 = x_0 - u; x_2 = x_0 + u$. $x_0 = \frac{x_1 + x_2}{2}$.
 
 \Theor{Критерий точки перегиба}
 
-Пусть $f \in C(U_\delta (x_0)); \exists f'(x_0) \in \overline{\R}$. И пусть $f$ дважды дифференцируема в $\mathring{U}_delta (x_0)$.
+Пусть $f \in C(U_\delta (x_0)); \exists f'(x_0) \in \overline{\R}$. И пусть $f$ дважды дифференцируема в $\mathring{U}_\delta (x_0)$.
 
 Тогда $x_0$ -- точка перегиба $f$ тогда и только тогда, когда выполнено любое из следующих условий:
 
