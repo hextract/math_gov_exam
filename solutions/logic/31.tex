@@ -1,1 +1,118 @@
 \subsection{Сравнения по модулю. Малая теорема Ферма. Теорема Эйлера.}
+
+\Note В теории чисел рассматриваем элементы из $\mathbb{Z}$.
+
+\textbf{Основные определения}
+
+\begin{enumerate}
+    \item $a \vdots b, b \ne 0$, если $\exists c : a = b \cdot c$
+    \item $a$ делится на $b \ne 0$ с остатком $r, 0 \le r \le |b|$, если $\exists q: a = bq + r$.
+    \item Число $p$ называется \textbf{простым}, если не имеет натуральных делителей кроме $1$ и $p$. В противном случае называется \textbf{составным}. Единицу принято считать не простым и не составным.
+    \item $(a, b) := d \in \mathbb{N}$, если $a = a'd$, $b = b'd$ и $d$ --- наибольший (является делителем любого другого).
+    \item Если $(a, b) = 1$, то такие числа называют взаимнопростыми.
+    \item Пусть $(a, b) = 1, a \cdot b \vdots c$. Тогда $c \vdots b$.
+    \item $[a, b]$ --- наименьшее $m \in \mathbb{N}: m \vdots a, m \vdots b$.
+    $(a, b) \cdot [a, b] = a \cdot b$.
+    \item \textbf{Основная теорема арифметики.} Любое $m \in \mathbb{N}$ единственным образом представимо в виде произведения простых делителей
+
+    $m = p_1^{k_1} p_2^{k_2} \dots p_n^{k_n}, k_i \in \mathbb{N}, p_i$ --- простые.
+    \item $a \underset{m}{\equiv} b \iff a -b \vdots m$
+\end{enumerate}
+
+\Statement
+
+Пусть $a \underset{p}{\equiv} b, c \underset{p}{\equiv} d$.
+
+Тогда 
+\begin{enumerate}
+    \item $a + c \underset{p}{\equiv} b + d$
+    \item $a \cdot c \underset{p}{\equiv} b \cdot d$
+\end{enumerate}
+
+\Statement
+
+Пусть $a \cdot c \underset{m}{\equiv} b \cdot c, (c, m) = 1$. Тогда $a \underset{m}{\equiv} b$
+
+$\square$
+$ac \underset{m}{\equiv} bc \implies ac - bc \vdots m \implies (a - b)c \vdots m \implies a -b \vdots m \implies a \underset{m}{\equiv} b$
+$\blacksquare$
+
+\textbf{Малая теорема Ферма.}
+
+$a^{p-1} \underset{p}{\equiv} 1$, если $p$ --- простое, а $a$ не делится на $p$.
+
+$\square$
+
+Покажем, что $\underset{m}{\equiv}, m \in \mathbb{N}$ действительно является отношением эквивалентности:
+
+\begin{enumerate}
+    \item $a \underset{p}{\equiv} a$, т. к. $a - a = 0 \vdots m$
+    \item $a \underset{p}{\equiv} b \implies b \underset{p}{\equiv} a$, т. к. $(a - b) \vdots m \implies (b -a) = -(a -b) \vdots m$.
+    \item $a \underset{p}{\equiv} b, b \underset{p}{\equiv} c \implies (a -b) \vdots m, (b - c) \vdots m \implies (a - b) + (b - c) = (a -c) \vdots m$
+\end{enumerate}
+
+    Значит разобъем все неотрицательные числа на классы эквивалентности по этому отношению, обозначая каждый наименьшим его представителем: $[0], [1], \dots [m-1]$.
+
+    Рассмотрим набор всех ненулевых остатков $1, 2, 3, \dots p -1$.
+
+    Каждое число домножим на $a$:
+
+    $a \cdot 1, a \cdot 2, \dots a \cdot (p - 1)$
+
+    Пусть среди них какие-то 2 дают одинаковый остаток при делении на $m$.
+
+    Тогда $ai \underset{p}{\equiv} aj \implies a \cdot (i -j) \underset{p}{\equiv} 0 \implies i \underset{p}{\equiv} j$. Значит все остатки различны и образуют все ненулевые остатки при делении на $p$.
+    
+    Следовательно $1 \cdot 2 \dots (p - 1) \underset{p}{\equiv} a^{p - 1} \cdot 1 \cdot 2 \dots (p - 1)$. Но $1 \cdot 2 \dots (p - 1)$ взаимнопросто с $m$. Значит $1 \underset{p}{\equiv} a^{p -1}$
+
+$\blacksquare$
+
+\Def
+
+\textit{Функцией Эйлера} $\varphi(n)$ называется количество натуральных чисел, не превосходящих $n$ и взаимнопростых с ним.
+
+\Def 
+
+Функция $f: \mathbb{N} \to \mathbb{N}$ называется \textit{мультипликативной}, если  $\forall a, b: (a, b) = 1 \quad f(a \cdot b) = f(a) \cdot f(b)$.
+
+\Statement
+
+Функция Эйлера --- мультипликативная.
+
+$\square$
+
+Докажем $(m, n) = 1 \implies \varphi(mn) = \varphi(m) \varphi(n)$
+
+Т. к. $(m, n) = 1$, значит $\exists x, y \in \mathbb{Z}: mx + ny = 1$ (следует из корректности алгоритма Евклида).
+
+Тогда $\forall a \in \mathbb{Z} \quad \exists x_a = xa, y_a = ya \in \mathbb{Z}: m x_a + n y_a = a$.
+
+Рассмотрим выражение $m x + n y$, где $x$ и $y$ пробегают все возможные остатки $0, 1 \dots n-1$ и $0, 1 \dots m-1$ соответственно.
+
+Пусть значения выражений совпали при различных $x$ и $y$. Но тогда $m x_1 + n y_1 \underset{mn}{\equiv} m x_2 + n y_2 \implies m (x_1 - x_2) + n (y_1 - y_2) \underset{mn}{\equiv} 0 \implies x_1 \underset{n}{\equiv} x_2, y_1 \underset{m}{\equiv} y_2$.
+
+А значит таким образом получаем в этом выражении все возможные остатки при делении на $mn$.
+
+Теперь рассмотрим произвольное $t \in \{1, 2, \dots mn \}$. Тогда можно представить $t \underset{mn}{\equiv} mx + ny$.
+
+Если $(m, t) = 1, (n, t) = 1 \implies (mn, t) = 1$. 
+
+Если $(mn,  t) \ne 1 \implies (t, m) = 1$ или $(t, n) =1$. 
+
+А значит $(t, mn) = 1 \iff (x, n) = 1, (y, m) = 1$. Следовательно таких вариантов $\varphi(m) \cdot \varphi(n)$
+
+$\blacksquare$
+
+\textbf{Теорема Эйлера.}
+
+Пусть $(a, n) = 1$. Тогда $a^{\varphi(n)} \underset{n}{\equiv} 1$.
+
+$\square$
+
+Рассмотрим все натуральные числа, меньшие $n$ и взаимнопростые с ним:
+
+$r_1, r_2, \dots r_{\varphi(n)}$
+
+Домножим каждое на $a$ и рассмотрим остаток при делении на $n$. Т. к. $(a, n) = 1$, то все числа остануться взаимно простыми с $n$, при этом никакие не совпадают. Тогда $(a r_1) (a r_2) \dots (ar_{\varphi(n)}) \underset{n}{\equiv} r_1 r_2 \dots r_n \implies a^{\varphi(n)} \underset{n}{\equiv} 1$.
+
+$\blacksquare$
