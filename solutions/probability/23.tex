@@ -39,8 +39,9 @@
 
 \Def Пусть задано вероятностное пространство $(\Omega, \mathcal{F}, \mathbb{P})$, события $A_1, A_2, \ldots, A_n \in \mathcal{F}$. Совокупность событий $A_1, \ldots, A_n$ называется \textit{полной системой событий}, если выполняются условия:
 \begin{enumerate}
-    \item $A_i \cap A_j = \varnothing$ \quad при $i \ne j$\; (\textit{попарно независимы});
+    \item $A_i \cap A_j = \varnothing$ \quad при $i \ne j$\; (\textit{попарно несовместны});
     \item $A_1 \cup A_2 \cup \ldots \cup A_n = \Omega$\; (\textit{в совокупности образуют всё пространство элементарных исходов}).
+    \item $\mathbb{P}(A_i) > 0$ \quad для всех $i = 1, \ldots, n$ (\textit{нетривиальны}).
 \end{enumerate}
 
 
@@ -48,7 +49,7 @@
 
 \textit{Тогда справедлива формула:}
 \[
-\mathbb{P}(A) = \sum\limits_{i=1}^\infty \mathbb{P}(B_i)\, \mathbb{P}(A|B_i).
+\mathbb{P}(A) = \sum\limits_{i=1}^\infty \mathbb{P}(B_i)\, \mathbb{P}(A \mid B_i).
 \]
 
 \Proof
@@ -70,18 +71,38 @@ A = A \cap \Omega = A \cap \left(\bigcup_{i=1}^{\infty} B_i\right) = \bigcup_{i=
 
 \textit{Тогда справедливы формулы Байеса:}
 \[
-\mathbb{P}(H_i|A) = \frac{\mathbb{P}(H_i)\, \mathbb{P}(A|H_i)}
-{\sum\limits_{j=1}^\infty \mathbb{P}(H_j)\, \mathbb{P}(A|H_j)}, \qquad i = 1, ... \ n.
+\mathbb{P}(H_i \mid A) = \frac{\mathbb{P}(H_i)\, \mathbb{P}(A \mid H_i)}
+{\sum\limits_{j=1}^\infty \mathbb{P}(H_j)\, \mathbb{P}(A \mid H_j)}, \qquad i = 1, ... \ n.
 \]
 
 \Proof
 
 Согласно формуле полной вероятности, в знаменателе дроби стоит вероятность события $A$. Тогда
 \[
-\frac{\mathbb{P}(H_i)\, \mathbb{P}(A|H_i)}{\mathbb{P}(A)}
+\frac{\mathbb{P}(H_i)\, \mathbb{P}(A \mid H_i)}{\mathbb{P}(A)}
 = \frac{\mathbb{P}(H_i)\, \mathbb{P}(A H_i)}{\mathbb{P}(A)\, \mathbb{P}(H_i)}
 = \frac{\mathbb{P}(A H_i)}{\mathbb{P}(A)}
-= \mathbb{P}(H_i|A).
+= \mathbb{P}(H_i \mid A).
 \]
 
 \Endproof
+
+\Example \textbf{(Применение формулы Байеса)}
+
+Тест на заболевание имеет чувствительность 95\% (вероятность положительного результата при наличии болезни) и специфичность 90\% (вероятность отрицательного результата при отсутствии болезни). Распространённость заболевания — 1\%. Какова вероятность того, что человек болен, если тест положительный?
+
+\Solution Пусть $B$ — событие «человек болен», $T$ — «тест положительный».
+
+Дано: $\mathbb{P}(B) = 0{,}01$, $\mathbb{P}(T \mid B) = 0{,}95$, $\mathbb{P}(\overline{T} \mid \overline{B}) = 0{,}90$, откуда $\mathbb{P}(T \mid \overline{B}) = 0{,}10$.
+
+По формуле полной вероятности:
+\[
+\mathbb{P}(T) = \mathbb{P}(B)\mathbb{P}(T \mid B) + \mathbb{P}(\overline{B})\mathbb{P}(T \mid \overline{B}) = 0{,}01 \cdot 0{,}95 + 0{,}99 \cdot 0{,}10 = 0{,}1085.
+\]
+
+По формуле Байеса:
+\[
+\mathbb{P}(B \mid T) = \frac{\mathbb{P}(B)\mathbb{P}(T \mid B)}{\mathbb{P}(T)} = \frac{0{,}01 \cdot 0{,}95}{0{,}1085} \approx 0{,}088.
+\]
+
+Таким образом, даже при положительном тесте вероятность болезни всего около 8{,}8\%.

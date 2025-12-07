@@ -1,6 +1,6 @@
 \subsection{Центральная предельная теорема для независимых одинаково распределённых случайных величин с конечной дисперсией.}
 
-\textbf{Напоминания:}
+\Remind
 
 $\varphi_\xi(t) = \mathbb{E}e^{it\xi}$ назовем \textbf{характеристической функцией} случайной величины $\xi$.
 
@@ -81,4 +81,24 @@ Z_n = \zeta_1 + \ldots + \zeta_n = \frac{S_n - n a}{\sigma}
 \frac{S_n - n a}{\sigma \sqrt{n}} \xrightarrow{d} N(0,1).
 \]
 
-\End
+\Endproof
+
+\Example \textbf{(Применение ЦПТ)}
+
+Монета подбрасывается $n = 100$ раз. Найти приближённую вероятность того, что число выпавших орлов окажется от 45 до 55.
+
+\Solution Пусть $S_{100}$ — число орлов. Тогда $S_{100} = \xi_1 + \ldots + \xi_{100}$, где $\xi_i \sim Bern(1/2)$.
+
+Имеем: $a = \mathbb{E}\xi_i = 1/2$, $\sigma^2 = D\xi_i = 1/4$, $\sigma = 1/2$.
+
+По ЦПТ: $\displaystyle\frac{S_{100} - 100 \cdot \frac{1}{2}}{\frac{1}{2}\sqrt{100}} = \frac{S_{100} - 50}{5} \approx N(0,1)$.
+
+Тогда:
+\[
+\mathbb{P}(45 \leq S_{100} \leq 55) = \mathbb{P}\left(\frac{45-50}{5} \leq \frac{S_{100}-50}{5} \leq \frac{55-50}{5}\right) \approx \mathbb{P}(-1 \leq Z \leq 1),
+\]
+где $Z \sim N(0,1)$.
+
+Используя таблицу стандартного нормального распределения: $\mathbb{P}(-1 \leq Z \leq 1) = 2\Phi(1) - 1 \approx 2 \cdot 0{,}8413 - 1 = 0{,}6826$.
+
+Здесь $\Phi(x) = \mathbb{P}(Z \leq x)$ — функция распределения $N(0,1)$.
