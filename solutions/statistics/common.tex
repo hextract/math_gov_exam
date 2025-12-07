@@ -1,0 +1,101 @@
+\subsection{Вспомогательные утверждения}
+
+\textbf{Виды сходимости случайных величин}
+
+\Def Последовательность $\xi_n$ сходится к $\xi$ \textit{по вероятности} ($\xi_n \xrightarrow{P} \xi$), если
+\[
+\forall \varepsilon > 0: \quad \lim_{n \to \infty} P(|\xi_n - \xi| > \varepsilon) = 0.
+\]
+
+\Def Последовательность $\xi_n$ сходится к $\xi$ \textit{почти наверное} ($\xi_n \xrightarrow{\text{п.н.}} \xi$), если
+\[
+P(\omega: \xi_n(\omega) \rightarrow \xi(\omega)) = 1.
+\]
+
+\Def Последовательность $\xi_n$ сходится к $\xi$ \textit{по распределению} (слабо, $\xi_n \xrightarrow{d} \xi$), если
+\[
+\lim_{n \to \infty} F_{\xi_n}(x) = F_\xi(x) \quad \text{во всех точках непрерывности } F_\xi.
+\]
+
+\textbf{Замечание.} Иерархия: п.н. $\Rightarrow$ по вероятности $\Rightarrow$ по распределению. Обратные импликации в общем случае неверны.
+
+\textbf{Усиленный закон больших чисел}
+
+\Theor{Усиленный ЗБЧ (Колмогорова)}
+
+Пусть $X_1, X_2, \ldots$ — независимые одинаково распределённые случайные величины с $\mathbb{E}|X_1| < \infty$. Тогда
+\[
+\overline{X}_n = \frac{X_1 + \ldots + X_n}{n} \xrightarrow{\text{п.н.}} \mathbb{E}X_1.
+\]
+
+\textbf{Замечание.} В отличие от ЗБЧ Чебышева, здесь сходимость почти наверное (более сильная), и достаточно конечности первого момента (не второго).
+
+\textbf{Теорема о наследовании сходимости}
+
+\Theor{О непрерывном отображении}
+
+Пусть $\xi_n \xrightarrow{P} \xi$ (или $\xi_n \xrightarrow{\text{п.н.}} \xi$, или $\xi_n \xrightarrow{d} \xi$), и $g$ — непрерывная функция. Тогда
+\[
+g(\xi_n) \xrightarrow{P} g(\xi) \quad \text{(соотв. п.н., соотв. } d\text{)}.
+\]
+
+\textbf{Замечание.} Непрерывное отображение сохраняет тип сходимости.
+
+\textbf{Лемма Слуцкого}
+
+\Lemma{Слуцкого}
+
+Пусть $\xi_n \xrightarrow{d} \xi$ и $\eta_n \xrightarrow{P} c$ (константа). Тогда:
+\begin{enumerate}
+    \item $\xi_n + \eta_n \xrightarrow{d} \xi + c$;
+    \item $\xi_n \cdot \eta_n \xrightarrow{d} c \cdot \xi$;
+    \item $\frac{\xi_n}{\eta_n} \xrightarrow{d} \frac{\xi}{c}$ при $c \neq 0$.
+\end{enumerate}
+
+\textbf{Замечание.} Лемма Слуцкого позволяет заменять случайные величины, сходящиеся к константе, на саму константу при вычислении предельного распределения.
+
+\textbf{Наследование асимптотической нормальности}
+
+\Theor{Наследование асимптотической нормальности}
+
+Пусть $\sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{d} \mathcal{N}(0, \sigma^2)$, и $g$ — дифференцируемая функция с $g'(\theta) \neq 0$. Тогда
+\[
+\sqrt{n}(g(\hat{\theta}_n) - g(\theta)) \xrightarrow{d} \mathcal{N}(0, \sigma^2 (g'(\theta))^2).
+\]
+
+\Proof (идея)
+
+По формуле Тейлора: $g(\hat{\theta}_n) - g(\theta) \approx g'(\theta)(\hat{\theta}_n - \theta)$.
+
+Тогда $\sqrt{n}(g(\hat{\theta}_n) - g(\theta)) \approx g'(\theta) \cdot \sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{d} g'(\theta) \cdot \mathcal{N}(0, \sigma^2) = \mathcal{N}(0, \sigma^2(g'(\theta))^2)$.
+
+\Endproof
+
+\textbf{Многомерный случай.} Если $\sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{d} \mathcal{N}(0, \Sigma)$ в $\mathbb{R}^k$, и $g: \mathbb{R}^k \to \mathbb{R}^m$ дифференцируема, то
+\[
+\sqrt{n}(g(\hat{\theta}_n) - g(\theta)) \xrightarrow{d} \mathcal{N}(0, J_g(\theta) \cdot \Sigma \cdot J_g(\theta)^T),
+\]
+где $J_g(\theta)$ — матрица Якоби функции $g$ в точке $\theta$.
+
+\textbf{Многомерная ЦПТ}
+
+\Theor{Многомерная центральная предельная теорема}
+
+Пусть $X_1, X_2, \ldots$ — независимые одинаково распределённые случайные векторы в $\mathbb{R}^k$ с $\mathbb{E}X_1 = \mu$ и конечной ковариационной матрицей $\Sigma = \text{cov}(X_1)$. Тогда
+\[
+\sqrt{n}(\overline{X}_n - \mu) \xrightarrow{d} \mathcal{N}(0, \Sigma).
+\]
+
+\textbf{Состоятельность и асимптотическая нормальность}
+
+\Def Оценка $\hat{\theta}_n$ называется \textit{состоятельной}, если $\hat{\theta}_n \xrightarrow{P_\theta} \theta$ для всех $\theta \in \Theta$.
+
+\Def Оценка $\hat{\theta}_n$ называется \textit{сильно состоятельной}, если $\hat{\theta}_n \xrightarrow{P_\theta\text{-п.н.}} \theta$ для всех $\theta \in \Theta$.
+
+\Def Оценка $\hat{\theta}_n$ называется \textit{асимптотически нормальной} с асимптотической дисперсией $\sigma^2(\theta)$, если
+\[
+\sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{d_\theta} \mathcal{N}(0, \sigma^2(\theta)).
+\]
+
+\textbf{Замечание.} Асимптотическая нормальность влечёт состоятельность (но не наоборот).
+

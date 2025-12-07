@@ -1,0 +1,118 @@
+\subsection{Математическая статистика}
+
+\textbf{ОМП для равномерного распределения}
+
+\textbf{Условие.} Найти оценку по методу максимального правдоподобия параметров $\theta_1$ и $\theta_2$ в случае, когда элементы выборки $X_1, \ldots, X_n$ имеют равномерное распределение на отрезке $[\theta_1, \theta_2]$.
+
+\Solution
+
+Плотность равномерного распределения на $[\theta_1, \theta_2]$:
+\[
+p_{\theta_1, \theta_2}(x) = \frac{1}{\theta_2 - \theta_1} \cdot I(x \in [\theta_1, \theta_2]) = 
+\begin{cases}
+\frac{1}{\theta_2 - \theta_1}, & \text{если } \theta_1 \leq x \leq \theta_2, \\
+0, & \text{иначе}.
+\end{cases}
+\]
+
+Функция правдоподобия:
+\[
+L(\theta_1, \theta_2; X) = \prod_{i=1}^n p_{\theta_1, \theta_2}(X_i) = \frac{1}{(\theta_2 - \theta_1)^n} \cdot \prod_{i=1}^n I(X_i \in [\theta_1, \theta_2]).
+\]
+
+Произведение индикаторов равно 1 тогда и только тогда, когда все $X_i \in [\theta_1, \theta_2]$, т.е. когда $\theta_1 \leq \min_i X_i$ и $\theta_2 \geq \max_i X_i$.
+
+Обозначим порядковые статистики: $X_{(1)} = \min_i X_i$, $X_{(n)} = \max_i X_i$.
+
+Тогда:
+\[
+L(\theta_1, \theta_2) = 
+\begin{cases}
+\frac{1}{(\theta_2 - \theta_1)^n}, & \text{если } \theta_1 \leq X_{(1)} \text{ и } \theta_2 \geq X_{(n)}, \\
+0, & \text{иначе}.
+\end{cases}
+\]
+
+Для максимизации $L$ нужно:
+\begin{enumerate}
+    \item Чтобы $L \neq 0$: $\theta_1 \leq X_{(1)}$ и $\theta_2 \geq X_{(n)}$;
+    \item Минимизировать $(\theta_2 - \theta_1)^n$, т.е. минимизировать $\theta_2 - \theta_1$.
+\end{enumerate}
+
+При фиксированных ограничениях минимум $\theta_2 - \theta_1$ достигается при:
+\[
+\theta_1 = X_{(1)}, \quad \theta_2 = X_{(n)}.
+\]
+
+\textbf{Ответ:} $\hat{\theta}_1^{ML} = X_{(1)} = \min(X_1, \ldots, X_n)$, $\hat{\theta}_2^{ML} = X_{(n)} = \max(X_1, \ldots, X_n)$.
+
+\textbf{Замечание.} Эти оценки смещённые: $\mathbb{E}X_{(1)} > \theta_1$ и $\mathbb{E}X_{(n)} < \theta_2$. Однако они состоятельные.
+
+\textbf{ОММ для равномерного распределения}
+
+\textbf{Условие.} Найти оценку по методу моментов параметров $\theta_1$ и $\theta_2$ в случае, когда элементы выборки $X_1, \ldots, X_n$ имеют равномерное распределение на отрезке $[\theta_1, \theta_2]$.
+
+\Solution
+
+Для равномерного распределения на $[\theta_1, \theta_2]$:
+\[
+\mathbb{E}X = \frac{\theta_1 + \theta_2}{2}, \quad DX = \frac{(\theta_2 - \theta_1)^2}{12}.
+\]
+
+Второй момент:
+\[
+\mathbb{E}X^2 = DX + (\mathbb{E}X)^2 = \frac{(\theta_2 - \theta_1)^2}{12} + \frac{(\theta_1 + \theta_2)^2}{4}.
+\]
+
+Используем пробные функции $g_1(x) = x$, $g_2(x) = x^2$. Система уравнений метода моментов:
+\[
+\begin{cases}
+\overline{X} = \dfrac{\theta_1 + \theta_2}{2} \\[2mm]
+\overline{X^2} = \dfrac{(\theta_2 - \theta_1)^2}{12} + \dfrac{(\theta_1 + \theta_2)^2}{4}
+\end{cases}
+\]
+
+\textbf{Шаг 1.} Из первого уравнения:
+\[
+\theta_1 + \theta_2 = 2\overline{X}.
+\]
+
+\textbf{Шаг 2.} Обозначим $a = \theta_1 + \theta_2 = 2\overline{X}$ и $b = \theta_2 - \theta_1$. Тогда второе уравнение:
+\[
+\overline{X^2} = \frac{b^2}{12} + \frac{a^2}{4} = \frac{b^2}{12} + \frac{(2\overline{X})^2}{4} = \frac{b^2}{12} + \overline{X}^2.
+\]
+
+Отсюда:
+\[
+b^2 = 12(\overline{X^2} - \overline{X}^2) = 12 S^2,
+\]
+где $S^2 = \overline{X^2} - \overline{X}^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \overline{X})^2$ — выборочная дисперсия.
+
+Значит, $b = \theta_2 - \theta_1 = 2\sqrt{3}\, S$ (берём положительный корень, т.к. $\theta_2 > \theta_1$).
+
+\textbf{Шаг 3.} Решаем систему:
+\[
+\begin{cases}
+\theta_1 + \theta_2 = 2\overline{X} \\
+\theta_2 - \theta_1 = 2\sqrt{3}\, S
+\end{cases}
+\]
+
+Складывая: $2\theta_2 = 2\overline{X} + 2\sqrt{3}\, S$, откуда $\theta_2 = \overline{X} + \sqrt{3}\, S$.
+
+Вычитая: $2\theta_1 = 2\overline{X} - 2\sqrt{3}\, S$, откуда $\theta_1 = \overline{X} - \sqrt{3}\, S$.
+
+\textbf{Ответ:}
+\[
+\hat{\theta}_1^{MM} = \overline{X} - \sqrt{3}\, S, \quad \hat{\theta}_2^{MM} = \overline{X} + \sqrt{3}\, S,
+\]
+где $S = \sqrt{\frac{1}{n}\sum_{i=1}^n (X_i - \overline{X})^2}$ — выборочное стандартное отклонение.
+
+\textbf{Замечание.} Сравнение ОММ и ОМП:
+\begin{itemize}
+    \item ОМП: $\hat{\theta}_1 = X_{(1)}$, $\hat{\theta}_2 = X_{(n)}$ — используют только крайние значения выборки.
+    \item ОММ: $\hat{\theta}_1 = \overline{X} - \sqrt{3}S$, $\hat{\theta}_2 = \overline{X} + \sqrt{3}S$ — используют всю выборку через среднее и дисперсию.
+\end{itemize}
+
+ОМП более эффективна для равномерного распределения (меньшая асимптотическая дисперсия), но ОММ может давать оценки за пределами выборки.
+

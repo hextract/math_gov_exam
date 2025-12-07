@@ -1,1 +1,130 @@
 \subsection{Доверительные интервалы. Метод центральной статистики. Асимптотические доверительные интервалы. Построение асимптотических доверительных интервалов с помощью асимптотически нормальных оценок.}
+
+\textbf{Доверительные интервалы}
+
+Пусть $X$ — наблюдение с распределением $P \in \{P_\theta : \theta \in \Theta \subset \mathbb{R}\}$.
+
+\Def Пара статистик $(T_1(X), T_2(X))$ называется \textit{доверительным интервалом} уровня доверия $\gamma$ для параметра $\theta$, если
+\[
+\forall \theta \in \Theta: \quad P_\theta(T_1(X) < \theta < T_2(X)) \geq \gamma.
+\]
+
+Если равенство достигается для всех $\theta$, то доверительный интервал называется \textit{точным}.
+
+\textbf{Замечание.} На практике обычно $\gamma = 0{,}9$; $0{,}95$; $0{,}99$.
+
+\textbf{Замечание.} Иногда используют \textit{односторонние} доверительные интервалы: $(-\infty, T(X))$ или $(T(X), +\infty)$.
+
+\Def В многомерном случае $\theta \in \Theta \subset \mathbb{R}^k$ множество $S(X) \subset \Theta$ называется \textit{доверительным множеством} (или доверительной областью) уровня $\gamma$, если
+\[
+\forall \theta \in \Theta: \quad P_\theta(\theta \in S(X)) \geq \gamma.
+\]
+
+\textbf{Метод центральной статистики}
+
+\Def Функция $G(X, \theta)$ называется \textit{центральной статистикой}, если её распределение не зависит от $\theta$.
+
+\textbf{Метод построения доверительного интервала:}
+
+Пусть $G(X, \theta)$ — центральная статистика с известным распределением. Выберем $\gamma_1, \gamma_2 \in (0, 1)$ такие, что $\gamma_2 - \gamma_1 = \gamma$.
+
+Пусть $g_1$ и $g_2$ — квантили уровней $\gamma_1$ и $\gamma_2$ распределения $G(X, \theta)$. Тогда
+\[
+\forall \theta \in \Theta: \quad P_\theta(g_1 \leq G(X, \theta) \leq g_2) \geq \gamma.
+\]
+
+Доверительное множество: $S(X) = \{\theta \in \Theta : g_1 \leq G(X, \theta) \leq g_2\}$.
+
+\Example \textbf{(Нормальное распределение с известной дисперсией)}
+
+Пусть $X_1, \ldots, X_n \sim \mathcal{N}(\theta, \sigma^2)$, где $\sigma^2$ известна.
+
+Центральная статистика: $G(X, \theta) = \sqrt{n}\frac{\overline{X} - \theta}{\sigma} \sim \mathcal{N}(0, 1)$ — распределение не зависит от $\theta$.
+
+Пусть $u_p$ — $p$-квантиль $\mathcal{N}(0, 1)$. Для симметричного интервала:
+\[
+P_\theta\left(-u_{\frac{1+\gamma}{2}} < \sqrt{n}\frac{\overline{X} - \theta}{\sigma} < u_{\frac{1+\gamma}{2}}\right) = \gamma.
+\]
+
+Решая относительно $\theta$:
+\[
+\theta \in \left(\overline{X} - u_{\frac{1+\gamma}{2}} \frac{\sigma}{\sqrt{n}}, \quad \overline{X} + u_{\frac{1+\gamma}{2}} \frac{\sigma}{\sqrt{n}}\right).
+\]
+
+\textbf{Построение центральной статистики}
+
+\Lemma Пусть $X_1, \ldots, X_n$ — независимые случайные величины с непрерывной функцией распределения $F(x)$. Тогда
+\[
+G(X_1, \ldots, X_n) = -\sum_{i=1}^n \ln F(X_i) \sim \Gamma(n, 1).
+\]
+
+\Proof
+
+\textbf{Шаг 1.} Покажем, что $F(X_i) \sim U[0, 1]$.
+
+Пусть $F$ строго монотонна. Тогда для $y \in (0, 1)$:
+\[
+P(F(X_i) \leq y) = P(X_i \leq F^{-1}(y)) = F(F^{-1}(y)) = y.
+\]
+
+Значит, $F(X_i) \sim U[0, 1]$.
+
+\textbf{Шаг 2.} Если $U \sim U[0, 1]$, то $-\ln U \sim \text{Exp}(1)$ (стандартное экспоненциальное).
+
+\textbf{Шаг 3.} Сумма $n$ независимых $\text{Exp}(1)$ имеет распределение $\Gamma(n, 1)$:
+\[
+G = \sum_{i=1}^n (-\ln F(X_i)) \sim \Gamma(n, 1).
+\]
+
+\Endproof
+
+\Consequence Если $X_1, \ldots, X_n$ — выборка из $P_\theta$ с непрерывной функцией распределения $F_\theta(x)$, то
+\[
+G(X, \theta) = -\sum_{i=1}^n \ln F_\theta(X_i) \sim \Gamma(n, 1)
+\]
+— центральная статистика.
+
+\textbf{Асимптотические доверительные интервалы}
+
+\Def Пусть $(X_n)_{n \geq 1}$ — выборка неограниченного объёма из распределения $P_\theta$. Последовательность пар статистик $(T_1^{(n)}, T_2^{(n)})$ называется \textit{асимптотическим доверительным интервалом} уровня $\gamma$, если
+\[
+\forall \theta \in \Theta: \quad \varliminf_{n \to \infty} P_\theta(T_1^{(n)} < \theta < T_2^{(n)}) \geq \gamma.
+\]
+
+\textbf{Построение через асимптотически нормальные оценки}
+
+Пусть $\hat{\theta}_n$ — асимптотически нормальная оценка $\theta$ с асимптотической дисперсией $\sigma^2(\theta) > 0$:
+\[
+\sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{d_\theta} \mathcal{N}(0, \sigma^2(\theta)).
+\]
+
+Пусть $\sigma(\theta)$ непрерывна. Т.к. $\hat{\theta}_n$ состоятельна, имеем $\sigma(\hat{\theta}_n) \xrightarrow{P_\theta} \sigma(\theta)$.
+
+По лемме Слуцкого:
+\[
+\frac{\sqrt{n}(\hat{\theta}_n - \theta)}{\sigma(\hat{\theta}_n)} \xrightarrow{d_\theta} \mathcal{N}(0, 1).
+\]
+
+Тогда:
+\[
+P_\theta\left(\left|\frac{\sqrt{n}(\hat{\theta}_n - \theta)}{\sigma(\hat{\theta}_n)}\right| \leq u_{\frac{1+\gamma}{2}}\right) \to \gamma.
+\]
+
+\textbf{Асимптотический доверительный интервал:}
+\[
+\theta \in \left(\hat{\theta}_n - u_{\frac{1+\gamma}{2}} \frac{\sigma(\hat{\theta}_n)}{\sqrt{n}}, \quad \hat{\theta}_n + u_{\frac{1+\gamma}{2}} \frac{\sigma(\hat{\theta}_n)}{\sqrt{n}}\right).
+\]
+
+\Example \textbf{(Доверительный интервал для вероятности)}
+
+Пусть $X_1, \ldots, X_n \sim \text{Bern}(p)$. Оценка $\hat{p} = \overline{X}$ асимптотически нормальна:
+\[
+\sqrt{n}(\hat{p} - p) \xrightarrow{d} \mathcal{N}(0, p(1-p)).
+\]
+
+Асимптотическая дисперсия: $\sigma^2(p) = p(1-p)$.
+
+Подставляя $\sigma(\hat{p}) = \sqrt{\hat{p}(1-\hat{p})}$, получаем асимптотический доверительный интервал:
+\[
+p \in \left(\hat{p} - u_{\frac{1+\gamma}{2}} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}, \quad \hat{p} + u_{\frac{1+\gamma}{2}} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\right).
+\]
