@@ -1,1 +1,128 @@
-\subsection{Лемма Неймана–Пирсона. Построение с ее помощью наиболее мощных критериев.}
+\subsection{Лемма Неймана–Пирсона. Построение с её помощью наиболее мощных критериев.}
+
+\textbf{Основные понятия проверки гипотез}
+
+Пусть $X$ — наблюдение с распределением $P \in \{P_\theta : \theta \in \Theta\}$.
+
+\Def \textit{Статистическая гипотеза} — утверждение о распределении $P$.
+
+\Def Гипотеза называется \textit{простой}, если она однозначно определяет распределение: $H: P = P_0$.
+
+\Def Гипотеза называется \textit{сложной}, если она задаёт множество распределений: $H: \theta \in \Theta_0 \subset \Theta$.
+
+\Def \textit{Критерий} (или критическое множество) — это борелевское множество $S \subset \mathcal{X}$. Правило: если $X \in S$, отвергаем $H_0$ в пользу $H_1$.
+
+\Def \textit{Ошибка I рода} — отвергнуть $H_0$, когда она верна. Вероятность: $\alpha = P_0(X \in S)$.
+
+\Def \textit{Ошибка II рода} — принять $H_0$, когда верна $H_1$. Вероятность: $\beta = P_1(X \notin S)$.
+
+\Def \textit{Уровень значимости} критерия — $\alpha = P_0(X \in S)$ (вероятность ошибки I рода).
+
+\Def \textit{Мощность} критерия — $W = P_1(X \in S) = 1 - \beta$ (вероятность правильно отвергнуть $H_0$).
+
+\Def Критерий $S$ называется критерием \textit{размера} $\varepsilon$, если $P_0(X \in S) = \varepsilon$.
+
+\Def Критерий $S^*$ называется \textit{равномерно наиболее мощным критерием (РНМК)} размера $\varepsilon$, если:
+\begin{enumerate}
+    \item $P_0(X \in S^*) = \varepsilon$;
+    \item Для любого другого критерия $S$ размера $\leq \varepsilon$: $P_1(X \in S) \leq P_1(X \in S^*)$.
+\end{enumerate}
+
+\textbf{Лемма Неймана-Пирсона}
+
+Рассмотрим задачу проверки простых гипотез:
+\[
+H_0: P = P_0 \quad \text{против} \quad H_1: P = P_1,
+\]
+где $P_0$ и $P_1$ имеют плотности $p_0(x)$ и $p_1(x)$ по общей мере $\mu$.
+
+Для $\lambda > 0$ определим критерий:
+\[
+S_\lambda = \{x : p_1(x) \geq \lambda p_0(x)\} = \left\{x : \frac{p_1(x)}{p_0(x)} \geq \lambda\right\}.
+\]
+
+\Lemma{Неймана-Пирсона}
+
+Пусть критерий $R$ удовлетворяет условию $P_0(X \in R) \leq P_0(X \in S_\lambda)$. Тогда:
+\begin{enumerate}
+    \item $P_1(X \in R) \leq P_1(X \in S_\lambda)$ \quad (критерий $S_\lambda$ мощнее $R$);
+    \item $P_0(X \in S_\lambda) \leq P_1(X \in S_\lambda)$ \quad (несмещённость $S_\lambda$).
+\end{enumerate}
+
+\Proof
+
+\textbf{Часть 1.} Покажем, что $S_\lambda$ мощнее $R$.
+
+Заметим, что на множестве $S_\lambda$ выполнено $p_1(x) - \lambda p_0(x) \geq 0$, а вне $S_\lambda$ — неравенство обратное.
+
+Для любого критерия $R$:
+\[
+I_R(x)(p_1(x) - \lambda p_0(x)) \leq I_{S_\lambda}(x)(p_1(x) - \lambda p_0(x)),
+\]
+т.к. если $x \in R \cap S_\lambda$, то обе части равны; если $x \in R \setminus S_\lambda$, то левая часть $\leq 0$, а правая $= 0$; если $x \notin R$, то левая часть $= 0$, а правая $\geq 0$.
+
+Интегрируя по $\mu$:
+\[
+P_1(X \in R) - \lambda P_0(X \in R) \leq P_1(X \in S_\lambda) - \lambda P_0(X \in S_\lambda).
+\]
+
+Т.к. $P_0(X \in R) \leq P_0(X \in S_\lambda)$, получаем:
+\[
+P_1(X \in R) \leq P_1(X \in S_\lambda) - \lambda(P_0(X \in S_\lambda) - P_0(X \in R)) \leq P_1(X \in S_\lambda).
+\]
+
+\textbf{Часть 2.} Покажем несмещённость.
+
+Если $\lambda \geq 1$, то на $S_\lambda$: $p_1(x) \geq \lambda p_0(x) \geq p_0(x)$.
+\[
+P_0(X \in S_\lambda) = \int_{S_\lambda} p_0(x)\, d\mu(x) \leq \int_{S_\lambda} p_1(x)\, d\mu(x) = P_1(X \in S_\lambda).
+\]
+
+Если $\lambda < 1$, то на $\overline{S_\lambda}$: $p_1(x) < \lambda p_0(x) < p_0(x)$.
+\[
+P_1(X \in \overline{S_\lambda}) \leq P_0(X \in \overline{S_\lambda}) \quad \Rightarrow \quad 1 - P_1(X \in S_\lambda) \leq 1 - P_0(X \in S_\lambda).
+\]
+
+В обоих случаях: $P_0(X \in S_\lambda) \leq P_1(X \in S_\lambda)$.
+
+\Endproof
+
+\Consequence Если $\lambda > 0$ удовлетворяет условию $P_0(X \in S_\lambda) = \varepsilon$, то $S_\lambda$ — \textit{равномерно наиболее мощный критерий (РНМК)} размера $\varepsilon$.
+
+\textbf{Алгоритм построения РНМК:}
+\begin{enumerate}
+    \item Записать отношение правдоподобия $\frac{p_1(x)}{p_0(x)}$;
+    \item Найти $\lambda$ из уравнения $P_0\left(\frac{p_1(X)}{p_0(X)} \geq \lambda\right) = \varepsilon$;
+    \item Критерий: $S_\lambda = \left\{x : \frac{p_1(x)}{p_0(x)} \geq \lambda\right\}$.
+\end{enumerate}
+
+\textbf{Замечание.} В абсолютно непрерывном случае уравнение для $\lambda$ обычно разрешимо. В дискретном случае может не существовать $\lambda$ для заданного $\varepsilon$ — тогда используют рандомизированные критерии или выбирают ближайший допустимый уровень.
+
+\Example \textbf{(Проверка гипотезы о среднем нормального распределения)}
+
+Пусть $X_1, \ldots, X_n \sim \mathcal{N}(\theta, 1)$. Проверяем:
+\[
+H_0: \theta = 0 \quad \text{против} \quad H_1: \theta = 1.
+\]
+
+Отношение правдоподобия:
+\[
+\frac{p_1(x)}{p_0(x)} = \frac{\prod_{i=1}^n \frac{1}{\sqrt{2\pi}} e^{-\frac{(x_i - 1)^2}{2}}}{\prod_{i=1}^n \frac{1}{\sqrt{2\pi}} e^{-\frac{x_i^2}{2}}}
+= \exp\left(\sum_{i=1}^n x_i - \frac{n}{2}\right) = e^{n\overline{x} - n/2}.
+\]
+
+Критерий $S_\lambda$:
+\[
+\frac{p_1(x)}{p_0(x)} \geq \lambda \quad \Leftrightarrow \quad e^{n\overline{x} - n/2} \geq \lambda \quad \Leftrightarrow \quad \overline{x} \geq \frac{\ln\lambda}{n} + \frac{1}{2} = c.
+\]
+
+Находим $c$ из условия $P_0(\overline{X} \geq c) = \varepsilon$.
+
+При $H_0$: $\overline{X} \sim \mathcal{N}(0, \frac{1}{n})$, поэтому $\sqrt{n}\overline{X} \sim \mathcal{N}(0, 1)$.
+\[
+P_0(\overline{X} \geq c) = P_0(\sqrt{n}\overline{X} \geq \sqrt{n}c) = 1 - \Phi(\sqrt{n}c) = \varepsilon.
+\]
+
+Отсюда $\sqrt{n}c = u_{1-\varepsilon}$, т.е. $c = \frac{u_{1-\varepsilon}}{\sqrt{n}}$.
+
+\textbf{РНМК размера $\varepsilon$:} $S = \left\{\overline{X} \geq \frac{u_{1-\varepsilon}}{\sqrt{n}}\right\}$.

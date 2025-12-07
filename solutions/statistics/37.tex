@@ -1,1 +1,181 @@
 \subsection{Метод моментов, метод максимального правдоподобия и примеры нахождения оценок с помощью этих методов. Сильная состоятельность и асимптотическая нормальность оценки метода моментов.}
+
+\textbf{Метод моментов}
+
+Пусть $\Theta \subset \mathbb{R}^k$ — параметрическое пространство. Рассмотрим борелевские функции $g_1(x), \ldots, g_k(x)$ со значениями в $\mathbb{R}$. Пусть $m_i(\theta) = \mathbb{E}_\theta g_i(X)$ конечны для всех $i$.
+
+Обозначим:
+\[
+m(\theta) = \begin{pmatrix}
+    m_1(\theta) \\
+    \vdots \\
+    m_k(\theta)
+\end{pmatrix}, \qquad
+\overline{g} = \begin{pmatrix}
+    \overline{g_1(X)} \\
+    \vdots \\
+    \overline{g_k(X)}
+\end{pmatrix} = \begin{pmatrix}
+    \frac{1}{n}\sum_{i=1}^n g_1(X_i) \\
+    \vdots \\
+    \frac{1}{n}\sum_{i=1}^n g_k(X_i)
+\end{pmatrix}.
+\]
+
+\Def Если существует единственное решение системы $m(\theta) = \overline{g}$, то $\hat{\theta} = m^{-1}(\overline{g})$ называется \textit{оценкой по методу моментов} (ОММ).
+
+\textbf{Замечание.} Стандартный выбор пробных функций: $g_i(x) = x^i$ (степенные моменты). Тогда $m_1(\theta) = \mathbb{E}_\theta X$, $m_2(\theta) = \mathbb{E}_\theta X^2$ и т.д.
+
+\Example \textbf{(Нормальное распределение)}
+
+Пусть $X_1, \ldots, X_n \sim \mathcal{N}(\mu, \sigma^2)$, где $\theta = (\mu, \sigma^2)$ — неизвестные параметры.
+
+Используем $g_1(x) = x$, $g_2(x) = x^2$. Тогда:
+\[
+m_1(\theta) = \mathbb{E}X = \mu, \quad m_2(\theta) = \mathbb{E}X^2 = DX + (\mathbb{E}X)^2 = \sigma^2 + \mu^2.
+\]
+
+Система уравнений метода моментов:
+\[
+\begin{cases}
+\overline{X} = \mu \\
+\overline{X^2} = \sigma^2 + \mu^2
+\end{cases}
+\quad \Rightarrow \quad
+\begin{cases}
+\hat{\mu} = \overline{X} \\
+\hat{\sigma}^2 = \overline{X^2} - \overline{X}^2 = S^2
+\end{cases}
+\]
+
+где $S^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \overline{X})^2$ — выборочная дисперсия.
+
+\Theor{Сильная состоятельность ОММ}
+
+Пусть $m: \Theta \to \mathbb{R}^k$ — инъекция (взаимно однозначное отображение на образ), и $m^{-1}$ можно доопределить на $\mathbb{R}^k$ так, чтобы она была непрерывной в каждой точке множества $m(\Theta)$. Пусть также $\mathbb{E}_\theta g_i^2(X_1) < \infty$ для всех $i \leq k$.
+
+Тогда оценка по методу моментов $\hat{\theta}_n = m^{-1}(\overline{g})$ является \textit{сильно состоятельной} оценкой параметра $\theta$.
+
+\Proof
+
+По усиленному закону больших чисел: $\overline{g} \xrightarrow{P_\theta\text{-п.н.}} m(\theta)$.
+
+По теореме о наследовании сходимости (непрерывное отображение сохраняет сходимость п.н.):
+\[
+\hat{\theta}_n = m^{-1}(\overline{g}) \xrightarrow{P_\theta\text{-п.н.}} m^{-1}(m(\theta)) = \theta.
+\]
+
+\Endproof
+
+\Theor{Асимптотическая нормальность ОММ}
+
+Пусть выполнены условия теоремы о сильной состоятельности ОММ, и функция $m^{-1}$ дифференцируема на $m(\Theta)$.
+
+Тогда ОММ является \textit{асимптотически нормальной} оценкой параметра $\theta$.
+
+\Proof
+
+По многомерной ЦПТ: $\sqrt{n}(\overline{g} - m(\theta)) \xrightarrow{d_\theta} \mathcal{N}(0, \Sigma)$, где $\Sigma$ — ковариационная матрица вектора $(g_1(X), \ldots, g_k(X))$.
+
+Применяя лемму о наследовании асимптотической нормальности:
+\[
+\sqrt{n}(\hat{\theta}_n - \theta) = \sqrt{n}(m^{-1}(\overline{g}) - m^{-1}(m(\theta))) \xrightarrow{d_\theta} \mathcal{N}(0, \Sigma'),
+\]
+где $\Sigma'$ выражается через $\Sigma$ и якобиан $m^{-1}$.
+
+\Endproof
+
+\textbf{Метод максимального правдоподобия}
+
+Пусть $X = (X_1, \ldots, X_n)$ — выборка из распределения с плотностью $p_\theta(x)$ (по мере $\mu$).
+
+\Def \textit{Функция правдоподобия} — это функция параметра $\theta$ при фиксированной выборке $X$:
+\[
+L(\theta; X) = L(\theta; X_1, \ldots, X_n) = \prod_{i=1}^n p_\theta(X_i).
+\]
+
+\Def \textit{Логарифмическая функция правдоподобия}:
+\[
+\ell(\theta; X) = \ln L(\theta; X) = \sum_{i=1}^n \ln p_\theta(X_i).
+\]
+
+\Def \textit{Оценка максимального правдоподобия} (ОМП) — это значение параметра, максимизирующее функцию правдоподобия:
+\[
+\hat{\theta}_{ML} = \arg\max_{\theta \in \Theta} L(\theta; X) = \arg\max_{\theta \in \Theta} \ell(\theta; X).
+\]
+
+\textbf{Замечание.} На практике максимизируют $\ell(\theta)$, т.к. с суммой работать проще, чем с произведением. Максимум достигается в той же точке (логарифм — монотонная функция).
+
+\textbf{Замечание.} Для нахождения ОМП обычно решают \textit{уравнение правдоподобия}:
+\[
+\frac{\partial \ell(\theta; X)}{\partial \theta} = 0.
+\]
+
+\Theor{Инвариантность ОМП}
+
+Пусть $\hat{\theta}_{ML}$ — ОМП параметра $\theta$, и $g: \Theta \to \mathbb{R}$ — произвольная функция. Тогда $g(\hat{\theta}_{ML})$ — ОМП параметра $g(\theta)$.
+
+\Proof
+
+Пусть $\eta = g(\theta)$. Для любого $\eta$ из области значений $g$:
+\[
+\sup_{\theta: g(\theta) = \eta} L(\theta; X) \leq \sup_{\theta \in \Theta} L(\theta; X) = L(\hat{\theta}_{ML}; X).
+\]
+
+Максимум функции правдоподобия по $\eta$ достигается при $\eta = g(\hat{\theta}_{ML})$.
+
+\Endproof
+
+\textbf{Замечание.} Инвариантность — важное свойство ОМП. Например, если $\hat{\sigma}^2$ — ОМП для дисперсии, то $\hat{\sigma} = \sqrt{\hat{\sigma}^2}$ — ОМП для стандартного отклонения.
+
+\Example \textbf{(Нормальное распределение)}
+
+Пусть $X_1, \ldots, X_n \sim \mathcal{N}(\mu, \sigma^2)$.
+
+Логарифм правдоподобия:
+\[
+\ell(\mu, \sigma^2) = \sum_{i=1}^n \ln \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(X_i - \mu)^2}{2\sigma^2}}
+= -\frac{n}{2}\ln(2\pi) - \frac{n}{2}\ln\sigma^2 - \frac{1}{2\sigma^2}\sum_{i=1}^n (X_i - \mu)^2.
+\]
+
+Уравнения правдоподобия:
+\[
+\frac{\partial \ell}{\partial \mu} = \frac{1}{\sigma^2}\sum_{i=1}^n (X_i - \mu) = 0 \quad \Rightarrow \quad \hat{\mu}_{ML} = \overline{X}.
+\]
+\[
+\frac{\partial \ell}{\partial \sigma^2} = -\frac{n}{2\sigma^2} + \frac{1}{2(\sigma^2)^2}\sum_{i=1}^n (X_i - \mu)^2 = 0 \quad \Rightarrow \quad \hat{\sigma}^2_{ML} = \frac{1}{n}\sum_{i=1}^n (X_i - \overline{X})^2 = S^2.
+\]
+
+\textbf{Вывод:} Для нормального распределения ОММ и ОМП совпадают: $\hat{\mu} = \overline{X}$, $\hat{\sigma}^2 = S^2$.
+
+\Example \textbf{(Экспоненциальное распределение)}
+
+Пусть $X_1, \ldots, X_n \sim \text{Exp}(\lambda)$, т.е. $p_\lambda(x) = \lambda e^{-\lambda x}$ при $x > 0$.
+
+\textbf{Метод моментов:} $\mathbb{E}X = \frac{1}{\lambda}$, поэтому $\overline{X} = \frac{1}{\hat{\lambda}}$, откуда $\hat{\lambda}_{MM} = \frac{1}{\overline{X}}$.
+
+\textbf{Метод максимального правдоподобия:}
+\[
+\ell(\lambda) = \sum_{i=1}^n \ln(\lambda e^{-\lambda X_i}) = n\ln\lambda - \lambda \sum_{i=1}^n X_i.
+\]
+\[
+\frac{\partial \ell}{\partial \lambda} = \frac{n}{\lambda} - \sum_{i=1}^n X_i = 0 \quad \Rightarrow \quad \hat{\lambda}_{ML} = \frac{n}{\sum_{i=1}^n X_i} = \frac{1}{\overline{X}}.
+\]
+
+ОММ и ОМП снова совпадают.
+
+\Example \textbf{(Равномерное распределение — ОМП $\neq$ ОММ)}
+
+Пусть $X_1, \ldots, X_n \sim U[0, \theta]$, т.е. $p_\theta(x) = \frac{1}{\theta}$ при $x \in [0, \theta]$.
+
+\textbf{Метод моментов:} $\mathbb{E}X = \frac{\theta}{2}$, поэтому $\hat{\theta}_{MM} = 2\overline{X}$.
+
+\textbf{Метод максимального правдоподобия:}
+\[
+L(\theta) = \prod_{i=1}^n \frac{1}{\theta} \cdot I(0 \leq X_i \leq \theta) = \frac{1}{\theta^n} \cdot I(\theta \geq X_{(n)}),
+\]
+где $X_{(n)} = \max(X_1, \ldots, X_n)$.
+
+Функция $L(\theta) = \frac{1}{\theta^n}$ убывает по $\theta$, поэтому максимум достигается при минимально допустимом $\theta$, т.е. $\hat{\theta}_{ML} = X_{(n)}$.
+
+\textbf{Вывод:} $\hat{\theta}_{MM} = 2\overline{X} \neq X_{(n)} = \hat{\theta}_{ML}$.
