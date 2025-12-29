@@ -9,7 +9,7 @@
 \Def Пусть $l \in \R^n, x_0 \in G, f:G \to \R$. Будем говорить, что $f$ имеет производную в точке $x_0$ по направлению $l$, если
 
 \begin{equation*}
-    \exists \lim_{t \to +0} \frac{f(x^0 + t) - f(x^0)}{t} \in \R.
+    \exists \lim_{t \to +0} \frac{f(x^0 + tl) - f(x^0)}{t} \in \R.
 \end{equation*}
 
 \Def Пусть $f: G \to \R$. Частной производной функции $f$ по $i$-й координате ($i \in {1, \dots, n}$) в точке $x^0$ называется 
@@ -18,7 +18,7 @@
     \lim_{x_i \to x^0_i} \frac{f(x^0_1, x^0_2, \dots, x_i, \dots, x^0_n) - f(x^0_1, \dots, x^0_i, \dots, x^0_n)}{x_i - x^0_i}
 \end{equation*}
 
-и обозначается $\frac{\partial f}{\partial x}$.
+и обозначается $\frac{\partial f}{\partial x_i}$.
 
 \Theor{Достаточное условие дифференцируемости функции нескольких переменных в точке}
 
