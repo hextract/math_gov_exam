@@ -1,1 +1,182 @@
 \subsection{Свойства интеграла с переменным верхним пределом (непрерывность, дифференцируемость). Формула Ньютона-Лейбница.}
+
+\subsubsection{Определенный интеграл Римана}
+
+\textit{Напомним вкратце самую базу про определенный интеграл Римана}.
+
+\Def Разбиение отрезка $[a, b]$ ($a < b$) -- конечный набор точек $T=\{x_i\}_{i=0}^N$, т.ч. $a = x_0 < x_1 < \dots < x_N = b$.
+
+\Def Мелкость разбиения $l(T) = \max_{i \in \{1, \dots, N\}} (x_i - x_{i-1})$.
+
+\Def Для $f: [a, b] \rightarrow \R$; $T$ -- разбиение $[a, b]$
+
+Нижняя сумма Дарбу: $s(f, T) \coloneqq \sum_{i=1}^N m_i (x_i - x_{i-1})$, где $m_i \coloneqq \inf_{x \in [x_{i-1}, x_i]} f(x)$;
+
+Верхняя сумма Дарбу: $S(f, T) \coloneqq \sum_{i=1}^N M_i (x_i - x_{i-1})$, где $M_i \coloneqq \sup_{x \in [x_{i-1}, x_i]} f(x)$;
+
+Нижний интеграл Дарбу: $J_* (f) \coloneqq \sup_{T} s(f, T)$.
+
+Верхний интеграл Дарбу: $J^* (f) \coloneqq \inf_{T} S(f, T)$.
+
+\Def $f: [a, b] \rightarrow \R$ интегрируема по Риману на отрезке $[a, b]$, если 
+
+\begin{gather*}
+    \exists J \in \R \; \forall \eps > 0 \;\exists \delta > 0 \;\forall T: l(T) < \delta \hookrightarrow 
+    \begin{cases}
+        |s(f, T) - J| < \eps, \\
+        |S(f, T) - J| < \eps.
+    \end{cases}
+\end{gather*}
+
+\Theor{Необходимое условие интегрируемости} $f \in R([a, b]) \;\Rightarrow\; f \in B([a, b])$.
+
+\Theor{Критерий Лебега интегрируемости по Риману}. 
+
+\begin{gather*}
+    f \in R([a, b]) \iff
+    \begin{cases*}
+        f \in B([a, b]), \\
+        \text{Множество точек разрыва $f$ на [a, b] имеет лебегову меру ноль}.
+    \end{cases*}
+\end{gather*}
+
+\Theor{Критерий Дарбу интегрируемости по Риману}
+
+$f \in R([a, b]) \iff J_*(f) = J^*(f) \in \R$.
+
+\Def Для разбиения $T$ отрезка $[a, b]$ выборкой назовем конечный набор точек $\{\xi_i\}_{i=1}^{N_T}$, такой что $\forall i \in \{1, \dots, N_T\} \hookrightarrow \xi_i \in [x_{i-1}, x_i]$.
+
+Интегральная сумма Дарбу: $\Sigma(f, T, \xi_T) = \sum_{i=1}^N f(\xi_i) (x_i - x_{i-1})$.
+
+\Theor{Критерий интегрируемости по Риману в терминах интегральных сумм Римана}
+
+$f \in R([a, b]) \iff \exists J \in \R: \;\forall \;\eps > 0 \exists \delta > 0: \forall T: l(T) < \delta \;\forall \xi_T \hookrightarrow |J - \Sigma(f, T, \xi_T)| < \eps$.
+
+\subsubsection{Свойства определенного интеграла Римана}
+
+Докажем несколько простых свойств, необходимых для доказательства целевых теорем.
+
+\Theor{Линейность $R([a, b])$}
+
+$R([a, b])$ линейно, причем $\int_a^b (\alpha f(x) + \beta g(x)) dx = \alpha \int_a^b f(x) dx + \beta \int_a^b g(x) dx$.
+
+\textit{Для доказательства просто расписываем интегрируемость через интегральные суммы Римана и переходим к пределу при стремлении мелкости к нулю.}
+
+\Theor{Интегрируемость неравенств}
+
+Пусть $f, g \in R([a, b])$; $f(x) \leq g(x) \;\forall x\in [a, b]$. 
+
+Тогда $\int_a^b f(x)dx \leq \int_a^b g(x) dx$.
+
+\Proof
+
+$\forall T \; \forall \xi \hookrightarrow \Sigma(f, T, \xi) \leq \Sigma(g, T, \xi)$.
+
+Переходя к пределу в неравенстве по мелкости стремящейся к 0, получаем искомое.
+
+\Endproof
+
+\Theor{Интегрируемость модуля}
+
+Пусть $f \in R([a, b])$;
+
+Тогда $|f| \in R([a, b])$, и при этом $\left|\int_a^b f(x)dx\right| \leq \int_a^b |f(x)| dx$.
+
+\Proof
+
+По критерию Лебега, $f$ ограничена и множество точек разрыва имеет меру 0. Очевидно, то же верно для $|f|$. Тогда по критерию Лебега, $|f| \in R([a, b])$.
+
+При этом
+$\begin{cases*}
+    f(x) \leq |f(x)|, \\ -f(x) \leq |f(x)|,
+\end{cases*}$
+откуда по предыдущей теореме
+$\begin{cases*}
+    \int_a^b f(x) dx \leq \int_a^b |f(x)| dx, \\
+    \int_a^b -f(x) dx \leq \int_a^b |f(x)| dx.
+\end{cases*}$
+
+Используя линейность, выносим минус во втором неравенстве и получаем $\left|\int_a^b f(x) dx\right| \leq \int_a^b |f(x)| dx$.
+
+\Endproof
+
+\Theor{Аддитивность по отрезкам}
+
+Пусть $f \in R([a, b])$; $f \in R([b, c]); a < b < c$.
+
+Тогда $f \in R([a, c])$, причем $\int_a^c f(x) dx = \int_a^b f(x) dx + \int_b^c f(x) dx$.
+
+\Theor{Связь определенного и неопределенного интегралов}
+
+\Def $F$ -- первообразная $f$ на $([a, b])$, если $F'(x) = f(x) \;\forall x \in (a, b)$; $F'_+(a) = f(a); F'_-(b) = f(b)$.
+
+\Note Множество функций, имеющих первообразную на $[a, b]$, и множество функций, интегрируемых на $[a, b]$, пересекаются, но не вложены:
+
+\begin{enumerate}
+    \item \textbf{Производная} функции $F(x) = \begin{cases*}
+        x^2 \sin \frac{1}{x^2}, x \neq 0, \\
+        0, x = 0
+    \end{cases*}$ имеет первообразную на $[-a, a]$ (очевидно, $F$), но не интегрируема на любом интервале, содержащем 0, потому что неограничена в окрестности нуля.
+
+    \item $f(x) = sign(x)$ интегрируема по Риману по критерию Лебега, но не имеет первообразной на интервале, содержащем 0 (доказывается от противного).
+\end{enumerate}
+
+\subsubsection{Интеграл с переменным верхним пределом}
+
+\Def Интегралом с переменным верхним пределом для функции $f \in R([a, b])$ называют функцию $F(x) \coloneqq \int_a^x f(t) dt$.
+
+\Theor{Непрерывность интеграла с переменным верхним пределом}
+
+$F \in C([a, b])$.
+
+\Proof
+
+$|F(x_1) - F(x_2)| \leq \left|\int_{x_1}^{x_2} f(t) dt\right| \leq \int_{x_1}^{x_2} |f(t)| dt \leq M |x_1 - x_2|$, где $M = \sup_{x \in [x_1, x_2]} |f(x)|$.
+
+\Endproof
+
+\Theor{Непрерывная дифференцируемость интеграла с переменным верхним пределом}
+
+Пусть $f \in C([a, b])$.
+
+Тогда $F \in C^1([a, b])$. 
+
+Причем $F'(x) = f(x) \;\forall x \in [a, b]$ \\(с точностью до соответствующих соглашений об односторонних производных на границах).
+
+\Proof
+
+\begin{gather*}
+    \left|\frac{F(x) - F(x^0)}{x - x^0} - f(x^0)\right| = \left|\frac{\int_x^{x^0} f(t) dt}{x - x^0}\right| =
+    \left|\frac{\int_x^{x^0} f(t) dt - \int_x^{x^0} f(x^0) dt}{x-x^0}\right| \leq \frac{\int_x^{x^0} |f(t) - f(x^0)| dt}{|x - x^0|}.
+\end{gather*}
+
+Из непрерывности, $\forall \eps > 0 \;\exists \delta > 0 \;\forall x \in \mathring U_\delta (x^0) \cap [a, b] \hookrightarrow |f(x) - f(x^0)| < \eps$.
+
+Продолжая неравенство выше, получаем 
+
+\begin{gather*}
+    \frac{\int_x^{x^0} |f(t) - f(x^0)| dt}{|x - x^0|} \leq \frac{\eps \int_x^{x^0} dt}{|x - x^0|} = \eps.
+\end{gather*}
+
+Итого, $\forall \eps > 0 \;\exists \delta > 0 \;\forall x \in \mathring U_\delta (x^0) \cap [a, b] \hookrightarrow \left|\frac{F(x) - F(x^0)}{x - x^0} - f(x^0)\right| < \eps$, что по определению значит, что $\exists F'(x^0) = f(x^0)$ для произвольной точки $x^0 \in (a, b)$.
+
+Аналогично расписывается для краевых точек $a, b$.
+
+\Endproof
+
+\Consequence Если $f \in C([a, b])$, то любая первообразная имеет вид $F(x) + C$, где $F$ -- как определена выше, а $C\in\R$.
+
+\Consequence (Формула Ньютона-Лейбница)
+
+Пусть $f \in C([a, b])$.
+
+Тогда $\int_a^b f(x) dx = F(b) - F(a)$, где $F$ -- \textbf{произвольная} первообразная $f$ на $[a, b]$.
+
+\Proof
+
+\begin{gather*}
+    F(x) = \int_a^x f(t) dt + C. \\
+    F(b) - F(a) = \left(\int_a^b f(t)dt + C\right) - \left(\int_a^a f(t)dt + C\right) = \int_a^b f(t)dt.
+\end{gather*}
+
+\Endproof
