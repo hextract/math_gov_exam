@@ -1,6 +1,6 @@
 \subsection{Формула Тейлора с остаточным членом в форме Пеано или Лагранжа.}
 
-\Def Пусть $n \in \N, f: U_{\delta_0} (x_0) \to \R$ имеет $n$-ую конечную производную в точке $x_0$. Тогда полиномом Тейлора функции $f$с центром в точке $x_0$ будем называть следующую функцию:
+\Def Пусть $n \in \N, f: U_{\delta_0} (x_0) \to \R$ имеет $n$-ую конечную производную в точке $x_0$. Тогда полиномом Тейлора функции $f$ с центром в точке $x_0$ будем называть следующую функцию:
 \begin{equation*}
     T_{x_0}^n[f](x) \overset{def}{=} \sum\limits_{k=0}^n \frac{f^{(k)} (x_0)}{k!} (x - x_0)^k
 \end{equation*}
@@ -10,15 +10,15 @@
     r^n_{x_0}[f](x) \overset{def}{=} f(x) - T_{x_0}^n[f](x), x \in U_{\delta_0}(x_0)
 \end{equation*}
 
-\Lemma Верны следующие равенства
+\Lemma Верны следующие равенства:
 \begin{enumerate}
-    \item $\forall k \in 0 \dots n \hookrightarrow \frac{d^k}{dx^k} (x - x_0)^n = n(n-1)\dots(x - k + 1) (x - x_0)^{n-k}$
+    \item $\forall k \in 0 \dots n \hookrightarrow \displaystyle \frac{d^k}{dx^k} (x - x_0)^n = \frac{n!}{(n-k)!}\,(x - x_0)^{n-k}$
     \item $\forall k > n \hookrightarrow \frac{d^k}{dx^k} (x - x_0)^n \equiv 0$
 \end{enumerate}
 
 \Proof
 
-Очень верится, что читатель брал производные от степенных функций за 2 года учебы в МФТИ, поэтому будем считать, что доказательство методом <<ну видно же>> пройдет.
+Доказательство удобно провести по индукции по $k$: при $k=0$ формула тривиальна, а переход $k\to k+1$ получается дифференцированием правой части и учётом $(n-k)!=(n-k)(n-k-1)!$.
 
 \Endproof
 
@@ -67,7 +67,7 @@
     \frac{r^n_{x_0}[f](x) - r^n_{x_0}[f](x_0)}{\varphi(x) - \varphi(x_0)}
 \end{equation*}
 
-Заметим, что выполняются условия теоремы Коши о среднем, значит $\exists \xi \in (x, x_0):$
+Заметим, что выполняются условия теоремы Коши о среднем (для $x\neq x_0$), значит $\exists \xi$ между $x$ и $x_0$ такое, что
 
 \begin{equation*}
     \frac{r^n_{x_0}[f](x) - r^n_{x_0}[f](x_0)}{\underbrace{(x - x_0)^n}_{\varphi_n(x)} - \underbrace{(x_0 - x_0)^n}_{\varphi_n(x_0)}} = \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi}}{\varphi_n'(\xi)} = 
@@ -88,7 +88,8 @@
 Повторяем предыдущий шаг $n - 1$ раз и получим:
 
 \begin{equation*}
-    \frac{r^n_{x_0}[f](x)}{(x - x_0)^n} = \dots = \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi_{n - 1}} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{n! (\xi_{n-1} - x_0)}, \xi_{n-1} \in (\xi_{n-2}, x_0) \subset (x_0, x)
+    \frac{r^n_{x_0}[f](x)}{(x - x_0)^n} = \dots = \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi_{n - 1}} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{n! (\xi_{n-1} - x_0)},
+    \qquad \xi_{n-1} \text{ лежит между } x \text{ и } x_0
 \end{equation*}
 
 Теперь в силу того, что $\xi_{n-1} \in (x_0, x)$, то если мы будем $\xi_{n-1}$ воспринимать как функцию от $x$, то $\lim\limits_{x \to x_0} \xi_{n-1} = x_0, \xi_{n-1} \neq x_0$.

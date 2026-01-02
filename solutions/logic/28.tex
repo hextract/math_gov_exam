@@ -15,7 +15,7 @@
 
 \Statement Критерий подгруппы.
 
-$H < G \iff a \circ b^{-1} \in H  \quad \forall a, b \in H$
+$H < G \iff H \neq \varnothing \ \text{и}\  a \circ b^{-1} \in H  \quad \forall a, b \in H$
 
 $\square$
 
@@ -66,7 +66,7 @@ $\square$
 
 \begin{enumerate}
     \item $\text{Ker} \varphi < G$. По критерию подгруппы $\forall a, b \in \text{Ker} \varphi \quad \varphi(a \circ b^{-1}) = \varphi(a) * \varphi({b^{-1}}) = e_{\varphi(G)} * e_{\varphi(G)} = e_{\varphi(G)} \Rightarrow a \circ b^{-1} \in \text{Ker} \varphi$.
-    \item $\text{Ker} \varphi \lhd G$, то есть $a (\text{Ker} \varphi) = (\text{Ker} \varphi) a \quad \forall a \in G$, так как $\forall t \in \text{Ker} \; \exists r \in \text{Ker} \varphi : a \circ t = r \circ a$. А это следует из того, что $\forall t \in \text{Ker} \varphi \; \exists r \in G = a t a^{-1}$, тогда $\varphi(r) = \varphi(a) * e_{\varphi(G)} * \varphi(a^{-1}) = \varphi(a \circ a^{-1})  = e_{\varphi(G)}$
+    \item $\text{Ker} \varphi \lhd G$, то есть $a (\text{Ker} \varphi) = (\text{Ker} \varphi) a \quad \forall a \in G$, так как $\forall t \in \text{Ker} \varphi$ положим $r = a \circ t \circ a^{-1}$. Тогда $\varphi(r)=\varphi(a)*\varphi(t)*\varphi(a^{-1})=\varphi(a)*e_H*\varphi(a)^{-1}=e_H$, значит $r\in \text{Ker}\,\varphi$, и $a\circ t=r\circ a$.
 \end{enumerate}
 
 Теперь рассмотрим отображение $\psi: G / \text{Ker}\varphi \to \text{Im}\varphi$. $\psi(a \text{Ker} \varphi) := \varphi(a)$. Пусть в этой факторгруппе введена операция $\bullet$. Тогда $\psi(a \text{Ker} \varphi \bullet b \text{Ker} \varphi) = \psi((a \circ b) \text{Ker} \varphi) = \varphi(a \circ b) = \varphi(a) * \varphi(b)$. Значит $\psi$ --- гомоморфизм.

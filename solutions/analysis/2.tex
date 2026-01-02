@@ -2,7 +2,7 @@
 
 \Def $\hat \R := \R \cup \{ -\infty, +\infty, \infty \}$
 
-\Def Пусть $x_0, A \in \hat\R, \delta_0 > 0, f: \mathring U_{\delta_0}(x_0) \to \R$. Будем говорить, что $A$ - предел функции $f$ в точке $x_0$ и записывать $\lim\limits_{x \to x_0} f(x_0) = A$, если
+\Def Пусть $x_0, A \in \hat\R, \delta_0 > 0, f: \mathring U_{\delta_0}(x_0) \to \R$. Будем говорить, что $A$ - предел функции $f$ в точке $x_0$ и записывать $\lim\limits_{x \to x_0} f(x) = A$, если
 \begin{equation*}
     \forall \varepsilon > 0 \; \exists \delta_\varepsilon < \delta_0: \forall x \in \mathring U_{\delta_\varepsilon}(x_0) \hookrightarrow f(x) \in U_\varepsilon(A)
 \end{equation*}
@@ -14,7 +14,7 @@
 \end{enumerate}
 
 \Def Пусть $x_0 \in \hat\R, A \in \hat\R$. Пусть $f: \mathring U_{\delta_0}(x_0) \to \R$. 
-Будем говорить, что $A$ - предел функции $f$ в точке $x_0$ и записывать $\lim\limits_{x \to x_0} f(x_0) = A$, если для всякой последовательности Гейне $\{x_n\} \subset \mathring U_{\delta_0}(x_0)$ в точке $x_0$ выполнено, что $f(x_n) \to A, n \to \infty$.
+Будем говорить, что $A$ - предел функции $f$ в точке $x_0$ и записывать $\lim\limits_{x \to x_0} f(x) = A$, если для всякой последовательности Гейне $\{x_n\} \subset \mathring U_{\delta_0}(x_0)$ в точке $x_0$ выполнено, что $f(x_n) \to A, n \to \infty$.
 
 \Th Определения пределов функций выше эквивалентны.
 
@@ -35,7 +35,7 @@
 
 \Def Компактом $K \subset \R$ будем называть множество, если из каждой числовой последовательности в нём можно выделить сходящуюся подпоследовательность, сходящуюся к элементу этого же множества.
 
-\Theor{Эквивалентые определения компакта} Пусть $K \subset \R$. Тогда следующие условия эквивалентны:
+\Theor{Эквивалентные определения компакта} Пусть $K \subset \R$. Тогда следующие условия эквивалентны:
 \begin{enumerate}
     \item $K$ - компакт
     \item $K$ - ограниченное и замкнутое множество
