@@ -26,7 +26,7 @@ $\Leftarrow$ Проверим аксиомы группы для $H$:
 \begin{enumerate}
     % \setcounter{enumi}{-1}
     \item Возьмем произвольное $a \in H$. Тогда $a \circ a^{-1} = e \in H$. Получим наличие нейтрального элемента
-    \item Возмьем $a, e \in H$. Тогда $e \circ a^{-1} = a^{-1} \in H$. Следовательно у любого элемента есть обратный в $H$.
+    \item Возьмём $a, e \in H$. Тогда $e \circ a^{-1} = a^{-1} \in H$. Следовательно у любого элемента есть обратный в $H$.
     \item Из второго пункта получаем и замкнутость $H$ относительно $\circ$.
 \end{enumerate}
 
@@ -65,7 +65,7 @@ G / \text{Ker} \varphi \cong \text{Im} \varphi
 $\square$
 
 \begin{enumerate}
-    \item $\text{Ker} \varphi < G$. По критерию подргуппы $\forall a, b \in \text{Ker} \varphi \quad \varphi(a \circ b^{-1}) = \varphi(a) * \varphi({b^{-1}}) = e_{\varphi(G)} * e_{\varphi(G)} = e_{\varphi(G)} \Rightarrow a \circ b^{-1} \in \text{Ker} \varphi$.
+    \item $\text{Ker} \varphi < G$. По критерию подгруппы $\forall a, b \in \text{Ker} \varphi \quad \varphi(a \circ b^{-1}) = \varphi(a) * \varphi({b^{-1}}) = e_{\varphi(G)} * e_{\varphi(G)} = e_{\varphi(G)} \Rightarrow a \circ b^{-1} \in \text{Ker} \varphi$.
     \item $\text{Ker} \varphi \lhd G$, то есть $a (\text{Ker} \varphi) = (\text{Ker} \varphi) a \quad \forall a \in G$, так как $\forall t \in \text{Ker} \; \exists r \in \text{Ker} \varphi : a \circ t = r \circ a$. А это следует из того, что $\forall t \in \text{Ker} \varphi \; \exists r \in G = a t a^{-1}$, тогда $\varphi(r) = \varphi(a) * e_{\varphi(G)} * \varphi(a^{-1}) = \varphi(a \circ a^{-1})  = e_{\varphi(G)}$
 \end{enumerate}
 
@@ -78,6 +78,6 @@ $\square$
     \item Если $g' \in \varphi(G)$, то $g' = \varphi(g)$ для некоторого $g \in G$, т. к. $\varphi$ сюръективно. Значит $g' = \varphi(g) = \psi(g \text{Ker} \varphi)$. Значит $\psi$ --- сюръекция.
 \end{itemize}
 
-Следоватально это изоморфизм по определению.
+Следовательно это изоморфизм по определению.
 
 $\blacksquare$

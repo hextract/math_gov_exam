@@ -59,7 +59,7 @@ $f$, как предел равномерно сходящегося ряда и
 Введем ядро Дирихле:
 
 \begin{align*}
-    D_n(\xi) \coloneqq \sum_{k=-n}^n e^{ik\xi} = [\text{пусть } e^{i\xi} \neq 1] = \frac{e^{i(n+1)\xi} - e^{-in\xi}}{e^{i\xi} - 1} = \frac{e^{i(n+\frac{1}{2})\xi} - e^{-i(n+\frac{1}{2})\xi}}{e^{\frac{i\xi}{2}} - e^{-\frac{i\xi}{2}}} = \frac{\sin((n+1)\xi)}{\sin\left(\frac{\xi}{2}\right)}
+    D_n(\xi) \coloneqq \sum_{k=-n}^n e^{ik\xi} = [\text{пусть } e^{i\xi} \neq 1] = \frac{e^{i(n+1)\xi} - e^{-in\xi}}{e^{i\xi} - 1} = \frac{e^{i(n+\frac{1}{2})\xi} - e^{-i(n+\frac{1}{2})\xi}}{e^{\frac{i\xi}{2}} - e^{-\frac{i\xi}{2}}} = \frac{\sin\left((n+\frac{1}{2})\xi\right)}{\sin\left(\frac{\xi}{2}\right)}
 \end{align*}
 
 Если же $e^{i\xi} = 1$, то тривиально $D_n(\xi) = 2n+1$.
@@ -81,7 +81,7 @@ $f$, как предел равномерно сходящегося ряда и
     = \frac{1}{2\pi} \int_0^\pi \left(f(x-\tau) + f(x+\tau)\right) D_n(\tau) \;d\tau
 \end{gather*}
 
-\subsubsection{Лемма Римана об осциляции}
+\subsubsection{Лемма Римана об осцилляции}
 
 Пусть $f \in |I|((a, b))$.
 
@@ -123,7 +123,7 @@ TODO, возможно не нужен
 
 \begin{align*}
     f(x_0 - 0) &= \lim_{h \to +0} f(x_0 - h) \\
-    f(x_0 - 0) &= \lim_{h \to +0} f(x_0 + h) \\
+    f(x_0 + 0) &= \lim_{h \to +0} f(x_0 + h) \\
     f'_{-}(x_0) &= \lim_{h \to +0} \frac{f(x_0 - h) - f(x_0)}{h} \\
     f'_{+}(x_0) &= \lim_{h \to +0} \frac{f(x_0 + h) - f(x_0)}{h}
 \end{align*}
@@ -141,7 +141,7 @@ TODO, возможно не нужен
     \item $\exists f(x_k-0), f(x_k+0), k = 1, \dots, n-1$.
 \end{enumerate}
 
-\Def $f$ кусочно непрерывна на $[a, b]$, если она непрерывна, а ее производная кусочно непрерывна на $[a, b]$.
+\Def $f$ кусочно гладкая на $[a, b]$, если она непрерывна, а её производная кусочно непрерывна на $[a, b]$.
 
 \Theor{Дини}
 

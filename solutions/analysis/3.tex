@@ -16,7 +16,7 @@
 \end{equation*}
 Положим $\mathcal{I}^1$ тот отрезок, куда попала $y^*$. Далее всюду $\mathcal{I}^k := [a_k, b_k]$. 
 Будем строить вложенную стягивающуюся систему отрезков, в каждом из которых лежит $y^*$.
-Пусть мы построили систему из $k_0 - 1$ отрезков $\mathcal{I}^1 \supset \mathcal{I}^1 \supset \dots \supset \mathcal{I}^{k_0 - 1}$. Построим $\mathcal{I}^{k_0}$.
+Пусть мы построили систему из $k_0 - 1$ отрезков $\mathcal{I}^0 \supset \mathcal{I}^1 \supset \dots \supset \mathcal{I}^{k_0 - 1}$. Построим $\mathcal{I}^{k_0}$.
 
 Пусть $c_{k_0} = \frac{a_{k_0 - 1} + b_{k_0 - 1}}{2}$. В силу того, что $y^* \in \mathcal{I}^{k_0 - 1}$, еще более легко видеть:
 \begin{equation*}
@@ -50,7 +50,7 @@
 
 \Proof
 
-По определению инфинума $\exists a' \in \lfloor a, b\rceil: m \geq f(a) < y^*$, аналогично, по определению супремума $\exists b' \in \lfloor a, b\rceil: y^* < f(b) \leq M$.
+По определению инфимума $\exists a' \in \lfloor a, b\rceil: f(a') < y^*$, аналогично, по определению супремума $\exists b' \in \lfloor a, b\rceil: y^* < f(b')$.
 
 Заметим, что $[a', b'] \subset (m, M)$, значит $f \in C([a', b'])$, а также $f(a') < y^* < f(b')$. Значит, по теореме Больцано-Коши, получаем требуемое.
 

@@ -113,7 +113,7 @@
 
 \begin{align*}
 \left(e^{\lambda x}\right)^{(n)} + a_1 \left(e^{\lambda x}\right)^{(n-1)} + \dots + a_{n-1} \left(e^{\lambda x}\right)' + a_n e^{\lambda x} = \\
-    e^{\lambda x} \cdot (\lambda^n + a_1 \lambda^{n-1} + \dots + a_{n-1} \lambda + a_n) = e^{\lambda x} (\lambda) \cdot 0 = 0
+    e^{\lambda x} \cdot (\lambda^n + a_1 \lambda^{n-1} + \dots + a_{n-1} \lambda + a_n) = e^{\lambda x} \cdot \chi(\lambda) = 0
 \end{align*}
 
 \paragraph{($\Leftarrow$)} Покажем, что любое решение уравнения~\ref{eq:lin_diff_eq_const_coef} может быть записано в виде~\ref{eq:lin_diff_eq_const_coef_simple_sol}.
@@ -239,7 +239,7 @@ $P(\lambda) = p_0 (\lambda - q_1) (\lambda - q_2) \dots (\lambda - q_n)$
 
 По предыдущей лемме, $P(D)(e^{\mu x} x^k) = e^{\mu x} (D + (\mu - q_1) I) \circ \dots \circ (D + (\mu - q_n) I) (x^k)$
 
-Если $m \neq q_i$, то применение оператора дифференцирования не понижает степень $x^k$, а если $m = q_i$, то $(D + (\mu - q_n I)) (x^p) = (x^p)' = px^{p-1}$ -- степень понизилась на 1.
+Если $\mu \neq q_i$, то применение оператора дифференцирования не понижает степень $x^k$, а если $m = q_i$, то $(D + (\mu - q_n I)) (x^p) = (x^p)' = px^{p-1}$ -- степень понизилась на 1.
 
 Так как мы хотим в итоге получить константный ноль, то значит $\mu = q_i$ для как минимум $k+1$ различных индексов $i$ (Пояснение: чтобы $x_k$ превратился в 0 его нужно продифференцировать хотя бы $k+1$ раз).
 
@@ -379,7 +379,7 @@ c $F \in C(I)$.
     F(x) = e^{\alpha x} \left( p(x) \cos{\beta x} + q(x) \sin{\beta x}\right),
 \end{equation*}
 
-где $p, q \in \R[x]$, $m = \max{\deg p, \deg q}$.
+где $p, q \in \R[x]$, $m = \max\{\deg p, \deg q\}$.
 
 \Def Пространство квазимногочленов степени $m$ с показателем $\lambda$: $Q_{\lambda, m} \coloneqq \{r(x) \quad | \quad r(x) = e^{\alpha x} \left( p(x) \cos{\beta x} + q(x) \sin{\beta x} \right); \quad p, q \in \R_{m-1}[x]\}$.
 
@@ -453,7 +453,7 @@ $\chi(\lambda) = \xi(\lambda) \cdot (\lambda - \mu)^s$, где $\xi(\mu) \neq 0$
         \end{pmatrix}
     \end{equation*}
 
-    Так как $\mu$ -- не корень $xi$, то это матрица с ненулевой диагональю и она невырождена, и $\xi(D)$ -- тоже биекция.
+    Так как $\mu$ -- не корень $\xi$, то это матрица с ненулевой диагональю и она невырождена, и $\xi(D)$ -- тоже биекция.
 \end{enumerate}
 
 \Endproof
