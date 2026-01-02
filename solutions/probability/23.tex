@@ -2,7 +2,7 @@
 
 \Def Пусть задано вероятностное пространство $(\Omega, \mathcal{F}, \mathbb{P})$, события $A, B \in \mathcal{F}$, $\mathbb{P}(B) > 0$. \textit{Условная вероятность события $A$ при событии $B$:}
 \[
-\mathbb{P}(A \mid B) = \frac{\mathbb{P}(AB)}{\mathbb{P}(B)}.
+\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}.
 \]
 
 \textbf{Замечание.} Некоторые свойства условной вероятности:
@@ -16,7 +16,7 @@
 \mathbb{P}\left(\bigcap_{j=1}^k A_{i_j}\right) = \prod_{j=1}^k \mathbb{P}(A_{i_j}).
 \]
 
-Иными словами, события независимы в совокупности, если вероятность одновременного наступления \textit{любого набора} из этих событий равна \textit{произведению вероятностей} событий, входящих в этот набор. В частности, при $n=2$ события $A$ и $B$ независимы, если $\mathbb{P}(AB) = \mathbb{P}(A)\mathbb{P}(B)$.
+Иными словами, события независимы в совокупности, если вероятность одновременного наступления \textit{любого набора} из этих событий равна \textit{произведению вероятностей} событий, входящих в этот набор. В частности, при $n=2$ события $A$ и $B$ независимы, если $\mathbb{P}(A\cap B) = \mathbb{P}(A)\mathbb{P}(B)$.
 
 \textbf{Замечание.} В общем случае из попарной независимости событий $A_1, ... A_n$ не следует их независимость в совокупности
 
@@ -45,7 +45,7 @@
 \end{enumerate}
 
 
-\textbf{Формула полной вероятности.} Пусть даны события $A, B_1, \ldots, B_n, \ldots;$ $\mathbb{P}(B_i) > 0$, причём $B_i B_j = \varnothing~(i \ne j)$ и $\bigcup\limits_{i=1}^\infty B_i \supset A$ (например, $\bigcup\limits_{i=1}^\infty B_i = \Omega$). 
+\textbf{Формула полной вероятности.} Пусть даны события $A, B_1, \ldots, B_n, \ldots;$ $\mathbb{P}(B_i) > 0$, причём $B_i \cap B_j = \varnothing~(i \ne j)$ и $\bigcup\limits_{i=1}^\infty B_i \supset A$ (например, $\bigcup\limits_{i=1}^\infty B_i = \Omega$). 
 
 \textit{Тогда справедлива формула:}
 \[
@@ -67,7 +67,7 @@ A = A \cap \Omega = A \cap \left(\bigcup_{i=1}^{\infty} B_i\right) = \bigcup_{i=
 \Endproof
 
 
-\textbf{Формулы Байеса.} Пусть даны события $A, H_1, \ldots, H_n, \ldots;$ $\mathbb{P}(A) > 0$, $\mathbb{P}(H_i) > 0$, причём $H_i H_j = \varnothing~(i \ne j)$ и $\bigcup\limits_{i=1}^\infty H_i \supset A$ (например, $\bigcup\limits_{i=1}^\infty H_i = \Omega$).
+\textbf{Формулы Байеса.} Пусть даны события $A, H_1, \ldots, H_n, \ldots;$ $\mathbb{P}(A) > 0$, $\mathbb{P}(H_i) > 0$, причём $H_i \cap H_j = \varnothing~(i \ne j)$ и $\bigcup\limits_{i=1}^\infty H_i \supset A$ (например, $\bigcup\limits_{i=1}^\infty H_i = \Omega$).
 
 \textit{Тогда справедливы формулы Байеса:}
 \[
@@ -80,8 +80,8 @@ A = A \cap \Omega = A \cap \left(\bigcup_{i=1}^{\infty} B_i\right) = \bigcup_{i=
 Согласно формуле полной вероятности, в знаменателе дроби стоит вероятность события $A$. Тогда
 \[
 \frac{\mathbb{P}(H_i)\, \mathbb{P}(A \mid H_i)}{\mathbb{P}(A)}
-= \frac{\mathbb{P}(H_i)\, \mathbb{P}(A H_i)}{\mathbb{P}(A)\, \mathbb{P}(H_i)}
-= \frac{\mathbb{P}(A H_i)}{\mathbb{P}(A)}
+= \frac{\mathbb{P}(H_i)\, \mathbb{P}(A \cap H_i)}{\mathbb{P}(A)\, \mathbb{P}(H_i)}
+= \frac{\mathbb{P}(A \cap H_i)}{\mathbb{P}(A)}
 = \mathbb{P}(H_i \mid A).
 \]
 

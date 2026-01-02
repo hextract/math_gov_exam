@@ -1,11 +1,5 @@
 \subsection{Дифференциальные уравнения}
 
-\fbox{
-    \begin{minipage}{0.9\linewidth}
-        Большая часть содержимого этого раздела сгенерирована. \\
-        Стоит обращать внимание на общие методы решения, а не на числовые выкладки.
-    \end{minipage}
-}
 
 \subsubsection{Уравнения с разделяющимися переменными}
 
@@ -282,29 +276,29 @@
 Вычисляя определитель, получаем:
 
 \begin{equation*}
-(2-\lambda)((2-\lambda)^2 - 1) - 1((2-\lambda)\cdot 0 - 1\cdot 0) + 0 = 0
+(2-\lambda)\big((2-\lambda)^2 - 1\big) - 1\big(1\cdot(2-\lambda) - 1\cdot 0\big) + 0 = 0
 \end{equation*}
 
 \begin{equation*}
-(2-\lambda)((2-\lambda)^2 - 1) = 0
+(2-\lambda)\big((2-\lambda)^2 - 1\big) - (2-\lambda) = 0
 \end{equation*}
 
 \begin{equation*}
-(2-\lambda)(\lambda^2 - 4\lambda + 3) = 0
+(2-\lambda)\big((2-\lambda)^2 - 2\big) = 0
 \end{equation*}
 
 Отсюда собственные значения:
 
 \begin{equation*}
-    \lambda_1 = 1, \quad \lambda_2 = 2, \quad \lambda_3 = 3
+    \lambda_1 = 2-\sqrt{2}, \quad \lambda_2 = 2, \quad \lambda_3 = 2+\sqrt{2}
 \end{equation*}
 
 Для каждого собственного значения находим собственный вектор \(v_i\):
 
 \begin{align*}
-    \lambda_1 = 1: & \quad v_1 = \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} \\
+    \lambda_1 = 2-\sqrt{2}: & \quad v_1 = \begin{pmatrix} 1 \\ -\sqrt{2} \\ 1 \end{pmatrix} \\
     \lambda_2 = 2: & \quad v_2 = \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} \\
-    \lambda_3 = 3: & \quad v_3 = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+    \lambda_3 = 2+\sqrt{2}: & \quad v_3 = \begin{pmatrix} 1 \\ \sqrt{2} \\ 1 \end{pmatrix}
 \end{align*}
 
 Общее решение системы записывается как линейная комбинация собственных решений:
@@ -312,11 +306,11 @@
 \begin{equation*}
     \begin{pmatrix} x(t) \\ y(t) \\ z(t) \end{pmatrix} =
     C_1
-    \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} e^{t} +
+    \begin{pmatrix} 1 \\ -\sqrt{2} \\ 1 \end{pmatrix} e^{(2-\sqrt{2})t} +
     C_2
     \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} e^{2t} +
     C_3
-    \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} e^{3t}
+    \begin{pmatrix} 1 \\ \sqrt{2} \\ 1 \end{pmatrix} e^{(2+\sqrt{2})t}
 \end{equation*}
 
 где \(C_1, C_2, C_3\) — произвольные константы.
@@ -484,6 +478,276 @@
 \end{equation*}
 где \(C_1, C_2, \dots, C_k\) — произвольные константы.
 
-\subsubsection{Линейное уравнение второго порядка с переменными коэффициентами}
+\subsubsection{15. Автономная система: положение равновесия и фазовый портрет}
 
-TODO
+\textbf{Условие.} Найти все действительные решения системы дифференциальных уравнений
+\[
+\begin{cases}
+\dot{x} = 4x + 3y \\
+\dot{y} = 3x + 4y
+\end{cases}
+\]
+Найти положение равновесия автономной системы, определить его характер и нарисовать фазовые траектории системы в окрестности положения равновесия.
+
+\Solution
+
+\textbf{Часть 1. Нахождение общего решения.}
+
+Записываем систему в матричной форме:
+\[
+\begin{pmatrix} \dot{x} \\ \dot{y} \end{pmatrix} = 
+\begin{pmatrix} 4 & 3 \\ 3 & 4 \end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix}
+\]
+
+\textit{Шаг 1. Находим собственные значения.}
+
+Характеристическое уравнение:
+\[
+\det(A - \lambda I) = 
+\begin{vmatrix} 4 - \lambda & 3 \\ 3 & 4 - \lambda \end{vmatrix} 
+= (4 - \lambda)^2 - 9 = \lambda^2 - 8\lambda + 16 - 9 = \lambda^2 - 8\lambda + 7 = 0.
+\]
+
+Корни: $\lambda_{1,2} = \frac{8 \pm \sqrt{64 - 28}}{2} = \frac{8 \pm 6}{2}$.
+
+\[
+\lambda_1 = 7, \quad \lambda_2 = 1.
+\]
+
+\textit{Шаг 2. Находим собственные векторы.}
+
+Для $\lambda_1 = 7$:
+\[
+(A - 7I)v = 0 \Rightarrow 
+\begin{pmatrix} -3 & 3 \\ 3 & -3 \end{pmatrix} v = 0.
+\]
+
+Уравнение: $-3v_1 + 3v_2 = 0 \Rightarrow v_1 = v_2$.
+
+Собственный вектор: $v_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$.
+
+Для $\lambda_2 = 1$:
+\[
+(A - I)v = 0 \Rightarrow 
+\begin{pmatrix} 3 & 3 \\ 3 & 3 \end{pmatrix} v = 0.
+\]
+
+Уравнение: $3v_1 + 3v_2 = 0 \Rightarrow v_1 = -v_2$.
+
+Собственный вектор: $v_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$.
+
+\textit{Шаг 3. Записываем общее решение.}
+
+\[
+\begin{pmatrix} x(t) \\ y(t) \end{pmatrix} = 
+C_1 \begin{pmatrix} 1 \\ 1 \end{pmatrix} e^{7t} + 
+C_2 \begin{pmatrix} 1 \\ -1 \end{pmatrix} e^{t}
+\]
+
+Или в координатной форме:
+\[
+x(t) = C_1 e^{7t} + C_2 e^{t}, \quad y(t) = C_1 e^{7t} - C_2 e^{t}.
+\]
+
+\textbf{Часть 2. Положение равновесия.}
+
+Положение равновесия — это точка, в которой $\dot{x} = \dot{y} = 0$:
+\[
+\begin{cases}
+4x + 3y = 0 \\
+3x + 4y = 0
+\end{cases}
+\]
+
+Определитель системы: $\det A = 16 - 9 = 7 \neq 0$, значит единственное решение — $(x, y) = (0, 0)$.
+
+\textbf{Положение равновесия: $(0, 0)$.}
+
+\textbf{Часть 3. Характер положения равновесия.}
+
+Характер определяется собственными значениями матрицы $A$:
+\begin{itemize}
+    \item $\lambda_1 = 7 > 0$
+    \item $\lambda_2 = 1 > 0$
+\end{itemize}
+
+Оба собственных значения положительные и различные, поэтому положение равновесия — \textbf{неустойчивый узел}.
+
+\textbf{Часть 4. Фазовый портрет.}
+
+Введём новые координаты $(\xi, \eta)$ вдоль собственных векторов:
+\[
+\xi = x + y, \quad \eta = x - y.
+\]
+
+Тогда:
+\[
+\dot{\xi} = \dot{x} + \dot{y} = (4x + 3y) + (3x + 4y) = 7(x + y) = 7\xi,
+\]
+\[
+\dot{\eta} = \dot{x} - \dot{y} = (4x + 3y) - (3x + 4y) = x - y = \eta.
+\]
+
+В новых координатах система расцеплена:
+\[
+\dot{\xi} = 7\xi, \quad \dot{\eta} = \eta.
+\]
+
+Решения: $\xi = \xi_0 e^{7t}$, $\eta = \eta_0 e^{t}$.
+
+Исключаем параметр $t$:
+\[
+t = \ln\left(\frac{\eta}{\eta_0}\right), \quad \xi = \xi_0 e^{7\ln(\eta/\eta_0)} = \xi_0 \left(\frac{\eta}{\eta_0}\right)^7.
+\]
+
+\[
+\xi = C \cdot \eta^7, \quad \text{где } C = \frac{\xi_0}{\eta_0^7}.
+\]
+
+\drawsomemedium{pix/problems_15.png}
+
+\textit{Общее решение:}
+\[
+x(t) = C_1 e^{7t} + C_2 e^{t}, \quad y(t) = C_1 e^{7t} - C_2 e^{t}.
+\]
+
+\textit{Положение равновесия:} $(0, 0)$.
+
+\textit{Характер:} Неустойчивый узел ($\lambda_1 = 7 > \lambda_2 = 1 > 0$).
+
+\textit{Фазовый портрет:} Траектории выходят из начала координат, касаясь «медленного» направления $y = -x$, и уходят на бесконечность вдоль «быстрого» направления $y = x$.
+
+\subsubsection{16. Составление ОДУ по частным решениям}
+
+\textbf{Условие.} Составить однородное дифференциальное уравнение с постоянными коэффициентами наименьшего порядка, имеющее частные решения: $y_1 = e^x$, $y_2 = x \sin 2x$.
+
+\Solution
+
+\textbf{Теоретическая основа.}
+
+Для линейного однородного ОДУ с постоянными коэффициентами:
+\[
+y^{(n)} + a_{n-1} y^{(n-1)} + \ldots + a_1 y' + a_0 y = 0
+\]
+
+решения определяются корнями характеристического уравнения:
+\[
+\lambda^n + a_{n-1} \lambda^{n-1} + \ldots + a_1 \lambda + a_0 = 0.
+\]
+
+\begin{itemize}
+    \item Простому вещественному корню $\lambda$ соответствует решение $e^{\lambda x}$.
+    \item Кратному вещественному корню $\lambda$ кратности $k$ соответствуют решения $e^{\lambda x}, x e^{\lambda x}, \ldots, x^{k-1} e^{\lambda x}$.
+    \item Паре комплексно сопряжённых корней $\alpha \pm i\beta$ соответствуют решения $e^{\alpha x} \cos \beta x$, $e^{\alpha x} \sin \beta x$.
+    \item Кратной паре $\alpha \pm i\beta$ кратности $k$ соответствуют решения $x^j e^{\alpha x} \cos \beta x$, $x^j e^{\alpha x} \sin \beta x$ для $j = 0, 1, \ldots, k-1$.
+\end{itemize}
+
+\textbf{Шаг 1. Анализ решения $y_1 = e^x$.}
+
+Решение $e^x$ соответствует простому корню $\lambda_1 = 1$.
+
+\textbf{Шаг 2. Анализ решения $y_2 = x \sin 2x$.}
+
+Решение $x \sin 2x$ имеет вид $x \cdot e^{0 \cdot x} \sin 2x$, т.е. $\alpha = 0$, $\beta = 2$, и множитель $x$ означает кратность не менее 2.
+
+Следовательно, $\lambda_{2,3} = \pm 2i$ — комплексно сопряжённая пара кратности 2.
+
+Этому соответствуют 4 линейно независимых решения:
+\[
+\cos 2x, \quad \sin 2x, \quad x \cos 2x, \quad x \sin 2x.
+\]
+
+\textbf{Шаг 3. Минимальное характеристическое уравнение.}
+
+Характеристическое уравнение должно иметь корни:
+\begin{itemize}
+    \item $\lambda = 1$ (простой);
+    \item $\lambda = 2i$ (кратность 2);
+    \item $\lambda = -2i$ (кратность 2).
+\end{itemize}
+
+Характеристический многочлен:
+\[
+p(\lambda) = (\lambda - 1) \cdot (\lambda - 2i)^2 \cdot (\lambda + 2i)^2 = (\lambda - 1) \cdot \left[(\lambda - 2i)(\lambda + 2i)\right]^2.
+\]
+
+Вычисляем:
+\[
+(\lambda - 2i)(\lambda + 2i) = \lambda^2 + 4.
+\]
+
+\[
+p(\lambda) = (\lambda - 1)(\lambda^2 + 4)^2.
+\]
+
+Раскроем $(\lambda^2 + 4)^2$:
+\[
+(\lambda^2 + 4)^2 = \lambda^4 + 8\lambda^2 + 16.
+\]
+
+Теперь умножаем на $(\lambda - 1)$:
+\[
+p(\lambda) = (\lambda - 1)(\lambda^4 + 8\lambda^2 + 16).
+\]
+
+\[
+p(\lambda) = \lambda^5 + 8\lambda^3 + 16\lambda - \lambda^4 - 8\lambda^2 - 16.
+\]
+
+\[
+p(\lambda) = \lambda^5 - \lambda^4 + 8\lambda^3 - 8\lambda^2 + 16\lambda - 16.
+\]
+
+\textbf{Шаг 4. Записываем дифференциальное уравнение.}
+
+Дифференциальное уравнение получается заменой $\lambda^k \to y^{(k)}$:
+
+\[
+y^{(5)} - y^{(4)} + 8y''' - 8y'' + 16y' - 16y = 0.
+\]
+
+\textbf{Проверка.}
+
+\textit{Проверим $y_1 = e^x$:}
+\[
+y^{(k)} = e^x \text{ для всех } k.
+\]
+\[
+e^x - e^x + 8e^x - 8e^x + 16e^x - 16e^x = 0. \quad \checkmark
+\]
+
+\textit{Проверим $y_2 = x \sin 2x$:}
+
+Вычислим производные:
+\begin{align*}
+y &= x \sin 2x \\
+y' &= \sin 2x + 2x \cos 2x \\
+y'' &= 2\cos 2x + 2\cos 2x - 4x\sin 2x = 4\cos 2x - 4x\sin 2x \\
+y''' &= -8\sin 2x - 4\sin 2x - 8x\cos 2x = -12\sin 2x - 8x\cos 2x \\
+y^{(4)} &= -24\cos 2x - 8\cos 2x + 16x\sin 2x = -32\cos 2x + 16x\sin 2x \\
+y^{(5)} &= 64\sin 2x + 16\sin 2x + 32x\cos 2x = 80\sin 2x + 32x\cos 2x
+\end{align*}
+
+Подставляем:
+\begin{align*}
+&y^{(5)} - y^{(4)} + 8y''' - 8y'' + 16y' - 16y = \\
+&= (80\sin 2x + 32x\cos 2x) - (-32\cos 2x + 16x\sin 2x) \\
+&\quad + 8(-12\sin 2x - 8x\cos 2x) - 8(4\cos 2x - 4x\sin 2x) \\
+&\quad + 16(\sin 2x + 2x\cos 2x) - 16(x\sin 2x) \\
+&= 80\sin 2x + 32x\cos 2x + 32\cos 2x - 16x\sin 2x \\
+&\quad - 96\sin 2x - 64x\cos 2x - 32\cos 2x + 32x\sin 2x \\
+&\quad + 16\sin 2x + 32x\cos 2x - 16x\sin 2x \\
+&= (80 - 96 + 16)\sin 2x + (32 - 64 + 32)x\cos 2x \\
+&\quad + (32 - 32)\cos 2x + (-16 + 32 - 16)x\sin 2x \\
+&= 0 \cdot \sin 2x + 0 \cdot x\cos 2x + 0 \cdot \cos 2x + 0 \cdot x\sin 2x = 0. \quad \checkmark
+\end{align*}
+
+\textbf{Ответ.}
+
+Минимальный порядок уравнения: $n = 5$.
+
+Уравнение:
+\[
+\boxed{y^{(5)} - y^{(4)} + 8y''' - 8y'' + 16y' - 16y = 0.}
+\]
