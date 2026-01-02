@@ -1,1 +1,145 @@
 \subsection{Прямые и плоскости в пространстве. Формулы расстояния от точки до прямой и до плоскости, между прямыми в пространстве. Углы между прямыми и плоскостями.}
+
+Прямая на плоскости может быть задана:
+\begin{enumerate}
+    \item Векторным уравнением в параметрической форме:
+    \begin{equation}
+        \mathbf{r} = \mathbf{r}_0 + \mathbf{a} t \quad (\mathbf{a} \neq \mathbf{0})
+    \end{equation}
+    где $\mathbf{a}$ -- направляющий вектор, $\mathbf{r}_0$ -- радиус-вектор фиксированной точки на прямой.
+    
+    \item Нормальным векторным уравнением
+    \begin{equation}
+        ( \mathbf{r} - r_0, \mathbf{n}) = 0 \quad (\mathbf{n} \neq \mathbf{0})
+    \end{equation}
+    где $n$ -- нормальный вектор прямой.
+
+    \item Общим уравнением в декартовой системе координат
+    \begin{equation}
+        Ax + By + C = 0 \quad (A^2 + B^2 \neq 0)
+    \end{equation}
+\end{enumerate}
+
+Уравнение $2$ можно записать в общей декартовой системе координат в виде $(\mathbf{r}, \mathbf{n}) = D$.
+
+Если уравнение $1$ записать в общей декартовой системе координат, то можно получить параметрическое уравнение прямой на плоскости.
+\begin{equation}
+    x = x_0 + \alpha t, \quad y = y_0 + \beta t
+\end{equation}
+Или в канонической форме:
+\begin{equation}
+    \frac{x + x_0}{\alpha} = \frac{y - y_0}{\beta}
+\end{equation}
+
+Уравнение прямой, проходящей через 2 различные точки может быть записано в векторной форме
+\begin{equation}
+    \mathbf{r} = \mathbf{r}_1 + (\mathbf{r_2} - \mathbf{r}_1)t
+\end{equation}
+И в координатной форме:
+\begin{equation}
+    \frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1}
+\end{equation}
+
+Расстояние от точки с радиус-вектором $\mathbf{r}_1$ до прямой, заданной векторным уравнением $2$, равно
+\begin{equation}
+    |Ax_1+By_1+C|/\sqrt{A^2+B^2}
+\end{equation}
+
+Плоскость может быть задана
+\begin{enumerate}
+    \item векторным параметрическим уравнением 
+    \begin{equation}
+        \mathbf{r} = \mathbf{r}_0+\mathbf{a}u + \mathbf{b}v
+    \end{equation}
+    где $\mathbf{a, b}$ -- направляющие векторы плоскости, $\mathbf{r}_0$ -- радиус вектор фиксированной точки плоскости.
+    \item Нормальным векторным уравнением
+    \begin{equation}
+        (\mathbf{r} - \mathbf{r}_0, \mathbf{n}) = 0 \quad (\mathbf{n} \neq 0)
+    \end{equation}
+    где $\mathbf{n}$ -- нормальный вектор плоскости.
+    \item Общим уравнением в декартовой системе координат
+    \begin{equation}
+        Ax+By+Cz+D=0 \quad (A^2+B^2+C^2 \neq 0)
+    \end{equation}
+\end{enumerate}
+
+При этом уравнение $(10)$ можно записать в виде $(\mathbf{r}, \mathbf{n})=D$, а уравнение $(9)$ в виде $(\mathbf{r} - \mathbf{r}_0, \mathbf{a}, \mathbf{b}) = 0$. Последнее уравнение в координатной форме равносильно уравнению
+
+\begin{equation*}
+    \begin{vmatrix}
+        x-x_0 & y-y_0 & z-z_0 \\
+        \alpha_1 & \beta_1 & \gamma_1 \\
+        \alpha_2 & \beta_2 & \gamma_2 \\
+    \end{vmatrix}
+    =0
+\end{equation*}
+
+Уравнение плоскости через три точки можно записать как
+\begin{equation}
+    (\mathbf{r} - \mathbf{r}_0, \mathbf{r}_1 - \mathbf{r}_0, \mathbf{r}_2 - \mathbf{r}_0) = 0
+\end{equation}
+И в координатной форме
+\begin{equation*}
+        \begin{vmatrix}
+        x-x_0 & y-y_0 & z-z_0 \\
+        x_1 - x_0 & y_1 - y_0 & z_1 - z_0 \\
+        x_2 - x_0 & y_2 - y_0 & z_2 - z_0 \\
+    \end{vmatrix}
+    =0
+\end{equation*}
+Здесь $x_i, y_i, z_i$ - декартовы координаты точек, а $\mathbf{r}_i$ - соответствующие радиус-векторы.
+
+Расстояние от точки с радиус-вектором $\mathbf{r}_1$ до плоскости, заданной уравнением $(10)$ равно
+\begin{equation*}
+    \frac{(\mathbf{r}_1-\mathbf{r}_0, \mathbf{n})}{|\mathbf{n}|}
+\end{equation*}
+
+Расстояние от точки $M(x_1, y_1, z_1)$ до плоскости, заданной в прямоугольной системе координат уравнением $(11)$ равно
+\begin{equation*}
+    \frac{Ax_1+By_1+Cz_1}{\sqrt{A^2+B^2+C^2}}
+\end{equation*}
+
+Прямая в пространстве может быть задана:
+\begin{enumerate}
+    \item Векторным уравнением в параметрической форме:
+    \begin{equation}
+        \mathbf{r} = \mathbf{r}_0 + \mathbf{a} t \quad (\mathbf{a} \neq \mathbf{0})
+    \end{equation}
+    где $\mathbf{a}$ -- направляющий вектор, $\mathbf{r}_0$ -- радиус-вектор фиксированной точки на прямой.
+    
+    \item Векторным уравнением:
+    \begin{equation*}
+        [ \mathbf{r} - r_0, \mathbf{a}] = 0 \quad (\mathbf{a} \neq \mathbf{0})
+    \end{equation*}
+    или
+    \begin{equation*}
+        [\mathbf{r}, \mathbf{a}] = \mathbf{b} \quad (\mathbf{a} \neq \mathbf{0}, (\mathbf{a}, \mathbf{b} = 0))
+    \end{equation*}
+\end{enumerate}
+
+Если уравнение $(13)$ записать в общей декартовой системе координат, то получим параметрические уравнения прямой линии:
+\begin{equation*}
+    x=x_0+\alpha t, \quad y=y_0+\beta t, \quad z = z_0 + \gamma t
+\end{equation*}
+Исключением параметра $t$ параметрические уравнения приводятся к канонической форме:
+\begin{equation*}
+    \frac{x-x_0}{\alpha} = \frac{y - y_0}{\beta} = \frac{z-z_0}{\gamma}
+\end{equation*}
+
+Уравнение прямой через две точки задается в векторной форме
+\begin{equation*}
+    \mathbf{r} = \mathbf{r}_1 + (\mathbf{r}_2 - \mathbf{r}_1)t
+\end{equation*}
+и в координатной форме
+\begin{equation*}
+    \frac{x-x_1}{x_2-x_2} = \frac{y-y_1}{y_2-y_1} = \frac{z-z_1}{z_2-z_1}
+\end{equation*}
+
+Формула расстояния между прямыми может быть получена из формулы расстояния от точки до плоскости. Эти операции оставляются читателю в качестве несложного домашнего упражнения.
+
+Угол между прямыми в пространстве с направляющими векторами $\mathbf{a}$ и $\mathbf{b}$ выражается как
+\begin{equation*}
+    \cos(\phi) = |\frac{(\mathbf{a}, \mathbf{b})}{|\mathbf{a}| \cdot |\mathbf{b}|}|
+\end{equation*}
+
+Угол между плоскостями -- угол между векторами нормали.
