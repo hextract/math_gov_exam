@@ -8,3 +8,4 @@
 **/*.fdb_latexmk
 **/*.fls
 .idea/
+.vscode/
