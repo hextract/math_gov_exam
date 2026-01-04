@@ -139,4 +139,147 @@ $S_n V_n$ равномерно стремится к 0 как произведе
 
 \subsubsection{Непрерывность, интегрируемость и дифференцируемость суммы функционального ряда}
 
-Лекции потерялись. Главное -- не расстраиваться.
+\textit{Лекции 23-24 потерялись, так что часть билета ниже приведена из \href{https://old.mipt.ru/education/chair/mathematics/study/uchebniki/ЛпМА_Бесов.pdf}{учебника Бесова, параграф 16.3}.}
+
+\textbf{НЕПРЕРЫВНОСТЬ}
+
+\Theor{О непрерывности предельной функции при равномерной сходимости функционального ряда}
+
+Пусть $f_n \overset{E}{\rightrightarrows} f, n \to \infty$, причем $f_n$ непрерывны в $x_0$ по множеству $E$.
+
+Тогда $f$ непрерывна в $x_0$ по множеству $E$.
+
+\Proof
+
+В силу равномерной сходимости: $\forall \eps > 0 \;\exists n \in \N \;\forall x \in E \; |f(x) - f_n(x)| < \eps$.
+
+А в силу непрерывности $f_n$: $\forall \eps > 0 \;\exists \delta > 0 \;\forall x \in E \cap U_{\delta}(x_0) \; |f_n(x) - f_n(x_0)| < \eps$.
+
+Получаем, что 
+
+\begin{gather*}
+    \forall \eps > 0 \;\exists n \in \N \;\exists \delta > 0: \\
+    |f(x) - f(x_0)| \leq |f(x) - f_n(x)| + |f_n(x) - f_n(x_0)| + |f_n(x_0) - f(x_0)| \leq 3\eps.
+\end{gather*}
+
+Что дает непрерывность $f$ по определению.
+
+\Endproof
+
+\Theor{О непрерывности суммы равномерно сходящегося функционального ряда}
+
+Пусть $u_k: E \rightarrow \Cmp$ непрерывны в $x_0$ и ряд $\sum u_k$ сходится равномерно на $E$. 
+
+Тогда сумма $S(x) = \sum u_k(x)$ непрерывна в $x_0$ по множеству $E$.
+
+\Proof
+
+Достаточно применить предыдущую теорему для $f_n = \sum_{k=1}^n u_k, f = S$.
+
+\Endproof
+
+\textbf{ИНТЕГРИРОВАНИЕ}
+
+\Theor{Об интегрировании функциональной последовательности}
+
+Пусть $f_n \in C([a, b]) \;\forall n \in \N$ и $f_n \rightrightarrows f, n \to \infty$. 
+
+Тогда 
+
+\begin{equation*}
+    \int_a^x f_n(t) dt \overset{[a, b]}{\rightrightarrows} \int_a^x f(t)dt, \; n \to \infty.
+\end{equation*}
+
+\Proof
+
+Так как члены ряда непрерывны и ряд сходится равномерно, то $f \in C([a, b])$.
+
+\begin{gather*}
+    \forall \eps > 0 \;\exists N \in \N \;\forall x \in [a, b] \;\forall n \geq N \sup_{a \leq x \leq b} \left|\int_a^x f_n(t)dt - \int_a^x f(t)dt\right| \leq \int_a^b |f_n(t) - f(t)| dt < \eps (b-a)
+\end{gather*}
+
+\Endproof
+
+\Consequence В условиях теоремы выше
+
+\begin{equation*}
+    \lim_{n \to \infty} \int_a^x f_n(t) dt = \int_a^x \lim_{n \to \infty} f_n(t) dt \quad\forall x \in [a, b].
+\end{equation*}
+
+\Theor{О почленном интегрировании суммы функционального ряда}
+
+Пусть $u_k \in C([a, b]) \;\forall k \in \N$; $\sum_{k=1}^{\infty} u_k$ равномерно сходится на $[a, b]$.
+
+Тогда ряд 
+
+\begin{equation*}
+    \sum_{k=1}^{\infty} \int_a^x u_k(t) dt
+\end{equation*}
+
+равномерно сходится на $[a, b]$, причем
+
+\begin{equation*}
+    \int_a^x \sum_{k=1}^{\infty} u_k(t) dt = \sum_{k=1}^{\infty} \int_a^x u_k(t) dt \quad\forall x \in [a, b].
+\end{equation*}
+
+\Proof
+
+Достаточно применить предыдущую теорему и следствие из нее, взяв $f_n(x) = \sum_{k=1}^n u_k(x)$, $f(x) = \sum_{k=1}^{\infty} (x)$.
+
+\Endproof
+
+\textbf{ДИФФЕРЕНЦИРОВАНИЕ}
+
+\Theor{О дифференцировании функциональной последовательности} 
+
+Пусть 
+\begin{enumerate}
+    \item $f_n \in C^1([a, b]) \;\forall n \in \N$;
+    \item $\exists c \in [a, b]: f_n(x)$ сходится в точке $c$;
+    \item $f'_n \overset{[a, b]}{\rightrightarrows} \phi$.
+\end{enumerate}
+
+Тогда $f_n \overset{[a, b]}{\rightrightarrows} f$, причем $f \in C^1([a, b])$ и $f' = \phi$.
+
+\Proof
+
+$\phi \in C([a, b])$, так как $f'_n$ непрерывно и последовательность сходтся равномерно. Далее по формуле Ньютона-Лейбница
+
+\begin{equation*}
+    f_n(x) - f_n(c) = \int_c^x f'_n(t) dt \rightrightarrows \int_c^x \phi(t) dt, \; n \to \infty.
+\end{equation*}
+
+Отсюда $f_n$ сходится равномерно к некоторой функции $f$.
+
+Переходя к пределу при $n \to \infty$, получаем
+
+\begin{equation*}
+    f(x) - f(c) = \int_c^x \phi(t) dt \;\forall x \in [a, b].
+\end{equation*}
+
+Правая часть является дифференцируемой на $[a, b]$ функцией от $x$ как интеграл с переменным верхним пределом от непрерывной функции, следовательно, таковой является и $f$.
+
+Дифференцируя это равенство, получаем, что $f'(x) = \phi(x) \;\forall x \in [a, b]$.
+
+\Endproof
+
+\Theor{О почленном дифференцировании функционального ряда}
+
+Пусть 
+\begin{enumerate}
+    \item $u_k \in C^1([a, b]) \;\forall k \in \N$;
+    \item Ряд $\sum u_k$ сходится хотя бы в одной точке $c \in [a, b]$;
+    \item Ряд $\sum u'_k$ сходится равномерно на $[a, b]$.
+\end{enumerate}
+
+Тогда ряд $\sum u_k$ сходится равномерно на $[a, b]$, причем его сумма непрерывно дифференцируема на $[a, b]$ и ее можно представить, формального почленного дифферецируя ряд:
+
+\begin{equation*}
+    \left(\sum_{k=1}^{\infty} u_k\right)' = \sum_{k=1}^{\infty} u'_k.
+\end{equation*}
+
+\Proof
+
+Достаточно применить предыдущую теорему для $f_n = \sum_{k=1}^n u_k$. 
+
+\Endproof
