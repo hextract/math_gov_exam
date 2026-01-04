@@ -1,1 +1,160 @@
 \subsection{Разделяющие суффиксы, теорема Майхилла-Нероуда.}
+
+\Def \textit{Алфавит} $\Sigma$ --- конечное множество.
+
+\Def \textit{Слово} над алфавитом --- конечная последовательность элементов $\Sigma$.
+
+\Def \textit{Пустое слово} ($\varepsilon$) --- последовательность из 0 элементов.
+
+\Def 
+
+\textit{Конкатенация} $x, y$ ($xy$) --- слова $x$ и $y$, записанные подряд.
+
+$x^n := \underbrace{xx \dots x}_{n}$
+
+\Def $\Sigma^*$ --- множество всех слов над алфавитом $\Sigma$.
+
+\Def $\mathcal{L} \subseteq \Sigma^*$ называется \textit{формальным языком}.
+
+\Def
+
+\begin{enumerate}
+    \item \textit{Конкатенация языков} $\mathcal{X} \cdot \mathcal{Y} := \{xy \mid x \in \mathcal{X}, y \in \mathcal{Y}\}$
+    
+    \item \textit{Степень} $\mathcal{X}^n := \underbrace{\mathcal{X} \cdot \mathcal{X} \dots \mathcal{X}}_n$
+    
+    $\mathcal{X}^0 := \{ \varepsilon \}$
+    \item \textit{Объединение языков} $\mathcal{X} \vert \mathcal{Y} := \mathcal{X} + \mathcal{Y} := \{z \mid z \in \mathcal{X} \cup \mathcal{Y} \}$
+
+    \item \textit{Звезда Клини} $\mathcal{X}^* := \mathcal{X}^0 + \mathcal{X}^1 + \mathcal{X}^2 + \dots$
+
+    \item \textit{Плюс Клини} $\mathcal{X}^+ := \mathcal{X}^1 + \mathcal{X}^2 + \dots$
+\end{enumerate}
+
+\Def Пусть задан алфавит $\Sigma$.
+
+REG --- множество \textit{регулярных языков}, при этом:
+
+\begin{enumerate}
+    \item $\varnothing \in $ REG.
+    \item $\forall a \in \Sigma \quad \{ a \} \in $ REG.
+    \item $\forall \mathcal{A}, \mathcal{B} \in $ REG $\quad \mathcal{A} \cdot \mathcal{B} \in $ REG.
+    \item $\forall \mathcal{A}, \mathcal{B} \in $ REG $\quad \mathcal{A} + \mathcal{B} \in $ REG.
+    \item $\forall \mathcal{A} \in $ REG $\quad \mathcal{A}^* \in $ REG.
+\end{enumerate}
+
+\underline{Других нет.}
+
+\textbf{Следствие.}
+
+\begin{itemize}
+    \item $\{ \varepsilon \} \in $ REG.
+    \item $\mathcal{A}^+ \in $ REG.
+\end{itemize}
+
+\Def \textit{Конечный автомат} --- кортеж ($\Sigma, Q, Q_f, q_0, \delta$), где:
+
+\begin{enumerate}
+    \item $\Sigma$ --- алфавит.
+    \item $Q$ --- множество состояний.
+    \item $Q_f \subseteq Q$ --- множество терминальных состояний.
+    \item $q_0 \in Q$ --- начальное состояние.
+    \item $\delta$ --- правила перехода.
+\end{enumerate}
+
+\Def \textit{ДКА (детерменированный конечный автомат)} --- конечный автомат, у которого $\delta : Q \times \Sigma \to Q$.
+
+\Def \textit{НКА (недетерменированный конечный автомат)} --- конечный автомат, у которого $\delta : Q \times \Sigma \to 2^Q$.
+
+\Def \textit{ПДКА (полный детерменированный конечный автомат)} --- ДКА, у которого область определения $\delta$ совпадает с $Q \times \Sigma$.
+
+\Def \textit{Конфигурация ДКА} --- пара $( q, \alpha )$. Значит, что сейчас автомат в состоянии $q$, нужно считать еще слово $\alpha$.
+
+\Def Конфигурация $( q, \beta )$ \textit{выводится} из конфигурации $( p, \alpha )$ за один шаг
+
+$(p, \alpha) \vdash (q, \beta)$
+
+если $\exists c \in \Sigma : \\ \begin{cases}
+    \alpha = c \beta \\
+    q = \delta(p, c)
+\end{cases}$
+
+Выводимость за конечное число шагов будем записывать следующим образом:
+
+$(p, \alpha) \vdash^* (q, \beta)$
+
+\Def ДКА \textit{принимает} слово $w$, если $\exists q_f \in Q_f : (q_0, w) \vdash^* (q_f, \varepsilon)$
+
+\Statement
+
+НКА можно свести к ДКА. Множества языков, задаваемых ими, равны (Теорема Клини).
+
+ДКА можно свести к ПДКА (добавить мусорное состояние и все несуществующие переходы в него).
+
+\Statement
+
+Пусть DA --- языки, задаваемые ДКА.
+
+REG $=$ DA.
+
+\Def
+
+Введем $\equiv_\mathcal{L}$ --- эквивалентность по языку $\mathcal{L} \subseteq \Sigma^*$.
+
+$x \equiv_\mathcal{L} y$, если $\forall z \in \Sigma^* \quad xz \in \mathcal{L} \iff yz \in \mathcal{L}$
+
+\Def 
+
+Суффикс $z$ будем называть \textit{разделяющим} по языку $\mathcal{L}$ для слов $x$ и $y$, если
+
+$
+\left[
+    \begin{array}{l}
+        \begin{cases}
+            xz \in \mathcal{L} \\
+            yz \notin \mathcal{L}
+        \end{cases} \\
+        \begin{cases}
+            xz \notin \mathcal{L} \\
+            yz \in \mathcal{L}
+        \end{cases}
+    \end{array}
+\right.
+$
+
+\Statement
+
+$\equiv_\mathcal{L}$ --- действительно отношение эквивалентности.
+
+\begin{enumerate}
+    \item Рефлексивность $x \equiv_\mathcal{L} x \quad \forall x \in \Sigma^*$
+    \item Симметричность $a \equiv_\mathcal{L} b \implies b \equiv_\mathcal{L} a \quad \forall a, b \in \Sigma^*$
+    \item Транзитивность $a \equiv_\mathcal{L} b \equiv_\mathcal{L} c \implies a \equiv_\mathcal{L} c \quad \forall a, b, c \in \Sigma^*$
+\end{enumerate}
+
+\Def 
+
+$[w]_\mathcal{L}$ --- класс эквивалентности по языку $\mathcal{L}$, в котором лежит слово $w$.
+
+\Th \textbf{Майхилла--Нероуда.}
+
+Язык регулярный $\iff$ количество классов эквивалентности по этому языку конечно.
+
+$\square$
+
+\begin{itemize}
+    \item $\Rightarrow$
+    
+    Построим ПДКА по регулярному языку. Каждое состояние будет соответствовать своему классу эквивалентности.
+    \item $\Leftarrow$
+
+    Построим ПДКА для распознавания языка.
+
+    \begin{enumerate}
+        \item Каждому классу эквивалентности сопоставим состояние автомата.
+        \item Начальное состояние $q_0 = [\varepsilon]_\mathcal{L}$
+        \item $Q_f = \{[w]_\mathcal{L} \mid w \in \mathcal{L}\}$
+    \end{enumerate}
+\end{itemize}
+
+$\blacksquare$
