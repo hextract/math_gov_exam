@@ -9,7 +9,7 @@
     \item $\forall \alpha \in \R, \forall x, y \in \Lc \hookrightarrow b(\alpha x, y) = \alpha b(x, y) = b(x, \alpha y)$
 \end{enumerate}
 
-\Def Пусть $\Lc$ - ЛП. Пусть $b: \Lc^2 \to \R$. $b$ - БФ. Отображение $b(x, x)$ будем называть квадратичной формой (КФ).
+\Def Пусть $\Lc$ - ЛП. Пусть $b: \Lc^2 \to \R$. $b$ - БФ. Отображение $k(x) \overset{def}{=} b(x, x)$ будем называть квадратичной формой (КФ).
 
 \Def Пусть $\Lc$ - ЛП. Пусть $b: \Lc \to \R$. $b$ - КФ. $b$ имеет диагональный вид в базисе $(e_1, \dots, e_n)$, если
 \begin{equation*}
@@ -20,6 +20,14 @@
 \begin{equation*}
     b(x) = \sum\limits_{k = 1}^n \alpha_k x^k, \alpha_k \in \{\pm 1, 0\}
 \end{equation*}
+
+\Def Пусть $\Lc$ - ЛП. Пусть $b: \Lc \to \R$. $b$ - КФ. Пусть $(e_1, \dots, e_n)$ - базис. Матрицей $b$ в данном базисе будем называть матрицу $B_b \overset{def}{=} (b(e_i, e_j))_{i, j = 1}^n$.
+
+\Statement Пусть $\Lc$ - ЛП. Пусть $b: \Lc \to \R$. $b$ - КФ $\Rightarrow \forall x, y \in \Lc \hookrightarrow x^T B_b y = b(x, y)$.
+
+\begin{center}
+    $\boxed{\text{Всюду далее $\mathcal{L}$ - ЛП, $b: \mathcal{L}^2 \to \R$ - БФ. $k(x) = b(x, x)$ - порожденная ею КФ.}}$
+\end{center}
 
 Далее сформулируем метод Лангранжа.
 
