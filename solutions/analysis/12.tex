@@ -1,5 +1,7 @@
 \subsection{Степенные ряды. Радиус сходимости. Бесконечная дифференцируемость суммы степенного ряда. Ряд Тейлора.}
 
+\Note Выкладки, в общем-то аналогичны для случая $c_n, z_0 \in \R$. Редкозубов вводит вещественные, а не комплексные ряды.
+
 \textbf{Степенные ряды и радиус сходимости}
 
 \Def Степенной ряд -- функциональный ряд вида 
@@ -44,7 +46,7 @@
 Применим этот признак для исследования абсолютной сходимости степенного ряда:
 
 \begin{equation*}
-    q = \limsup_{n \to \infty} \sqrt[n]{|c_n z_n|} = |z| \limsup_{n \to \infty} \sqrt[n]{|c_n|} = \frac{|z|}{R}.
+    q = \limsup_{n \to \infty} \sqrt[n]{|c_n z^n|} = |z| \limsup_{n \to \infty} \sqrt[n]{|c_n|} = \frac{|z|}{R}.
 \end{equation*}
 
 Отсюда получаем теорему о радиусе сходимости:
@@ -68,7 +70,7 @@
 
 Имеем $|c_n z^n| \leq |c_n| r^n$ при $|z| \leq r$.
 
-Если рассмотреть числовой ряд $\sum_{n=1}^{\infty} |c_n|r^n$ как степенной с коэффициентами $|c_n|$ и $z = r$, то он сходится по теореме о радиусе сходимости. То есть мы ограничили наш функциональный ряд сходящимся числовым. 
+Если рассмотреть числовой ряд $\sum_{n=1}^{\infty} |c_n|r^n$, то он сходится (поскольку $r < R$) по определению радиуса сходимости. То есть мы ограничили наш функциональный ряд сходящимся числовым. 
 
 По теореме Вейершрасса, исходный ряд сходится равномерно на круге $\{z \in \Cmp: |z| \leq r\}$.
 
@@ -83,7 +85,7 @@
 Сначала покажем, что радиус сходимости $\hat{R}$ ряда $\sum_{k=1}^{\infty} k c_k z^k$ равен радиусу сходимости $R$ ряда $\sum_{k=0}^{\infty} c_k z^k$:
 
 \begin{equation*}
-    \frac{1}{\hat{R}} = \limsup_{k \to \infty} \sqrt[k]{|k c_k|} = \limsup{k \to \infty} \sqrt[k]{k} \cdot \limsup_{k \to \infty} \sqrt[k]{|c_k|} = \limsup_{k \to \infty} \sqrt[k]{|c_k|} = \frac{1}{R},
+    \frac{1}{\hat{R}} = \limsup_{k \to \infty} \sqrt[k]{|k c_k|} = \limsup_{k \to \infty} \sqrt[k]{k} \cdot \limsup_{k \to \infty} \sqrt[k]{|c_k|} = \limsup_{k \to \infty} \sqrt[k]{|c_k|} = \frac{1}{R},
 \end{equation*}
 
 так как $\lim\limits_{k \to \infty} \sqrt[k]{k} = \lim_{k \to \infty} e^{\frac{\ln k}{k}} = 1$.
@@ -107,7 +109,7 @@
 \begin{enumerate}
     \item можно почленно интегрировать, то есть 
     \begin{equation*}
-        \int_{x_0}^x f(t)dt = \sum_{k=0}^{\infty} \frac{c_k}{k+1} (x-x_0)^{k+1});        
+        \int_{x_0}^x f(t)dt = \sum_{k=0}^{\infty} \frac{c_k}{k+1} (x-x_0)^{k+1};        
     \end{equation*}
 
     \item можно сколь угодно много раз почленно дифференцировать, то есть 
@@ -167,7 +169,7 @@
 \Def Пусть $x_0 \in \R$ и $\forall n \in \N \;\exists f^{(n)}(x_0) \in \R$. Тогда ряд 
 
 \begin{equation*}
-    \sum_{n=0}^n \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n
+    \sum_{n=0}^\infty \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n
 \end{equation*}
 
 называется рядом Тейлора с функции $f$ с центром в точке $x_0$.

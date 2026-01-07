@@ -42,7 +42,7 @@ $f_n \overset{X}{\cancel{\rightrightarrows}} f, n \to \infty \;\iff\; \exists {x
 
 В одну сторону, $\forall n \in \N \;\sup_{x \in X} |f(x) - f_n(x)| \geq |f(x_n) - f_n(x_n)| \nrightarrow 0, n \to \infty$.
 
-В другую сторону, имеем, что $\exists \eps > 0 \;\forall k \in \N \;\exists n_k \geq k \;\exists x_{n_k} \in X : |f(x_n) - f_n(x_n)| \geq \eps$.
+В другую сторону, имеем, что $\exists \eps > 0 \;\forall k \in \N \;\exists n_k \geq k \;\exists x_{n_k} \in X : |f(x_{n_k}) - f_{x_{n_k}}(x_{n_k})| \geq \eps$.
 Таким образом, построены последовательности $\{n_k\}_{k=1}^{\infty}$ и $\{x_{n_k}\}_{k=1}^{\infty}$, такие что $|f(x_{n_k})| - f_{n_k}(x_{n_k})| \geq \eps \;\forall k \in \N$.
 Для остальных $n$ (если $n \notin \{n_k | k \in \N\}$), положим $x_n = x^*$ -- произвольная точка из $X$.
 
@@ -58,7 +58,7 @@ $f_n \overset{X}{\rightrightarrows} f, n \to \infty \;\iff\; \forall \eps > 0 \;
 
 Пусть $f_n \overset{X}{\rightrightarrows} f$. По определению, $\forall \eps > 0 \;\exists N_{\eps} \in \N \;\forall n \geq N_{\eps} \;\forall x \in X \; |f(x) - f_n(x)| < \frac{\eps}{2}$.
 
-Отсюда $\forall \eps > 0 \;\exists N_{\eps} \in \N: \forall n, m \geq N_{\eps} \;\forall x \in X \; |f_n(x) - f_n(x)| < \eps$. 
+Отсюда $\forall \eps > 0 \;\exists N_{\eps} \in \N: \forall n, m \geq N_{\eps} \;\forall x \in X \; |f_n(x) - f_m(x)| < \eps$. 
 
 Обратно, пусть выполнено условие Коши. Тогда в частности для $\forall x \in X$ числовая последовательность $\{f_n(x)\}_{n=1}^{\infty}$ удовлетворяет условию Коши, а следовательно $\exists \lim\limits_{n \to \infty} f_n(x) \eqqcolon f(x)$.
 
@@ -92,7 +92,7 @@ $\sum_{n=1}^{\infty} f_k \text{ сх. равн. на $X$} \;\iff\; \forall \eps 
 
 Пусть $0 \leq |U_k(x)| \leq V_k(x) \;\forall x \in X \;\forall k \in \N$.
 
-Тогда ряд $\sum_{k=1}^{\infty} V_k$ сходится равномерно на $X$. 
+Тогда ряд $\sum_{k=1}^{\infty} U_k$ сходится равномерно на $X$. 
 
 \Proof
 
@@ -108,46 +108,52 @@ $\forall \eps > 0 \;\exists N_{\eps} \in \N \;\forall n \geq N_{\eps} \;\forall 
 
 Тогда $\sum_{k=1}^{\infty} f_k$ сходится равномерно.
 
+\Proof
+
+Достаточно положить $V_k(x) = a_k \ \forall x$ и применить теорему выше.
+
+\Endproof
+
 \Theor{Признак Дирихле равномерной сходимости функционального ряда}
 
-Пусть $\{u_k\}, \{v_k\}$ -- функциональные последовательности на $X$, удовлетворяющие следующим условиям:
+Пусть $\{U_k\}, \{V_k\}$ -- функциональные последовательности на $X$, удовлетворяющие следующим условиям:
 
 \begin{enumerate}
-    \item Последовательность $\left\{\sum_{k=1}^n u_k \right\}$ равномерно ограничена на $X$ (т.е. $\exists C > 0: \left|\sum_{k=1}^n u_k(x)\right| < C \;\forall n \in \N \;\forall x \in X$);
+    \item Последовательность $\left\{\sum_{k=1}^n U_k \right\}$ равномерно ограничена на $X$ (т.е. $\exists C > 0: \left|\sum_{k=1}^n U_k(x)\right| < C \;\forall n \in \N \;\forall x \in X$);
     \item $V_k \overset{X}{\rightrightarrows} 0, k \to \infty$;
     \item $V_{k+1}(x) \leq V_k(x) \;\forall k \in \N \;\forall x \in X$.
 \end{enumerate}
 
-Тогда ряд $\sum_{k=1}^{\infty} u_k v_k$ сходится равномерно на $X$.
+Тогда ряд $\sum_{k=1}^{\infty} U_k V_k$ сходится равномерно на $X$.
 
 \Proof
 
-Пусть $S_n \coloneqq \sum_{k=1}^n u_k$; $S_0 \equiv 0$.
+Пусть $S_n \coloneqq \sum_{k=1}^n U_k$; $S_0 \equiv 0$.
 
 Выполним преобразование Абеля в каждой точке $x$:
 
 \begin{gather*}
-    \sum_{k=1}^{\infty} u_k(x) v_k(x) = \sum_{k=1}^n \left[S_k(x) - S_{k-1}(x)\right] V_k(x) = \sum_{k=1}^n S_k(x) V_k(x) - \sum_{k=1}^n S_{k-1}(x) V_k(x) = \\
+    \sum_{k=1}^{n} U_k(x) V_k(x) = \sum_{k=1}^n \left[S_k(x) - S_{k-1}(x)\right] V_k(x) = \sum_{k=1}^n S_k(x) V_k(x) - \sum_{k=1}^n S_{k-1}(x) V_k(x) = \\
     = \sum_{k=1}^n S_k(x) V_k(x) - \sum_{k=0}^{n-1} S_k(x) V_{k+1}(x) = S_n(x)V_n(x) + \sum_{k=1}^{n-1} S_k(x) \left[V_k(x) - V_{k+1}(x)\right]
 \end{gather*}
 
-$S_n V_n$ равномерно стремится к 0 как произведение равномерно ограниченной на равномерно стремящуюся к 0.
+$S_n V_n$ равномерно стремится к 0 как произведение равномерно ограниченной на равномерно стремящуюся к 0 (это несложно понять из, например, признака Вейерштрасса (домножение на константу (оценку равномерно ограниченной) не изменит сходимость к нулю числового, а значит и функционального ряда)).
 
-В каждом слагаемом под суммой, $V_k(x) - V_{k+1}(x) \geq 0 \;\forall k \in \N \;\forall x \in X$, а $\sum_{k=1}^{n-1} (V_k(x) - V_{k+1}(x)) = V_1(x) - V_n(x)$ -- равномерно сходится, так как $V_n(x)$ равномерно сходится к 0. Так как $S_k$ равномерно ограничены, то $|S_k(x) (V_k(x) - V_{k+1}(x))| \leq C((V_k(x) - V_{k+1}(x)))$ -- оценка неотрицательной функцией, ряд из которых сходится равномерно. По обобщенному признаку получаем, что сумма ряд сходится равномерно.
+В каждом слагаемом под суммой, $V_k(x) - V_{k+1}(x) \geq 0 \;\forall k \in \N \;\forall x \in X$, а $\sum_{k=1}^{n-1} (V_k(x) - V_{k+1}(x)) = V_1(x) - V_n(x)$ -- равномерно сходится, так как $V_n(x)$ равномерно сходится к 0. Так как $S_k$ равномерно ограничены, то $|S_k(x) (V_k(x) - V_{k+1}(x))| \leq C((V_k(x) - V_{k+1}(x)))$ -- оценка неотрицательной функцией, ряд из которых сходится равномерно. По обобщенному признаку получаем, что итоговый ряд сходится равномерно.
 
 \Endproof
 
 \textbf{Непрерывность, интегрируемость и дифференцируемость суммы функционального ряда}
 
-\textit{Лекции 23-24 потерялись, так что часть билета ниже приведена из \href{https://old.mipt.ru/education/chair/mathematics/study/uchebniki/ЛпМА_Бесов.pdf}{учебника Бесова, параграф 16.3}.}
+\textit{В конспекте Редкозубова эти факты оставлены без доказательства, ниже доказательства из \href{https://old.mipt.ru/education/chair/mathematics/study/uchebniki/ЛпМА_Бесов.pdf}{учебника Бесова, параграф 16.3}.}
 
 \textbf{НЕПРЕРЫВНОСТЬ}
 
 \Theor{О непрерывности предельной функции при равномерной сходимости функционального ряда}
 
-Пусть $f_n \overset{E}{\rightrightarrows} f, n \to \infty$, причем $f_n$ непрерывны в $x_0$ по множеству $E$.
+Пусть $f_n \overset{E}{\rightrightarrows} f, n \to \infty$, причем $f_n$ непрерывны по множеству $E$.
 
-Тогда $f$ непрерывна в $x_0$ по множеству $E$.
+Тогда $f$ непрерывна по множеству $E$.
 
 \Proof
 
@@ -168,9 +174,9 @@ $S_n V_n$ равномерно стремится к 0 как произведе
 
 \Theor{О непрерывности суммы равномерно сходящегося функционального ряда}
 
-Пусть $u_k: E \rightarrow \Cmp$ непрерывны в $x_0$ и ряд $\sum u_k$ сходится равномерно на $E$. 
+Пусть $u_k: E \rightarrow \Cmp$ непрерывны и ряд $\sum u_k$ сходится равномерно на $E$. 
 
-Тогда сумма $S(x) = \sum u_k(x)$ непрерывна в $x_0$ по множеству $E$.
+Тогда сумма $S(x) = \sum u_k(x)$ непрерывна по множеству $E$.
 
 \Proof
 
