@@ -42,7 +42,9 @@
 
 \Endproof
 
-\Th Пусть $\mathcal{L}$ - ЛП. Пусть $x, x_1, \dots x_n \in \mathcal{L}$. Пусть $x = \sum\limits_{k = 1}^n \alpha_k x_k$.  $x_1, x_2 \dots x_n$ ЛНЗ $\iff$ разложение $x$ единственно.
+\Th Пусть $\mathcal{L}$ - ЛП и $x_1, \dots x_n \in \mathcal{L}$. Пусть $x \in \mathcal{L}$ может быть выражен как $x = \sum\limits_{k = 1}^n \alpha_k x_k$.
+
+Тогда набор $x_1, \dots, x_n$ -- ЛНЗ $\iff$ коэффициенты $\alpha_1, \dots, \alpha_n$ определяются единственным образом.
 
 \Proof
 
@@ -71,7 +73,7 @@
 
 \textbf{Базисы}
 
-\Def Пусть $\mathcal{L}$ - ЛП. Базисом $\mathcal{L}$ будем называть упорядоченнй конечный набор ЛЗ векторов, через которые выражается всякий вектор из $\mathcal{L}$.
+\Def Пусть $\mathcal{L}$ - ЛП. Базисом $\mathcal{L}$ будем называть упорядоченный конечный набор ЛНЗ векторов, через которые выражается всякий вектор из $\mathcal{L}$.
 
 \Statement Пусть $\mathcal{L}$ - ЛП. Всякий вектор раскладывается единственным образом по базису.
 
@@ -193,7 +195,7 @@ $e_1, e_2, \dots e_n \in \mathcal{L}$ - ЛЗ $\Rightarrow e_1 = \alpha_2 e_2 + \
     \end{pmatrix}
 \end{equation*}
 
-\Statement усть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО. Пусть $(e_1, \dots, e_n)$ - базис $\mathcal{L}_1$. Тогда $\forall x \in \mathcal{L}_1 \hookrightarrow \varphi(x) = A_\varphi x$, если отождествить $x$ с его координатным столбцом в данном базисе.
+\Statement Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО. Пусть $(e_1, \dots, e_n)$ - базис $\mathcal{L}_1$. Тогда $\forall x \in \mathcal{L}_1 \hookrightarrow \varphi(x) = A_\varphi x$, если отождествить $x$ с его координатным столбцом в данном базисе.
 
 \Proof
 
