@@ -77,7 +77,6 @@ $\square$
             \centering
             \includegraphics[width=0.25\linewidth]{32_1.png}
             \caption{Пример $\gamma$}
-            \label{fig:placeholder}
         \end{figure}
 
         Положим $\varphi_M(x) := f_M(\gamma(x))$. Тогда $\varphi_M(0) = 1, \varphi_M(1) = 0$. Получили и $\neg$.
@@ -96,9 +95,19 @@ $\square$
 
         Тогда получим $\varphi_L(y, z)$, равную полиному от $y, z$.
 
-        То есть вида $1^{\sigma_1} + y^{\sigma_2}z^{\sigma_3}$. Уберем отрицания над переменными и получим $1 + yz$ или $yz$. В первом случае заменим $y$ на $1$, а в $1 + z$ подставим исходное выражение: $1 + (1 + yz) = yz$.
+        То есть вида $1^{\sigma_1} + y^{\sigma_2}z^{\sigma_3} + \alpha_1 x^{\sigma_4} + \alpha_2 y^{\sigma_5}$. Уберем отрицания над переменными и получим $\alpha_0 + yz + \alpha_1 x + \alpha_2 y$. Если есть $\alpha_0 = 1$, то возьмем отрицание от всей формулы и избавимся от него.
 
-        Система $0, 1, \neg, \cdot$ полна (можно составить КНФ или ДНФ, получив \texttt{or} из законов де Моргана + есть константы).
+        Получили формулу вида $xy + \alpha_1 x + \alpha_2 y$.
+
+        Рассмотрим случаи:
+
+        \begin{enumerate}
+            \item $\alpha_1 = \alpha_2 = 0$. Тогда получили $x \land y$.
+            \item \item $\alpha_1 = \alpha_2 = 1$. Формула --- $xy + x + y$. Ее отрицание даст $xy + x + y + 1 = (x + 1)(y + 1) = (\neg x) \land (\neg y)$. Уберем отриациня у $x, y$ и получим $x \land y$.
+            \item $\alpha_1 \ne \alpha_2$. Пусть $\alpha_1 = 1, \alpha_2 = 0$, формула имеет вид $xy + x = (y + 1) x = (\neg y) x$. Уберем отриацине у $y$ и получим $x \land y$.
+        \end{enumerate}
+
+        Система $0, 1, \neg, \land$ полна (можно составить КНФ или ДНФ, получив \texttt{or} из законов де Моргана + есть константы).
     \end{enumerate}
 \end{itemize}
 $\blacksquare$

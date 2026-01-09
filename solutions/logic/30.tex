@@ -6,13 +6,15 @@
 
 \Def Паросочетание называют \textit{совершенным}, если оно покрывает все вершины графа.
 
+\Def Для $X \subset V$ \textit{множеством соседей} назовем $N(X) := \{ v \in V \mid (x, y) \in E, X \in x \}$.
+
 \textbf{Теорема Холла.}
 
 В двудольном графе $G \; \exists$ паросочетание с участием всех вершин $L$.
 
 $\iff$
 
-$\forall A \in L$ количество соседей $A$ по паросочетанию --- $N(A) \ge |A|$.
+$\forall A \subset L \quad |N(A)| \ge |A|$.
 
 $\square$
     \begin{itemize}
@@ -28,6 +30,5 @@ $\square$
         \centering
         \includegraphics[width=0.25\linewidth]{30_1.png}
         \caption{Пример увеличивающей цепи}
-        \label{fig:placeholder}
     \end{figure}
 $\blacksquare$
