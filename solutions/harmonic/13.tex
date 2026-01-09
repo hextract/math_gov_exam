@@ -183,11 +183,14 @@ S_n^h(x_0)=\frac{1}{2\pi}\int_{-\pi}^{\pi} h(x_0-t)D_n(t)\,dt.
     S_n(x_0)-A
     =\frac{1}{2\pi}\int_{0}^{\pi}\Big((f(x_0-t)-f(x_0-0))+(f(x_0+t)-f(x_0+0))\Big)D_n(t)\,dt \\
     =\frac{1}{2\pi}\int_{0}^{\pi}
-    \underbrace{\frac{(f(x_0-t)-f(x_0-0))+(f(x_0+t)-f(x_0+0))}{t}}_{\in L^1(0,\pi)\ \text{по условию Дини}}
-    \cdot
-    \underbrace{\frac{t}{2\sin(t/2)}}_{\text{непрерывно на }[0,\pi]}
-    \cdot \sin\big((n+\tfrac12)t\big)\,dt.
+    \underbrace{
+        \underbrace{\frac{(f(x_0-t)-f(x_0-0))+(f(x_0+t)-f(x_0+0))}{t}}_{\in L^1(0,\pi)\ \text{(т.е. интеграл сходится абсолютно) по условию Дини}}
+        \cdot
+        \underbrace{\frac{t}{2\sin(t/2)}}_{\text{непрерывно на }[0,\pi]}
+    }_{\text{абсолютно сходится, как произведение абсолютно сходящегося на непрерывную}}
+    \cdot \sin\big((n+\tfrac12)t\big)\,dt \to 0.
 \end{gather*}
-Произведение первых двух множителей принадлежит $L^1(0,\pi)$, поэтому по лемме Римана об осцилляции интеграл стремится к нулю при $n\to\infty$.
+
+Стремление к 0 при $n \to \infty$ по лемме об осциляции.
 
 \Endproof
