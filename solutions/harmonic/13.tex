@@ -55,7 +55,7 @@ $f$, как предел равномерно сходящегося ряда и
 
 \begin{equation*}
     f \sim \sum_{k \in \Z} c_k e^{ikx}
-\end{equation*}, 
+\end{equation*}
 
 где коэффициенты $c_k = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) e^{-ikx} \; dx$.
 
@@ -69,6 +69,8 @@ $f$, как предел равномерно сходящегося ряда и
     D_n(\xi) \coloneqq \sum_{k=-n}^n e^{ik\xi} = [\text{пусть } e^{i\xi} \neq 1] = \frac{e^{i(n+1)\xi} - e^{-in\xi}}{e^{i\xi} - 1} = \frac{e^{i(n+\frac{1}{2})\xi} - e^{-i(n+\frac{1}{2})\xi}}{e^{\frac{i\xi}{2}} - e^{-\frac{i\xi}{2}}} = \frac{\sin\left((n+\frac{1}{2})\xi\right)}{\sin\left(\frac{\xi}{2}\right)}
 \end{align*}
 
+Переход делаем по формуле суммы геометрической прогрессии ($q = e^{i\xi}, \ b_1 = e^{-in\xi}, N = 2n + 1$): $\frac{b_1(q^N-1)}{q-1}$. Далее умножаем числитель и знаменатель на $e^{-i\xi/2}$.
+
 Если же $e^{i\xi} = 1$, то тривиально $D_n(\xi) = 2n+1$.
 
 Свойства ядра Дирихле:
@@ -81,7 +83,7 @@ $f$, как предел равномерно сходящегося ряда и
 
 \begin{gather*}
     S_n(x) = \sum_{k=-n}^{n} c_k e^{ikx} =\sum_{k=-n}^{n} \left(\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(t) e^{-ikt}\;dt\right) e^{ikx}\right) = \\
-    \frac{1}{2\pi} \int_{-\pi}^\pi f(t) \sum_{k=-n}^n e^{ik(x-t)}\;dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(t) D_n(x-t) dt = \\
+    = \frac{1}{2\pi} \int_{-\pi}^\pi f(t) \sum_{k=-n}^n e^{ik(x-t)}\;dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(t) D_n(x-t) dt = \\
     \text{Замена: }\begin{cases}\tau = x-t, \\ t = x-\tau \end{cases} \\
     = - \frac{1}{2\pi} \int_{x+\pi}^{x-\pi} f(x-\tau) D_n(\tau) d\tau = \frac{1}{2\pi} \int_{-\pi}^\pi f(x-\tau) D_n(\tau) d\tau = \\
     = \frac{1}{2\pi} \int_{-\pi}^0 f(x-\tau) D_n(\tau) \;d\tau + \frac{1}{2\pi} \int_0^{\pi} f(x-\tau) D_n(\tau) \;d\tau = \\
