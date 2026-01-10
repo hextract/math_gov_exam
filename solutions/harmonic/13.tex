@@ -98,17 +98,17 @@ $f$, как предел равномерно сходящегося ряда и
 
 \Proof
 
-Рассмотрим $(a, b)$ -- конечный интервал; $\{x_i\}$ -- разбиение Дарбу $(a, b)$, т. ч. $\sum (M_i - m_i) \delta x_i \leq \frac{\eps}{2}$.
+Рассмотрим $(a, b)$ -- конечный интервал; $\{x_i\}$ -- разбиение Дарбу $(a, b)$, т. ч. $\sum (M_i - m_i) \Delta_i \leq \frac{\eps}{2} \quad (\Delta_i \coloneqq x_i - x_{i-1})$.
 
 \begin{gather*}
     \left|\int_a^b f(x) \cos kx \;dx\right| = \left|\sum_{i=1}^N \int_{x_{i-1}}^{x_i} (f(x) - m_i) \cos kx \;dx + \sum_{i=1}^N m_i \int_{x_{i-1}}^{x_i} \cos kx \;dx\right| \leq \\
-    \leq \sum_{i=1}^N \int_{x_{i-1}}^{x_i} |f(x) - m_i| |\cos kx| \;dx + \sum_{i=1}^N |m_i| |\sin kx_i - \sin kx_{i-1}| \leq \\
-    \leq \sum_{i=1}^N (M_i - m_i) \delta x_i + \frac{2NM}{k},
+    \leq \sum_{i=1}^N \int_{x_{i-1}}^{x_i} |f(x) - m_i| |\cos kx| \;dx + \sum_{i=1}^N \frac{|m_i|}{k} |\sin kx_i - \sin kx_{i-1}| \leq \\
+    \leq \sum_{i=1}^N (M_i - m_i) \Delta_i + \frac{2NM}{k}, \ \text{где} \ M = \sup\limits_{[a, b]} |f(x)|
 \end{gather*}
 
-где $M = \sup\limits_{[a, b]} |f(x)|$.
+Уточнение переходов: первый делается добавлением и вычитанием слагаемого $\sum_{i=1}^N m_i \int_{x_{i-1}}^{x_i} \cos kx \;dx$. Второй из свойств интеграла и по формуле Ньютона-Лейбница для второго слагаемого. В третьем для первого слагаемого разницу можем оценить наибольшей разницей на интервале, косинус оценить единицей. Для второго слагаемого оценка $m_i$ общим супремумом, оценка разницы синусов 2.
 
-Итого $\forall \eps > 0 \; \exists N, \, \{x_i\}_{i=1}^N, \, k_0 \,:\, \forall k > k_0 \; \left|\int_a^b f(x) \cos kx \;dx\right| \leq \eps$, то есть $\int_a^b \dots dx \to 0$ при $k \to \infty$.
+Итого $\forall \eps > 0 \; \exists N, \, \{x_i\}_{i=1}^N, \, k_0 \,:\, \forall k > k_0 \; \left|\int_a^b f(x) \cos kx \;dx\right| \leq \eps$, то есть $\int_a^b f(x) \cos kx \;dx \to 0$ при $k \to \infty$.
 
 В общем случае, где $f$ имеет конечное количество особенностей, разбиваем интеграл, приближаясь к ним:
 
