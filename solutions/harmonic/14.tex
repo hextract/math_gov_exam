@@ -2,7 +2,7 @@
 
 \textbf{Представление частичной суммы ряда Фурье с ядром Фейера}
 
-\Def Будем говорить, что $x_n$ сходится к $a$ по Чизаро, если $\frac{x_1 + \dots + x_n}{n} \to a$, при $n \to \infty$.
+\Def Будем говорить, что $x_n$ сходится к $a$ по Чезаро, если $\frac{x_1 + \dots + x_n}{n} \to a$, при $n \to \infty$.
 
 Обозначим $\sigma_n(x) = \frac{\sum_{i=0}^n S_i(x)}{n+1}$ -- среднее арифметическое $n$ частичных сумм ряда Фурье.
 
@@ -46,14 +46,8 @@
 
 \Proof
 
-1.
-
-Заметим свойство, что $\forall \delta > 0 \int_\delta^{+\infty} \Delta_n(x) \,dx \to 0$ при $n \to \infty$.  
-
-Действительно, 
-\begin{equation*}    
-    \frac{1}{2\pi} \int_\delta^{+\infty} F_n(x) \leq \frac{1}{2\pi (n+1)} \underbrace{\int_\delta^{+\infty} \frac{dt}{\sin^2 \frac{t}{2}}}_{\text{сходится}} \to 0.
-\end{equation*}
+\begin{enumerate}
+\item
 
 Обозначим
 
@@ -65,15 +59,18 @@
     \end{cases}
 \end{equation*}
 
-Тогда
+Заметим свойство, что $\forall \delta > 0 \quad \int_\delta^{+\infty} \Delta_n(x) \,dx \to 0$ при $n \to \infty$.  
 
-\begin{enumerate}
-    \item 
-    \begin{gather*}
-        |\sigma_n(x) - f(x)| = |\int_{-\pi}^\pi f(x-t) \Delta_n(t) \,dt - f(x) \underbrace{\int_{-\pi}^\pi \Delta_n(t)}_{=1} \,dt| = \\
-        = |\int_{-\pi}^\pi \left(f(x-t)-f(x)\right) \Delta_n(t) \,dt| \leq |\int_{[-\delta, \delta]} \dots \,dt| + |\int_{[-\pi, \pi] \setminus [-\delta, \delta]} \dots \,dt|
-    \end{gather*}
-\end{enumerate}
+Действительно, 
+\begin{equation*}    
+    \frac{1}{2\pi} \int_\delta^{+\infty} F_n(x) \leq \frac{1}{2\pi (n+1)} \underbrace{\int_\delta^{+\infty} \frac{dt}{\sin^2 \frac{t}{2}}}_{\text{сходится}} \to 0.
+\end{equation*}
+
+Тогда
+\begin{gather*}
+    |\sigma_n(x) - f(x)| = |\int_{-\pi}^\pi f(x-t) \Delta_n(t) \,dt - f(x) \underbrace{\int_{-\pi}^\pi \Delta_n(t)\,dt}_{=1} | = \\
+    = |\int_{-\pi}^\pi \left(f(x-t)-f(x)\right) \Delta_n(t) \,dt| \leq |\int_{[-\delta, \delta]} \left(f(x-t)-f(x)\right) \,dt| + |\int_{[-\pi, \pi] \setminus [-\delta, \delta]} \left(f(x-t)-f(x)\right) \,dt|
+\end{gather*}
 
 В силу равномерной непрерывности $f$, для любого $\eps$ мы можем выбрать такое $\delta$, что первый интеграл оценивается $\int_{[-\delta, \delta]} \left(f(x-t)-f(x)\right) \Delta_n(t) \,dt \leq \eps \int_{[-\delta, \delta]} \Delta_n(t) \,dt \leq \eps \cdot 1 $.
 
@@ -89,10 +86,11 @@
 
 Если $E \neq [-\pi, \pi]$, то $E = \cup_{k \in \Z} \left([\pi k - \pi, \pi k + \pi] \cap E\right)$ (пользуемся $2\pi$-периодичностью).
 
-2.
+\item
 
 $f \in C(\R) \Rightarrow f \in C([-\pi, \pi]) \Rightarrow f \text{ равн. непр. на } [-\pi, \pi] \Rightarrow \sigma_n \overset{[-\pi, \pi]}{\rightrightarrows} f \Rightarrow \sigma_n \overset{\R}{\rightrightarrows} f$.
  
-3. $E = {x_0}$.
+\item $E = {x_0}$.
+\end{enumerate}
 
 \Endproof
