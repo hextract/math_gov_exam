@@ -210,7 +210,20 @@ D\xi = \mathbb{E}(\xi - \mathbb{E}\xi)^2 = \mathbb{E}(\xi - a)^2 = \int_{-\infty
 D\xi = \int_{-\infty}^{+\infty} \sigma^2 y^2 \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}{2}} dy = \sigma^2 \int_{-\infty}^{+\infty} y^2 \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}{2}} dy.
 \]
 
-Второй множитель — $\mathbb{E}Z^2$ для $Z\sim\mathcal{N}(0,1)$. Так как $DZ=1$ и $\mathbb{E}Z=0$, то $\mathbb{E}Z^2 = DZ + (\mathbb{E}Z)^2 = 1$. Значит
+
+Интеграл $\int_{-\infty}^{+\infty} y^2 e^{-\frac{y^2}{2}} dy$ является гауссовым.
+
+\Note Дополнительно: как выглядит гауссов интеграл:
+
 \[
-D\xi = \sigma^2 \cdot 1 = \sigma^2.
+\int_{-\infty}^{+\infty} e^{-a z^2} dz = \sqrt{\frac{\pi}{a}} \quad \xrightarrow{\text{дифференцирование по } a} \quad \int_{-\infty}^{+\infty} z^2 e^{-a z^2} dz = \frac{1}{2} \sqrt{\frac{\pi}{a^3}}.
+\]
+
+Тогда подставив $a = 1/2$, можем получить 
+\[
+\int_{-\infty}^{+\infty} z^2 e^{-z^2/2} dz = \sqrt{2\pi}.
+\]
+Обратной подстановкой в выражение получаем
+\[
+D\xi = \sigma^2 \cdot \frac{1}{\sqrt{2\pi}} \cdot \sqrt{2\pi} = \sigma^2
 \]
