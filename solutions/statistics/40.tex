@@ -1,128 +1,174 @@
 \subsection{Лемма Неймана–Пирсона. Построение с её помощью наиболее мощных критериев.}
 
-\textbf{Основные понятия проверки гипотез}
+\subsubsection{Определение и постановка задачи}
 
-Пусть $X$ — наблюдение с распределением $P \in \{P_\theta : \theta \in \Theta\}$.
+Всюду далее $\mathcal{P}$ -- некоторое семейство распределений, которые определены на некоторой сигма-алгебре $\mathfrak{S}$ множеств из $\Omega$.
 
-\Def \textit{Статистическая гипотеза} — утверждение о распределении $P$.
+\Def Пусть $\mathbb{P} \in \mathcal{P}, \mathcal{P}_0 \subset \mathcal{P}$.
+Статистической гипотезой будем называть предположение вида, что $\mathbb{P} \in \mathcal{P}_0$. Будем это обозначать $H_0: \mathbb{P} \in \mathcal{P}_0$.
+Текущая рассматриваемая гипотеза называется основной.
 
-\Def Гипотеза называется \textit{простой}, если она однозначно определяет распределение: $H: P = P_0$.
+Всюду далее $\mathcal{P}_0 \subset \mathcal{P}$, $\mathbb{P} \in \mathcal{P}$. $H_0: \mathbb{P} \in \mathcal{P}_0$ - основная гипотеза.
 
-\Def Гипотеза называется \textit{сложной}, если она задаёт множество распределений: $H: \theta \in \Theta_0 \subset \Theta$.
+Сформулируем задачу, которую мы хотим решить, формально.
 
-\Def \textit{Критерий} (или критическое множество) — это борелевское множество $S \subset \mathcal{X}$. Правило: если $X \in S$, отвергаем $H_0$ в пользу $H_1$.
+\Task Нужно по $X \sim \mathbb{P}$ либо принять $H_0$, либо отвегрнуть.
+В последнем случае мы переходим к рассмотрению альтернативной гипотезы, если она есть, $H_1: \mathbb{P} \in \mathcal{P}_1$, где $\mathcal{P}_1 \subset \mathcal{P} \backslash \mathcal{P}_0$.
 
-\Def \textit{Ошибка I рода} — отвергнуть $H_0$, когда она верна. Вероятность: $\alpha = P_0(X \in S)$.
+Всюду далее $\mathcal{P}_1 \subset \mathcal{P} \backslash \mathcal{P}_0$. $H_1: \mathbb{P} \in \mathcal{P}_1$ - альтернативная гипотеза.
 
-\Def \textit{Ошибка II рода} — принять $H_0$, когда верна $H_1$. Вероятность: $\beta = P_1(X \notin S)$.
+\Def Множество $\mathcal{X}$, которое задает всевозможные значения выборки, будем называть выборочным пространством.
 
-\Def \textit{Уровень значимости} критерия — $\alpha = P_0(X \in S)$ (вероятность ошибки I рода).
+\Def Пусть $S \subset \mathcal{X}$, $\{X \in S\}$ -- $\mathfrak{S}$-измеримое множество. $S$ будем называть критическим множеством (или же критерием), если верно следующее:
+\begin{equation*}
+    \text{$H_0$ отвергается $\iff$ $X \in S$}
+\end{equation*}
 
-\Def \textit{Мощность} критерия — $W = P_1(X \in S) = 1 - \beta$ (вероятность правильно отвергнуть $H_0$).
+\Comm Условие $\mathfrak{S}$-измеримости $\{X \in S\}$ нужно, чтобы мы потом могли законно использовать его в мере, иначе нет гарантий, что мы попадем в область определения.
+Не знаю на сколько имеет смысл об этом говорить на экзамене, но Савелов это опускал, поэтому чтобы не нарваться на доп вопросы, возможно, лучше не заикаться об этом.
 
-\Def Критерий $S$ называется критерием \textit{размера} $\varepsilon$, если $P_0(X \in S) = \varepsilon$.
+\Def Ошибкой первого рода будем называть отвержение $H_0$, когда она верна.
 
-\Def Критерий $S^*$ называется \textit{равномерно наиболее мощным критерием (РНМК)} размера $\varepsilon$, если:
+\Def Ошибкой второго рода будем называть принятее $H_0$, когда она неверна.
+
+\Def Пусть $S$ - критерий для $H_0$. Тогда положим функцию $\beta(\mathbb{P}, S) \overset{def}{=} \mathbb{P}(X \in S)$. Саму же функцию назовём функцией мощности.
+
+\Expl Функцию мощности нужно воспринимать, как вероятность отвергнуть гипотезу, если мы работаем в предположении, что у нас сейчас распределение $\mathbb{P}$.
+
+\Def Если для критерия $S$ выполнено, что $\forall \mathbb{P} \in \mathcal{P}_0 \hookrightarrow \beta(\mathbb{P}, S) \leq \varepsilon$, тогда будем говорить, что $S$ имеет уровень значимости $\varepsilon$.
+
+\Expl Уровень значимости нужно воспринимать, что мы отвергаем гипотезу при её верности с вероятностью не более $\varepsilon$.
+
+\Def Минимальный уровень значимости положим $\alpha(S) \overset{def}{=} \sup\limits_{\mathbb{P} \in \mathcal{P}_0} \beta(\mathbb{P}, S)$.
+
+\Def Будем говорить, что критерий $S$ несмещенный, если $\sup\limits_{\mathbb{P} \in \mathcal{P}_0} \beta(\mathbb{P}, S) \leq \inf\limits_{\mathbb{P} \in \mathcal{P}_1} \beta(\mathbb{P}, S)$.
+
+\Expl Несмещенность - это некоторая <<адекватность>> критерия, то есть вероятность отвергнуть гипотезу при её верности менее, чем отвегрнуть гипотезу при её неверности.
+
+\Def Пусть критерии $S, R$ уровня значимости $\varepsilon$ для проверки одной и той же гипотезы. Будем говорить, что $S$ более мощный, чем $R$, если:
+\begin{equation*}
+    \forall \mathbb{P} \in \mathcal{P}_1 \hookrightarrow \beta(\mathbb{P}, S) \geq \beta(\mathbb{P}, R)
+\end{equation*}
+
+\Def Критерий называется равномерно наиболее мощным, если он мощнее остальных.
+
+\Def Пусть $X^n = (X_1, \dots, X_n)$ - выборка растущего размера. 
+Тогда последовательность критериев $S_n \subset \mathcal{X}^n$ называется состоятельной, если $\forall \mathbb{P} \in \mathcal{P}_1 \hookrightarrow \beta(\mathbb{P}, S_n) \to 1, n \to \infty$.
+
+\subsubsection{Лемма Неймана-Пирсона}
+
+\Def Гипотезы вида $H: \mathbb{P} = \mathbb{P}'$ будем называть простыми.
+
+Далее будем рассматривать проверку гипотезы $H_0: \mathbb{P} = \mathbb{P}_0$ против альтернативы $H_1: \mathbb{P} = \mathbb{P}_1$.
+Будем считать, что распределения $\mathbb{P}_0$ и $\mathbb{P}_1$ имеют плотности $p_0(x)$ и $p_1(x)$ по одной и той же мере $\mu: \mathfrak{S} \to \R^+$.
+
+\Expl Что вообще значит распределение $\mathbb{P}$ имеет плотность $p(x)$ относительно меры $\mu: \mathfrak{S} \to \R^+$? Далее автор постарается дать объяснение, которое в общем случае неверно, но, наверное, даст большее понимание с чем мы работаем.
+Вообще понятие <<плотности>> (необязательно вероятности) достаточно относительно, потому что плотность \textit{чего-то} существует тоже относительно \textit{чего-то}.
+Вернемся в школу на уроки физики 7 класс, ну или когда там массу проходят. Все мы помним плотность $\frac{\text{кг}}{\text{м}^3}$. Получается, плотность в контексте физики -- это связь между мерой массы и мерой объема.
+В контексте теории вероятности, если у нас есть, например, нормальное распределение, то плотность -- связь между вероятностью и <<длиной>> отрезка. Более формально в теории меры <<плотность>> определяется так.
+Пусть у нас есть две меры $\mu, \nu$. Тогда та самая <<плотность>> - это некоторая измеримая функция $f$, которая для всякого измеримого множества $E$ удовлетворяет равенству:
+\begin{equation*}
+    \mu(E) = \int\limits_{E} f(x) \nu(dx)
+\end{equation*}
+Например, в физике это преобразуется в связь массы и объёма:
+\begin{equation*}
+    M(E) = \int\limits_{E} \rho(x) V(dx) \quad \text{$\rho$ - плотность}
+\end{equation*}
+А вот в нашем любимом тервере, это преобразуется в ту самую плотность $p(x)$ распределения $\mathbb{P}$ относительно меры $\mu$.
+\begin{equation*}
+    \mathbb{P}(E) = \int\limits_{E} p(x) \mu(dx)
+\end{equation*}
+Чем может быть $\mu$? Ну, например, если у нас задача плотность на прямой, то это может быть мера Лебега.
+\begin{equation*}
+    \mathbb{P}([a, b]) = \int\limits_{[a, b]} p(x) dx
+\end{equation*}
+По-умному та самая <<плотность>> $f$ называется производной Радона-Никодима $\mu$ относительно $\nu$ и обозначается $f = \frac{d \mu}{d \nu}$ (сейчас у ML-щиков должны быть флешбеки про KL-дивергенцию).
+
+\Def Пусть $\lambda > 0$. Положим критерий $S_\lambda = \condset{x \in \mathcal{X}}{p_1(x) - \lambda p_0(x) \geq 0}$.
+
+\Lem{Неймана-Пирсона} Пусть критерий $R$ таков, что $\mathbb{P}_0 (X \in R) \leq \mathbb{P}_0(X \in S_\lambda)$.
 \begin{enumerate}
-    \item $P_0(X \in S^*) = \varepsilon$;
-    \item Для любого другого критерия $S$ размера $\leq \varepsilon$: $P_1(X \in S) \leq P_1(X \in S^*)$.
-\end{enumerate}
-
-\textbf{Лемма Неймана-Пирсона}
-
-Рассмотрим задачу проверки простых гипотез:
-\[
-H_0: P = P_0 \quad \text{против} \quad H_1: P = P_1,
-\]
-где $P_0$ и $P_1$ имеют плотности $p_0(x)$ и $p_1(x)$ по общей мере $\mu$.
-
-Для $\lambda > 0$ определим критерий:
-\[
-S_\lambda = \{x : p_1(x) \geq \lambda p_0(x)\} = \left\{x : \frac{p_1(x)}{p_0(x)} \geq \lambda\right\}.
-\]
-
-\Lemma{Неймана-Пирсона}
-
-Пусть критерий $R$ удовлетворяет условию $P_0(X \in R) \leq P_0(X \in S_\lambda)$. Тогда:
-\begin{enumerate}
-    \item $P_1(X \in R) \leq P_1(X \in S_\lambda)$ \quad (критерий $S_\lambda$ мощнее $R$);
-    \item $P_0(X \in S_\lambda) \leq P_1(X \in S_\lambda)$ \quad (несмещённость $S_\lambda$).
+    \item $\mathbb{P}_1(X \in R) \leq \mathbb{P}_1(X \in S_\lambda)$
+    \item $\mathbb{P}_0(X \in S_\lambda) \leq \mathbb{P}_1(X \in S_\lambda)$
 \end{enumerate}
 
 \Proof
 
-\textbf{Часть 1.} Покажем, что $S_\lambda$ мощнее $R$.
+Покажем (1). 
 
-Заметим, что на множестве $S_\lambda$ выполнено $p_1(x) - \lambda p_0(x) \geq 0$, а вне $S_\lambda$ — неравенство обратное.
+Пусть $x \in \mathcal{X}$. Рассмотрим случаи:
+\begin{enumerate}
+    \item $x \in S_\lambda \Rightarrow \mathcal{I}_{S_{\lambda}} = 1, \mathcal{I}_R (x) \geq 0, (p_1(x) - \lambda p_0(x)) \geq 0$. Значит, $\mathcal{I}_{S_{\lambda}} \geq \mathcal{I}_R (x) \Rightarrow \mathcal{I}_{S_\lambda} (x) (p_1(x) - \lambda p_0(x)) \geq \mathcal{I}_R (x) (p_1(x) - \lambda p_0(x))$.
+    \item $x \not\in S_\lambda \Rightarrow \mathcal{I}_{S_{\lambda}} = 0, \mathcal{I}_R (x) \geq 0, (p_1(x) - \lambda p_0(x)) < 0$. Значит, $\mathcal{I}_{S_{\lambda}} \leq \mathcal{I}_R (x)$. Но в силу того, что $(p_1(x) - \lambda p_0(x)) < 0$, то $\mathcal{I}_{S_{\lambda}}(p_1(x) - \lambda p_0(x)) \geq \mathcal{I}_R (x) (p_1(x) - \lambda p_0(x))$.
+\end{enumerate}
+Получили следующий результат:
+\begin{equation*}
+    \forall x \in \mathcal{X} \hookrightarrow \mathcal{I}_R (x) (p_1(x) - \lambda p_0(x)) \leq \mathcal{I}_{S_{\lambda}} (x) (p_1(x) - \lambda p_0(x))
+\end{equation*}
+Проинтегрируем неравенство:
+\begin{equation*}
+    \int\limits_{\mathcal{X}} \mathcal{I}_R (x) (p_1(x) - \lambda p_0(x)) \mu(dx) \leq \int\limits_{\mathcal{X}} \mathcal{I}_{S_{\lambda}} (x) (p_1(x) - \lambda p_0(x)) \mu(dx)
+\end{equation*}
+Заметим следующее:
+\begin{multline*}
+    \int\limits_{\mathcal{X}} \mathcal{I}_R (x) (p_1(x) - \lambda p_0(x)) \mu(dx) = \int\limits_{R} (p_1(x) - \lambda p_0(x)) \mu(dx) = 
+    \int\limits_{R} p_1(x) \mu(dx) - \lambda \int\limits_{R} p_0(x) \mu(dx) = \\ = \mathbb{P}_1(X \in R) - \lambda \mathbb{P}_0(X \in R)
+\end{multline*}
+Аналогично получаем:
+\begin{equation*}
+    \int\limits_{\mathcal{X}} \mathcal{I}_{S_{\lambda}} (x) (p_1(x) - \lambda p_0(x)) \mu(dx) = \mathbb{P}_1(X \in S_\lambda) - \lambda \mathbb{P}_0(X \in S_\lambda)
+\end{equation*}
 
-Для любого критерия $R$:
-\[
-I_R(x)(p_1(x) - \lambda p_0(x)) \leq I_{S_\lambda}(x)(p_1(x) - \lambda p_0(x)),
-\]
-т.к. если $x \in R \cap S_\lambda$, то обе части равны; если $x \in R \setminus S_\lambda$, то левая часть $\leq 0$, а правая $= 0$; если $x \notin R$, то левая часть $= 0$, а правая $\geq 0$.
+Итого:
+\begin{equation*}
+    \mathbb{P}_1(X \in R) - \lambda \mathbb{P}_0(X \in R) \leq \mathbb{P}_1(X \in S_\lambda) - \lambda \mathbb{P}_0(X \in S_\lambda)
+\end{equation*}
+\begin{equation*}
+    \mathbb{P}_1(X \in R) - \mathbb{P}_1(X \in S_\lambda) \leq \lambda(\mathbb{P}_1(X \in S_\lambda) - \mathbb{P}_0(X \in S_\lambda)) \leq 0
+\end{equation*}
+\begin{equation*}
+    \mathbb{P}_1(X \in R) - \mathbb{P}_1(X \in S_\lambda) \leq 0
+\end{equation*}
+\begin{equation*}
+    \mathbb{P}_1(X \in R) \leq \mathbb{P}_1(X \in S_\lambda)
+\end{equation*}
 
-Интегрируя по $\mu$:
-\[
-P_1(X \in R) - \lambda P_0(X \in R) \leq P_1(X \in S_\lambda) - \lambda P_0(X \in S_\lambda).
-\]
+Покажем (2). Рассмотрим два случая:
+\begin{enumerate}
+    \item $\lambda \geq 1$. Тогда $\forall x \in S_\lambda \hookrightarrow p_1(x) \geq \lambda p_0(x) \geq p_0(x)$. Значит:
+    \begin{equation*}
+        \mathbb{P}_0(X \in S_\lambda) = \int\limits_{S_\lambda} p_0(x) \mu(dx) \leq \int\limits_{S_\lambda} p_1(x) \mu(dx) = \mathbb{P}_1(X \in S_\lambda)
+    \end{equation*}
+    \item $\lambda \in (0, 1)$. Тогда $\forall x \in S_\lambda \hookrightarrow p_1(x) < \lambda p_0(x) < p_0(x)$. Значит:
+    \begin{equation*}
+        \mathbb{P}_1(X \in S^C_\lambda) = \int\limits_{S^C_\lambda} p_1(x) \mu(dx) \leq \int\limits_{S^C_\lambda} p_0(x) \mu(dx) = \mathbb{P}_0(X \in S^C_\lambda)
+    \end{equation*}
+    Значит:
+    \begin{equation*}
+        \mathbb{P}_1(X \in S^C_\lambda) \leq \mathbb{P}_0(X \in S^C_\lambda)
+    \end{equation*}
+    \begin{equation*}
+        1 - \mathbb{P}_1(X \in S_\lambda) \leq 1 - \mathbb{P}_0(X \in S_\lambda)
+    \end{equation*}
+    \begin{equation*}
+        \mathbb{P}_1(X \in S_\lambda) \geq \mathbb{P}_0(X \in S_\lambda)
+    \end{equation*}
+\end{enumerate}
+\Endproof
 
-Т.к. $P_0(X \in R) \leq P_0(X \in S_\lambda)$, получаем:
-\[
-P_1(X \in R) \leq P_1(X \in S_\lambda) - \lambda(P_0(X \in S_\lambda) - P_0(X \in R)) \leq P_1(X \in S_\lambda).
-\]
+\Consequence Критерий $S_\lambda$ несмещенный.
 
-\textbf{Часть 2.} Покажем несмещённость.
+\Proof
 
-Если $\lambda \geq 1$, то на $S_\lambda$: $p_1(x) \geq \lambda p_0(x) \geq p_0(x)$.
-\[
-P_0(X \in S_\lambda) = \int_{S_\lambda} p_0(x)\, d\mu(x) \leq \int_{S_\lambda} p_1(x)\, d\mu(x) = P_1(X \in S_\lambda).
-\]
-
-Если $\lambda < 1$, то на $\overline{S_\lambda}$: $p_1(x) < \lambda p_0(x) < p_0(x)$.
-\[
-P_1(X \in \overline{S_\lambda}) \leq P_0(X \in \overline{S_\lambda}) \quad \Rightarrow \quad 1 - P_1(X \in S_\lambda) \leq 1 - P_0(X \in S_\lambda).
-\]
-
-В обоих случаях: $P_0(X \in S_\lambda) \leq P_1(X \in S_\lambda)$.
+Пункт второй вышедоказанного.
 
 \Endproof
 
-\Consequence Если $\lambda > 0$ удовлетворяет условию $P_0(X \in S_\lambda) = \varepsilon$, то $S_\lambda$ — \textit{равномерно наиболее мощный критерий (РНМК)} размера $\varepsilon$.
+\Consequence Пусть $\lambda > 0$. Если $\mathbb{P}_0 (X \in S_\lambda) = \varepsilon \Rightarrow S_\lambda$ является равномерно наиболее мощным критерием уровня значимости $\varepsilon$ для проверки $H_0$ против $H_1$.
 
-\textbf{Алгоритм построения РНМК:}
-\begin{enumerate}
-    \item Записать отношение правдоподобия $\frac{p_1(x)}{p_0(x)}$;
-    \item Найти $\lambda$ из уравнения $P_0\left(\frac{p_1(X)}{p_0(X)} \geq \lambda\right) = \varepsilon$;
-    \item Критерий: $S_\lambda = \left\{x : \frac{p_1(x)}{p_0(x)} \geq \lambda\right\}$.
-\end{enumerate}
+\Proof
 
-\textbf{Замечание.} В абсолютно непрерывном случае уравнение для $\lambda$ обычно разрешимо. В дискретном случае может не существовать $\lambda$ для заданного $\varepsilon$ — тогда используют рандомизированные критерии или выбирают ближайший допустимый уровень.
+Пусть $R$ другой критерий уровня значимости $\varepsilon > 0$, тогда $\mathbb{P}_0(X \in R) \leq \varepsilon = \mathbb{P}_0(X \in S_\lambda)$. Тогда, используя первое утверждение вышедоказанной леммы, получаем требуемое.
 
-\Example \textbf{(Проверка гипотезы о среднем нормального распределения)}
+\Endproof
 
-Пусть $X_1, \ldots, X_n \sim \mathcal{N}(\theta, 1)$. Проверяем:
-\[
-H_0: \theta = 0 \quad \text{против} \quad H_1: \theta = 1.
-\]
-
-Отношение правдоподобия:
-\[
-\frac{p_1(x)}{p_0(x)} = \frac{\prod_{i=1}^n \frac{1}{\sqrt{2\pi}} e^{-\frac{(x_i - 1)^2}{2}}}{\prod_{i=1}^n \frac{1}{\sqrt{2\pi}} e^{-\frac{x_i^2}{2}}}
-= \exp\left(\sum_{i=1}^n x_i - \frac{n}{2}\right) = e^{n\overline{x} - n/2}.
-\]
-
-Критерий $S_\lambda$:
-\[
-\frac{p_1(x)}{p_0(x)} \geq \lambda \quad \Leftrightarrow \quad e^{n\overline{x} - n/2} \geq \lambda \quad \Leftrightarrow \quad \overline{x} \geq \frac{\ln\lambda}{n} + \frac{1}{2} = c.
-\]
-
-Находим $c$ из условия $P_0(\overline{X} \geq c) = \varepsilon$.
-
-При $H_0$: $\overline{X} \sim \mathcal{N}(0, \frac{1}{n})$, поэтому $\sqrt{n}\overline{X} \sim \mathcal{N}(0, 1)$.
-\[
-P_0(\overline{X} \geq c) = P_0(\sqrt{n}\overline{X} \geq \sqrt{n}c) = 1 - \Phi(\sqrt{n}c) = \varepsilon.
-\]
-
-Отсюда $\sqrt{n}c = u_{1-\varepsilon}$, т.е. $c = \frac{u_{1-\varepsilon}}{\sqrt{n}}$.
-
-\textbf{РНМК размера $\varepsilon$:} $S = \left\{\overline{X} \geq \frac{u_{1-\varepsilon}}{\sqrt{n}}\right\}$.
