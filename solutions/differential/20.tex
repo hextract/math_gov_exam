@@ -3,7 +3,7 @@
 \Def Обыкновенным ДУ n-го порядка называется соотношение вида 
 
 \begin{equation*}
-    F(x, 'y, \dots, y^{(n)}) = 0,
+    F(x, y, y', \dots, y^{(n)}) = 0,
 \end{equation*}
 
 где $x$ -- независимая переменная, $y(x)$ -- искомая вещественнозначная функция, зависимость $F$ от $y^{(n)}$ не является фиктивной.
@@ -62,13 +62,14 @@
 \end{align*}
 
 Тогда
-\begin{align*}
-    y_1' &= y_2 \\
-    y_2' &= y_3 \\
-    &\dots \\
-    y_{n-1}' &= y_n \\
-    y_n' &= y^{(n)} = \Phi(x, y', y'', \dots, y^{(n-1)}) = \Phi(x, y_1, y_2, \dots, y_n)
-\end{align*}
+\begin{gather*}
+    y_1' = y_2 \\
+    y_2' = y_3 \\
+    \dots \\
+    y_{n-1}' = y_n \\
+    y_n' = y^{(n)} = \Phi\bigl(x, y', y'', \dots, y^{(n-1)}\bigr) 
+         = \Phi(x, y_1, y_2, \dots, y_n)
+\end{gather*}
 
 Получим $f(x, y) = (y_2, y_3, \dots, y_n, \Phi(x, y))^T$
 
@@ -83,7 +84,7 @@
 \end{equation*}
 где $(x_0, y_0) \in G$.
 
-\Def $f$ липшицева в $G$ по совокупности $y$, если $\exists L > 0\quad\forall (x, y_1), (x, y_2) \in G \hookrightarrow |f(x, y_1) - f(x, y_2)| \leq L |y_1 - y_2|$
+\Def Говорим, что $f$ Липшицева в $G$ по совокупности $y$ и записываем $f \in Lip_y(G)$, если $\exists L > 0\quad\forall (x, y_1), (x, y_2) \in G \hookrightarrow |f(x, y_1) - f(x, y_2)| \leq L |y_1 - y_2|$
 
 \Theor{Коши о существовании и единственности решения задачи Коши}
 
@@ -185,18 +186,18 @@
 \paragraph{($\Leftarrow$)} Для $\overline{\lambda}_{2s-1} = \lambda_{2s} \in \Cmp$ запишем
 
 \begin{align*}
-    c_{2s-1} e^{\lambda_{2s-1} x} + c_{2s} e^{\lambda_{2s} x} =
-    = \overline{c}_{2s} e^{\overline{\lambda}_{2s} x} + c_{2s} e^{\lambda_{2s} x} =
+    c_{2s-1} e^{\lambda_{2s-1} x} + c_{2s} e^{\lambda_{2s} x} = \\
+    = \overline{c}_{2s} e^{\overline{\lambda}_{2s} x} + c_{2s} e^{\lambda_{2s} x} = \\
     = \overline{c_{2s} e^{\lambda_{2s} x}} + c_{2s} e^{\lambda_{2s} x} \in \R
 \end{align*}
 
 А для $\lambda_p \in \R$, выполнено $c_p e^{\lambda_p x} \in \R$
 
-\paragraph{($\Rightarrow$)} $\overline{y(x)} = y(x) \forall x \in \R$ распишем явно:
+\paragraph{($\Rightarrow$)} $\overline{y(x)} = y(x) \quad \forall x \in \R$ распишем явно:
 
 \begin{align*}
     \sum_{s=1}^m \left(c_{2s-1} e^{\lambda_{2s-1} x} + c_{2s} e^{\lambda_{2s} x}\right) + \sum_{s=2m+1}^n c_s e^{\lambda_s x} = \\
-    = \sum_{s=1}^m \left(\overline{c}_{2s} e^{\lambda_{2s} x} + \overline{c}_{2s} e^{\lambda_{2s-1} x}\right) + \sum_{s=2m+1}^n \overline{c}_k e^{\lambda_k x} = \\
+    = \sum_{s=1}^m \left(\overline{c}_{2s} e^{\lambda_{2s} x} + \overline{c}_{2s} e^{\lambda_{2s-1} x}\right) + \sum_{s=2m+1}^n \overline{c}_k e^{\lambda_k x}
 \end{align*}
 
 Пользуясь ЛНЗ системы $e^{\lambda_1 x}, \dots, e^{\lambda_n x}$, эти две суммы равны $\iff$ все коэффициенты $c$ в них равны, то есть $\overline{c}_{2s} = c_{2s-1} \forall s=1,\dots,m; \qquad c_p \in \R \forall p=2m+1,\dots, n$
