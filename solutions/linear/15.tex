@@ -1,6 +1,59 @@
 \subsection{Прямые и плоскости в пространстве. Формулы расстояния от точки до прямой и до плоскости, между прямыми в пространстве. Углы между прямыми и плоскостями.}
 
-Прямая на плоскости может быть задана:
+\textbf{Скалярное, векторное и смешанное произведения векторов}
+
+\Note Это не является частью билета, но необходимо для его понимания.
+\begin{enumerate}
+    \item \textbf{Скалярное произведение} векторов $\mathbf{a}$ и $\mathbf{b}$:
+    \begin{equation*}
+        (\mathbf{a}, \mathbf{b}) = |\mathbf{a}| \cdot |\mathbf{b}| \cos \varphi
+    \end{equation*}
+    где $\varphi$ -- угол между векторами. В ортонормированном базисе:
+    \begin{equation*}
+        (\mathbf{a}, \mathbf{b}) = a_x b_x + a_y b_y + a_z b_z
+    \end{equation*}
+    Свойства: коммутативность $(\mathbf{a}, \mathbf{b}) = (\mathbf{b}, \mathbf{a})$, линейность по каждому аргументу, $(\mathbf{a}, \mathbf{a}) \geq 0$.
+
+    \item \textbf{Векторное произведение} $\mathbf{a} \times \mathbf{b}$ (обозначается $[\mathbf{a}, \mathbf{b}]$):
+    Вектор, удовлетворяющий условиям:
+    \begin{itemize}
+        \item $|[\mathbf{a}, \mathbf{b}]| = |\mathbf{a}| \cdot |\mathbf{b}| \sin \varphi$
+        \item $[\mathbf{a}, \mathbf{b}] \perp \mathbf{a}$ и $[\mathbf{a}, \mathbf{b}] \perp \mathbf{b}$
+        \item Тройка $(\mathbf{a}, \mathbf{b}, [\mathbf{a}, \mathbf{b}])$ -- правая
+    \end{itemize}
+    В ортонормированном базисе:
+    \begin{equation*}
+        [\mathbf{a}, \mathbf{b}] = 
+        \begin{vmatrix}
+            \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+            a_x & a_y & a_z \\
+            b_x & b_y & b_z
+        \end{vmatrix}
+        = (a_y b_z - a_z b_y)\mathbf{i} - (a_x b_z - a_z b_x)\mathbf{j} + (a_x b_y - a_y b_x)\mathbf{k}
+    \end{equation*}
+    Свойства: антикоммутативность $[\mathbf{a}, \mathbf{b}] = -[\mathbf{b}, \mathbf{a}]$, $[\mathbf{a}, \mathbf{a}] = \mathbf{0}$.
+
+    \item \textbf{Смешанное произведение} векторов $\mathbf{a}$, $\mathbf{b}$, $\mathbf{c}$:
+    \begin{equation*}
+        (\mathbf{a}, \mathbf{b}, \mathbf{c}) = ([\mathbf{a}, \mathbf{b}], \mathbf{c})
+    \end{equation*}
+    Геометрический смысл: объём параллелепипеда, построенного на векторах. В ортонормированном базисе:
+    \begin{equation*}
+        (\mathbf{a}, \mathbf{b}, \mathbf{c}) = 
+        \begin{vmatrix}
+            a_x & a_y & a_z \\
+            b_x & b_y & b_z \\
+            c_x & c_y & c_z
+        \end{vmatrix}
+    \end{equation*}
+    Свойства:
+    \begin{itemize}
+        \item $(\mathbf{a}, \mathbf{b}, \mathbf{c}) = (\mathbf{b}, \mathbf{c}, \mathbf{a}) = (\mathbf{c}, \mathbf{a}, \mathbf{b})$
+        \item $(\mathbf{a}, \mathbf{b}, \mathbf{c}) = 0$ тогда и только тогда, когда векторы компланарны
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Прямая на плоскости} может быть задана:
 \begin{enumerate}
     \item Векторным уравнением в параметрической форме:
     \begin{equation*}
@@ -45,7 +98,7 @@
     |Ax_1+By_1+C|/\sqrt{A^2+B^2}
 \end{equation*}
 
-Плоскость может быть задана
+\textbf{Плоскость} может быть задана
 \begin{enumerate}
     \item векторным параметрическим уравнением 
     \begin{equation*}
@@ -99,7 +152,7 @@
     \frac{|Ax_1+By_1+Cz_1|}{\sqrt{A^2+B^2+C^2}}
 \end{equation*}
 
-Прямая в пространстве может быть задана:
+\textbf{Прямая в пространстве} может быть задана:
 \begin{enumerate}
     \item Векторным уравнением в параметрической форме:
     \begin{equation*}
