@@ -20,7 +20,7 @@ $A$ -- матрица $\varphi$, $A^*$ -- матрица $\varphi^*$.
 \\
 
 
-Если $\varphi = \varphi^*$, то оператор $\varphi$ называют самосопряженным, или симметричным. Если $\varphi^* = \varphi$, то оператор $\varphi$ называют кососимметричным.
+Если $\varphi = \varphi^*$, то оператор $\varphi$ называют самосопряженным, или симметричным. Если $\varphi = -\varphi^*$, то оператор $\varphi$ называют кососимметричным.
 \\
 
 \textbf{Свойства}
@@ -61,7 +61,7 @@ $A$ -- матрица $\varphi$, $A^*$ -- матрица $\varphi^*$.
 
 \textbf{Теорема} Если преобразование $A$ самосопряженное и $\varepsilon_1 \subset \varepsilon$ -- инвариант относительно $A$, то $\varepsilon_1^\bot$ тоже инвариант.
 
-\textbf{Доказательство} $\forall x \in \varepsilon_1, \forall y \in \varepsilon_1^\bot \hookrightarrow A(x) \ in \varepsilon_1 \Rightarrow (A(x), y) = 0$, т.к. $A(x) \bot y$
+\textbf{Доказательство} $\forall x \in \varepsilon_1, \forall y \in \varepsilon_1^\bot \hookrightarrow A(x) \in \varepsilon_1 \Rightarrow (A(x), y) = 0$, т.к. $A(x) \bot y$
 
 $\Rightarrow (x, A(y)) = 0 \Rightarrow A(y) \in \varepsilon_1^\bot \Rightarrow \varepsilon_1^\bot$ -- инвариант, ЧТД.
 \\
@@ -72,6 +72,6 @@ $\Rightarrow (x, A(y)) = 0 \Rightarrow A(y) \in \varepsilon_1^\bot \Rightarrow \
 
 \textbf{Доказательство $\Rightarrow$} $A$ -- самосопряженное преобразование $\Rightarrow$ все корни его характеристического многочлена вещественные и можно представить $V = V_1 \bigoplus \cdots \bigoplus V_n$, где $V_i$ -- собственные подпространства $\Rightarrow V - $ инвариант как сумма инвариантных подпространств.
 
-Предположим $\varepsilon \neq V \Rightarrow dim V < dim \varepsilon \Rightarrow \Rightarrow dim V^\bot >= 1$ и $V^\bot$ -- инвариант.
+Предположим $\varepsilon \neq V \Rightarrow dim V < dim \varepsilon \Rightarrow \dim V^\bot \geq 1$ и $V^\bot$ -- инвариант.
 
 В силу того, что все собственные значения вещественны и т.к. $V^\bot$ -- инвариант, то существует собственный вектор из $V^\bot$, но $V$ -- прямая сумма подпространств, и такого вектора нет, противоречие. Т.к. собственные вектора, соответствующие различным собственным значениям попарно ортогональны, то базис можно отнормировать и получить ОНБ, ЧТД.
