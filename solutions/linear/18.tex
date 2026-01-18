@@ -16,7 +16,7 @@ $A$ -- матрица $\varphi$, $A^*$ -- матрица $\varphi^*$.
   \begin{gathered}
     (A(x), y) = (x, A^*(y))
     \\
-    x^TA^T\text{Г}y = x^T\text{Г}A^*y \Rightarrow A^T\text{Г}=ГA^T, \quad A^* = \text{Г}^{-1}A^T\text{Г}
+    x^TA^T\text{Г}y = x^T\text{Г}A^*y \Rightarrow A^T\text{Г}=\text{Г}A^*, \quad A^* = \text{Г}^{-1}A^T\text{Г}
   \end{gathered}
 \end{equation*}
 
@@ -37,7 +37,7 @@ $A$ -- матрица $\varphi$, $A^*$ -- матрица $\varphi^*$.
 Предположим противное, $\exists \lambda, \overline{\lambda} \in \mathbb{C}$ -- корни $\Rightarrow \exists$ инвариантное двумерное
 подпространство, в котором нет собственных векторов $(\varepsilon')$
 
-Сузим $A$ на него и получим $A': \varepsilon' \mapsto \varepsilon$. Перейдем в ОНБ и получим симметричную матрицу $A'$. Рассмотрим ее характеристический многочлен:
+Сузим $A$ на него и получим $A': \varepsilon' \mapsto \varepsilon'$. Перейдем в ОНБ и получим симметричную матрицу $A'$. Рассмотрим ее характеристический многочлен:
 \begin{equation*}
   det \left(
     \begin{matrix}
@@ -45,18 +45,21 @@ $A$ -- матрица $\varphi$, $A^*$ -- матрица $\varphi^*$.
       \sigma & \beta - \lambda \\
     \end{matrix}
   \right)
-  = (\alpha - \lambda)(\beta - \lambda) - \sigma^2 = 0
+  = (\alpha - \lambda)(\beta - \lambda) - \sigma^2 = \lambda^2 - (\alpha + \beta)\lambda + (\alpha\beta - \sigma^2) = 0
 \end{equation*}
-При этом $\exists \lambda' \in \mathbb{R}$ -- корень, т.к. $D > 0$, но тогда в $\varepsilon'$ существуют собственные вектора, противоречие.
+\[
+  D = (\alpha + \beta)^2 - 4(\alpha\beta - \sigma^2) = (\alpha - \beta)^2 + 4\sigma^2
+\]
+При этом $\exists \lambda' \in \mathbb{R}$ -- корень, т.к. $D \geq 0$, но тогда в $\varepsilon'$ существуют собственные вектора, противоречие.
 
 \Endproof
 
-\Th Собственные вектора самосопряженного преобразования, отвечающие попрано различным значениям ортогональны.
+\Th Собственные вектора самосопряженного преобразования, отвечающие попарно различным значениям ортогональны.
 
 \Proof
 
 Пусть $A$ -- самосопряженное преобразование, $\lambda_1, \lambda_2 \in \mathbb{R}, \quad \lambda_1 \neq \lambda_2$ - собственные значения, $h_1,
-h_2$ -- соответсвующие им собственные вектора.
+h_2$ -- соответствующие им собственные вектора.
 \begin{equation*}
   \begin{gathered}
     \lambda_1(h_1, h_2) = (A(h_1), h_2) = (h_1, A(h_2)) = \lambda_2(h_1, h_2) \Rightarrow \lambda_1(h_1, h_2) = \lambda_2(h_1, h_2)
@@ -93,7 +96,7 @@ $\Rightarrow (x, A(y)) = 0 \Rightarrow A(y) \in \varepsilon_1^\bot \Rightarrow \
   \item $\Rightarrow$
 
     $A$ -- самосопряженное преобразование $\Rightarrow$ все корни его характеристического многочлена вещественные и можно представить
-    $V = V_1 \bigoplus \cdots \bigoplus V_n$, где $V_i$ -- собственные подпространства $\Rightarrow V - $ инвариант как сумма инвариантных подпространств.
+    $V = V_1 \oplus \cdots \oplus V_n$, где $V_i$ -- собственные подпространства $\Rightarrow V - $ инвариант как сумма инвариантных подпространств.
 
     Предположим $\varepsilon \neq V \Rightarrow dim V < dim \varepsilon \Rightarrow \dim V^\bot \geq 1$ и $V^\bot$ -- инвариант.
 
