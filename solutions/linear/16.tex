@@ -24,7 +24,7 @@
 
 \Def Линейную комбинацию будем называть тривиальной если $\alpha_1 = \alpha_2 = \dots = \alpha_n = 0$.
 
-\Def Пусть $\mathcal{L}$ - ЛП. Пусть $x_1, \dots x_n \in \mathcal{L}$. Будем говорить, что система векторов $x_1, \dots x_n$ линейно-независима (далее будем использовать сокращение ЛЗ), если только лишь тривиальная их линейная комбинация дает ноль.
+\Def Пусть $\mathcal{L}$ - ЛП. Пусть $x_1, \dots x_n \in \mathcal{L}$. Будем говорить, что система векторов $x_1, \dots x_n$ линейно-независима (далее будем использовать сокращение ЛНЗ), если только лишь тривиальная их линейная комбинация дает ноль.
 
 \Th Пусть $\mathcal{L}$ - ЛП. Пусть $x_1, \dots x_n \in \mathcal{L}$. $x_1, x_2 \dots x_n$ ЛЗ $\iff$ один из векторов является линейной комбинацией других.
 
@@ -167,11 +167,11 @@ $e_1, e_2, \dots e_n \in \mathcal{L}$ - ЛЗ $\Rightarrow e_1 = \alpha_2 e_2 + \
 
 \Endproof
 
-\Statement Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО, $\mathcal{L}' \subset \mathcal{L}_1 \Rightarrow \varphi(\mathcal{L}_1) \subset \mathcal{L}_2$.
+\Statement Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО, $\mathcal{L}' \subset \mathcal{L}_1 \Rightarrow \varphi(\mathcal{L}') \subset \mathcal{L}_2$.
 
 \Proof
 
-Пусть $e_1, \dots e_n$ - базис $\mathcal{L}_1$. Заметим, что $0 \in \varphi(\mathcal{L}')$. Действительно, $\varphi(0 e_1 + \dots + 0 e_n) = 0 \varphi(e_1) + \dots + 0 \varphi(e_n) = 0$
+Пусть $e_1, \dots e_n$ - базис $\mathcal{L}'$. Заметим, что $0 \in \varphi(\mathcal{L}')$. Действительно, $\varphi(0 e_1 + \dots + 0 e_n) = 0 \varphi(e_1) + \dots + 0 \varphi(e_n) = 0$
 
 Далее:
 \begin{equation*}
@@ -199,7 +199,50 @@ $e_1, e_2, \dots e_n \in \mathcal{L}$ - ЛЗ $\Rightarrow e_1 = \alpha_2 e_2 + \
 
 \Proof
 
-Лол, очев.
+Пусть $x \in \mathcal{L}_1$. Так как $(e_1, \dots, e_n)$ -- базис $\mathcal{L}_1$, то существует единственное разложение:
+\begin{equation*}
+    x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n,
+\end{equation*}
+где $x_i \in \mathbb{R}$ (или $\mathbb{C}$) -- координаты вектора $x$ в данном базисе. Отождествим $x$ с координатным столбцом:
+\begin{equation*}
+    x \leftrightarrow \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}.
+\end{equation*}
+
+Рассмотрим образ $\varphi(x)$. По линейности оператора $\varphi$:
+\begin{equation*}
+    \varphi(x) = \varphi\left( \sum_{j=1}^n x_j e_j \right) = \sum_{j=1}^n x_j \varphi(e_j).
+\end{equation*}
+
+Для каждого базисного вектора $e_j$ образ $\varphi(e_j) \in \mathcal{L}_2$ можно разложить по некоторому фиксированному базису $(f_1, \dots, f_m)$ пространства $\mathcal{L}_2$:
+\begin{equation*}
+    \varphi(e_j) = \sum_{i=1}^m a_{ij} f_i, \quad j = 1, \dots, n,
+\end{equation*}
+где $a_{ij}$ -- коэффициенты разложения, образующие матрицу $A_\varphi = (a_{ij})_{m \times n}$.
+
+Подставим это в выражение для $\varphi(x)$:
+\begin{align*}
+    \varphi(x) &= \sum_{j=1}^n x_j \left( \sum_{i=1}^m a_{ij} f_i \right) \\
+    &= \sum_{i=1}^m \left( \sum_{j=1}^n a_{ij} x_j \right) f_i.
+\end{align*}
+
+Координатный столбец $\varphi(x)$ в базисе $(f_1, \dots, f_m)$ пространства $\mathcal{L}_2$ имеет вид:
+\begin{equation*}
+    \begin{pmatrix}
+        \sum_{j=1}^n a_{1j} x_j \\
+        \sum_{j=1}^n a_{2j} x_j \\
+        \vdots \\
+        \sum_{j=1}^n a_{mj} x_j
+    \end{pmatrix}
+    = A_\varphi
+    \begin{pmatrix}
+        x_1 \\
+        x_2 \\
+        \vdots \\
+        x_n
+    \end{pmatrix}.
+\end{equation*}
+
+Таким образом, при отождествлении векторов с их координатными столбцами, действие линейного оператора $\varphi$ выражается матричным умножением: $\varphi(x) = A_\varphi x$.
 
 \Endproof
 
