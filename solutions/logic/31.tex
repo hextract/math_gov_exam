@@ -5,28 +5,29 @@
 \textbf{Основные определения}
 
 \begin{enumerate}
-    \item $a \vdots b, b \ne 0$, если $\exists c : a = b \cdot c$
-    \item $a$ делится на $b \ne 0$ с остатком $r$, где $0 \le r < |b|$, если $\exists q: a = bq + r$.
-    \item Число $p$ называется \textbf{простым}, если не имеет натуральных делителей кроме $1$ и $p$. В противном случае называется \textbf{составным}. Единицу принято считать не простым и не составным.
-    \item $(a, b) := d \in \mathbb{N}$, если $a = a'd$, $b = b'd$ и $d$ --- наибольший (является делителем любого другого).
-    \item Если $(a, b) = 1$, то такие числа называют взаимнопростыми.
-    \item (Лемма Евклида.) Пусть $(a, b) = 1$ и $a \mid (bc)$. Тогда $a \mid c$.
-    \item $[a, b]$ --- наименьшее $m \in \mathbb{N}: m \vdots a, m \vdots b$.
+  \item $a \vdots b, b \ne 0$, если $\exists c : a = b \cdot c$
+  \item $a$ делится на $b \ne 0$ с остатком $r$, где $0 \le r < |b|$, если $\exists q: a = bq + r$.
+  \item Число $p$ называется \textbf{простым}, если не имеет натуральных делителей кроме $1$ и $p$. В противном случае называется \textbf{составным}. Единицу принято
+    считать не простым и не составным.
+  \item $(a, b) := d \in \mathbb{N}$, если $a = a'd$, $b = b'd$ и $d$ --- наибольший (является делителем любого другого).
+  \item Если $(a, b) = 1$, то такие числа называют взаимнопростыми.
+  \item (Лемма Евклида.) Пусть $(a, b) = 1$ и $a \mid (bc)$. Тогда $a \mid c$.
+  \item $[a, b]$ --- наименьшее $m \in \mathbb{N}: m \vdots a, m \vdots b$.
     $(a, b) \cdot [a, b] = a \cdot b$.
-    \item \textbf{Основная теорема арифметики.} Любое $m \in \mathbb{N}$ единственным образом представимо в виде произведения простых делителей
+  \item \textbf{Основная теорема арифметики.} Любое $m \in \mathbb{N}$ единственным образом представимо в виде произведения простых делителей
 
     $m = p_1^{k_1} p_2^{k_2} \dots p_n^{k_n}, k_i \in \mathbb{N}, p_i$ --- простые.
-    \item $a \underset{m}{\equiv} b \iff a -b \vdots m$
+  \item $a \underset{m}{\equiv} b \iff a -b \vdots m$
 \end{enumerate}
 
 \Statement
 
 Пусть $a \underset{p}{\equiv} b, c \underset{p}{\equiv} d$.
 
-Тогда 
+Тогда
 \begin{enumerate}
-    \item $a + c \underset{p}{\equiv} b + d$
-    \item $a \cdot c \underset{p}{\equiv} b \cdot d$
+  \item $a + c \underset{p}{\equiv} b + d$
+  \item $a \cdot c \underset{p}{\equiv} b \cdot d$
 \end{enumerate}
 
 \Statement
@@ -46,24 +47,26 @@ $\square$
 Покажем, что $\underset{p}{\equiv}$ действительно является отношением эквивалентности:
 
 \begin{enumerate}
-    \item $a \underset{p}{\equiv} a$, т. к. $a - a = 0 \vdots p$
-    \item $a \underset{p}{\equiv} b \implies b \underset{p}{\equiv} a$, т. к. $(a - b) \vdots p \implies (b -a) = -(a -b) \vdots p$.
-    \item $a \underset{p}{\equiv} b, b \underset{p}{\equiv} c \implies (a -b) \vdots p, (b - c) \vdots p \implies (a - b) + (b - c) = (a -c) \vdots p$
+  \item $a \underset{p}{\equiv} a$, т. к. $a - a = 0 \vdots p$
+  \item $a \underset{p}{\equiv} b \implies b \underset{p}{\equiv} a$, т. к. $(a - b) \vdots p \implies (b -a) = -(a -b) \vdots p$.
+  \item $a \underset{p}{\equiv} b, b \underset{p}{\equiv} c \implies (a -b) \vdots p, (b - c) \vdots p \implies (a - b) + (b - c) = (a -c) \vdots p$
 \end{enumerate}
 
-    Значит разобьём все неотрицательные числа на классы эквивалентности по этому отношению, обозначая каждый наименьшим его представителем: $[0], [1], \dots [p-1]$.
+Значит разобьём все неотрицательные числа на классы эквивалентности по этому отношению, обозначая каждый наименьшим его представителем: $[0], [1], \dots [p-1]$.
 
-    Рассмотрим набор всех ненулевых остатков $1, 2, 3, \dots p -1$.
+Рассмотрим набор всех ненулевых остатков $1, 2, 3, \dots p -1$.
 
-    Каждое число домножим на $a$:
+Каждое число домножим на $a$:
 
-    $a \cdot 1, a \cdot 2, \dots a \cdot (p - 1)$
+$a \cdot 1, a \cdot 2, \dots a \cdot (p - 1)$
 
-    Пусть среди них какие-то 2 дают одинаковый остаток при делении на $p$.
+Пусть среди них какие-то 2 дают одинаковый остаток при делении на $p$.
 
-    Тогда $ai \underset{p}{\equiv} aj \implies a \cdot (i -j) \underset{p}{\equiv} 0 \implies i \underset{p}{\equiv} j$. Значит все остатки различны и образуют все ненулевые остатки при делении на $p$.
-    
-    Следовательно $1 \cdot 2 \dots (p - 1) \underset{p}{\equiv} a^{p - 1} \cdot 1 \cdot 2 \dots (p - 1)$. Но $1 \cdot 2 \dots (p - 1)$ взаимнопросто с $p$. Значит $1 \underset{p}{\equiv} a^{p -1}$.
+Тогда $ai \underset{p}{\equiv} aj \implies a \cdot (i -j) \underset{p}{\equiv} 0 \implies i \underset{p}{\equiv} j$. Значит все остатки различны и образуют все ненулевые
+остатки при делении на $p$.
+
+Следовательно $1 \cdot 2 \dots (p - 1) \underset{p}{\equiv} a^{p - 1} \cdot 1 \cdot 2 \dots (p - 1)$. Но $1 \cdot 2 \dots (p - 1)$ взаимнопросто с $p$. Значит $1
+\underset{p}{\equiv} a^{p -1}$.
 
 $\blacksquare$
 
@@ -71,7 +74,7 @@ $\blacksquare$
 
 \textit{Функцией Эйлера} $\varphi(n)$ называется количество натуральных чисел, не превосходящих $n$ и взаимнопростых с ним.
 
-\Def 
+\Def
 
 Функция $f: \mathbb{N} \to \mathbb{N}$ называется \textit{мультипликативной}, если  $\forall a, b: (a, b) = 1 \quad f(a \cdot b) = f(a) \cdot f(b)$.
 
@@ -89,19 +92,21 @@ $\square$
 
 Рассмотрим выражение $m x + n y$, где $x$ и $y$ пробегают все возможные остатки $0, 1 \dots n-1$ и $0, 1 \dots m-1$ соответственно.
 
-Пусть значения выражений совпали при различных $x$ и $y$. Но тогда $m x_1 + n y_1 \underset{mn}{\equiv} m x_2 + n y_2 \implies m (x_1 - x_2) + n (y_1 - y_2) \underset{mn}{\equiv} 0 \implies x_1 \underset{n}{\equiv} x_2, y_1 \underset{m}{\equiv} y_2$.
+Пусть значения выражений совпали при различных $x$ и $y$. Но тогда $m x_1 + n y_1 \underset{mn}{\equiv} m x_2 + n y_2 \implies m (x_1 - x_2) + n (y_1 - y_2)
+\underset{mn}{\equiv} 0 \implies x_1 \underset{n}{\equiv} x_2, y_1 \underset{m}{\equiv} y_2$.
 
 А значит таким образом получаем в этом выражении все возможные остатки при делении на $mn$.
 
 Теперь рассмотрим произвольное $t \in \{1, 2, \dots mn \}$. Тогда можно представить $t \underset{mn}{\equiv} mx + ny$.
 
-Если $(m, t) = 1, (n, t) = 1 \implies (mn, t) = 1$. 
+Если $(m, t) = 1, (n, t) = 1 \implies (mn, t) = 1$.
 
-Если $(mn,  t) \ne 1$, то $(t, m) \ne 1$ или $(t, n) \ne 1$. 
+Если $(mn,  t) \ne 1$, то $(t, m) \ne 1$ или $(t, n) \ne 1$.
 
-Кроме того, из $t \underset{mn}{\equiv} mx + ny$ следует $t \underset{n}{\equiv} mx$ и $t \underset{m}{\equiv} ny$. Так как $(m,n)=1$, имеем $(t,n)=1 \iff (x,n)=1$ и $(t,m)=1 \iff (y,m)=1$. Следовательно
+Кроме того, из $t \underset{mn}{\equiv} mx + ny$ следует $t \underset{n}{\equiv} mx$ и $t \underset{m}{\equiv} ny$. Так как $(m,n)=1$, имеем $(t,n)=1 \iff (x,n)=1$ и
+$(t,m)=1 \iff (y,m)=1$. Следовательно
 \[
-(t,mn)=1 \iff (t,m)=1 \ \text{и}\ (t,n)=1 \iff (x,n)=1 \ \text{и}\ (y,m)=1,
+  (t,mn)=1 \iff (t,m)=1 \ \text{и}\ (t,n)=1 \iff (x,n)=1 \ \text{и}\ (y,m)=1,
 \]
 и число таких пар равно $\varphi(n)\varphi(m)$.
 
@@ -117,6 +122,7 @@ $\square$
 
 $r_1, r_2, \dots r_{\varphi(n)}$
 
-Домножим каждое на $a$ и рассмотрим остаток при делении на $n$. Т. к. $(a, n) = 1$, то все числа останутся взаимно простыми с $n$, при этом никакие не совпадают. Тогда $(a r_1) (a r_2) \dots (ar_{\varphi(n)}) \underset{n}{\equiv} r_1 r_2 \dots r_{\varphi(n)} \implies a^{\varphi(n)} \underset{n}{\equiv} 1$.
+Домножим каждое на $a$ и рассмотрим остаток при делении на $n$. Т. к. $(a, n) = 1$, то все числа останутся взаимно простыми с $n$, при этом никакие не совпадают. Тогда
+$(a r_1) (a r_2) \dots (ar_{\varphi(n)}) \underset{n}{\equiv} r_1 r_2 \dots r_{\varphi(n)} \implies a^{\varphi(n)} \underset{n}{\equiv} 1$.
 
 $\blacksquare$

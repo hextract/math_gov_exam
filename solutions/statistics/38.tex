@@ -2,7 +2,8 @@
 
 \textbf{Функция потерь и функция риска}
 
-\Def Борелевская неотрицательная функция $g(x, y)$ называется \textit{функцией потерь}. Если $\hat{\theta}(X)$ — оценка параметра $\theta$, то $g(\hat{\theta}(X), \theta)$ называется \textit{величиной потерь}.
+\Def Борелевская неотрицательная функция $g(x, y)$ называется \textit{функцией потерь}. Если $\hat{\theta}(X)$ — оценка параметра $\theta$, то $g(\hat{\theta}(X),
+\theta)$ называется \textit{величиной потерь}.
 
 \Example Модуль отклонения: $g(x, y) = |x - y|$.
 
@@ -12,7 +13,7 @@
 
 \Def \textit{Функция риска} оценки $\hat{\theta}(X)$:
 \[
-R(\hat{\theta}, \theta) = \mathbb{E}_\theta\, g(\hat{\theta}(X), \theta).
+  R(\hat{\theta}, \theta) = \mathbb{E}_\theta\, g(\hat{\theta}(X), \theta).
 \]
 
 Для квадратичной функции потерь: $R(\hat{\theta}, \theta) = \mathbb{E}_\theta(\hat{\theta}(X) - \theta)^2$ — среднеквадратичная ошибка (MSE).
@@ -21,21 +22,22 @@ R(\hat{\theta}, \theta) = \mathbb{E}_\theta\, g(\hat{\theta}(X), \theta).
 
 \Def Оценка $\hat{\theta}$ \textit{лучше} оценки $\theta^*$ в равномерном подходе, если:
 \begin{enumerate}
-    \item $\forall \theta \in \Theta: R(\hat{\theta}, \theta) \leq R(\theta^*, \theta)$;
-    \item $\exists \theta_0 \in \Theta: R(\hat{\theta}, \theta_0) < R(\theta^*, \theta_0)$.
+  \item $\forall \theta \in \Theta: R(\hat{\theta}, \theta) \leq R(\theta^*, \theta)$;
+  \item $\exists \theta_0 \in \Theta: R(\hat{\theta}, \theta_0) < R(\theta^*, \theta_0)$.
 \end{enumerate}
 
 \Def Оценка называется \textit{наилучшей} в классе $K$, если она лучше любой другой оценки из $K$.
 
 \textbf{Замечание.} Наилучшая оценка существует не всегда!
 
-\Example Пусть $g(x,y) = (x-y)^2$, $K$ — все оценки. Тогда для любого $\theta_0 \in \Theta$ оценка $\hat{\theta}(X) \equiv \theta_0$ имеет $R(\hat{\theta}, \theta_0) = 0$. Наилучшая оценка должна была бы иметь нулевой риск для всех $\theta$ одновременно, что невозможно.
+\Example Пусть $g(x,y) = (x-y)^2$, $K$ — все оценки. Тогда для любого $\theta_0 \in \Theta$ оценка $\hat{\theta}(X) \equiv \theta_0$ имеет $R(\hat{\theta}, \theta_0) =
+0$. Наилучшая оценка должна была бы иметь нулевой риск для всех $\theta$ одновременно, что невозможно.
 
 \textbf{Минимаксный подход}
 
 \Def Оценка $\hat{\theta}^*$ называется \textit{минимаксной}, если
 \[
-\sup_{\theta \in \Theta} R(\hat{\theta}^*, \theta) = \inf_{\hat{\theta}} \sup_{\theta \in \Theta} R(\hat{\theta}, \theta).
+  \sup_{\theta \in \Theta} R(\hat{\theta}^*, \theta) = \inf_{\hat{\theta}} \sup_{\theta \in \Theta} R(\hat{\theta}, \theta).
 \]
 
 Смысл: минимизируем максимально возможный риск (пессимистичный подход).
@@ -46,12 +48,12 @@ R(\hat{\theta}, \theta) = \mathbb{E}_\theta\, g(\hat{\theta}(X), \theta).
 
 \Def \textit{Байесовский риск} оценки $\hat{\theta}$:
 \[
-R_Q(\hat{\theta}) = \mathbb{E}_Q R(\hat{\theta}, \theta) = \int_\Theta R(\hat{\theta}, t)\, Q(dt).
+  R_Q(\hat{\theta}) = \mathbb{E}_Q R(\hat{\theta}, \theta) = \int_\Theta R(\hat{\theta}, t)\, Q(dt).
 \]
 
 \Def Оценка $\hat{\theta}^*$ называется \textit{байесовской}, если
 \[
-R_Q(\hat{\theta}^*) = \min_{\hat{\theta}} R_Q(\hat{\theta}).
+  R_Q(\hat{\theta}^*) = \min_{\hat{\theta}} R_Q(\hat{\theta}).
 \]
 
 \textbf{Асимптотический подход}
@@ -64,7 +66,8 @@ R_Q(\hat{\theta}^*) = \min_{\hat{\theta}} R_Q(\hat{\theta}).
 
 По ЦПТ: $\sqrt{n}(\overline{X} - \theta) \xrightarrow{d} \mathcal{N}(0, 1)$, т.е. $\sigma^2_{\overline{X}} = 1$.
 
-По теореме об асимптотической нормальности медианы: $\sqrt{n}(\hat{m} - \theta) \xrightarrow{d} \mathcal{N}(0, \frac{\pi}{2})$, т.е. $\sigma^2_{\hat{m}} = \frac{\pi}{2} \approx 1{,}57$.
+По теореме об асимптотической нормальности медианы: $\sqrt{n}(\hat{m} - \theta) \xrightarrow{d} \mathcal{N}(0, \frac{\pi}{2})$, т.е. $\sigma^2_{\hat{m}} = \frac{\pi}{2}
+\approx 1{,}57$.
 
 Вывод: $\overline{X}$ лучше $\hat{m}$ в асимптотическом смысле (для нормального распределения).
 
@@ -72,17 +75,17 @@ R_Q(\hat{\theta}^*) = \min_{\hat{\theta}} R_Q(\hat{\theta}).
 
 \Def \textit{Вклад наблюдения}:
 \[
-u_\theta(X) = \frac{\partial}{\partial\theta} \ln p_\theta(X) = \frac{\frac{\partial}{\partial\theta} p_\theta(X)}{p_\theta(X)}.
+  u_\theta(X) = \frac{\partial}{\partial\theta} \ln p_\theta(X) = \frac{\frac{\partial}{\partial\theta} p_\theta(X)}{p_\theta(X)}.
 \]
 
 \Def \textit{Информация Фишера} о параметре $\theta$, содержащаяся в наблюдении $X$:
 \[
-I_X(\theta) = \mathbb{E}_\theta u_\theta^2(X) = \mathbb{E}_\theta \left(\frac{\partial}{\partial\theta} \ln p_\theta(X)\right)^2.
+  I_X(\theta) = \mathbb{E}_\theta u_\theta^2(X) = \mathbb{E}_\theta \left(\frac{\partial}{\partial\theta} \ln p_\theta(X)\right)^2.
 \]
 
 \textbf{Альтернативная формула.} При выполнении условий регулярности:
 \[
-I_X(\theta) = -\mathbb{E}_\theta \left[\frac{\partial^2}{\partial\theta^2} \ln p_\theta(X)\right].
+  I_X(\theta) = -\mathbb{E}_\theta \left[\frac{\partial^2}{\partial\theta^2} \ln p_\theta(X)\right].
 \]
 
 \Proof (эквивалентность формул)
@@ -91,12 +94,14 @@ I_X(\theta) = -\mathbb{E}_\theta \left[\frac{\partial^2}{\partial\theta^2} \ln p
 
 Дифференцируя по $\theta$:
 \[
-\frac{\partial^2}{\partial\theta^2} \ln p_\theta = \frac{1}{p_\theta} \cdot \frac{\partial^2 p_\theta}{\partial\theta^2} - \frac{1}{p_\theta^2} \left(\frac{\partial p_\theta}{\partial\theta}\right)^2 = \frac{1}{p_\theta} \cdot \frac{\partial^2 p_\theta}{\partial\theta^2} - u_\theta^2.
+  \frac{\partial^2}{\partial\theta^2} \ln p_\theta = \frac{1}{p_\theta} \cdot \frac{\partial^2 p_\theta}{\partial\theta^2} - \frac{1}{p_\theta^2} \left(\frac{\partial
+  p_\theta}{\partial\theta}\right)^2 = \frac{1}{p_\theta} \cdot \frac{\partial^2 p_\theta}{\partial\theta^2} - u_\theta^2.
 \]
 
 Берём математическое ожидание:
 \[
-\mathbb{E}_\theta \left[\frac{\partial^2}{\partial\theta^2} \ln p_\theta\right] = \int \frac{\partial^2 p_\theta}{\partial\theta^2}\, d\mu - I_X(\theta) = \frac{\partial^2}{\partial\theta^2} \underbrace{\int p_\theta\, d\mu}_{=1} - I_X(\theta) = -I_X(\theta).
+  \mathbb{E}_\theta \left[\frac{\partial^2}{\partial\theta^2} \ln p_\theta\right] = \int \frac{\partial^2 p_\theta}{\partial\theta^2}\, d\mu - I_X(\theta) =
+  \frac{\partial^2}{\partial\theta^2} \underbrace{\int p_\theta\, d\mu}_{=1} - I_X(\theta) = -I_X(\theta).
 \]
 
 \Endproof
@@ -105,20 +110,20 @@ I_X(\theta) = -\mathbb{E}_\theta \left[\frac{\partial^2}{\partial\theta^2} \ln p
 
 \textbf{Условия регулярности:}
 \begin{enumerate}
-    \item $\Theta \subset \mathbb{R}$ — открытый интервал;
-    \item Носитель $A = \{x : p_\theta(x) > 0\}$ не зависит от $\theta$;
-    \item Дифференцирование и интегрирование можно менять местами:
+  \item $\Theta \subset \mathbb{R}$ — открытый интервал;
+  \item Носитель $A = \{x : p_\theta(x) > 0\}$ не зависит от $\theta$;
+  \item Дифференцирование и интегрирование можно менять местами:
     \[
-    \frac{\partial}{\partial\theta} \int_A S(x) p_\theta(x)\, d\mu(x) = \int_A S(x) \frac{\partial p_\theta(x)}{\partial\theta}\, d\mu(x);
+      \frac{\partial}{\partial\theta} \int_A S(x) p_\theta(x)\, d\mu(x) = \int_A S(x) \frac{\partial p_\theta(x)}{\partial\theta}\, d\mu(x);
     \]
-    \item $0 < I_X(\theta) < \infty$.
+  \item $0 < I_X(\theta) < \infty$.
 \end{enumerate}
 
 \Theor{Неравенство Рао-Крамера}
 
 Пусть выполнены условия регулярности, и $\hat{\theta}(X)$ — несмещённая оценка функции $\tau(\theta)$ с конечным вторым моментом. Тогда
 \[
-D_\theta(\hat{\theta}(X)) \geq \frac{(\tau'(\theta))^2}{I_X(\theta)}.
+  D_\theta(\hat{\theta}(X)) \geq \frac{(\tau'(\theta))^2}{I_X(\theta)}.
 \]
 
 \Proof
@@ -127,23 +132,23 @@ D_\theta(\hat{\theta}(X)) \geq \frac{(\tau'(\theta))^2}{I_X(\theta)}.
 
 По условию регулярности 3 при $S(x) \equiv 1$:
 \[
-\frac{\partial}{\partial\theta} \underbrace{\int_A p_\theta(x)\, d\mu(x)}_{=1} = \int_A \frac{\partial p_\theta(x)}{\partial\theta}\, d\mu(x) = 0.
+  \frac{\partial}{\partial\theta} \underbrace{\int_A p_\theta(x)\, d\mu(x)}_{=1} = \int_A \frac{\partial p_\theta(x)}{\partial\theta}\, d\mu(x) = 0.
 \]
 Разделив на $p_\theta(x)$ под интегралом: $\mathbb{E}_\theta u_\theta(X) = 0$.
 
 \textbf{Шаг 2.} При $S(x) = \hat{\theta}(x)$:
 \[
-\tau'(\theta) = \frac{\partial}{\partial\theta} \mathbb{E}_\theta \hat{\theta}(X) = \mathbb{E}_\theta \left[\hat{\theta}(X) \cdot u_\theta(X)\right].
+  \tau'(\theta) = \frac{\partial}{\partial\theta} \mathbb{E}_\theta \hat{\theta}(X) = \mathbb{E}_\theta \left[\hat{\theta}(X) \cdot u_\theta(X)\right].
 \]
 
 Т.к. $\mathbb{E}_\theta u_\theta(X) = 0$, можем вычесть $\tau(\theta) \cdot \mathbb{E}_\theta u_\theta(X) = 0$:
 \[
-\tau'(\theta) = \mathbb{E}_\theta \left[(\hat{\theta}(X) - \tau(\theta)) \cdot u_\theta(X)\right] = \text{cov}_\theta(\hat{\theta}(X), u_\theta(X)).
+  \tau'(\theta) = \mathbb{E}_\theta \left[(\hat{\theta}(X) - \tau(\theta)) \cdot u_\theta(X)\right] = \text{cov}_\theta(\hat{\theta}(X), u_\theta(X)).
 \]
 
 \textbf{Шаг 3.} По неравенству Коши-Буняковского:
 \[
-(\tau'(\theta))^2 = (\text{cov}(\hat{\theta}, u_\theta))^2 \leq D_\theta(\hat{\theta}) \cdot D_\theta(u_\theta) = D_\theta(\hat{\theta}) \cdot I_X(\theta).
+  (\tau'(\theta))^2 = (\text{cov}(\hat{\theta}, u_\theta))^2 \leq D_\theta(\hat{\theta}) \cdot D_\theta(u_\theta) = D_\theta(\hat{\theta}) \cdot I_X(\theta).
 \]
 
 Отсюда $D_\theta(\hat{\theta}) \geq \frac{(\tau'(\theta))^2}{I_X(\theta)}$.
@@ -152,7 +157,7 @@ D_\theta(\hat{\theta}(X)) \geq \frac{(\tau'(\theta))^2}{I_X(\theta)}.
 
 \Consequence При $\tau(\theta) = \theta$ (оценка самого параметра):
 \[
-D_\theta(\hat{\theta}) \geq \frac{1}{I_X(\theta)}.
+  D_\theta(\hat{\theta}) \geq \frac{1}{I_X(\theta)}.
 \]
 
 \textbf{Замечание.} Для выборки $X = (X_1, \ldots, X_n)$ из независимых наблюдений: $I_X(\theta) = n \cdot I_{X_1}(\theta)$.
@@ -171,7 +176,8 @@ D_\theta(\hat{\theta}) \geq \frac{1}{I_X(\theta)}.
 
 Информация Фишера для одного наблюдения:
 \[
-I_{X_1}(\theta) = \mathbb{E}_\theta u_\theta^2(X_1) = \mathbb{E}_\theta \frac{(X_1 - \theta)^2}{\sigma^4} = \frac{D_\theta X_1}{\sigma^4} = \frac{\sigma^2}{\sigma^4} = \frac{1}{\sigma^2}.
+  I_{X_1}(\theta) = \mathbb{E}_\theta u_\theta^2(X_1) = \mathbb{E}_\theta \frac{(X_1 - \theta)^2}{\sigma^4} = \frac{D_\theta X_1}{\sigma^4} = \frac{\sigma^2}{\sigma^4} =
+  \frac{1}{\sigma^2}.
 \]
 
 Для выборки: $I_X(\theta) = \frac{n}{\sigma^2}$.

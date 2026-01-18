@@ -1,8 +1,9 @@
 \subsection{Самосопряженные преобразования евклидовых пространств, свойства их собственных значений и собственных векторов.}
 
-Пусть $V$ --- евклидово пространство со скалярным произведением $\langle \cdot, \cdot \rangle, \varphi: V \rightarrow V$ -- линейный оператор. Линейный оператор $\varphi^*: V \rightarrow V$ называют сопряженным к $\varphi$, если
+Пусть $V$ --- евклидово пространство со скалярным произведением $\langle \cdot, \cdot \rangle, \varphi: V \rightarrow V$ -- линейный оператор. Линейный оператор
+$\varphi^*: V \rightarrow V$ называют сопряженным к $\varphi$, если
 \begin{equation*}
-    \langle \varphi(\boldsymbol{u}), \boldsymbol{v} \rangle = \langle \boldsymbol{u}, \varphi^*(\boldsymbol{v}) \rangle
+  \langle \varphi(\boldsymbol{u}), \boldsymbol{v} \rangle = \langle \boldsymbol{u}, \varphi^*(\boldsymbol{v}) \rangle
 \end{equation*}
 
 \textbf{Теорема} Для любого линейного оператора $\varphi$ над $V$ существует единственный сопряженный ему линейный оператор $\varphi^*$.
@@ -10,51 +11,54 @@
 \textbf{Доказательство} Запишем в матричном виде
 $A$ -- матрица $\varphi$, $A^*$ -- матрица $\varphi^*$.
 \begin{equation*}
-    \begin{gathered}
-        (A(x), y) = (x, A^*(y))
-        \\
-        x^TA^T\text{Г}y = x^T\text{Г}A^*y \Rightarrow A^T\text{Г}=ГA^T, \quad A^* = \text{Г}^{-1}A^T\text{Г}
-    \end{gathered}
+  \begin{gathered}
+    (A(x), y) = (x, A^*(y))
+    \\
+    x^TA^T\text{Г}y = x^T\text{Г}A^*y \Rightarrow A^T\text{Г}=ГA^T, \quad A^* = \text{Г}^{-1}A^T\text{Г}
+  \end{gathered}
 \end{equation*}
 ЧТД
 \\
-
 
 Если $\varphi = \varphi^*$, то оператор $\varphi$ называют самосопряженным, или симметричным. Если $\varphi = -\varphi^*$, то оператор $\varphi$ называют кососимметричным.
 \\
 
 \textbf{Свойства}
 
-Матрица $A$ самосопряженного преобразования удовлетворяет тождеству $A^T\text{Г} = \text{Г}A$, где $Г$ --- матрица Грама ($\text{Г}_{i, j}=\langle \boldsymbol{e}_i, \boldsymbol{e}_j \rangle$, $(\boldsymbol{e_{i}})_1^n$ -- базис). Отсюда следует, что если базис ортонормированный, то $A^T = A$, и обратное: если матрица оператора в ортонормированном базисе симметрична, то он самосопряжен.
+Матрица $A$ самосопряженного преобразования удовлетворяет тождеству $A^T\text{Г} = \text{Г}A$, где $Г$ --- матрица Грама ($\text{Г}_{i, j}=\langle \boldsymbol{e}_i,
+\boldsymbol{e}_j \rangle$, $(\boldsymbol{e_{i}})_1^n$ -- базис). Отсюда следует, что если базис ортонормированный, то $A^T = A$, и обратное: если матрица оператора в
+ортонормированном базисе симметрична, то он самосопряжен.
 
 \textbf{Теорема} Все корни характеристического многочлена самосопряженного преобразования -- вещественные числа
 
-\textbf{Доказательство} Предположим противное, $\exists \lambda, \overline{\lambda} \in \mathbb{C}$ -- корни $\Rightarrow \exists$ инвариантное двумерное подпространство, в котором нет собственных векторов $(\varepsilon')$
+\textbf{Доказательство} Предположим противное, $\exists \lambda, \overline{\lambda} \in \mathbb{C}$ -- корни $\Rightarrow \exists$ инвариантное двумерное
+подпространство, в котором нет собственных векторов $(\varepsilon')$
 
 Сузим $A$ на него и получим $A': \varepsilon' \mapsto \varepsilon$. Перейдем в ОНБ и получим симметричную матрицу $A'$. Рассмотрим ее характеристический многочлен:
 \begin{equation*}
-    det \left(
+  det \left(
     \begin{matrix}
-        \alpha - \lambda & \sigma \\
-        \sigma & \beta - \lambda \\
+      \alpha - \lambda & \sigma \\
+      \sigma & \beta - \lambda \\
     \end{matrix}
-    \right)
-    = (\alpha - \lambda)(\beta - \lambda) - \sigma^2 = 0
+  \right)
+  = (\alpha - \lambda)(\beta - \lambda) - \sigma^2 = 0
 \end{equation*}
 При этом $\exists \lambda' \in \mathbb{R}$ -- корень, т.к. $D > 0$, но тогда в $\varepsilon'$ существуют собственные вектора, противоречие. ЧТД.
 \\
 
 \textbf{Теорема} Собственные вектора самосопряженного преобразования, отвечающие попрано различным значениям ортогональны.
 
-\textbf{Доказательство} Пусть $A$ -- самосопряженное преобразование, $\lambda_1, \lambda_2 \in \mathbb{R}, \quad \lambda_1 \neq \lambda_2$ - собственные значения, $h_1, h_2$ -- соответсвующие им собственные вектора.
+\textbf{Доказательство} Пусть $A$ -- самосопряженное преобразование, $\lambda_1, \lambda_2 \in \mathbb{R}, \quad \lambda_1 \neq \lambda_2$ - собственные значения, $h_1,
+h_2$ -- соответсвующие им собственные вектора.
 \begin{equation*}
-\begin{gathered}
-\lambda_1(h_1, h_2) = (A(h_1), h_2) = (h_1, A(h_2)) = \lambda_2(h_1, h_2) \Rightarrow \lambda_1(h_1, h_2) = \lambda_2(h_1, h_2)
-\\
-(\lambda_1 - \lambda_2)(h_1, h_2) = 0
-\\
-\lambda_1 \neq \lambda_2 \Rightarrow (h_1, h_2) = 0 \Rightarrow h1 \bot h_2
-\end{gathered}
+  \begin{gathered}
+    \lambda_1(h_1, h_2) = (A(h_1), h_2) = (h_1, A(h_2)) = \lambda_2(h_1, h_2) \Rightarrow \lambda_1(h_1, h_2) = \lambda_2(h_1, h_2)
+    \\
+    (\lambda_1 - \lambda_2)(h_1, h_2) = 0
+    \\
+    \lambda_1 \neq \lambda_2 \Rightarrow (h_1, h_2) = 0 \Rightarrow h1 \bot h_2
+  \end{gathered}
 \end{equation*}
 ЧТД
 \\
@@ -66,12 +70,17 @@ $A$ -- матрица $\varphi$, $A^*$ -- матрица $\varphi^*$.
 $\Rightarrow (x, A(y)) = 0 \Rightarrow A(y) \in \varepsilon_1^\bot \Rightarrow \varepsilon_1^\bot$ -- инвариант, ЧТД.
 \\
 
-\textbf{Теорема} Преобразование $\varphi: \varepsilon \rightarrow \varepsilon$ самосопряжено $\Longleftrightarrow$ существует ортонормированный базис в $\varepsilon$, состоящий из его собственных векторов.
+\textbf{Теорема} Преобразование $\varphi: \varepsilon \rightarrow \varepsilon$ самосопряжено $\Longleftrightarrow$ существует ортонормированный базис в $\varepsilon$,
+состоящий из его собственных векторов.
 
-\textbf{Доказательство $\Leftarrow$} В одну сторону очевидно, (и в другую тоже очевидно), в базисе из собственных векторов матрица $A$ симметрична, а значит, преобразование самосопряжено.
+\textbf{Доказательство $\Leftarrow$} В одну сторону очевидно, (и в другую тоже очевидно), в базисе из собственных векторов матрица $A$ симметрична, а значит,
+преобразование самосопряжено.
 
-\textbf{Доказательство $\Rightarrow$} $A$ -- самосопряженное преобразование $\Rightarrow$ все корни его характеристического многочлена вещественные и можно представить $V = V_1 \bigoplus \cdots \bigoplus V_n$, где $V_i$ -- собственные подпространства $\Rightarrow V - $ инвариант как сумма инвариантных подпространств.
+\textbf{Доказательство $\Rightarrow$} $A$ -- самосопряженное преобразование $\Rightarrow$ все корни его характеристического многочлена вещественные и можно представить
+$V = V_1 \bigoplus \cdots \bigoplus V_n$, где $V_i$ -- собственные подпространства $\Rightarrow V - $ инвариант как сумма инвариантных подпространств.
 
 Предположим $\varepsilon \neq V \Rightarrow dim V < dim \varepsilon \Rightarrow \dim V^\bot \geq 1$ и $V^\bot$ -- инвариант.
 
-В силу того, что все собственные значения вещественны и т.к. $V^\bot$ -- инвариант, то существует собственный вектор из $V^\bot$, но $V$ -- прямая сумма подпространств, и такого вектора нет, противоречие. Т.к. собственные вектора, соответствующие различным собственным значениям попарно ортогональны, то базис можно отнормировать и получить ОНБ, ЧТД.
+В силу того, что все собственные значения вещественны и т.к. $V^\bot$ -- инвариант, то существует собственный вектор из $V^\bot$, но $V$ -- прямая сумма подпространств,
+и такого вектора нет, противоречие. Т.к. собственные вектора, соответствующие различным собственным значениям попарно ортогональны, то базис можно отнормировать и
+получить ОНБ, ЧТД.

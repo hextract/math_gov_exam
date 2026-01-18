@@ -1,95 +1,101 @@
 \subsection{Полная система событий. Формула полной вероятности. Формула Байеса. Независимость событий и классов событий.}
 
-\Def Пусть задано вероятностное пространство $(\Omega, \mathcal{F}, \mathbb{P})$, события $A, B \in \mathcal{F}$, $\mathbb{P}(B) > 0$. \textit{Условная вероятность события $A$ при событии $B$:}
+\Def Пусть задано вероятностное пространство $(\Omega, \mathcal{F}, \mathbb{P})$, события $A, B \in \mathcal{F}$, $\mathbb{P}(B) > 0$. \textit{Условная вероятность
+события $A$ при событии $B$:}
 \[
-\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}.
+  \mathbb{P}(A \mid B) = \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}.
 \]
 
 \textbf{Замечание.} Некоторые свойства условной вероятности:
 \begin{enumerate}
-    \item Если $A \cap B = \varnothing$, то $\mathbb{P}(A \mid B) = 0$.
-    \item Если $B \subset A$, то $\mathbb{P}(A \mid B) = 1$. Например, $\mathbb{P}(B \mid B) = 1$.
+  \item Если $A \cap B = \varnothing$, то $\mathbb{P}(A \mid B) = 0$.
+  \item Если $B \subset A$, то $\mathbb{P}(A \mid B) = 1$. Например, $\mathbb{P}(B \mid B) = 1$.
 \end{enumerate}
 
-\Def Пусть есть вероятностное пространство $(\Omega, \mathcal{F}, \mathbb{P})$. События $A_1, \ldots, A_n \in \mathcal{F}$ называются \textit{независимыми в совокупности}, если $\forall k = 2, \ ... \ n$ $\forall i_1,\ldots,i_k : 1 \leq i_1 < i_2 < \ldots < i_k \leq n$ выполняется:
+\Def Пусть есть вероятностное пространство $(\Omega, \mathcal{F}, \mathbb{P})$. События $A_1, \ldots, A_n \in \mathcal{F}$ называются \textit{независимыми в
+совокупности}, если $\forall k = 2, \ ... \ n$ $\forall i_1,\ldots,i_k : 1 \leq i_1 < i_2 < \ldots < i_k \leq n$ выполняется:
 \[
-\mathbb{P}\left(\bigcap_{j=1}^k A_{i_j}\right) = \prod_{j=1}^k \mathbb{P}(A_{i_j}).
+  \mathbb{P}\left(\bigcap_{j=1}^k A_{i_j}\right) = \prod_{j=1}^k \mathbb{P}(A_{i_j}).
 \]
 
-Иными словами, события независимы в совокупности, если вероятность одновременного наступления \textit{любого набора} из этих событий равна \textit{произведению вероятностей} событий, входящих в этот набор. В частности, при $n=2$ события $A$ и $B$ независимы, если $\mathbb{P}(A\cap B) = \mathbb{P}(A)\mathbb{P}(B)$.
+Иными словами, события независимы в совокупности, если вероятность одновременного наступления \textit{любого набора} из этих событий равна \textit{произведению
+вероятностей} событий, входящих в этот набор. В частности, при $n=2$ события $A$ и $B$ независимы, если $\mathbb{P}(A\cap B) = \mathbb{P}(A)\mathbb{P}(B)$.
 
 \textbf{Замечание.} В общем случае из попарной независимости событий $A_1, ... A_n$ не следует их независимость в совокупности
 
-\Example Рассмотрим правильный тетраэдр, три грани которого окрашены соответственно в красный, синий, зелёный цвета, а четвёртая грань содержит все три цвета. Событие $R$ (соответственно, $G$, $B$) означает, что выпала грань, содержащая красный (соответственно, зелёный, синий) цвет.
+\Example Рассмотрим правильный тетраэдр, три грани которого окрашены соответственно в красный, синий, зелёный цвета, а четвёртая грань содержит все три цвета. Событие
+$R$ (соответственно, $G$, $B$) означает, что выпала грань, содержащая красный (соответственно, зелёный, синий) цвет.
 
 Т.к. каждый цвет есть на двух гранях из четырёх, то
 \[
-\mathbb{P}(R) = \mathbb{P}(G) = \mathbb{P}(B) = \frac{1}{2}.
+  \mathbb{P}(R) = \mathbb{P}(G) = \mathbb{P}(B) = \frac{1}{2}.
 \]
 
 Вероятность пересечения, соответственно:
 \[
-\mathbb{P}(RG) = \mathbb{P}(GB) = \mathbb{P}(RB) = \frac{1}{4} = \frac{1}{2} \cdot \frac{1}{2},
+  \mathbb{P}(RG) = \mathbb{P}(GB) = \mathbb{P}(RB) = \frac{1}{4} = \frac{1}{2} \cdot \frac{1}{2},
 \]
 следовательно, все события попарно независимы. Однако вероятность пересечения всех трёх:
 \[
-\mathbb{P}(RGB) = \frac{1}{4} \neq \mathbb{P}(R) \, \mathbb{P}(G)\, \mathbb{P}(B),
+  \mathbb{P}(RGB) = \frac{1}{4} \neq \mathbb{P}(R) \, \mathbb{P}(G)\, \mathbb{P}(B),
 \]
 т.е. события не являются независимыми в совокупности.
 
-\Def Пусть задано вероятностное пространство $(\Omega, \mathcal{F}, \mathbb{P})$, события $A_1, A_2, \ldots, A_n, \ldots \in \mathcal{F}$. Совокупность событий $A_1, \ldots, A_n, \ldots$ (их не более, чем счетно) называется \textit{полной системой событий}, если выполняются условия:
+\Def Пусть задано вероятностное пространство $(\Omega, \mathcal{F}, \mathbb{P})$, события $A_1, A_2, \ldots, A_n, \ldots \in \mathcal{F}$. Совокупность событий $A_1,
+\ldots, A_n, \ldots$ (их не более, чем счетно) называется \textit{полной системой событий}, если выполняются условия:
 \begin{enumerate}
-    \item $A_i \cap A_j = \varnothing$ \quad при $i \ne j$\; (\textit{попарно несовместны});
-    \item $\bigcup_{i=1}^{\infty} A_i = \Omega$\; (\textit{в совокупности образуют всё пространство элементарных исходов}).
-    \item $\mathbb{P}(A_i) > 0$ \quad для всех $i = 1, \ldots, n, \ldots$ (\textit{нетривиальны}).
+  \item $A_i \cap A_j = \varnothing$ \quad при $i \ne j$\; (\textit{попарно несовместны});
+  \item $\bigcup_{i=1}^{\infty} A_i = \Omega$\; (\textit{в совокупности образуют всё пространство элементарных исходов}).
+  \item $\mathbb{P}(A_i) > 0$ \quad для всех $i = 1, \ldots, n, \ldots$ (\textit{нетривиальны}).
 \end{enumerate}
 
-
-\textbf{Формула полной вероятности.} Пусть даны события $A, B_1, \ldots, B_n, \ldots;$ $\mathbb{P}(B_i) > 0$, причём $B_i \cap B_j = \varnothing~(i \ne j)$ и $\bigcup\limits_{i=1}^\infty B_i \supset A$ (например, $\bigcup\limits_{i=1}^\infty B_i = \Omega$). 
+\textbf{Формула полной вероятности.} Пусть даны события $A, B_1, \ldots, B_n, \ldots;$ $\mathbb{P}(B_i) > 0$, причём $B_i \cap B_j = \varnothing~(i \ne j)$ и
+$\bigcup\limits_{i=1}^\infty B_i \supset A$ (например, $\bigcup\limits_{i=1}^\infty B_i = \Omega$).
 
 \textit{Тогда справедлива формула:}
 \[
-\mathbb{P}(A) = \sum\limits_{i=1}^\infty \mathbb{P}(B_i)\, \mathbb{P}(A \mid B_i).
+  \mathbb{P}(A) = \sum\limits_{i=1}^\infty \mathbb{P}(B_i)\, \mathbb{P}(A \mid B_i).
 \]
 
 \Proof
 
 Так как $A \subset \bigcup\limits_{i=1}^\infty B_i$,
 \[
-A = A \cap \left(\bigcup_{i=1}^{\infty} B_i\right) = \bigcup_{i=1}^{\infty}(A \cap B_i)
+  A = A \cap \left(\bigcup_{i=1}^{\infty} B_i\right) = \bigcup_{i=1}^{\infty}(A \cap B_i)
 \]
 
 События $\{B_i\}_{i=1}^{\infty}$ попарно несовместимы, значит, события $(A \cap B_i)$ тоже несовместимы. Тогда, воспользовавшись определением условной вероятности, получаем:
 \[
-\mathbb{P}(A) = \mathbb{P}\left(\bigcup_{i=1}^{\infty}(A \cap B_i)\right) = \sum_{i=1}^{\infty} \mathbb{P}(A \cap B_i) = \sum_{i=1}^{\infty} \mathbb{P}(A \mid B_i)\mathbb{P}(B_i)
+  \mathbb{P}(A) = \mathbb{P}\left(\bigcup_{i=1}^{\infty}(A \cap B_i)\right) = \sum_{i=1}^{\infty} \mathbb{P}(A \cap B_i) = \sum_{i=1}^{\infty} \mathbb{P}(A \mid B_i)\mathbb{P}(B_i)
 \]
 
 \Endproof
 
-
-\textbf{Формула Байеса.} Пусть даны события $A, H_1, \ldots, H_n, \ldots;$ $\mathbb{P}(A) > 0$, $\mathbb{P}(H_i) > 0$, причём $H_i \cap H_j = \varnothing~(i \ne j)$ и $\bigcup\limits_{i=1}^\infty H_i \supset A$ (например, $\bigcup\limits_{i=1}^\infty H_i = \Omega$).
+\textbf{Формула Байеса.} Пусть даны события $A, H_1, \ldots, H_n, \ldots;$ $\mathbb{P}(A) > 0$, $\mathbb{P}(H_i) > 0$, причём $H_i \cap H_j = \varnothing~(i \ne j)$ и
+$\bigcup\limits_{i=1}^\infty H_i \supset A$ (например, $\bigcup\limits_{i=1}^\infty H_i = \Omega$).
 
 \textit{Тогда справедлива формула Байеса:}
 \[
-\mathbb{P}(H_i \mid A) = \frac{\mathbb{P}(H_i)\, \mathbb{P}(A \mid H_i)}
-{\sum\limits_{j=1}^\infty \mathbb{P}(H_j)\, \mathbb{P}(A \mid H_j)}, \qquad i = 1, ... \ n.
+  \mathbb{P}(H_i \mid A) = \frac{\mathbb{P}(H_i)\, \mathbb{P}(A \mid H_i)}
+  {\sum\limits_{j=1}^\infty \mathbb{P}(H_j)\, \mathbb{P}(A \mid H_j)}, \qquad i = 1, ... \ n.
 \]
 
 \Proof
 
 Согласно формуле полной вероятности, в знаменателе дроби стоит вероятность события $A$. Тогда
 \[
-\frac{\mathbb{P}(H_i)\, \mathbb{P}(A \mid H_i)}{\mathbb{P}(A)}
-= \frac{\mathbb{P}(H_i)\, \mathbb{P}(A \cap H_i)}{\mathbb{P}(A)\, \mathbb{P}(H_i)}
-= \frac{\mathbb{P}(A \cap H_i)}{\mathbb{P}(A)}
-= \mathbb{P}(H_i \mid A).
+  \frac{\mathbb{P}(H_i)\, \mathbb{P}(A \mid H_i)}{\mathbb{P}(A)}
+  = \frac{\mathbb{P}(H_i)\, \mathbb{P}(A \cap H_i)}{\mathbb{P}(A)\, \mathbb{P}(H_i)}
+  = \frac{\mathbb{P}(A \cap H_i)}{\mathbb{P}(A)}
+  = \mathbb{P}(H_i \mid A).
 \]
 
 \Endproof
 
 \Example \textbf{(Применение формулы Байеса)}
 
-Тест на заболевание имеет чувствительность 95\% (вероятность положительного результата при наличии болезни) и специфичность 90\% (вероятность отрицательного результата при отсутствии болезни). Распространённость заболевания — 1\%. Какова вероятность того, что человек болен, если тест положительный?
+Тест на заболевание имеет чувствительность 95\% (вероятность положительного результата при наличии болезни) и специфичность 90\% (вероятность отрицательного результата
+при отсутствии болезни). Распространённость заболевания — 1\%. Какова вероятность того, что человек болен, если тест положительный?
 
 \Solution Пусть $B$ — событие «человек болен», $T$ — «тест положительный».
 
@@ -97,12 +103,12 @@ A = A \cap \left(\bigcup_{i=1}^{\infty} B_i\right) = \bigcup_{i=1}^{\infty}(A \c
 
 По формуле полной вероятности:
 \[
-\mathbb{P}(T) = \mathbb{P}(B)\mathbb{P}(T \mid B) + \mathbb{P}(\overline{B})\mathbb{P}(T \mid \overline{B}) = 0{,}01 \cdot 0{,}95 + 0{,}99 \cdot 0{,}10 = 0{,}1085.
+  \mathbb{P}(T) = \mathbb{P}(B)\mathbb{P}(T \mid B) + \mathbb{P}(\overline{B})\mathbb{P}(T \mid \overline{B}) = 0{,}01 \cdot 0{,}95 + 0{,}99 \cdot 0{,}10 = 0{,}1085.
 \]
 
 По формуле Байеса:
 \[
-\mathbb{P}(B \mid T) = \frac{\mathbb{P}(B)\mathbb{P}(T \mid B)}{\mathbb{P}(T)} = \frac{0{,}01 \cdot 0{,}95}{0{,}1085} \approx 0{,}088.
+  \mathbb{P}(B \mid T) = \frac{\mathbb{P}(B)\mathbb{P}(T \mid B)}{\mathbb{P}(T)} = \frac{0{,}01 \cdot 0{,}95}{0{,}1085} \approx 0{,}088.
 \]
 
 Таким образом, даже при положительном тесте вероятность болезни всего около 8{,}8\%.

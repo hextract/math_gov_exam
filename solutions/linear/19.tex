@@ -4,21 +4,21 @@
 
 \Def Пусть $\Lc$ - ЛП. Пусть $b: \Lc^2 \to \R$. $b$ будем называть биленейной формой (БФ), если:
 \begin{enumerate}
-    \item $\forall x, y, z \in \Lc \hookrightarrow b(x + y, z) = b(x, z) + b(y, z)$
-    \item $\forall x, y, z \in \Lc \hookrightarrow b(x, y + z) = b(x, y) + b(x, z)$
-    \item $\forall \alpha \in \R, \forall x, y \in \Lc \hookrightarrow b(\alpha x, y) = \alpha b(x, y) = b(x, \alpha y)$
+  \item $\forall x, y, z \in \Lc \hookrightarrow b(x + y, z) = b(x, z) + b(y, z)$
+  \item $\forall x, y, z \in \Lc \hookrightarrow b(x, y + z) = b(x, y) + b(x, z)$
+  \item $\forall \alpha \in \R, \forall x, y \in \Lc \hookrightarrow b(\alpha x, y) = \alpha b(x, y) = b(x, \alpha y)$
 \end{enumerate}
 
 \Def Пусть $\Lc$ - ЛП. Пусть $b: \Lc^2 \to \R$. $b$ - БФ. Отображение $b(x, x)$ будем называть квадратичной формой (КФ).
 
 \Def Пусть $\Lc$ - ЛП. Пусть $b: \Lc \to \R$. $b$ - КФ. $b$ имеет диагональный вид в базисе $(e_1, \dots, e_n)$, если
 \begin{equation*}
-    b(x) = \sum\limits_{k = 1}^n \alpha_k x_k^2, \alpha_k \in \R
+  b(x) = \sum\limits_{k = 1}^n \alpha_k x_k^2, \alpha_k \in \R
 \end{equation*}
 
 \Def Пусть $\Lc$ - ЛП. Пусть $b: \Lc \to \R$. $b$ - КФ. $b$ имеет канонический вид в базисе $(e_1, \dots, e_n)$, если
 \begin{equation*}
-    b(x) = \sum\limits_{k = 1}^n \alpha_k x_k^2, \alpha_k \in \{\pm 1, 0\}
+  b(x) = \sum\limits_{k = 1}^n \alpha_k x_k^2, \alpha_k \in \{\pm 1, 0\}
 \end{equation*}
 
 Далее сформулируем метод Лангранжа.
@@ -32,28 +32,28 @@
 Вынесем $x_1$ за скобки.
 
 \begin{equation*}
-    b(x) = \alpha_{11} x_1^2 + x_1 (\dots) + \dots
+  b(x) = \alpha_{11} x_1^2 + x_1 (\dots) + \dots
 \end{equation*}
 
 Поделим всё на $\alpha_{11}$:
 
 \begin{equation*}
-    b(x) = \alpha_{11} \left(x_1^2 + x_1 \frac{\dots}{\alpha_{11}}\right) + \dots
+  b(x) = \alpha_{11} \left(x_1^2 + x_1 \frac{\dots}{\alpha_{11}}\right) + \dots
 \end{equation*}
 
 Добавим и вычтем необходимое, чтобы скобку дополнить до полного квадрата:
 \begin{equation*}
-    b(x) = \alpha_{11} (x_1 + \dots)^2 + \alpha_{11} \underbrace{(\dots)}_{\text{Здесь нет $x_1$}} + \dots
+  b(x) = \alpha_{11} (x_1 + \dots)^2 + \alpha_{11} \underbrace{(\dots)}_{\text{Здесь нет $x_1$}} + \dots
 \end{equation*}
 
 Далее повторяем также для $x_2, x_3, \dots x_n$. Итого на выходе получим:
 \begin{equation*}
-    b(x) = \alpha_{11}(x_1 + \dots)^2 + \dots + \alpha_{nn} (x_n + \dots)^2
+  b(x) = \alpha_{11}(x_1 + \dots)^2 + \dots + \alpha_{nn} (x_n + \dots)^2
 \end{equation*}
 
 Далее делаем замену переменных вида:
 \begin{equation*}
-    x_k' = \sqrt{|\alpha_{kk}|} (x_k + \dots)
+  x_k' = \sqrt{|\alpha_{kk}|} (x_k + \dots)
 \end{equation*}
 
 Получили базис где у нас КФ имеет канонический вид.
@@ -69,15 +69,16 @@
 Пусть дана матрица квадратичной формы.
 
 \begin{enumerate}
-    \item $b_{11} \neq 0 \Rightarrow$ Обнуляем все, что под ней и справа от нее.
-    \item $b_{11} = 0$
+  \item $b_{11} \neq 0 \Rightarrow$ Обнуляем все, что под ней и справа от нее.
+  \item $b_{11} = 0$
+    \begin{enumerate}
+      \item Справа и снизу ноль $\Rightarrow$ идем далее.
+      \item
         \begin{enumerate}
-            \item Справа и снизу ноль $\Rightarrow$ идем далее.
-            \item \begin{enumerate}
-                    \item $\exists i \in 2 \dots n: b_{ii} \neq 0 \Rightarrow$ меняем местами 1 и $i$ строку и столбец.
-                    \item $\exists i \in 2 \dots n: b_{i1} \neq 0 \Rightarrow$ прибавляем $i$-ую строку к 1 и $i$-ый столбец к первому.
-                \end{enumerate}
+          \item $\exists i \in 2 \dots n: b_{ii} \neq 0 \Rightarrow$ меняем местами 1 и $i$ строку и столбец.
+          \item $\exists i \in 2 \dots n: b_{i1} \neq 0 \Rightarrow$ прибавляем $i$-ую строку к 1 и $i$-ый столбец к первому.
         \end{enumerate}
+    \end{enumerate}
 \end{enumerate}
 
 Рекурсивно продолжаем выполнять операции для подматрицы. Если также мы параллельно будем у матрицы $E$ соответственно менять строки, то получим матрицу перехода.
@@ -96,7 +97,8 @@
 
 \Th Во всяком базисе, в котором КФ имеет канонический вид, количество $\pm 1$ постоянно.
 
-\Def Пусть $\Lc^{(-)} \subset \Lc$ - максимальное по размерности подпространство, на котором КФ $b$ отрицательно определена. Тогда $\dim \Lc^{(-)}$ - отрицательный индекс инерции. Аналогично определяется положительный индекс инерции.
+\Def Пусть $\Lc^{(-)} \subset \Lc$ - максимальное по размерности подпространство, на котором КФ $b$ отрицательно определена. Тогда $\dim \Lc^{(-)}$ - отрицательный
+индекс инерции. Аналогично определяется положительный индекс инерции.
 
 \Th Отрицательный индекс инерции равен количеству $(-1)$, а положительный равен количеству $(+1)$.
 
@@ -104,14 +106,15 @@
 
 Пусть $(e_1, \dots e_n)$ - базис. Без ограничения общности будем считать, что:
 \begin{equation*}
-    b(x) = -x_1^2 - x_2^2 - \dots - x_k^2 + x_{k + 1}^2 + \dots + x_{\Rg b}^2 + 0 x_{\Rg b + 1}^2 + \dots 0 x_n^2
+  b(x) = -x_1^2 - x_2^2 - \dots - x_k^2 + x_{k + 1}^2 + \dots + x_{\Rg b}^2 + 0 x_{\Rg b + 1}^2 + \dots 0 x_n^2
 \end{equation*}
 Тогда $b$ отрицательно определена на $\Lc_1 = \langle e_1 \dots e_k \rangle$, а на $\Lc_2 = \langle e_{k + 1} \dots e_n \rangle$ положительно полуопределена.
 
-Ясно, что $\Lc = \Lc_1 \oplus \Lc_2$. Значит $\dim \Lc^{(-)} \geq \dim \Lc_1$. Предположим, что $\dim \Lc^{(-)} > \dim \Lc_1$. 
-Но тогда $\dim \Lc^{(-)} + \dim \Lc_2 > n \Rightarrow \exists x \in \Lc^{(-)}: \begin{cases}
-    b(x) \geq 0 \\
-    b(x) < 0
+Ясно, что $\Lc = \Lc_1 \oplus \Lc_2$. Значит $\dim \Lc^{(-)} \geq \dim \Lc_1$. Предположим, что $\dim \Lc^{(-)} > \dim \Lc_1$.
+Но тогда $\dim \Lc^{(-)} + \dim \Lc_2 > n \Rightarrow \exists x \in \Lc^{(-)}:
+\begin{cases}
+  b(x) \geq 0 \\
+  b(x) < 0
 \end{cases}$. Получили противоречие.
 
 Аналогично показывается для положительного индекса инерции.
@@ -124,26 +127,28 @@
 
 \Def Сигнатурой КФ назовём разность положительных и отрицательных индексов инерции. Обозначать будем $\sign b$.
 
-\Def Пусть $A$ матрица размера $n \times n$. Тогда положим $\Delta_k (A) \overset{def}{=} \det \begin{pmatrix}
-a_{11} & \cdots & a_{1k} \\
-\vdots & \ddots & \vdots \\
-a_{k1} & \cdots & a_{kk}
+\Def Пусть $A$ матрица размера $n \times n$. Тогда положим $\Delta_k (A) \overset{def}{=} \det
+\begin{pmatrix}
+  a_{11} & \cdots & a_{1k} \\
+  \vdots & \ddots & \vdots \\
+  a_{k1} & \cdots & a_{kk}
 \end{pmatrix}$
 
-\Lemma Пусть $k$ - положительноопредленная КФ порожденная $b$ БФ, а $A$ - ее матрица в произвольном базисе $(e_1, \dots, e_n)$. Тогда $\forall i \in 1 \dots n \hookrightarrow a_{ii} > 0$.
+\Lemma Пусть $k$ - положительноопредленная КФ порожденная $b$ БФ, а $A$ - ее матрица в произвольном базисе $(e_1, \dots, e_n)$. Тогда $\forall i \in 1 \dots n
+\hookrightarrow a_{ii} > 0$.
 
 \Proof
 
 \begin{equation*}
-    0 < k(e_i) = b(e_i, e_i) = a_{ii}
+  0 < k(e_i) = b(e_i, e_i) = a_{ii}
 \end{equation*}
 
 \Endproof
 
 \Theor{Критерий Сильвестра} Пусть $k$ - КФ. Пусть $B$ - её матрица. Тогда верно следующее.
 \begin{enumerate}
-    \item $k$ - положительно определена $\iff$ $\forall k \in 1 \dots n \hookrightarrow \Delta_k(B) > 0$.
-    \item $k$ - отрицательно определена $\iff \forall k \in 0 \dots \left\lfloor \frac{n}{2} \right\rfloor \hookrightarrow \Delta_{2k + 1}(B) < 0, \Delta_{2k + 2}(A) > 0$.
+  \item $k$ - положительно определена $\iff$ $\forall k \in 1 \dots n \hookrightarrow \Delta_k(B) > 0$.
+  \item $k$ - отрицательно определена $\iff \forall k \in 0 \dots \left\lfloor \frac{n}{2} \right\rfloor \hookrightarrow \Delta_{2k + 1}(B) < 0, \Delta_{2k + 2}(A) > 0$.
 \end{enumerate}
 
 \Proof
@@ -153,39 +158,41 @@ a_{k1} & \cdots & a_{kk}
 Пусть $k$ положительно определена. Значит, по вышедоказанной лемме $b_{11} > 0 \Rightarrow$ обнулим все, что под ним и справа. Получим матрицу следующего вида:
 
 \begin{equation*}
-    \begin{pmatrix}
-        b_{11} & 0      & \cdots & 0      \\
-        0      & b'_{22} &        &        \\
-        \vdots &        & \ddots &        \\
-        0      &        &        & b'_{nn}
-    \end{pmatrix}
-    \quad \Delta_1 > 0
+  \begin{pmatrix}
+    b_{11} & 0      & \cdots & 0      \\
+    0      & b'_{22} &        &        \\
+    \vdots &        & \ddots &        \\
+    0      &        &        & b'_{nn}
+  \end{pmatrix}
+  \quad \Delta_1 > 0
 \end{equation*}
 
-Коль скоро $k$ положительно определена, значит всякое сужение это квадратичной формы положительно определенно. Значит, используя вышедоказанную лемму можно утверждать $\forall i \in 2 \dots n \hookrightarrow b'_{ii} > 0$.
+Коль скоро $k$ положительно определена, значит всякое сужение это квадратичной формы положительно определенно. Значит, используя вышедоказанную лемму можно утверждать
+$\forall i \in 2 \dots n \hookrightarrow b'_{ii} > 0$.
 Значит имеем право проделывать эти шаги для поматрицы. Да $i$-ом шаге получим матрицу следующего вида:
 
 \begin{equation*}
-\begin{pmatrix}
-b_{11} > 0 & 0      & \cdots & 0      & \cdots & 0      \\
-0      & b'_{22} > 0 &        &        &        &        \\
-\vdots &        & \ddots &        &        & \vdots \\
-0      &        &        & b'_{ii} > 0 &        & 0      \\
-\vdots &        &        &        & \ddots & \vdots \\
-0      &        & \cdots & 0      & \cdots & b_{nn}
-\end{pmatrix}
+  \begin{pmatrix}
+    b_{11} > 0 & 0      & \cdots & 0      & \cdots & 0      \\
+    0      & b'_{22} > 0 &        &        &        &        \\
+    \vdots &        & \ddots &        &        & \vdots \\
+    0      &        &        & b'_{ii} > 0 &        & 0      \\
+    \vdots &        &        &        & \ddots & \vdots \\
+    0      &        & \cdots & 0      & \cdots & b_{nn}
+  \end{pmatrix}
 \end{equation*}
 
 Значит $\Delta_{ii}(B) > 0$.
 
 В другую сторону. Будем выполнять все те же операции и будем получать следующие оценки.
 \begin{equation*}
-    b_{11} = \Delta_1(B) > 0
+  b_{11} = \Delta_1(B) > 0
 \end{equation*}
 \begin{equation*}
-    b_{22}' b_{11} = \Delta_2(B) > 0 \Rightarrow  b_{22}' > 0
+  b_{22}' b_{11} = \Delta_2(B) > 0 \Rightarrow  b_{22}' > 0
 \end{equation*}
 И так далее. В конце получим, что все диагональные элементы строго больше нуля, а, значит, имеем положительную определенность.
 
-Покажем (2). Пусть $k(x)$ отрицательно определена. Значит $-k(x)$ - положительно определена. Применим утверждение $(1)$ вместе с тем фактом, что $\det(-A) = (-1)^n \det A$, и получим требуемое.
+Покажем (2). Пусть $k(x)$ отрицательно определена. Значит $-k(x)$ - положительно определена. Применим утверждение $(1)$ вместе с тем фактом, что $\det(-A) = (-1)^n \det
+A$, и получим требуемое.
 \Endproof

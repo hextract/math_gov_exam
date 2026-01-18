@@ -2,22 +2,22 @@
 
 \Def Пусть $f: U_{\delta_0} (x_0) \to \R$. Тогда производной функции $f$ точке $x_0$ будем называть следующий предел:
 \begin{equation*}
-    f'(x_0) = \lim\limits_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}
+  f'(x_0) = \lim\limits_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}
 \end{equation*}
 
 \Def Будем говорить, что $f: U_{\delta_0} (x_0) \to \R$ дифференцируема в точке $x_0$ $\iff$ $\exists f'(x_0) \in \R$.
 
 \Def Пусть $f: X \to \R$. Будем говорить, что $x_0 \in X$ - точка локального минимума, если выполнены следующие условия:
 \begin{equation*}
-    \exists \delta_0 > 0: \forall x \in U_{\delta_0}(x_0) \hookrightarrow f(x_0) \leq f(x)
+  \exists \delta_0 > 0: \forall x \in U_{\delta_0}(x_0) \hookrightarrow f(x_0) \leq f(x)
 \end{equation*}
 
 Аналогично определяется локальный максимум, строгий локальный минимум/максимум.
 
 \Lemma Пусть $f: [a, b] \to \R$. Пусть $x_0$ - точка локального минимума.
 \begin{itemize}
-    \item $\exists f'_+ (x_0) \in \R \Rightarrow f'_+(x_0) \geq 0$
-    \item $\exists f'_- (x_0) \in \R \Rightarrow f'_-(x_0) \leq 0$
+  \item $\exists f'_+ (x_0) \in \R \Rightarrow f'_+(x_0) \geq 0$
+  \item $\exists f'_- (x_0) \in \R \Rightarrow f'_-(x_0) \leq 0$
 \end{itemize}
 
 \Proof
@@ -28,12 +28,12 @@
 
 Значит верно, что:
 \begin{equation*}
-    \forall x \in (x_0, x_0 + \delta_0) \hookrightarrow \frac{f(x) - f(x_0)}{x - x_0} \geq 0
+  \forall x \in (x_0, x_0 + \delta_0) \hookrightarrow \frac{f(x) - f(x_0)}{x - x_0} \geq 0
 \end{equation*}
 
 Перейдя к пределу в неравенстве:
 \begin{equation*}
-    f'_+(x_0) \overset{def}{=} \lim\limits_{x \to x_0 + 0} \frac{f(x) - f(x_0)}{x - x_0} \geq 0
+  f'_+(x_0) \overset{def}{=} \lim\limits_{x \to x_0 + 0} \frac{f(x) - f(x_0)}{x - x_0} \geq 0
 \end{equation*}
 
 \Endproof
@@ -50,21 +50,21 @@ $f$ дифференцируема в $x_0$, тогда $0 \leq f'_-(x_0) = f'(x
 
 \Endproof
 
-
 Для локального максимума формулируется аналогичная теорема.
 
-\Theor{Ролля о среднем} Пусть $f \in C([a, b], \R)$, $f$ - дифференцируема на $(a, b)$, а также $f(a) = f(b)$. 
+\Theor{Ролля о среднем} Пусть $f \in C([a, b], \R)$, $f$ - дифференцируема на $(a, b)$, а также $f(a) = f(b)$.
 Коль скоро это так, то $\exists \xi \in (a, b): f'(\xi) = 0$.
 
 \Proof
 
 Случай $f \overset{[a, b]}{\equiv} C, C \in \R$ тривиален. Поэтому будем считать функцию неконстантой.
 
-В силу непрерывности на отрезке, $f$ достигает наибольшего и наименьшего значений на $[a,b]$. Так как $f(a)=f(b)$ и $f$ не константа, хотя бы одна из точек достижения max/min лежит внутри $(a,b)$; обозначим её $\xi\in(a,b)$. Тогда $\xi$ — точка локального экстремума и по теореме Ферма $f'(\xi)=0$.
+В силу непрерывности на отрезке, $f$ достигает наибольшего и наименьшего значений на $[a,b]$. Так как $f(a)=f(b)$ и $f$ не константа, хотя бы одна из точек достижения
+max/min лежит внутри $(a,b)$; обозначим её $\xi\in(a,b)$. Тогда $\xi$ — точка локального экстремума и по теореме Ферма $f'(\xi)=0$.
 
 \Endproof
 
-\Theor{Коши о среднем} Пусть $f, g \in C([a, b], \R)$, $f, g$ - дифференцируемы на $(a, b)$. Также $g(b)\neq g(a)$ и $\forall x \in (a, b) \hookrightarrow g'(x) \neq 0$. 
+\Theor{Коши о среднем} Пусть $f, g \in C([a, b], \R)$, $f, g$ - дифференцируемы на $(a, b)$. Также $g(b)\neq g(a)$ и $\forall x \in (a, b) \hookrightarrow g'(x) \neq 0$.
 Тогда $\exists \xi \in (a, b): \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\xi)}{g'(\xi)}$.
 
 \Proof
@@ -72,21 +72,21 @@ $f$ дифференцируема в $x_0$, тогда $0 \leq f'_-(x_0) = f'(x
 Положим $h(x) = f(x) - \frac{f(b) - f(a)}{g(b) - g(a)} g(x)$. Заметим следующее:
 
 \begin{multline*}
-    h(a) = f(a) - \frac{f(b) - f(a)}{g(b) - g(a)} g(a) = \frac{f(a) g(b) - f(a) g(a) - g(a) f(b) + g(a) f(a)}{g(b) - g(a)} = \frac{g(b)f(a) - g(a) f(b)}{g(b) - g(a)} = \\
-    = \frac{f(a) g(b) - f(b) g(b) - g(a) f(b) + g(b) f(b)}{g(b) - g(a)} =
-    \frac{(f(a) g(b) - f(b) g(b)) - (g(a) f(b) - g(b) f(b))}{g(b) - g(a)} = \\
-    =\frac{(f(a) - f(b)) g(b) - (g(a) - g(b)) f(b)}{g(b) - g(a)} = f(b) - \frac{f(b) - f(a)}{g(b) - g(a)} g(b) = h(b)
+  h(a) = f(a) - \frac{f(b) - f(a)}{g(b) - g(a)} g(a) = \frac{f(a) g(b) - f(a) g(a) - g(a) f(b) + g(a) f(a)}{g(b) - g(a)} = \frac{g(b)f(a) - g(a) f(b)}{g(b) - g(a)} = \\
+  = \frac{f(a) g(b) - f(b) g(b) - g(a) f(b) + g(b) f(b)}{g(b) - g(a)} =
+  \frac{(f(a) g(b) - f(b) g(b)) - (g(a) f(b) - g(b) f(b))}{g(b) - g(a)} = \\
+  =\frac{(f(a) - f(b)) g(b) - (g(a) - g(b)) f(b)}{g(b) - g(a)} = f(b) - \frac{f(b) - f(a)}{g(b) - g(a)} g(b) = h(b)
 \end{multline*}
 
 Заметим, что выполняются условия теоремы Ролля для $h$, значит $\exists \xi \in (a, b): h'(\xi) = 0$:
 \begin{equation*}
-    h'(\xi) = f'(\xi) - \frac{f(b) - f(a)}{g(b) - g(a)} g'(\xi) = 0
+  h'(\xi) = f'(\xi) - \frac{f(b) - f(a)}{g(b) - g(a)} g'(\xi) = 0
 \end{equation*}
 \begin{equation*}
-    f'(\xi) = \frac{f(b) - f(a)}{g(b) - g(a)} g'(\xi)
+  f'(\xi) = \frac{f(b) - f(a)}{g(b) - g(a)} g'(\xi)
 \end{equation*}
 \begin{equation*}
-    \frac{f'(\xi)}{g'(\xi)} = \frac{f(b) - f(a)}{g(b) - g(a)}
+  \frac{f'(\xi)}{g'(\xi)} = \frac{f(b) - f(a)}{g(b) - g(a)}
 \end{equation*}
 
 \Endproof
