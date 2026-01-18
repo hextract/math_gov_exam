@@ -1,1 +1,66 @@
 \subsection{Классы DTIME, NTIME, их связь. Классы P и NP, два определения класса NP, их эквивалентность.}
+
+\textbf{Напоминание.}
+
+МТ --- кортеж $(\Sigma, Q, Q_f, q_0, \delta, \Lambda)$
+
+\Def \textit{ДМТ (детерминированная машина Тьюринга)} --- МТ, у которой функция перехода имеет вид $\delta : \Sigma \times \{ Q \setminus Q_f \} \to \Sigma \times \{-1,
+0, 1\} \times Q$
+
+\Def \textit{НМТ (недетерминированная машина Тьюринга)} --- МТ, у которой функция перехода имеет вид $\delta : \Sigma \times \{ Q \setminus Q_f \} \to 2^{\Sigma \times
+\{-1, 0, 1\} \times Q}$
+
+\Def $T(n) : \mathbb{N} \to \mathbb{N}$ называется \textit{конструируемой по времени}, если $\exists$ ДМТ, которая по входу $1^n$ выводит значение $T(n)$ за $O(T(n))$ тактов.
+
+Далее рассматриваем в асимптотиках только такие функции.
+
+\Def ДМТ принимает слово $x$ за $T(|x|)$, если она останавливается в $q_{yes}$ за $T(|x|)$ шагов.
+
+\Def НМТ принимает слово $x$ за $T(|x|)$, если все ветки отрабатывают за $\le T(|x|)$ шагов и хотя бы одна останавливается в $q_{yes}$. Если все ветки заканчиваются не в
+$q_{yes}$, то отвергает.
+
+\Note НМТ не увеличивает класс разрешимых задач.
+
+\Def
+
+\begin{enumerate}
+  \item $\text{DTIME}(T(n))$ --- множество языков, которые распознаются на ДМТ за $O(T(n))$.
+  \item $\text{NTIME}(T(n))$ --- множество языков, которые распознаются на НМТ за $O(T(n))$.
+  \item $\text{P} := \bigcup\limits_{k \in \mathbb{N}} \text{DTIME}(n^k)$
+  \item $\text{NP} := \bigcup\limits_{k \in \mathbb{N}} \text{NTIME}(n^k)$
+\end{enumerate}
+
+\Statement
+
+\begin{enumerate}
+  \item $\text{DTIME}(T(n)) \subseteq \text{NTIME}(T(n))$
+  \item $\text{P} \subseteq \text{NP}$
+  \item $\text{NTIME}(T(n)) \subseteq \text{DTIME}(C^{T(n)})$
+\end{enumerate}
+
+\textbf{Следствие (2 эквивалентных определения NP).}
+
+$\mathcal{L} \in \text{NP}$, если:
+
+\begin{enumerate}
+  \item $\exists$ НМТ, распознающая его за полиномиальное от длины слова время.
+  \item $\exists V(x, s) : \mathbb{N} \times \mathbb{N} \to \{0, 1\}, \text{вычисляемая за полиномиальное время на ДМТ} : \\ x \in \mathcal{L} \iff \exists s : |s| \le
+    \text{poly}(|x|), V(x, s) = 1$.
+
+    Тогда $V$ называется \textit{верификатором}, а $s$ --- \textit{свидетельством (сертификатом)}. Это определение называется \textit{сертификатным}.
+\end{enumerate}
+
+$\square$
+
+\begin{itemize}
+  \item $\Rightarrow$
+
+    Если существует НМТ, распознающая $\mathcal{L}$, то за сертификат возьмем последовательность переходов $\delta$, приводящих слово $x$ к состоянию $q_{yes}$. Тогда
+    $V(x, s)$ будет вычисляться за полиномиально от длины входа время. Сертификат тоже будет полиномиальной от $|x|$ длины.
+
+  \item $\Leftarrow$
+
+    Пусть есть такой верификатор. Тогда НМТ будет генерировать все возможные $s : |s| \le \text{poly}(x)$ и запускать в каждой ветке исходный верификатор.
+\end{itemize}
+
+$\blacksquare$

@@ -1,19 +1,174 @@
 \subsection{Формула Тейлора с остаточным членом в форме Пеано или Лагранжа.}
 
-\Def Пусть $n \in \N, f: U_{\delta_0} (x_0) \to \R$ имеет $n$-ую конечную производную в точке $x_0$. Тогда полиномом Тейлора функции $f$ с центром в точке $x_0$ будем называть следующую функцию:
+\Def Пусть $n \in \N, f: U_{\delta_0} (x_0) \to \R$ имеет $n$-ую конечную производную в точке $x_0$. Тогда полиномом Тейлора функции $f$ с центром в точке $x_0$ будем
+называть следующую функцию:
 \begin{equation*}
-    T_{x_0}^n[f](x) \overset{def}{=} \sum\limits_{k=0}^n \frac{f^{(k)} (x_0)}{k!} (x - x_0)^k
+  T_{x_0}^n[f](x) \overset{def}{=} \sum\limits_{k=0}^n \frac{f^{(k)} (x_0)}{k!} (x - x_0)^k
 \end{equation*}
 
 \Def Формальным $n$-ым остаточным членом формулы Тейлора функции $f$ с центром в точке $x_0$ называется
 \begin{equation*}
-    r^n_{x_0}[f](x) \overset{def}{=} f(x) - T_{x_0}^n[f](x), x \in U_{\delta_0}(x_0)
+  r^n_{x_0}[f](x) \overset{def}{=} f(x) - T_{x_0}^n[f](x), x \in U_{\delta_0}(x_0)
 \end{equation*}
+
+\Note Ниже представлены разные подходы к доказательству от разных лекторов. Утверждения одинаковы, отличается лишь способ доказательства.
+
+\subsubsection{Вариант Редкозубова}
+
+\Theor{Формула Тейлора с остаточным членом в форме Пеано} Пусть $\exists f^{(n)}(x_0) \in \R$, тогда:
+\begin{equation*}
+  f(x) = \sum\limits_{k=0}^n \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k + o((x - x_0)^n), x \to x_0
+\end{equation*}
+
+\Proof
+
+\textbf{Индукция по $n$.} При $n=1$ равенство верно по определению дифференцируемости функции в точке $x_0$. Предположим, что утверждение верно для $n-1$, то есть для
+любой функции, имеющей производные до порядка $n-1$ включительно в окрестности $x_0$, справедливо разложение:
+
+\[
+  f(x) = f(x_0) + f'(x_0)(x - x_0) + \dots + \frac{f^{(n-1)}(x_0)}{(n-1)!}(x - x_0)^{n-1} + o((x - x_0)^{n-1}) \quad \text{при } x \to x_0.
+\]
+
+Рассмотрим функцию
+
+\[
+  \varphi(x) = f(x) - f(x_0) - f'(x_0)(x - x_0) - \dots - \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n.
+\]
+
+Тогда её производная имеет вид:
+
+\[
+  \varphi'(x) = f'(x) - f'(x_0) - f''(x_0)(x - x_0) - \dots - \frac{f^{(n)}(x_0)}{(n-1)!}(x - x_0)^{n-1}.
+\]
+
+Применим предположение индукции к функции $f'$ (которая, по условию, имеет непрерывные производные до порядка $n-1$):
+
+\[
+  f'(x) = f'(x_0) + f''(x_0)(x - x_0) + \dots + \frac{f^{(n)}(x_0)}{(n-1)!}(x - x_0)^{n-1} + o((x - x_0)^{n-1}), \quad x \to x_0.
+\]
+
+Подставляя это выражение в формулу для $\varphi'(x)$, получаем:
+
+\[
+  \varphi'(x) = o((x - x_0)^{n-1}) \quad \text{при } x \to x_0.
+\]
+
+Зафиксируем произвольное $\varepsilon > 0$. Тогда существует $\delta > 0$ такое, что для всех $x \in \mathbb{R}$, удовлетворяющих условию $|x - x_0| < \delta$, выполняется оценка:
+
+\[
+  |\varphi'(x)| \leq \varepsilon |x - x_0|^{n-1}.
+\]
+
+Теперь применим теорему Лагранжа (или неравенство Коши — Лагранжа) к функции $\varphi$ на отрезке с концами $x_0$ и $x$ (без потери общности считаем $x > x_0$; случай $x
+< x_0$ аналогичен). Существует $\xi \in (x_0, x)$, такое что:
+
+\[
+  |\varphi(x) - \varphi(x_0)| = |\varphi'(\xi)| \cdot |x - x_0|.
+\]
+
+Поскольку $\varphi(x_0) = 0$, получаем:
+
+\[
+  |\varphi(x)| = |\varphi'(\xi)| \cdot |x - x_0| \leq \varepsilon |\xi - x_0|^{n-1} \cdot |x - x_0| \leq \varepsilon |x - x_0|^{n-1} \cdot |x - x_0| = \varepsilon |x - x_0|^n,
+\]
+
+где последнее неравенство следует из того, что $|\xi - x_0| < |x - x_0| < \delta$.
+
+Таким образом, для любого $\varepsilon > 0$ найдётся $\delta > 0$, такое что при $|x - x_0| < \delta$ выполнено $|\varphi(x)| \leq \varepsilon |x - x_0|^n$, что означает:
+
+\[
+  \varphi(x) = o((x - x_0)^n) \quad \text{при } x \to x_0.
+\]
+
+Следовательно,
+
+\[
+  f(x) = f(x_0) + f'(x_0)(x - x_0) + \dots + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + o((x - x_0)^n),
+\]
+
+что и требовалось доказать.
+
+\Endproof
+
+\Theor{Формула Тейлора с остаточным членом в форме Лагранжа} Пусть $\exists f^{(n+1)}(x), \forall x \in U_\delta(x_0)$, тогда
+\begin{equation*}
+  f(x) = \sum\limits_{k=0}^n \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k + \frac{f^{(n+1)}(\xi)}{(n+1)!} (x - x_0)^{n+1}, \xi \in (x_0, x)
+\end{equation*}
+
+\Proof
+
+\textbf{Пусть для определённости $x > x_0$.} Рассмотрим функции
+
+\[
+  \varphi(t) = f(t) + f'(t)(x - t) + \dots + \frac{f^{(n)}(t)}{n!}(x - t)^n, \quad \psi(t) = (x - t)^{n+1},
+\]
+
+определённые на отрезке $[x_0, x]$. Обе функции дифференцируемы на $[x_0, x]$ и непрерывны на этом отрезке. Вычислим их производные:
+
+\[
+  \varphi'(t) = f'(t) - f'(t) + f''(t)(x - t) - f''(t)(x - t) + \dots + \frac{f^{(n+1)}(t)}{n!}(x - t)^n,
+\]
+
+что после сокращения всех парных слагаемых даёт:
+
+\[
+  \varphi'(t) = \frac{f^{(n+1)}(t)}{n!}(x - t)^n.
+\]
+
+Аналогично,
+
+\[
+  \psi'(t) = -(n+1)(x - t)^n.
+\]
+
+Заметим, что $\psi'(t) \neq 0$ при $t \in (x_0, x)$, так как $x > x_0$ и $(x - t)^n > 0$ на этом интервале.
+
+Применим к функциям $\varphi(t)$ и $\psi(t)$ на отрезке $[x_0, x]$ \textbf{теорему Коши о среднем значении}: существует точка $c \in (x_0, x)$, такая что
+
+\[
+  \frac{\varphi(x) - \varphi(x_0)}{\psi(x) - \psi(x_0)} = \frac{\varphi'(c)}{\psi'(c)}.
+\]
+
+Вычислим значения:
+
+- $\varphi(x) = f(x)$ (все слагаемые с $(x - t)$ обращаются в ноль),
+- $\varphi(x_0) = \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k$,
+- $\psi(x) = 0$, $\psi(x_0) = (x - x_0)^{n+1}$.
+
+Подставляя, получаем:
+
+\[
+  \frac{f(x) - \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k}{-(x - x_0)^{n+1}} = \frac{\dfrac{f^{(n+1)}(c)}{n!}(x - c)^n}{-(n+1)(x - c)^n}.
+\]
+
+Сокращая $(x - c)^n$ (он не равен нулю, так как $c \in (x_0, x)$), получаем:
+
+\[
+  \frac{f(x) - \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k}{-(x - x_0)^{n+1}} = \frac{f^{(n+1)}(c)}{-n!(n+1)}.
+\]
+
+Умножая обе части на $-(x - x_0)^{n+1}$, находим:
+
+\[
+  f(x) - \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!}(x - x_0)^k = \frac{f^{(n+1)}(c)}{(n+1)!}(x - x_0)^{n+1}.
+\]
+
+Таким образом, остаточный член формулы Тейлора в форме Лагранжа имеет вид:
+
+\[
+  r_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x - x_0)^{n+1}, \quad \text{где } c \in (x_0, x).
+\]
+
+Что и требовалось доказать.
+
+\Endproof
+
+\subsubsection{Вариант Тюленева}
 
 \Lemma Верны следующие равенства:
 \begin{enumerate}
-    \item $\forall k \in 0 \dots n \hookrightarrow \displaystyle \frac{d^k}{dx^k} (x - x_0)^n = \frac{n!}{(n-k)!}\,(x - x_0)^{n-k}$
-    \item $\forall k > n \hookrightarrow \frac{d^k}{dx^k} (x - x_0)^n \equiv 0$
+  \item $\forall k \in 0 \dots n \hookrightarrow \displaystyle \frac{d^k}{dx^k} (x - x_0)^n = \frac{n!}{(n-k)!}\,(x - x_0)^{n-k}$
+  \item $\forall k > n \hookrightarrow \frac{d^k}{dx^k} (x - x_0)^n \equiv 0$
 \end{enumerate}
 
 \Proof
@@ -28,32 +183,34 @@
 
 Распишем производную и воспользуемся леммой выше:
 \begin{multline*}
-    \left.\frac{d^k \left(r^n_{x_0}[f]\right)}{dx^k}\right|_{x = x_0} \overset{def}{=}
-    f^{(k)}(x_0) - \left.\frac{d^k}{dx^k} \left[ \sum\limits_{m=0}^n \frac{f^{(m)}(x_0)}{m!} (x - x_0)^m \right] \right|_{x=x_0} =
-    f^{(k)}(x_0) - \\ - 
-    \underbrace{\left.\frac{d^k}{dx^k} \left[ \sum\limits_{m=0}^{k-1} \frac{f^{(m)}(x_0)}{m!} (x - x_0)^m \right] \right|_{x=x_0}}_{0} - 
-    \left.\frac{d^k}{dx^k}\frac{f^{(k)}(x_0)}{k!} (x - x_0)^k\right|_{x=x_0} - 
-    \underbrace{\left.\frac{d^k}{dx^k} \left[ \sum\limits_{m=k+1}^{n} \frac{f^{(m)}(x_0)}{m!} (x - x_0)^m \right] \right|_{x=x_0}}_{0} = \\
-    = f^{(k)}(x_0) - \frac{f^{(k)}(x_0)}{k!} \left. \underbrace{\frac{d^k}{dx^k} (x - x_0)^k}_{k!}\right|_{x=x_0} =
-    f^{(k)}(x_0) -  \frac{k! f^{(k)}(x_0)}{k!} = f^{(k)}(x_0) - f^{(k)}(x_0) = 0
+  \left.\frac{d^k \left(r^n_{x_0}[f]\right)}{dx^k}\right|_{x = x_0} \overset{def}{=}
+  f^{(k)}(x_0) - \left.\frac{d^k}{dx^k} \left[ \sum\limits_{m=0}^n \frac{f^{(m)}(x_0)}{m!} (x - x_0)^m \right] \right|_{x=x_0} =
+  f^{(k)}(x_0) - \\ -
+  \underbrace{\left.\frac{d^k}{dx^k} \left[ \sum\limits_{m=0}^{k-1} \frac{f^{(m)}(x_0)}{m!} (x - x_0)^m \right] \right|_{x=x_0}}_{0} -
+  \left.\frac{d^k}{dx^k}\frac{f^{(k)}(x_0)}{k!} (x - x_0)^k\right|_{x=x_0} -
+  \underbrace{\left.\frac{d^k}{dx^k} \left[ \sum\limits_{m=k+1}^{n} \frac{f^{(m)}(x_0)}{m!} (x - x_0)^m \right] \right|_{x=x_0}}_{0} = \\
+  = f^{(k)}(x_0) - \frac{f^{(k)}(x_0)}{k!} \left. \underbrace{\frac{d^k}{dx^k} (x - x_0)^k}_{k!}\right|_{x=x_0} =
+  f^{(k)}(x_0) -  \frac{k! f^{(k)}(x_0)}{k!} = f^{(k)}(x_0) - f^{(k)}(x_0) = 0
 \end{multline*}
 
 \Endproof
 
-\Def Пусть $X \subset \R, f, g: X \to \R, x_0 \in X$. Будем говорить, что $f = o(g(x)), x \to x_0$, если $\exists \varepsilon: X \to \R: \lim\limits_{x \to x_0} \varepsilon(x) = 0$ и $f(x) = \varepsilon(x)g(x)$.
+\Def Пусть $X \subset \R, f, g: X \to \R, x_0 \in X$. Будем говорить, что $f = o(g(x)), x \to x_0$, если $\exists \varepsilon: X \to \R: \lim\limits_{x \to x_0}
+\varepsilon(x) = 0$ и $f(x) = \varepsilon(x)g(x)$.
 
 \Theor{Формула Тейлора с остаточным членом в форме Пеано} Пусть $\exists f^{(n)}(x_0) \in \R$, тогда:
 \begin{equation*}
-    f(x) = \sum\limits_{k=0}^n \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k + o((x - x_0)^n), x \to x_0
+  f(x) = \sum\limits_{k=0}^n \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k + o((x - x_0)^n), x \to x_0
 \end{equation*}
 
 \Proof
 
-Заметим, что коль скоро $f$ $n$ раз дифференцируема в точке $x_0$, то она $(n-1)$-раз дифференцируема в некоторой её окрестности (в частности она непрерывна на замыкании этой окрестности).
+Заметим, что коль скоро $f$ $n$ раз дифференцируема в точке $x_0$, то она $(n-1)$-раз дифференцируема в некоторой её окрестности (в частности она непрерывна на замыкании
+этой окрестности).
 
 Вспомним тот факт, что:
 \begin{equation*}
-    r^n_{x_0}[f](x) \overset{def}{=} f(x) - T_{x_0}^n[f](x)
+  r^n_{x_0}[f](x) \overset{def}{=} f(x) - T_{x_0}^n[f](x)
 \end{equation*}
 
 Значит, доказав, что $\lim\limits_{x \to x_0} \frac{r^n_{x_0}[f](x)}{(x - x_0)^n} = 0$ получим требуемое.
@@ -63,33 +220,37 @@
 Заметим следующее:
 
 \begin{equation*}
-    \frac{r^n_{x_0}[f](x)}{(x - x_0)^n} = \left\{ \left.(x - x_0)^n\right|_{x = x_0} = 0, \left.r^n_{x_0}[f](x)\right|_{x = x_0} = 0 \right\} = 
-    \frac{r^n_{x_0}[f](x) - r^n_{x_0}[f](x_0)}{\varphi(x) - \varphi(x_0)}
+  \frac{r^n_{x_0}[f](x)}{(x - x_0)^n} = \left\{ \left.(x - x_0)^n\right|_{x = x_0} = 0, \left.r^n_{x_0}[f](x)\right|_{x = x_0} = 0 \right\} =
+  \frac{r^n_{x_0}[f](x) - r^n_{x_0}[f](x_0)}{\varphi(x) - \varphi(x_0)}
 \end{equation*}
 
 Заметим, что выполняются условия теоремы Коши о среднем (для $x\neq x_0$), значит $\exists \xi$ между $x$ и $x_0$ такое, что
 
 \begin{equation*}
-    \frac{r^n_{x_0}[f](x) - r^n_{x_0}[f](x_0)}{\underbrace{(x - x_0)^n}_{\varphi_n(x)} - \underbrace{(x_0 - x_0)^n}_{\varphi_n(x_0)}} = \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi}}{\varphi_n'(\xi)} = 
-    \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi}}{n\varphi_{n-1}(\xi)}
+  \frac{r^n_{x_0}[f](x) - r^n_{x_0}[f](x_0)}{\underbrace{(x - x_0)^n}_{\varphi_n(x)} - \underbrace{(x_0 - x_0)^n}_{\varphi_n(x_0)}} =
+  \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi}}{\varphi_n'(\xi)} =
+  \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi}}{n\varphi_{n-1}(\xi)}
 \end{equation*}
 
 Далее аналогично перепишем результат выше:
 \begin{equation*}
-    \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi}}{n\varphi_{n-1}(\xi)} = \frac{1}{n} \cdot \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi} - \underbrace{\left.r^n_{x_0}[f](x)'\right|_{x = x_0}}_{0}}{\varphi_{n-1}(\xi) - \underbrace{\varphi_{n-1}(x_0)}_{0}}
+  \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi}}{n\varphi_{n-1}(\xi)} = \frac{1}{n} \cdot \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi} -
+  \underbrace{\left.r^n_{x_0}[f](x)'\right|_{x = x_0}}_{0}}{\varphi_{n-1}(\xi) - \underbrace{\varphi_{n-1}(x_0)}_{0}}
 \end{equation*}
 
 Применим опять теорему Коши о среднем и получим $\xi_1 \in (\xi, x_0) \subset (x, x_0)$:
 \begin{equation*}
-    \frac{1}{n} \cdot \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi} - \underbrace{\left.r^n_{x_0}[f](x)'\right|_{x = x_0}}_{0}}{\varphi_{n-1}(\xi) - \underbrace{\varphi_{n-1}(x_0)}_{0}} = \frac{1}{n} \cdot \frac{\left.r^n_{x_0}[f](x)^{(2)}\right|_{x = \xi_1}}{\varphi'_{n-1}(\xi_1)} = 
-    \frac{1}{n(n-1)} \cdot \frac{\left.r^n_{x_0}[f](x)^{(2)}\right|_{x = \xi_1}}{\varphi_{n-2}(\xi_1)}
+  \frac{1}{n} \cdot \frac{\left.r^n_{x_0}[f](x)'\right|_{x = \xi} - \underbrace{\left.r^n_{x_0}[f](x)'\right|_{x = x_0}}_{0}}{\varphi_{n-1}(\xi) -
+  \underbrace{\varphi_{n-1}(x_0)}_{0}} = \frac{1}{n} \cdot \frac{\left.r^n_{x_0}[f](x)^{(2)}\right|_{x = \xi_1}}{\varphi'_{n-1}(\xi_1)} =
+  \frac{1}{n(n-1)} \cdot \frac{\left.r^n_{x_0}[f](x)^{(2)}\right|_{x = \xi_1}}{\varphi_{n-2}(\xi_1)}
 \end{equation*}
 
 Повторяем предыдущий шаг $n - 1$ раз и получим:
 
 \begin{equation*}
-    \frac{r^n_{x_0}[f](x)}{(x - x_0)^n} = \dots = \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi_{n - 1}} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{n! (\xi_{n-1} - x_0)},
-    \qquad \xi_{n-1} \text{ лежит между } x \text{ и } x_0
+  \frac{r^n_{x_0}[f](x)}{(x - x_0)^n} = \dots = \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi_{n - 1}} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{n!
+  (\xi_{n-1} - x_0)},
+  \qquad \xi_{n-1} \text{ лежит между } x \text{ и } x_0
 \end{equation*}
 
 Теперь в силу того, что $\xi_{n-1} \in (x_0, x)$, то если мы будем $\xi_{n-1}$ воспринимать как функцию от $x$, то $\lim\limits_{x \to x_0} \xi_{n-1} = x_0, \xi_{n-1} \neq x_0$.
@@ -97,23 +258,24 @@
 Значит можем применить теорему о замене переменной под знаком предела:
 
 \begin{multline*}
-    \lim\limits_{x \to x_0} \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi_{n - 1}(x)} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{n! (\xi_{n-1}(x) - x_0)} =
-    \lim\limits_{\xi \to x_0} \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{n! (\xi - x_0)} = \\
-    = \frac{1}{n!} \lim\limits_{\xi \to x_0} \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{(\xi - x_0)} = 
-    \frac{1}{n!} \left. r^n_{x_0}[f](x)^{(n)} \right|_{x = x_0} = 0
+  \lim\limits_{x \to x_0} \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi_{n - 1}(x)} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{n! (\xi_{n-1}(x) - x_0)} =
+  \lim\limits_{\xi \to x_0} \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{n! (\xi - x_0)} = \\
+  = \frac{1}{n!} \lim\limits_{\xi \to x_0} \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{(\xi - x_0)} =
+  \frac{1}{n!} \left. r^n_{x_0}[f](x)^{(n)} \right|_{x = x_0} = 0
 \end{multline*}
 
 Значит:
 
 \begin{equation*}
-    \lim\limits_{x \to x_0} \frac{r^n_{x_0}[f](x)}{(x - x_0)^n} = \lim\limits_{x \to x_0} \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi_{n - 1}(x)} - \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{n! (\xi_{n-1}(x) - x_0)} = 0
+  \lim\limits_{x \to x_0} \frac{r^n_{x_0}[f](x)}{(x - x_0)^n} = \lim\limits_{x \to x_0} \frac{\left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = \xi_{n - 1}(x)} -
+  \left.r^n_{x_0}[f](x)^{(n-1)}\right|_{x = x_0}}{n! (\xi_{n-1}(x) - x_0)} = 0
 \end{equation*}
 
 \Endproof
 
 \Theor{Формула Тейлора с остаточным членом в форме Лагранжа} Пусть $\exists f^{(n+1)}(x), \forall x \in U_\delta(x_0)$, тогда
 \begin{equation*}
-    f(x) = \sum\limits_{k=0}^n \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k + \frac{f^{(n+1)}(\xi)}{(n+1)!} (x - x_0)^{n+1}, \xi \in (x_0, x)
+  f(x) = \sum\limits_{k=0}^n \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k + \frac{f^{(n+1)}(\xi)}{(n+1)!} (x - x_0)^{n+1}, \xi \in (x_0, x)
 \end{equation*}
 
 \Proof
@@ -121,7 +283,7 @@
 Применим теорему Коши о среднем $n+1$ для $\frac{r^n_{x_0}[f](x)}{(x - x_0)^{n + 1}}$. Получим $\frac{\left.(r^n_{x_0}[f](x))^{(n + 1)}\right|_{x = \xi_{n+1}}}{(n+1)!}$.
 
 \begin{equation*}
-    \frac{\left.(r^n_{x_0}[f](x))^{(n + 1)}\right|_{x = \xi_{n+1}}}{(n+1)!} = \frac{f^{(n+1)}(\xi_{n+1})}{(n+1)!}
+  \frac{\left.(r^n_{x_0}[f](x))^{(n + 1)}\right|_{x = \xi_{n+1}}}{(n+1)!} = \frac{f^{(n+1)}(\xi_{n+1})}{(n+1)!}
 \end{equation*}
 
 Положив $\xi := \xi_{n+1}$, получаем требуемое.

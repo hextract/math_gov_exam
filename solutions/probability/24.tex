@@ -3,129 +3,141 @@
 \Def
 \textit{Математическим ожиданием случайной величины} $\xi$, имеющей дискретное распределение, называется величина $\mathbb{E}\xi$, равная
 \[
-\mathbb{E}\xi = \sum_{x \in X} x\mathbb{P}(\xi = x),
+  \mathbb{E}\xi = \sum_{x \in X} x\mathbb{P}(\xi = x),
 \]
 где $X$ — множество значений $\xi$.
 
 \Example
 
-1) Пусть $\xi \sim Bern(p)$, то есть $\mathbb{P}(\xi=1) = 1-\mathbb{P}(\xi=0) = p$. Тогда
-\[
-\mathbb{E}\xi = p.
-\]
+\begin{enumerate}
 
-2) Пусть $\xi \sim U\{1, \ldots, n\}$, то есть $\mathbb{P}(\xi=i) = \frac{1}{n}, i \in \{1, \ldots, n\}$. Тогда
-\[
-\mathbb{E}\xi = \frac{1}{n} \sum_{i=1}^n i = \frac{n+1}{2}.
-\]
+  \item Пусть $\xi \sim Bern(p)$, то есть $\mathbb{P}(\xi=1) = 1-\mathbb{P}(\xi=0) = p$. Тогда
+    \[
+      \mathbb{E}\xi = p.
+    \]
 
-3) Пусть $\xi \sim Pois(\lambda)$, то есть $\mathbb{P}(\xi = k) = \frac{e^{-\lambda}\lambda^k}{k!}$. Тогда
-\[
-\mathbb{E}\xi = \sum_{k=0}^{\infty} k \mathbb{P}(\xi = k)
-= \lambda e^{-\lambda} \sum_{k=1}^{\infty} \frac{\lambda^{k-1}}{(k-1)!}
-= \lambda.
-\]
+  \item Пусть $\xi \sim U\{1, \ldots, n\}$, то есть $\mathbb{P}(\xi=i) = \frac{1}{n}, i \in \{1, \ldots, n\}$. Тогда
+    \[
+      \mathbb{E}\xi = \frac{1}{n} \sum_{i=1}^n i = \frac{n+1}{2}.
+    \]
 
+  \item Пусть $\xi \sim Pois(\lambda)$, то есть $\mathbb{P}(\xi = k) = \frac{e^{-\lambda}\lambda^k}{k!}$. Тогда
+    \[
+      \mathbb{E}\xi = \sum_{k=0}^{\infty} k \mathbb{P}(\xi = k)
+      = \lambda e^{-\lambda} \sum_{k=1}^{\infty} \frac{\lambda^{k-1}}{(k-1)!}
+      = \lambda.
+    \]
+
+\end{enumerate}
 
 \Def
 \textit{Математическим ожиданием случайной величины} $\xi$, имеющей абсолютно непрерывное распределение, называется величина $\mathbb{E}\xi$, равная
 \[
-\mathbb{E}\xi = \int_{-\infty}^{+\infty} x p_\xi(x)\, dx.
+  \mathbb{E}\xi = \int_{-\infty}^{+\infty} x p_\xi(x)\, dx.
 \]
 
 \Example
 
-1) Пусть $\xi \sim \exp(\lambda)$, то есть $p_\xi(x) = \lambda e^{-\lambda x} I(x > 0)$.
-\[
-\mathbb{E}\xi = \int_0^{\infty} \lambda x e^{-\lambda x} dx = -\int_0^{\infty} x d(e^{-\lambda x}) = \int_0^{\infty} e^{-\lambda x} dx = \frac{1}{\lambda}.
-\]
+\begin{enumerate}
 
-2) Пусть $\xi \sim \mathcal{N}(a, \sigma^2)$, то есть $p_\xi(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-a)^2}{2\sigma^2}}$.
+  \item  Пусть $\xi \sim \exp(\lambda)$, то есть $p_\xi(x) = \lambda e^{-\lambda x} I(x > 0)$.
+    \[
+      \mathbb{E}\xi = \int_0^{\infty} \lambda x e^{-\lambda x} dx = -\int_0^{\infty} x d(e^{-\lambda x}) = \int_0^{\infty} e^{-\lambda x} dx = \frac{1}{\lambda}.
+    \]
 
+  \item Пусть $\xi \sim \mathcal{N}(a, \sigma^2)$, то есть $p_\xi(x) = \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-a)^2}{2\sigma^2}}$.
+
+\end{enumerate}
 По определению:
 \[
-\mathbb{E}\xi = \int_{-\infty}^{+\infty} x \cdot \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-a)^2}{2\sigma^2}} dx.
+  \mathbb{E}\xi = \int_{-\infty}^{+\infty} x \cdot \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-a)^2}{2\sigma^2}} dx.
 \]
 
 Сделаем замену переменной: $t = \dfrac{x - a}{\sigma}$, тогда $x = \sigma t + a$, $dx = \sigma\, dt$.
 
 При $x \to \pm\infty$ имеем $t \to \pm\infty$. Подставляем:
 \[
-\mathbb{E}\xi = \int_{-\infty}^{+\infty} (\sigma t + a) \cdot \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{t^2}{2}} \cdot \sigma\, dt
-= \int_{-\infty}^{+\infty} (\sigma t + a) \cdot \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt.
+  \mathbb{E}\xi = \int_{-\infty}^{+\infty} (\sigma t + a) \cdot \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{t^2}{2}} \cdot \sigma\, dt
+  = \int_{-\infty}^{+\infty} (\sigma t + a) \cdot \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt.
 \]
 
 Разобьём интеграл на два слагаемых:
 \[
-\mathbb{E}\xi = \underbrace{\int_{-\infty}^{+\infty} \sigma t \cdot \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt}_{I_1} + \underbrace{\int_{-\infty}^{+\infty} a \cdot \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt}_{I_2}.
+  \mathbb{E}\xi = \underbrace{\int_{-\infty}^{+\infty} \sigma t \cdot \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt}_{I_1} + \underbrace{\int_{-\infty}^{+\infty} a \cdot
+  \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt}_{I_2}.
 \]
 
-\textbf{Вычислим $I_1$:} Подынтегральная функция $t \cdot e^{-t^2/2}$ — \textit{нечётная} (произведение нечётной $t$ и чётной $e^{-t^2/2}$). Интеграл от нечётной функции по симметричному промежутку $(-\infty, +\infty)$ равен нулю:
+\textbf{Вычислим $I_1$:} Подынтегральная функция $t \cdot e^{-t^2/2}$ — \textit{нечётная} (произведение нечётной $t$ и чётной $e^{-t^2/2}$). Интеграл от нечётной функции
+по симметричному промежутку $(-\infty, +\infty)$ равен нулю:
 \[
-I_1 = \sigma \cdot \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} t \cdot e^{-\frac{t^2}{2}} dt = 0.
+  I_1 = \sigma \cdot \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{+\infty} t \cdot e^{-\frac{t^2}{2}} dt = 0.
 \]
 
-\textbf{Вычислим $I_2$:} Заметим, что $\frac{1}{\sqrt{2\pi}} e^{-t^2/2}$ — это плотность стандартного нормального распределения $\mathcal{N}(0, 1)$. Интеграл от плотности по всей прямой равен 1:
+\textbf{Вычислим $I_2$:} Заметим, что $\frac{1}{\sqrt{2\pi}} e^{-t^2/2}$ — это плотность стандартного нормального распределения $\mathcal{N}(0, 1)$. Интеграл от
+плотности по всей прямой равен 1:
 \[
-I_2 = a \cdot \underbrace{\int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt}_{= 1} = a.
+  I_2 = a \cdot \underbrace{\int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt}_{= 1} = a.
 \]
 
 Итого: $\mathbb{E}\xi = I_1 + I_2 = 0 + a = a$.
 
-\Def Случайные величины $\xi$ и $\eta$ называются \textit{независимыми}, если для любых борелевских множеств $A, B \subset \mathbb{R}$ события $\{\xi \in A\}$ и $\{\eta \in B\}$ независимы, то есть
+\Def Случайные величины $\xi$ и $\eta$ называются \textit{независимыми}, если для любых борелевских множеств $A, B \subset \mathbb{R}$ события $\{\xi \in A\}$ и $\{\eta
+\in B\}$ независимы, то есть
 \[
-\mathbb{P}(\xi \in A, \eta \in B) = \mathbb{P}(\xi \in A) \cdot \mathbb{P}(\eta \in B).
+  \mathbb{P}(\xi \in A, \eta \in B) = \mathbb{P}(\xi \in A) \cdot \mathbb{P}(\eta \in B).
 \]
 
 Эквивалентно: для дискретных случайных величин $\xi$ и $\eta$ независимы тогда и только тогда, когда
 \[
-\mathbb{P}(\xi = x, \eta = y) = \mathbb{P}(\xi = x) \cdot \mathbb{P}(\eta = y) \quad \text{для всех } x, y.
+  \mathbb{P}(\xi = x, \eta = y) = \mathbb{P}(\xi = x) \cdot \mathbb{P}(\eta = y) \quad \text{для всех } x, y.
 \]
 
 Для абсолютно непрерывных: $\xi$ и $\eta$ независимы тогда и только тогда, когда совместная плотность $p_{\xi,\eta}(x, y)$ равна произведению маргинальных плотностей:
 \[
-p_{\xi,\eta}(x, y) = p_\xi(x) \cdot p_\eta(y).
+  p_{\xi,\eta}(x, y) = p_\xi(x) \cdot p_\eta(y).
 \]
 
 \Props
 
 \begin{enumerate}
-  \item \textit{Если} $\mathbb{E}\xi$ \textit{существует, то} $\mathbb{E}(c\xi) = c\mathbb{E}\xi$. \textit{Если существуют и конечны} $\mathbb{E}\xi, \mathbb{E}\eta$, \textit{то существует и} $\mathbb{E}(\xi + \eta)$, \textit{причём} $\mathbb{E}(\xi + \eta) = \mathbb{E}\xi + \mathbb{E}\eta$.
+  \item \textit{Если} $\mathbb{E}\xi$ \textit{существует, то} $\mathbb{E}(c\xi) = c\mathbb{E}\xi$. \textit{Если существуют и конечны} $\mathbb{E}\xi, \mathbb{E}\eta$,
+    \textit{то существует и} $\mathbb{E}(\xi + \eta)$, \textit{причём} $\mathbb{E}(\xi + \eta) = \mathbb{E}\xi + \mathbb{E}\eta$.
 
-  \Proof
+    \Proof
 
-    $\mathbb{E}(\xi + \eta) = \sum_{w} \left( \xi(w) + \eta(w) \right) \cdot p(w)
-= \sum_{w} \xi(w) \cdot p(w) + \sum_{w} \eta(w) \cdot p(w)
-= \mathbb{E}(\xi) + \mathbb{E}(\eta)$
+    $\mathbb{E}(\xi + \eta) = \sum_{w} \left( \xi(w) + \eta(w) \right) \cdot \mathbb{P}(w)
+    = \sum_{w} \xi(w) \cdot \mathbb{P}(w) + \sum_{w} \eta(w) \cdot \mathbb{P}(w)
+    = \mathbb{E}(\xi) + \mathbb{E}(\eta)$
 
-  $\mathbb{E}(c \xi) = \sum_{w} c\xi(w) = c \sum_{w} \xi(w) = c \mathbb{E}(\xi)$  
+    $\mathbb{E}(c \xi) = \sum_{w} c\xi(w)\cdot\mathbb{P}(w) = c \sum_{w} \xi(w)\cdot\mathbb{P}(w) = c \mathbb{E}(\xi)$
 
-  \Endproof
+    \Endproof
 
   \item $\mathbb{E} (c) = c, \ c \in \R = const$
   \item В случае независимости $\xi$ и $\eta$, верно, что $\mathbb{E} (\xi \cdot \eta) = \mathbb{E}(\xi) \cdot \mathbb{E}(\eta)$
-  
-  \Proof
 
-  \[
-\mathbb{E}(\xi \eta) = \sum_{x} \sum_{y} x y \mathbb{P}(\xi = x, \eta = y)
-= \sum_{x} \sum_{y} x y \mathbb{P}(\xi = x) \mathbb{P}(\eta = y) =
-  \]
-  \[
-    = \left( \sum_x x \mathbb{P}(\xi = x) \right) \left( \sum_y y \mathbb{P}(\eta = y) \right) = \mathbb{E}(\xi) \cdot \mathbb{E}(\eta)
-  \]
+    \Proof
 
-  \Endproof
+    \[
+      \mathbb{E}(\xi \eta) = \sum_{x} \sum_{y} x y \mathbb{P}(\xi = x, \eta = y)
+      = \sum_{x} \sum_{y} x y \mathbb{P}(\xi = x) \mathbb{P}(\eta = y) =
+    \]
+    \[
+      = \left( \sum_x x \mathbb{P}(\xi = x) \right) \left( \sum_y y \mathbb{P}(\eta = y) \right) = \mathbb{E}(\xi) \cdot \mathbb{E}(\eta)
+    \]
+
+    \Endproof
 
   \item Если $\xi = \eta$, то $\mathbb{E} \xi = \mathbb{E} \eta$
-  \item Если $0 \leq \xi \leq \eta$, а $\eta$ имеет конечное математическое ожидание, то математическое ожидание $\xi$ также конечно, и при этом $0 \leq \mathbb{E}(\xi) \leq \mathbb{E}(\eta)$
+  \item Если $0 \leq \xi \leq \eta$, а $\eta$ имеет конечное математическое ожидание, то математическое ожидание $\xi$ также конечно, и при этом $0 \leq \mathbb{E}(\xi)
+    \leq \mathbb{E}(\eta)$
 \end{enumerate}
 
 Доказательства для абсолютно непрерывных величин, глобально, аналогичны.
 
-\Def \textit{Дисперсией случайной величины} $\xi$ \textit{называется величина} 
+\Def \textit{Дисперсией случайной величины} $\xi$ \textit{называется величина}
 \[
-D\xi = \mathbb{E}(\xi - \mathbb{E}\xi)^2.
+  D\xi = \mathbb{E}(\xi - \mathbb{E}\xi)^2.
 \]
 
 Эквивалентное определение:
@@ -140,61 +152,61 @@ D\xi = \mathbb{E}(\xi - \mathbb{E}\xi)^2.
   \item Если дисперсия конечна, то математическое ожидание конечно также
   \item $Dc = 0, \ c \in \R = const$
   \item Если \(\xi, \eta\) - независимые случайные величины, то $D(\xi + \eta) = D\xi + D\eta$
-  
-  \Proof
+
+    \Proof
     \[D(\xi + \eta) = \mathbb{E}\left( \xi + \eta - \mathbb{E}(\xi + \eta) \right)^2
-= \mathbb{E}\left( (\xi - \mathbb{E}\xi) + (\eta - \mathbb{E}\eta) \right)^2
-= \mathbb{E}\left( \xi - \mathbb{E}\xi \right)^2 \] \[
-+ 2\mathbb{E}\left( (\xi - \mathbb{E}\xi)(\eta - \mathbb{E}\eta)\right)
-+ \mathbb{E}\left( \eta - \mathbb{E}\eta \right)^2= D\xi + D\eta + 2 \left( \mathbb{E}(\xi \eta) - \mathbb{E}\xi \mathbb{E}\eta \right)\]
+      = \mathbb{E}\left( (\xi - \mathbb{E}\xi) + (\eta - \mathbb{E}\eta) \right)^2
+    = \mathbb{E}\left( \xi - \mathbb{E}\xi \right)^2 \] \[
+      + 2\mathbb{E}\left( (\xi - \mathbb{E}\xi)(\eta - \mathbb{E}\eta)\right)
+    + \mathbb{E}\left( \eta - \mathbb{E}\eta \right)^2= D\xi + D\eta + 2 \left( \mathbb{E}(\xi \eta) - \mathbb{E}\xi \mathbb{E}\eta \right)\]
 
-  Что завершает доказательство из выше приведенного свойства математического ожидания
+    Что завершает доказательство из выше приведенного свойства математического ожидания
 
-  \Endproof 
-  
-  \textbf{Замечание.} Выражение $\mathbb{E}(\xi \eta) - \mathbb{E}\xi \mathbb{E}\eta$ в доказательстве — это \textit{ковариация}. Дадим формальные определения.
+    \Endproof
 
-  \Def \textit{Ковариацией} случайных величин $\xi$ и $\eta$ называется
-  \[
-  \text{cov}(\xi, \eta) = \mathbb{E}\left[(\xi - \mathbb{E}\xi)(\eta - \mathbb{E}\eta)\right] = \mathbb{E}(\xi\eta) - \mathbb{E}\xi \cdot \mathbb{E}\eta.
-  \]
+    \textbf{Замечание.} Выражение $\mathbb{E}(\xi \eta) - \mathbb{E}\xi \mathbb{E}\eta$ в доказательстве — это \textit{ковариация}. Дадим формальные определения.
 
-  \Def \textit{Коэффициентом корреляции} (Пирсона) случайных величин $\xi$ и $\eta$ называется
-  \[
-  \rho(\xi, \eta) = \frac{\text{cov}(\xi, \eta)}{\sqrt{D\xi} \cdot \sqrt{D\eta}} = \frac{\mathbb{E}(\xi\eta) - \mathbb{E}\xi \cdot \mathbb{E}\eta}{\sigma_\xi \cdot \sigma_\eta},
-  \]
-  где $\sigma_\xi = \sqrt{D\xi}$, $\sigma_\eta = \sqrt{D\eta}$ — стандартные отклонения.
+    \Def \textit{Ковариацией} случайных величин $\xi$ и $\eta$ называется
+    \[
+      \text{cov}(\xi, \eta) = \mathbb{E}\left[(\xi - \mathbb{E}\xi)(\eta - \mathbb{E}\eta)\right] = \mathbb{E}(\xi\eta) - \mathbb{E}\xi \cdot \mathbb{E}\eta.
+    \]
 
-  \textbf{Свойства:}
-  \begin{itemize}
+    \Def \textit{Коэффициентом корреляции} (Пирсона) случайных величин $\xi$ и $\eta$ называется
+    \[
+      \rho(\xi, \eta) = \frac{\text{cov}(\xi, \eta)}{\sqrt{D\xi} \cdot \sqrt{D\eta}} = \frac{\mathbb{E}(\xi\eta) - \mathbb{E}\xi \cdot \mathbb{E}\eta}{\sigma_\xi \cdot
+      \sigma_\eta},
+    \]
+    где $\sigma_\xi = \sqrt{D\xi}$, $\sigma_\eta = \sqrt{D\eta}$ — стандартные отклонения.
+
+    \textbf{Свойства:}
+    \begin{itemize}
       \item $-1 \leq \rho(\xi, \eta) \leq 1$;
       \item Если $\xi$ и $\eta$ независимы, то $\text{cov}(\xi, \eta) = 0$ и $\rho(\xi, \eta) = 0$;
       \item \textbf{Обратное неверно:} из $\text{cov}(\xi, \eta) = 0$ не следует независимость!
-  \end{itemize}
+    \end{itemize}
 
-  \Example \textbf{(Зависимые величины с нулевой ковариацией)}
+    \Example \textbf{(Зависимые величины с нулевой ковариацией)}
 
-  Пусть $\xi \sim U[-1, 1]$ (равномерное на $[-1, 1]$), и $\eta = \xi^2$.
+    Пусть $\xi \sim U[-1, 1]$ (равномерное на $[-1, 1]$), и $\eta = \xi^2$.
 
-  Величины $\xi$ и $\eta$ \textit{зависимы}: $\eta$ полностью определяется через $\xi$.
+    Величины $\xi$ и $\eta$ \textit{зависимы}: $\eta$ полностью определяется через $\xi$.
 
-  Покажем, что $\text{cov}(\xi, \eta) = 0$:
-  \[
-  \mathbb{E}\xi = \int_{-1}^{1} x \cdot \frac{1}{2}\, dx = 0 \quad \text{(симметрия относительно нуля)}.
-  \]
-  \[
-  \mathbb{E}(\xi \cdot \eta) = \mathbb{E}(\xi \cdot \xi^2) = \mathbb{E}\xi^3 = \int_{-1}^{1} x^3 \cdot \frac{1}{2}\, dx = 0 \quad \text{(нечётная функция)}.
-  \]
-  \[
-  \text{cov}(\xi, \eta) = \mathbb{E}(\xi\eta) - \mathbb{E}\xi \cdot \mathbb{E}\eta = 0 - 0 \cdot \mathbb{E}\eta = 0.
-  \]
+    Покажем, что $\text{cov}(\xi, \eta) = 0$:
+    \[
+      \mathbb{E}\xi = \int_{-1}^{1} x \cdot \frac{1}{2}\, dx = 0 \quad \text{(симметрия относительно нуля)}.
+    \]
+    \[
+      \mathbb{E}(\xi \cdot \eta) = \mathbb{E}(\xi \cdot \xi^2) = \mathbb{E}\xi^3 = \int_{-1}^{1} x^3 \cdot \frac{1}{2}\, dx = 0 \quad \text{(нечётная функция)}.
+    \]
+    \[
+      \text{cov}(\xi, \eta) = \mathbb{E}(\xi\eta) - \mathbb{E}\xi \cdot \mathbb{E}\eta = 0 - 0 \cdot \mathbb{E}\eta = 0.
+    \]
 
-  Таким образом, $\text{cov}(\xi, \xi^2) = 0$, но $\xi$ и $\xi^2$ функционально зависимы.
+    Таким образом, $\text{cov}(\xi, \xi^2) = 0$, но $\xi$ и $\xi^2$ функционально зависимы.
 
   \item $Dc\xi = c^2 D\xi, \ c \in \R = const$
   \item $D(\xi + c) = D\xi, \ c \in \R = const$
 \end{enumerate}
-
 
 \Example
 
@@ -202,15 +214,29 @@ D\xi = \mathbb{E}(\xi - \mathbb{E}\xi)^2.
 
 Подставим в формулу:
 \[
-D\xi = \mathbb{E}(\xi - \mathbb{E}\xi)^2 = \mathbb{E}(\xi - a)^2 = \int_{-\infty}^{+\infty} (x-a)^2 p_\xi(x) dx = \int_{-\infty}^{+\infty} (x-a)^2 \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-a)^2}{2\sigma^2}} dx.
+  D\xi = \mathbb{E}(\xi - \mathbb{E}\xi)^2 = \mathbb{E}(\xi - a)^2 = \int_{-\infty}^{+\infty} (x-a)^2 p_\xi(x) dx = \int_{-\infty}^{+\infty} (x-a)^2
+  \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-a)^2}{2\sigma^2}} dx.
 \]
 
 Заменим переменную: $y = \frac{x-a}{\sigma}$, \(dy = \frac{dx}{\sigma}\), тогда
 \[
-D\xi = \int_{-\infty}^{+\infty} \sigma^2 y^2 \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}{2}} dy = \sigma^2 \int_{-\infty}^{+\infty} y^2 \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}{2}} dy.
+  D\xi = \int_{-\infty}^{+\infty} \sigma^2 y^2 \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}{2}} dy = \sigma^2 \int_{-\infty}^{+\infty} y^2 \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}{2}} dy.
 \]
 
-Второй множитель — $\mathbb{E}Z^2$ для $Z\sim\mathcal{N}(0,1)$. Так как $DZ=1$ и $\mathbb{E}Z=0$, то $\mathbb{E}Z^2 = DZ + (\mathbb{E}Z)^2 = 1$. Значит
+Интеграл $\int_{-\infty}^{+\infty} y^2 e^{-\frac{y^2}{2}} dy$ является гауссовым.
+
+\Note Дополнительно: как выглядит гауссов интеграл:
+
 \[
-D\xi = \sigma^2 \cdot 1 = \sigma^2.
+  \int_{-\infty}^{+\infty} e^{-a z^2} dz = \sqrt{\frac{\pi}{a}} \quad \xrightarrow{\text{дифференцирование по } a} \quad \int_{-\infty}^{+\infty} z^2 e^{-a z^2} dz =
+  \frac{1}{2} \sqrt{\frac{\pi}{a^3}}.
+\]
+
+Тогда подставив $a = 1/2$, можем получить
+\[
+  \int_{-\infty}^{+\infty} z^2 e^{-z^2/2} dz = \sqrt{2\pi}.
+\]
+Обратной подстановкой в выражение получаем
+\[
+  D\xi = \sigma^2 \cdot \frac{1}{\sqrt{2\pi}} \cdot \sqrt{2\pi} = \sigma^2
 \]

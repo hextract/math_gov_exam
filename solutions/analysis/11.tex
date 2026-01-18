@@ -1,29 +1,31 @@
 \subsection{Равномерная сходимость функциональных последовательностей и рядов. Непрерывность, интегрируемость и дифференцируемость суммы функционального ряда.}
 
-\subsubsection{Функциональные последовательности}
+\textbf{Функциональные последовательности}
 
-\Def Пусть $X \neq \varnothing$ -- абстрактное множество. Тогда последовательность функций $\{f_n\}_{n=1}^{\infty}$, где $f_n: X \rightarrow \R \;\forall n \in \N$, называется функциональной последовательностью.
+\Def Пусть $X \neq \varnothing$ -- абстрактное множество. Тогда последовательность функций $\{f_n\}_{n=1}^{\infty}$, где $f_n: X \rightarrow \R \;\forall n \in \N$,
+называется функциональной последовательностью.
 
-\Def Функциональная последовательность сходится \textbf{поточечно} к функции $f: X \rightarrow \R$, если $\forall x \in X \; \lim\limits_{n \to \infty} f_n(x) = f(x)$. Иначе говоря,
+\Def Функциональная последовательность сходится \textbf{поточечно} к функции $f: X \rightarrow \R$, если $\forall x \in X \; \lim\limits_{n \to \infty} f_n(x) = f(x)$.
+Иначе говоря,
 
 \begin{equation*}
-    \forall x \in X \;\forall \eps > 0 \;\exists N \in \N \;\forall n \geq N \;|f_n(x) - f(x)| < \eps.
+  \forall x \in X \;\forall \eps > 0 \;\exists N \in \N \;\forall n \geq N \;|f_n(x) - f(x)| < \eps.
 \end{equation*}
 
-\Def Функциональная последовательность сходится \textbf{равномерно} к функции $f: X \rightarrow \R$, если 
+\Def Функциональная последовательность сходится \textbf{равномерно} к функции $f: X \rightarrow \R$, если
 
 \begin{equation*}
-    \forall \eps > 0 \;\exists N \in \N \;\forall n \geq N  \;\forall x \in X \; |f_n(x) - f(x)| < \eps.
+  \forall \eps > 0 \;\exists N \in \N \;\forall n \geq N  \;\forall x \in X \; |f_n(x) - f(x)| < \eps.
 \end{equation*}
 
 \Lemma $f_n \overset{X}{\rightrightarrows} f \;\iff\; \sup_{x \in X} |f_n(x) - f(x)| \to 0, n \to \infty$.
 
 \Theor{Критерий равномерной сходимости функциональной последовательности}
 
-$f_n \overset{X}{\rightrightarrows} f, n \to \infty \;\iff\; \exists \{a_n\} \subset [0, +\infty): 
+$f_n \overset{X}{\rightrightarrows} f, n \to \infty \;\iff\; \exists \{a_n\} \subset [0, +\infty):
 \begin{cases*}
-    a_n \to 0, n \to \infty; \\
-    |f_n(x) - f(x)| \leq a_n \;\forall n \in \N \;\forall x \in X.        
+  a_n \to 0, n \to \infty; \\
+  |f_n(x) - f(x)| \leq a_n \;\forall n \in \N \;\forall x \in X.
 \end{cases*}$
 
 \Proof
@@ -42,11 +44,12 @@ $f_n \overset{X}{\cancel{\rightrightarrows}} f, n \to \infty \;\iff\; \exists {x
 
 В одну сторону, $\forall n \in \N \;\sup_{x \in X} |f(x) - f_n(x)| \geq |f(x_n) - f_n(x_n)| \nrightarrow 0, n \to \infty$.
 
-В другую сторону, имеем, что $\exists \eps > 0 \;\forall k \in \N \;\exists n_k \geq k \;\exists x_{n_k} \in X : |f(x_n) - f_n(x_n)| \geq \eps$.
+В другую сторону, имеем, что $\exists \eps > 0 \;\forall k \in \N \;\exists n_k \geq k \;\exists x_{n_k} \in X : |f(x_{n_k}) - f_{x_{n_k}}(x_{n_k})| \geq \eps$.
 Таким образом, построены последовательности $\{n_k\}_{k=1}^{\infty}$ и $\{x_{n_k}\}_{k=1}^{\infty}$, такие что $|f(x_{n_k})| - f_{n_k}(x_{n_k})| \geq \eps \;\forall k \in \N$.
 Для остальных $n$ (если $n \notin \{n_k | k \in \N\}$), положим $x_n = x^*$ -- произвольная точка из $X$.
 
-Таким образом построена последовательность $\{x_n\}_{n=1}^{\infty}$, такая что $|f(x_n) - f_n(x_n)| \nrightarrow 0, n \to \infty$, так как содержит не стремящуюся к 0 подпоследовательность $\{x_{n_k}\}$.
+Таким образом построена последовательность $\{x_n\}_{n=1}^{\infty}$, такая что $|f(x_n) - f_n(x_n)| \nrightarrow 0, n \to \infty$, так как содержит не стремящуюся к 0
+подпоследовательность $\{x_{n_k}\}$.
 
 \Endproof
 
@@ -56,23 +59,27 @@ $f_n \overset{X}{\rightrightarrows} f, n \to \infty \;\iff\; \forall \eps > 0 \;
 
 \Proof
 
-Пусть $f_n \overset{X}{\rightrightarrows} f$. По определению, $\forall \eps > 0 \;\exists N_{\eps} \in \N \;\forall n \geq N_{\eps} \;\forall x \in X \; |f(x) - f_n(x)| < \frac{\eps}{2}$.
+Пусть $f_n \overset{X}{\rightrightarrows} f$. По определению, $\forall \eps > 0 \;\exists N_{\eps} \in \N \;\forall n \geq N_{\eps} \;\forall x \in X \; |f(x) - f_n(x)|
+< \frac{\eps}{2}$.
 
-Отсюда $\forall \eps > 0 \;\exists N_{\eps} \in \N: \forall n, m \geq N_{\eps} \;\forall x \in X \; |f_n(x) - f_n(x)| < \eps$. 
+Отсюда $\forall \eps > 0 \;\exists N_{\eps} \in \N: \forall n, m \geq N_{\eps} \;\forall x \in X \; |f_n(x) - f_m(x)| < \eps$.
 
-Обратно, пусть выполнено условие Коши. Тогда в частности для $\forall x \in X$ числовая последовательность $\{f_n(x)\}_{n=1}^{\infty}$ удовлетворяет условию Коши, а следовательно $\exists \lim\limits_{n \to \infty} f_n(x) \eqqcolon f(x)$.
+Обратно, пусть выполнено условие Коши. Тогда в частности для $\forall x \in X$ числовая последовательность $\{f_n(x)\}_{n=1}^{\infty}$ удовлетворяет условию Коши, а
+следовательно $\exists \lim\limits_{n \to \infty} f_n(x) \eqqcolon f(x)$.
 
 Покажем, что $\{f_n\}$ сходится равномерно к построенной функции $f(x)$.
 
 В условии Коши зафиксируем $n \geq N_{\eps}$ и в неравенстве $|f_n(x) - f_m(x)| < \eps$ перейдем к пределу при $m \to \infty$: $|f_n(x) - f(x)| \leq \eps \;\forall x \in X$.
 
-Но $n \geq N_{\eps}$ был выбран произвольно, то есть получаем $\forall \eps > 0 \;\exists N_{\eps} \in \N \;\forall n \geq N_{\eps} \forall x \in X |f_n(x) - f(x)| \leq \eps$, что и является определением равномерной сходимости.
+Но $n \geq N_{\eps}$ был выбран произвольно, то есть получаем $\forall \eps > 0 \;\exists N_{\eps} \in \N \;\forall n \geq N_{\eps} \forall x \in X |f_n(x) - f(x)| \leq
+\eps$, что и является определением равномерной сходимости.
 
 \Endproof
 
-\subsubsection{Функциональные ряды}
+\textbf{Функциональные ряды}
 
-\Def Пусть $X \neq \varnothing$ -- абстрактное множество. Функциональным рядом будем называть пару функциональных последовательностей $\{f_n\}$ и $\{S_n\}$, где $\{f_n\}$ -- члены функционального ряда, а $S_n \coloneqq \sum_{k=1}^n f_k$ -- частичные суммы функционального ряда.
+\Def Пусть $X \neq \varnothing$ -- абстрактное множество. Функциональным рядом будем называть пару функциональных последовательностей $\{f_n\}$ и $\{S_n\}$, где
+$\{f_n\}$ -- члены функционального ряда, а $S_n \coloneqq \sum_{k=1}^n f_k$ -- частичные суммы функционального ряда.
 
 \Def Функциональный ряд $\sum_{k=1}^{\infty} f_k$ сходится \textbf{поточечно} на $X$, если $\exists S: X \rightarrow \R: S_n \overset{X}{\to} S, n \to \infty$.
 
@@ -80,11 +87,12 @@ $f_n \overset{X}{\rightrightarrows} f, n \to \infty \;\iff\; \forall \eps > 0 \;
 
 \Theor{Критерий Коши равномерной сходимости функционального ряда}
 
-$\sum_{n=1}^{\infty} f_k \text{ сх. равн. на $X$} \;\iff\; \forall \eps > 0 \;\exists N_{\eps} \;\forall n \geq N_{\eps} \;\forall p \in \N \;\forall x \in X \; |\sum_{k=n}^{n+p} f_k(x)| < \eps$.
+$\sum_{n=1}^{\infty} f_k \text{ сх. равн. на $X$} \;\iff\; \forall \eps > 0 \;\exists N_{\eps} \;\forall n \geq N_{\eps} \;\forall p \in \N \;\forall x \in X \;
+|\sum_{k=n}^{n+p} f_k(x)| < \eps$.
 
 \Proof Просто применяем критерий Коши для ф. последовательностей к $S_n$. \Endproof
 
-\Consequence Если $\sum_{n=1}^{\infty} f_k$ сх. равн. на $X$, то $f_n \overset{X}{\rightrightarrows} 0$.
+\Consequence Если $\sum_{n=1}^{\infty} f_n$ сх. равн. на $X$, то $f_n \overset{X}{\rightrightarrows} 0$.
 
 \Theor{Обобщенный признак равномерной сходимости функционального ряда}
 
@@ -92,11 +100,12 @@ $\sum_{n=1}^{\infty} f_k \text{ сх. равн. на $X$} \;\iff\; \forall \eps 
 
 Пусть $0 \leq |U_k(x)| \leq V_k(x) \;\forall x \in X \;\forall k \in \N$.
 
-Тогда ряд $\sum_{k=1}^{\infty} V_k$ сходится равномерно на $X$. 
+Тогда ряд $\sum_{k=1}^{\infty} U_k$ сходится равномерно на $X$.
 
 \Proof
 
-$\forall \eps > 0 \;\exists N_{\eps} \in \N \;\forall n \geq N_{\eps} \;\forall p \in \N \;\forall x \in X \hookrightarrow \left|\sum_{k=n}^{n+p} u_k(x)\right| \leq \sum_{k=n}^{n+p} |u_k(x)| \leq \sum_{k=n}^{n+p} V_k(x) \leq \eps$.
+$\forall \eps > 0 \;\exists N_{\eps} \in \N \;\forall n \geq N_{\eps} \;\forall p \in \N \;\forall x \in X \hookrightarrow \left|\sum_{k=n}^{n+p} u_k(x)\right| \leq
+\sum_{k=n}^{n+p} |u_k(x)| \leq \sum_{k=n}^{n+p} V_k(x) \leq \eps$.
 
 \Endproof
 
@@ -108,35 +117,190 @@ $\forall \eps > 0 \;\exists N_{\eps} \in \N \;\forall n \geq N_{\eps} \;\forall 
 
 Тогда $\sum_{k=1}^{\infty} f_k$ сходится равномерно.
 
+\Proof
+
+Достаточно положить $V_k(x) = a_k \ \forall x$ и применить теорему выше.
+
+\Endproof
+
 \Theor{Признак Дирихле равномерной сходимости функционального ряда}
 
-Пусть $\{u_k\}, \{v_k\}$ -- функциональные последовательности на $X$, удовлетворяющие следующим условиям:
+Пусть $\{U_k\}, \{V_k\}$ -- функциональные последовательности на $X$, удовлетворяющие следующим условиям:
 
 \begin{enumerate}
-    \item Последовательность $\left\{\sum_{k=1}^n u_k \right\}$ равномерно ограничена на $X$ (т.е. $\exists C > 0: \left|\sum_{k=1}^n u_k(x)\right| < C \;\forall n \in \N \;\forall x \in X$);
-    \item $V_k \overset{X}{\rightrightarrows} 0, k \to \infty$;
-    \item $V_{k+1}(x) \leq V_k(x) \;\forall k \in \N \;\forall x \in X$.
+  \item Последовательность $\left\{\sum_{k=1}^n U_k \right\}$ равномерно ограничена на $X$ (т.е. $\exists C > 0: \left|\sum_{k=1}^n U_k(x)\right| < C \;\forall n \in \N
+    \;\forall x \in X$);
+  \item $V_k \overset{X}{\rightrightarrows} 0, k \to \infty$;
+  \item $V_{k+1}(x) \leq V_k(x) \;\forall k \in \N \;\forall x \in X$.
 \end{enumerate}
 
-Тогда ряд $\sum_{k=1}^{\infty} u_k v_k$ сходится равномерно на $X$.
+Тогда ряд $\sum_{k=1}^{\infty} U_k V_k$ сходится равномерно на $X$.
 
 \Proof
 
-Пусть $S_n \coloneqq \sum_{k=1}^n u_k$; $S_0 \equiv 0$.
+Пусть $S_n \coloneqq \sum_{k=1}^n U_k$; $S_0 \equiv 0$.
 
 Выполним преобразование Абеля в каждой точке $x$:
 
 \begin{gather*}
-    \sum_{k=1}^{\infty} u_k(x) v_k(x) = \sum_{k=1}^n \left[S_k(x) - S_{k-1}(x)\right] V_k(x) = \sum_{k=1}^n S_k(x) V_k(x) - \sum_{k=1}^n S_{k-1}(x) V_k(x) = \\
-    = \sum_{k=1}^n S_k(x) V_k(x) - \sum_{k=0}^{n-1} S_k(x) V_{k+1}(x) = S_n(x)V_n(x) + \sum_{k=1}^{n-1} S_k(x) \left[V_k(x) - V_{k+1}(x)\right]
+  \sum_{k=1}^{n} U_k(x) V_k(x) = \sum_{k=1}^n \left[S_k(x) - S_{k-1}(x)\right] V_k(x) = \sum_{k=1}^n S_k(x) V_k(x) - \sum_{k=1}^n S_{k-1}(x) V_k(x) = \\
+  = \sum_{k=1}^n S_k(x) V_k(x) - \sum_{k=0}^{n-1} S_k(x) V_{k+1}(x) = S_n(x)V_n(x) + \sum_{k=1}^{n-1} S_k(x) \left[V_k(x) - V_{k+1}(x)\right]
 \end{gather*}
 
-$S_n V_n$ равномерно стремится к 0 как произведение равномерно ограниченной на равномерно стремящуюся к 0.
+$S_n V_n$ равномерно стремится к 0 как произведение равномерно ограниченной на равномерно стремящуюся к 0 (это несложно понять из, например, признака Вейерштрасса
+(домножение на константу (оценку равномерно ограниченной) не изменит сходимость к нулю числового, а значит и функционального ряда)).
 
-В каждом слагаемом под суммой, $V_k(x) - V_{k+1}(x) \geq 0 \;\forall k \in \N \;\forall x \in X$, а $\sum_{k=1}^{n-1} (V_k(x) - V_{k+1}(x)) = V_1(x) - V_n(x)$ -- равномерно сходится, так как $V_n(x)$ равномерно сходится к 0. Так как $S_k$ равномерно ограничены, то $|S_k(x) (V_k(x) - V_{k+1}(x))| \leq C((V_k(x) - V_{k+1}(x)))$ -- оценка неотрицательной функцией, ряд из которых сходится равномерно. По обобщенному признаку получаем, что сумма ряд сходится равномерно.
+В каждом слагаемом под суммой, $V_k(x) - V_{k+1}(x) \geq 0 \;\forall k \in \N \;\forall x \in X$, а $\sum_{k=1}^{n-1} (V_k(x) - V_{k+1}(x)) = V_1(x) - V_n(x)$ --
+равномерно сходится, так как $V_n(x)$ равномерно сходится к 0. Так как $S_k$ равномерно ограничены, то $|S_k(x) (V_k(x) - V_{k+1}(x))| \leq C((V_k(x) - V_{k+1}(x)))$ --
+оценка неотрицательной функцией, ряд из которых сходится равномерно. По обобщенному признаку получаем, что итоговый ряд сходится равномерно.
 
 \Endproof
 
-\subsubsection{Непрерывность, интегрируемость и дифференцируемость суммы функционального ряда}
+\textbf{Непрерывность, интегрируемость и дифференцируемость суммы функционального ряда}
 
-Лекции потерялись. Главное -- не расстраиваться.
+\textit{В конспекте Редкозубова эти факты оставлены без доказательства, ниже доказательства из
+\href{https://old.mipt.ru/education/chair/mathematics/study/uchebniki/ЛпМА_Бесов.pdf}{учебника Бесова, параграф 16.3}.}
+
+\textbf{НЕПРЕРЫВНОСТЬ}
+
+\Theor{О непрерывности предельной функции при равномерной сходимости функционального ряда}
+
+Пусть $f_n \overset{E}{\rightrightarrows} f, n \to \infty$, причем $f_n$ непрерывны по множеству $E$.
+
+Тогда $f$ непрерывна по множеству $E$.
+
+\Proof
+
+В силу равномерной сходимости: $\forall \eps > 0 \;\exists n \in \N \;\forall x \in E \; |f(x) - f_n(x)| < \eps$.
+
+А в силу непрерывности $f_n$: $\forall \eps > 0 \;\exists \delta > 0 \;\forall x \in E \cap U_{\delta}(x_0) \; |f_n(x) - f_n(x_0)| < \eps$.
+
+Получаем, что
+
+\begin{gather*}
+  \forall \eps > 0 \;\exists n \in \N \;\exists \delta > 0: \\
+  |f(x) - f(x_0)| \leq |f(x) - f_n(x)| + |f_n(x) - f_n(x_0)| + |f_n(x_0) - f(x_0)| \leq 3\eps.
+\end{gather*}
+
+Что дает непрерывность $f$ по определению.
+
+\Endproof
+
+\Theor{О непрерывности суммы равномерно сходящегося функционального ряда}
+
+Пусть $u_k: E \rightarrow \Cmp$ непрерывны и ряд $\sum u_k$ сходится равномерно на $E$.
+
+Тогда сумма $S(x) = \sum u_k(x)$ непрерывна по множеству $E$.
+
+\Proof
+
+Достаточно применить предыдущую теорему для $f_n = \sum_{k=1}^n u_k, f = S$.
+
+\Endproof
+
+\textbf{ИНТЕГРИРОВАНИЕ}
+
+\Theor{Об интегрировании функциональной последовательности}
+
+Пусть $f_n \in C([a, b]) \;\forall n \in \N$ и $f_n \rightrightarrows f, n \to \infty$.
+
+Тогда
+
+\begin{equation*}
+  \int_a^x f_n(t) dt \overset{[a, b]}{\rightrightarrows} \int_a^x f(t)dt, \; n \to \infty.
+\end{equation*}
+
+\Proof
+
+Так как члены ряда непрерывны и ряд сходится равномерно, то $f \in C([a, b])$.
+
+\begin{gather*}
+  \forall \eps > 0 \;\exists N \in \N \;\forall x \in [a, b] \;\forall n \geq N \sup_{a \leq x \leq b} \left|\int_a^x f_n(t)dt - \int_a^x f(t)dt\right| \leq \int_a^b
+  |f_n(t) - f(t)| dt < \eps (b-a)
+\end{gather*}
+
+\Endproof
+
+\Consequence В условиях теоремы выше
+
+\begin{equation*}
+  \lim_{n \to \infty} \int_a^x f_n(t) dt = \int_a^x \lim_{n \to \infty} f_n(t) dt \quad\forall x \in [a, b].
+\end{equation*}
+
+\Theor{О почленном интегрировании суммы функционального ряда}
+
+Пусть $u_k \in C([a, b]) \;\forall k \in \N$; $\sum_{k=1}^{\infty} u_k$ равномерно сходится на $[a, b]$.
+
+Тогда ряд
+
+\begin{equation*}
+  \sum_{k=1}^{\infty} \int_a^x u_k(t) dt
+\end{equation*}
+
+равномерно сходится на $[a, b]$, причем
+
+\begin{equation*}
+  \int_a^x \sum_{k=1}^{\infty} u_k(t) dt = \sum_{k=1}^{\infty} \int_a^x u_k(t) dt \quad\forall x \in [a, b].
+\end{equation*}
+
+\Proof
+
+Достаточно применить предыдущую теорему и следствие из нее, взяв $f_n(x) = \sum_{k=1}^n u_k(x)$, $f(x) = \sum_{k=1}^{\infty} (x)$.
+
+\Endproof
+
+\textbf{ДИФФЕРЕНЦИРОВАНИЕ}
+
+\Theor{О дифференцировании функциональной последовательности}
+
+Пусть
+\begin{enumerate}
+  \item $f_n \in C^1([a, b]) \;\forall n \in \N$;
+  \item $\exists c \in [a, b]: f_n(x)$ сходится в точке $c$;
+  \item $f'_n \overset{[a, b]}{\rightrightarrows} \phi$.
+\end{enumerate}
+
+Тогда $f_n \overset{[a, b]}{\rightrightarrows} f$, причем $f \in C^1([a, b])$ и $f' = \phi$.
+
+\Proof
+
+$\phi \in C([a, b])$, так как $f'_n$ непрерывно и последовательность сходтся равномерно. Далее по формуле Ньютона-Лейбница
+
+\begin{equation*}
+  f_n(x) - f_n(c) = \int_c^x f'_n(t) dt \rightrightarrows \int_c^x \phi(t) dt, \; n \to \infty.
+\end{equation*}
+
+Отсюда $f_n$ сходится равномерно к некоторой функции $f$.
+
+Переходя к пределу при $n \to \infty$, получаем
+
+\begin{equation*}
+  f(x) - f(c) = \int_c^x \phi(t) dt \;\forall x \in [a, b].
+\end{equation*}
+
+Правая часть является дифференцируемой на $[a, b]$ функцией от $x$ как интеграл с переменным верхним пределом от непрерывной функции, следовательно, таковой является и $f$.
+
+Дифференцируя это равенство, получаем, что $f'(x) = \phi(x) \;\forall x \in [a, b]$.
+
+\Endproof
+
+\Theor{О почленном дифференцировании функционального ряда}
+
+Пусть
+\begin{enumerate}
+  \item $u_k \in C^1([a, b]) \;\forall k \in \N$;
+  \item Ряд $\sum u_k$ сходится хотя бы в одной точке $c \in [a, b]$;
+  \item Ряд $\sum u'_k$ сходится равномерно на $[a, b]$.
+\end{enumerate}
+
+Тогда ряд $\sum u_k$ сходится равномерно на $[a, b]$, причем его сумма непрерывно дифференцируема на $[a, b]$ и ее можно представить формально почленно дифферецируя ряд:
+
+\begin{equation*}
+  \left(\sum_{k=1}^{\infty} u_k\right)' = \sum_{k=1}^{\infty} u'_k.
+\end{equation*}
+
+\Proof
+
+Достаточно применить предыдущую теорему для $f_n = \sum_{k=1}^n u_k$.
+
+\Endproof

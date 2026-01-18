@@ -4,15 +4,15 @@
 
 \Lemma Пусть тригонометрический ряд
 \[
-f(x) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left(a_k \cos kx + b_k \sin kx\right)
+  f(x) = \frac{a_0}{2} + \sum_{k=1}^{\infty} \left(a_k \cos kx + b_k \sin kx\right)
 \]
 сходится равномерно на $\R$ (и тем самым задаёт непрерывную $2\pi$-периодическую функцию $f$).
 
 Тогда
 \begin{align*}
-    a_0 &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \;dx, \\
-    a_k &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos kx \;dx, \\
-    b_k &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin kx \;dx
+  a_0 &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \;dx, \\
+  a_k &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos kx \;dx, \\
+  b_k &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin kx \;dx
 \end{align*}
 
 \Proof
@@ -22,7 +22,7 @@ $f$, как предел равномерно сходящегося ряда и
 Домножим определение $f$ на $\cos nx$ и проинтегрируем:
 
 \begin{equation*}
-    \int_{-\pi}^{\pi} f(x) \cos nx dx = \int_{-\pi}^{\pi} \left(\frac{a_0}{2} + \sum_{k=1} \left(a_k \cos kx + b_k \sin kx\right)\right) \cos nx \; dx
+  \int_{-\pi}^{\pi} f(x) \cos nx dx = \int_{-\pi}^{\pi} \left(\frac{a_0}{2} + \sum_{k=1} \left(a_k \cos kx + b_k \sin kx\right)\right) \cos nx \; dx
 \end{equation*}
 
 Справа имеем интеграл суммы равномерно сходящегося ряда, а значит можно переписать как сумму интегралов.
@@ -33,7 +33,7 @@ $f$, как предел равномерно сходящегося ряда и
 Тогда получим:
 
 \begin{equation*}
-    \int_{-\pi}^{\pi} f(x) \cos nx \;dx = \int_{-\pi}^{\pi} a_n \cos^2 nx \; dx =  a_n \int_{-\pi}^{\pi} \cos^2 nx \; dx = \pi a_n
+  \int_{-\pi}^{\pi} f(x) \cos nx \;dx = \int_{-\pi}^{\pi} a_n \cos^2 nx \; dx =  a_n \int_{-\pi}^{\pi} \cos^2 nx \; dx = \pi a_n
 \end{equation*}
 
 То есть действительно $a_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos kx dx$.
@@ -44,18 +44,19 @@ $f$, как предел равномерно сходящегося ряда и
 
 \Def Функция $f$ называется \textbf{абсолютно интегрируемой} на $[a,b]$ (пишем $f \in |I|([a,b])$), если она интегрируема на $[a,b]$ и
 \[
-\int_a^b |f(x)|\,dx < +\infty.
+  \int_a^b |f(x)|\,dx < +\infty.
 \]
 
-\Def Тригонометрическим рядом Фурье функции $f \in |I|$ будем называть ряд $S(x) = \frac{a_0}{2} + \sum_{k=1} \left(a_k \cos kx + b_k \sin kx\right)$ с коэффициентами, определенными выше.
+\Def Тригонометрическим рядом Фурье функции $f \in |I|$ будем называть ряд $S(x) = \frac{a_0}{2} + \sum_{k=1} \left(a_k \cos kx + b_k \sin kx\right)$ с коэффициентами,
+определенными выше.
 
 Частичную сумму ряда будем обозначать $S_n(x) = \frac{a_0}{2} + \sum_{k=1}^n \left(a_k \cos kx + b_k \sin kx\right)$.
 
 \Note Тригонометрический ряд также может быть записан в комплексном виде:
 
 \begin{equation*}
-    f \sim \sum_{k \in \Z} c_k e^{ikx}
-\end{equation*}, 
+  f \sim \sum_{k \in \Z} c_k e^{ikx}
+\end{equation*}
 
 где коэффициенты $c_k = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) e^{-ikx} \; dx$.
 
@@ -66,26 +67,32 @@ $f$, как предел равномерно сходящегося ряда и
 Введем ядро Дирихле:
 
 \begin{align*}
-    D_n(\xi) \coloneqq \sum_{k=-n}^n e^{ik\xi} = [\text{пусть } e^{i\xi} \neq 1] = \frac{e^{i(n+1)\xi} - e^{-in\xi}}{e^{i\xi} - 1} = \frac{e^{i(n+\frac{1}{2})\xi} - e^{-i(n+\frac{1}{2})\xi}}{e^{\frac{i\xi}{2}} - e^{-\frac{i\xi}{2}}} = \frac{\sin\left((n+\frac{1}{2})\xi\right)}{\sin\left(\frac{\xi}{2}\right)}
+  D_n(\xi) \coloneqq \sum_{k=-n}^n e^{ik\xi} = [\text{пусть } e^{i\xi} \neq 1] = \frac{e^{i(n+1)\xi} - e^{-in\xi}}{e^{i\xi} - 1} = \frac{e^{i(n+\frac{1}{2})\xi} -
+  e^{-i(n+\frac{1}{2})\xi}}{e^{\frac{i\xi}{2}} - e^{-\frac{i\xi}{2}}} = \frac{\sin\left((n+\frac{1}{2})\xi\right)}{\sin\left(\frac{\xi}{2}\right)}
 \end{align*}
+
+Переход делаем по формуле суммы геометрической прогрессии ($q = e^{i\xi}, \ b_1 = e^{-in\xi}, N = 2n + 1$): $\frac{b_1(q^N-1)}{q-1}$. Далее умножаем числитель и
+знаменатель на $e^{-i\xi/2}$.
 
 Если же $e^{i\xi} = 1$, то тривиально $D_n(\xi) = 2n+1$.
 
 Свойства ядра Дирихле:
 \begin{enumerate}
-    \item $D_n(-\xi) = D_n(\xi)$
-    \item $\frac{1}{2\pi} \int_{-\pi}^{\pi} D_n(\xi) d\xi = 1$
+  \item $D_n(-\xi) = D_n(\xi)$
+  \item $\frac{1}{2\pi} \int_{-\pi}^{\pi} D_n(\xi) d\xi = 1$
 \end{enumerate}
 
 Теперь распишем частичную сумму ряда Фурье $2\pi$-периодичной функции $f$ через ядро Дирихле:
 
 \begin{gather*}
-    S_n(x) = \sum_{k=-n}^{n} c_k e^{ikx} =\sum_{k=-n}^{n} \left(\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(t) e^{-ikt}\;dt\right) e^{ikx}\right) = \\
-    \frac{1}{2\pi} \int_{-\pi}^\pi f(t) \sum_{k=-n}^n e^{ik(x-t)}\;dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(t) D_n(x-t) dt = \\
-    \text{Замена: }\begin{cases}\tau = x-t, \\ t = x-\tau \end{cases} \\
-    = - \frac{1}{2\pi} \int_{x+\pi}^{x-\pi} f(x-\tau) D_n(\tau) d\tau = \frac{1}{2\pi} \int_{-\pi}^\pi f(x-\tau) D_n(\tau) d\tau = \\
-    = \frac{1}{2\pi} \int_{-\pi}^0 f(x-\tau) D_n(\tau) \;d\tau + \frac{1}{2\pi} \int_0^{\pi} f(x-\tau) D_n(\tau) \;d\tau = \\
-    = \frac{1}{2\pi} \int_0^\pi \left(f(x-\tau) + f(x+\tau)\right) D_n(\tau) \;d\tau
+  S_n(x) = \sum_{k=-n}^{n} c_k e^{ikx} =\sum_{k=-n}^{n} \left(\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(t) e^{-ikt}\;dt\right) e^{ikx}\right) = \\
+  = \frac{1}{2\pi} \int_{-\pi}^\pi f(t) \sum_{k=-n}^n e^{ik(x-t)}\;dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(t) D_n(x-t) dt = \\
+  \text{Замена: }
+  \begin{cases}\tau = x-t, \\ t = x-\tau
+  \end{cases} \\
+  = - \frac{1}{2\pi} \int_{x+\pi}^{x-\pi} f(x-\tau) D_n(\tau) d\tau = \frac{1}{2\pi} \int_{-\pi}^\pi f(x-\tau) D_n(\tau) d\tau = \\
+  = \frac{1}{2\pi} \int_{-\pi}^0 f(x-\tau) D_n(\tau) \;d\tau + \frac{1}{2\pi} \int_0^{\pi} f(x-\tau) D_n(\tau) \;d\tau = \\
+  = \frac{1}{2\pi} \int_0^\pi \left(f(x-\tau) + f(x+\tau)\right) D_n(\tau) \;d\tau
 \end{gather*}
 
 \textbf{Лемма Римана об осцилляции}
@@ -96,22 +103,26 @@ $f$, как предел равномерно сходящегося ряда и
 
 \Proof
 
-Рассмотрим $(a, b)$ -- конечный интервал; $\{x_i\}$ -- разбиение Дарбу $(a, b)$, т. ч. $\sum (M_i - m_i) \delta x_i \leq \frac{\eps}{2}$.
+Рассмотрим $(a, b)$ -- конечный интервал; $\{x_i\}$ -- разбиение Дарбу $(a, b)$, т. ч. $\sum (M_i - m_i) \Delta_i \leq \frac{\eps}{2} \quad (\Delta_i \coloneqq x_i - x_{i-1})$.
 
 \begin{gather*}
-    \left|\int_a^b f(x) \cos kx \;dx\right| = \left|\sum_{i=1}^N \int_{x_{i-1}}^{x_i} (f(x) - m_i) \cos kx \;dx + \sum_{i=1}^N m_i \int_{x_{i-1}}^{x_i} \cos kx \;dx\right| \leq \\
-    \leq \sum_{i=1}^N \int_{x_{i-1}}^{x_i} |f(x) - m_i| |\cos kx| \;dx + \sum_{i=1}^N |m_i| |\sin kx_i - \sin kx_{i-1}| \leq \\
-    \leq \sum_{i=1}^N (M_i - m_i) \delta x_i + \frac{2NM}{k},
+  \left|\int_a^b f(x) \cos kx \;dx\right| = \left|\sum_{i=1}^N \int_{x_{i-1}}^{x_i} (f(x) - m_i) \cos kx \;dx + \sum_{i=1}^N m_i \int_{x_{i-1}}^{x_i} \cos kx \;dx\right| \leq \\
+  \leq \sum_{i=1}^N \int_{x_{i-1}}^{x_i} |f(x) - m_i| |\cos kx| \;dx + \sum_{i=1}^N \frac{|m_i|}{k} |\sin kx_i - \sin kx_{i-1}| \leq \\
+  \leq \sum_{i=1}^N (M_i - m_i) \Delta_i + \frac{2NM}{k}, \ \text{где} \ M = \sup\limits_{[a, b]} |f(x)|
 \end{gather*}
 
-где $M = \sup\limits_{[a, b]} |f(x)|$.
+Уточнение переходов: первый делается добавлением и вычитанием слагаемого $\sum_{i=1}^N m_i \int_{x_{i-1}}^{x_i} \cos kx \;dx$. Второй из свойств интеграла и по формуле
+Ньютона-Лейбница для второго слагаемого. В третьем для первого слагаемого разницу можем оценить наибольшей разницей на интервале, косинус оценить единицей. Для второго
+слагаемого оценка $m_i$ общим супремумом, оценка разницы синусов 2.
 
-Итого $\forall \eps > 0 \; \exists N, \, \{x_i\}_{i=1}^N, \, k_0 \,:\, \forall k > k_0 \; \left|\int_a^b f(x) \cos kx \;dx\right| \leq \eps$, то есть $\int_a^b \dots dx \to 0$ при $k \to \infty$.
+Итого $\forall \eps > 0 \; \exists N, \, \{x_i\}_{i=1}^N, \, k_0 \,:\, \forall k > k_0 \; \left|\int_a^b f(x) \cos kx \;dx\right| \leq \eps$, то есть $\int_a^b f(x) \cos
+kx \;dx \to 0$ при $k \to \infty$.
 
 В общем случае, где $f$ имеет конечное количество особенностей, разбиваем интеграл, приближаясь к ним:
 
 \begin{equation*}
-    \left| \int_a^{\text{\textcircled{b}}} f(x) \cos kx \;dx \right| = \left|\int_a^{b'} f(x) \cos kx \;dx\right| + \left|\int_{b'}^{\text{\textcircled{b}}} f(x) \cos kx \;dx\right| < \frac{\eps}{2} + \frac{\eps}{2} = \eps
+  \left| \int_a^{\text{\textcircled{b}}} f(x) \cos kx \;dx \right| = \left|\int_a^{b'} f(x) \cos kx \;dx\right| + \left|\int_{b'}^{\text{\textcircled{b}}} f(x) \cos kx
+  \;dx\right| < \frac{\eps}{2} + \frac{\eps}{2} = \eps
 \end{equation*}
 
 ($\forall \eps > 0 \; \exists b' \in (a, b): \int_{b'}^b f(x) \dots dx < \eps$).
@@ -127,14 +138,14 @@ $f$, как предел равномерно сходящегося ряда и
 
 Тогда
 \[
-S_n^f(x_0)-S_n^g(x_0)\xrightarrow[n\to\infty]{}0.
+  S_n^f(x_0)-S_n^g(x_0)\xrightarrow[n\to\infty]{}0.
 \]
 Иными словами, сходимость ряда Фурье в точке $x_0$ зависит только от поведения функции в сколь угодно малой окрестности $x_0$.
 
 \Proof
 Рассмотрим $h=f-g$. Тогда $h(x)=0$ при $0<|x-x_0|<\delta$ и
 \[
-S_n^h(x_0)=\frac{1}{2\pi}\int_{-\pi}^{\pi} h(x_0-t)D_n(t)\,dt.
+  S_n^h(x_0)=\frac{1}{2\pi}\int_{-\pi}^{\pi} h(x_0-t)D_n(t)\,dt.
 \]
 В этом интеграле существенный вклад идёт только от $|t|\ge\delta$, где ядро $D_n$ равномерно ограничено, а осцилляции дают $S_n^h(x_0)\to 0$ (лемма Римана--Лебега).
 \Endproof
@@ -144,23 +155,23 @@ S_n^h(x_0)=\frac{1}{2\pi}\int_{-\pi}^{\pi} h(x_0-t)D_n(t)\,dt.
 Обозначения:
 
 \begin{align*}
-    f(x_0 - 0) &= \lim_{h \to +0} f(x_0 - h) \\
-    f(x_0 + 0) &= \lim_{h \to +0} f(x_0 + h) \\
-    f'_{-}(x_0) &= \lim_{h \to +0} \frac{f(x_0 - h) - f(x_0)}{h} \\
-    f'_{+}(x_0) &= \lim_{h \to +0} \frac{f(x_0 + h) - f(x_0)}{h}
+  f(x_0 - 0) &= \lim_{h \to +0} f(x_0 - h) \\
+  f(x_0 + 0) &= \lim_{h \to +0} f(x_0 + h) \\
+  f'_{-}(x_0) &= \lim_{h \to +0} \frac{f(x_0 - h) - f(x_0)}{h} \\
+  f'_{+}(x_0) &= \lim_{h \to +0} \frac{f(x_0 + h) - f(x_0)}{h}
 \end{align*}
 
 \Def $f$ удовлетворяет условию Дини в точке $x_0 \in \R$, если
 
 \begin{enumerate}
-    \item $\exists f(x_0-0), f(x_0+0)$,
-    \item $\exists \delta > 0 : \int_0^\delta \frac{(f(x_0-t)-f(x_0-0)) + (f(x_0+t)-f(x_0+0))}{t} \; dt$ сходится абсолютно.
+  \item $\exists f(x_0-0), f(x_0+0)$,
+  \item $\exists \delta > 0 : \int_0^\delta \frac{(f(x_0-t)-f(x_0-0)) + (f(x_0+t)-f(x_0+0))}{t} \; dt$ сходится абсолютно.
 \end{enumerate}
 
 \Def $f$ кусочно непрерывна на $[a, b]$, если существует разбиение ${x_i}_{i=1}^n$:
 \begin{enumerate}
-    \item $f \in C((x_{i-1}, x_i)), i = 1, \dots, n$,
-    \item $\exists f(x_k-0), f(x_k+0), k = 1, \dots, n-1$.
+  \item $f \in C((x_{i-1}, x_i)), i = 1, \dots, n$,
+  \item $\exists f(x_k-0), f(x_k+0), k = 1, \dots, n-1$.
 \end{enumerate}
 
 \Def $f$ кусочно гладкая на $[a, b]$, если она непрерывна, а её производная кусочно непрерывна на $[a, b]$.
@@ -174,20 +185,23 @@ S_n^h(x_0)=\frac{1}{2\pi}\int_{-\pi}^{\pi} h(x_0-t)D_n(t)\,dt.
 \Proof
 
 \begin{gather*}
-    S_n(x_0)=\frac{1}{2\pi}\int_{0}^{\pi}\big(f(x_0-t)+f(x_0+t)\big)D_n(t)\,dt,\qquad
-    D_n(t)=\frac{\sin\big((n+\tfrac12)t\big)}{\sin(t/2)}.
+  S_n(x_0)=\frac{1}{2\pi}\int_{0}^{\pi}\big(f(x_0-t)+f(x_0+t)\big)D_n(t)\,dt,\qquad
+  D_n(t)=\frac{\sin\big((n+\tfrac12)t\big)}{\sin(t/2)}.
 \end{gather*}
 
 Положим $A=\dfrac{f(x_0-0)+f(x_0+0)}{2}$. Так как $\int_0^\pi D_n(t)\,dt=\pi$, имеем
 \begin{gather*}
-    S_n(x_0)-A
-    =\frac{1}{2\pi}\int_{0}^{\pi}\Big((f(x_0-t)-f(x_0-0))+(f(x_0+t)-f(x_0+0))\Big)D_n(t)\,dt \\
-    =\frac{1}{2\pi}\int_{0}^{\pi}
-    \underbrace{\frac{(f(x_0-t)-f(x_0-0))+(f(x_0+t)-f(x_0+0))}{t}}_{\in L^1(0,\pi)\ \text{по условию Дини}}
+  S_n(x_0)-A
+  =\frac{1}{2\pi}\int_{0}^{\pi}\Big((f(x_0-t)-f(x_0-0))+(f(x_0+t)-f(x_0+0))\Big)D_n(t)\,dt \\
+  =\frac{1}{2\pi}\int_{0}^{\pi}
+  \underbrace{
+    \underbrace{\frac{(f(x_0-t)-f(x_0-0))+(f(x_0+t)-f(x_0+0))}{t}}_{\in L^1(0,\pi)\ \text{(т.е. интеграл сходится абсолютно) по условию Дини}}
     \cdot
     \underbrace{\frac{t}{2\sin(t/2)}}_{\text{непрерывно на }[0,\pi]}
-    \cdot \sin\big((n+\tfrac12)t\big)\,dt.
+  }_{\text{абсолютно сходится, как произведение абсолютно сходящегося на непрерывную}}
+  \cdot \sin\big((n+\tfrac12)t\big)\,dt \to 0.
 \end{gather*}
-Произведение первых двух множителей принадлежит $L^1(0,\pi)$, поэтому по лемме Римана об осцилляции интеграл стремится к нулю при $n\to\infty$.
+
+Стремление к 0 при $n \to \infty$ по лемме об осциляции.
 
 \Endproof

@@ -2,47 +2,49 @@
 
 \Note Здесь и далее $E \subset \R^m$ -- непустое множество.
 
-\Def Пусть $x^0 \in E$, $f: E \rightarrow \R$. Будем говорить, что $x^0$ -- точка строгого локального экстремума $f$ на $E$, если $\exists \delta > 0: \;\forall x \in \mathring U_\delta (x^0) \cap E \hookrightarrow f(x) > \textit{(<)} f(x^0)$.
+\Def Пусть $x^0 \in E$, $f: E \rightarrow \R$. Будем говорить, что $x^0$ -- точка строгого локального экстремума $f$ на $E$, если $\exists \delta > 0: \;\forall x \in
+\mathring U_\delta (x^0) \cap E \hookrightarrow f(x) > \textit{(<)} f(x^0)$.
 
 В случае нестрогих неравенств, определяется точка нестрого локального экстремума.
 
-\subsubsection{Необходимое условие безусловного эктремума}
+\textbf{Необходимое условие безусловного эктремума}
 
-\Th Пусть $E$ -- открыто, $f: E \rightarrow \R$; $\forall i \in \{1, \dots, m\} \;\exists \frac{\partial f}{\partial x_i}(x^0) \in \R$. 
+\Th Пусть $E$ -- открыто, $f: E \rightarrow \R$; $\forall i \in \{1, \dots, m\} \;\exists \frac{\partial f}{\partial x_i}(x^0) \in \R$.
 
 Тогда если $x^0$ -- точка локального экстремума, то $\frac{\partial f}{\partial x_i}(x^0) = 0 \;\forall i \in \{1, \dots, m\}$.
 
 \Proof
 
-Так как $E$ открыто, а $x^0$ -- точка локального экстремума (скажем, минимума), 
+Так как $E$ открыто, а $x^0$ -- точка локального экстремума (скажем, минимума),
 то $\exists \delta > 0: B_\delta(x^0) \subset E$ и $\forall x \in B_\delta(x^0) \; f(x) \geq f(x^0)$.
 
-Фиксируем $i \in \{1, \dots, m\}$. Введем $g_i(t) = f(x_1^0, \dots, x_{i-1}^0, t, x_{i+1}^0, \dots, x_m^0)$. Эта функция имеет локальный экстремум в т. $x_i^0$ и имеет производную $\frac{\partial g_i}{\partial t}(x_i^0) = \frac{\partial f}{\partial x_i}(x^0)$, которая в силу теоремы для одномерного случая равна 0. Это верно для любого $i$.
+Фиксируем $i \in \{1, \dots, m\}$. Введем $g_i(t) = f(x_1^0, \dots, x_{i-1}^0, t, x_{i+1}^0, \dots, x_m^0)$. Эта функция имеет локальный экстремум в т. $x_i^0$ и имеет
+производную $\frac{\partial g_i}{\partial t}(x_i^0) = \frac{\partial f}{\partial x_i}(x^0)$, которая в силу теоремы для одномерного случая равна 0. Это верно для любого $i$.
 
 \Endproof
 
-\subsubsection{Достаточное условие безусловного эктремума}
+\textbf{Достаточное условие безусловного эктремума}
 
 \Def Квадратичной формой в $\R^m$ назовем функцию $K: \R^m \rightarrow \R$
 
 \begin{equation*}
-    K(h) \coloneqq \sum_{i=1}^m \sum_{j=1}^m  a_{ij} h_i h_j = h^T A h.
+  K(h) \coloneqq \sum_{i=1}^m \sum_{j=1}^m  a_{ij} h_i h_j = h^T A h.
 \end{equation*}
 
 Так вот: если $f$ дважды дифференцируема в $x^0$ и все частные производные 2-го порядка непрерывны в точке $x^0$, то второй дифференциал, который по определению записывается как
 
 \begin{equation*}
-    d^2 f(x^0) \coloneqq \sum_{i=1}^m \sum_{j=1}^m \frac{\partial^2 f}{\partial x_i \partial x_j}(x^0) dx_i dx_j,
+  d^2 f(x^0) \coloneqq \sum_{i=1}^m \sum_{j=1}^m \frac{\partial^2 f}{\partial x_i \partial x_j}(x^0) dx_i dx_j,
 \end{equation*}
 
 представляет собой квадратичную форму с матрицей вторых производных (которая в силу их непрерывности симметрична), которая называется матрицей Гессе.
 
-\Def $K(h)$ 
+\Def $K(h)$
 
 \begin{itemize}
-    \item положительно определена, если $\forall h \neq 0 \hookrightarrow K(h) > 0$;
-    \item отрицательно определена, если $\forall h \neq 0 \hookrightarrow K(h) < 0$;
-    \item знаконеопределена, если $\exists h_1, h_2 \neq 0: \; K(h_1) > 0,\; K(h_2) < 0$;
+  \item положительно определена, если $\forall h \neq 0 \hookrightarrow K(h) > 0$;
+  \item отрицательно определена, если $\forall h \neq 0 \hookrightarrow K(h) < 0$;
+  \item знаконеопределена, если $\exists h_1, h_2 \neq 0: \; K(h_1) > 0,\; K(h_2) < 0$;
 \end{itemize}
 
 \Theorbd{Критерий Сильвестра.}
@@ -57,46 +59,62 @@
 
 Пусть $f \in C^2(B_{\delta_0}(x^0))$. Пусть $\forall i \in \{1, \dots, m\}\; \frac{\partial f}{\partial x_i}(x^0) = 0$.
 
-Тогда 
+Тогда
 
 \begin{itemize}
-    \item Если квадратичная форма $d^2 f(x^0)$ положительно/отрицательно определена, то $x^0$ -- точка локального минимума/максимума соответственно.
-    \item Если квадратичная форма $d^2 f(x^0)$ знаконеопределена, то экстремума нет.
-    \item Иначе ничего сказать нельзя.
+  \item Если квадратичная форма $d^2 f(x^0)$ положительно/отрицательно определена, то $x^0$ -- точка локального минимума/максимума соответственно.
+  \item Если квадратичная форма $d^2 f(x^0)$ знаконеопределена, то экстремума нет.
+  \item Иначе ничего сказать нельзя.
 \end{itemize}
 
 \Proof
 
 \begin{gather*}
-    f(x) = f(x^0) + d_{x^0} f(dx) + \frac{1}{2} d^2_{x^0} f(dx) + o(||dx||^2) = \\
-    f(x^0) + \frac{d^2_{x^0} f(dx)}{2} + o(||dx||^2), x \rightarrow x^0 .
+  f(x) = f(x^0) + d_{x^0} f(dx) + \frac{1}{2} d^2_{x^0} f(dx) + o(||dx||^2) = \\
+  f(x^0) + \frac{d^2_{x^0} f(dx)}{2} + o(||dx||^2), x \rightarrow x^0 .
 \end{gather*}
 
 Рассмотрим случай, где квадратичная форма положительно определена. Тогда, как непрерывная функция, на единичной сфере $S_1^{m-1}$ (компакт) она достигает своего инфимума $m>0$:
 
 \begin{equation*}
-    \forall dx \in S_1^{m-1}(0) \; d^2_{x^0} f(dx) \geq m.
+  \forall dx \in S_1^{m-1}(0) \; d^2_{x^0} f(dx) \geq m.
 \end{equation*}
 
 \begin{equation*}
-    \forall dx \neq 0 \; d^2_{x^0} f(dx) = ||dx||^2 \sum_i \sum_j \frac{\partial^2 f}{\partial x_i \partial x_j}(x^0) \frac{dx_i}{||dx||} \frac{dx_j}{||dx||} \geq m ||dx||^2.
+  \forall dx \neq 0 \; d^2_{x^0} f(dx) = ||dx||^2 \sum_i \sum_j \frac{\partial^2 f}{\partial x_i \partial x_j}(x^0) \frac{dx_i}{||dx||} \frac{dx_j}{||dx||} \geq m ||dx||^2.
 \end{equation*}
 
-В достаточно малой окрестности о-малое будет достаточно мало, чтобы $\forall x \in B_{\hat{\delta}} (x^0) \hookrightarrow f(x) \geq f(x^0) + \frac{1}{4} m ||x-x^0||^2$.
+Хотим дать оценку снизу на
 
-Для случая знаконеопределенности ($\exists dx^1, dx^2 \neq 0: d^2_{x^0} f(dx^1) > 0, d^2_{x^0} f(dx^2) < 0$) достаточно расписать 
+\begin{equation*}
+  f(x) = f(x^0) + \frac{d^2_{x^0} f(dx)}{2} + o(||dx||^2)
+\end{equation*}
+
+$\frac{d^2_{x^0} f(dx)}{2}$, как мы выяснили, можно оценить снизу $\frac{m}{2}||dx||^2$
+
+Третье слагаемое в достаточно малом шаре $\mathring{B}_{\hat{\delta}}(x^0)$ можно оценить снизу как $-m/4 \cdot ||dx||^2$ (оно о-малое, константа может быть любой).
+Тогда итоговая оценка будет выглядеть так:
+
+\begin{equation*}
+  \forall x \in \mathring{B}_{\hat{\delta}}(x^0) \hookrightarrow f(x) \geq f(x^0) + \frac{1}{2} m ||dx||^2 - \frac{1}{4} m ||dx||^2 = f(x^0) + \frac{1}{4} m ||x-x^0||^2
+\end{equation*}
+
+А это уже означает то, что мы получили минимум.
+
+Случай отрицательно определенной формы доказывается в точности аналогично, а также может быть сведен заменой $g = -f$ к доказанному выше.
+
+Для случая знаконеопределенности ($\exists dx^1, dx^2 \neq 0: d^2_{x^0} f(dx^1) > 0, d^2_{x^0} f(dx^2) < 0$) достаточно расписать
 
 \begin{gather*}
-    f(x^0 + t dx^1) - f(x^0) = \frac{t^2}{2} d^2_{x^0} f(dx^1) + o(t^2), t \rightarrow 0; \\
-    f(x^0 + t dx^2) - f(x^0) = \frac{t^2}{2} d^2_{x^0} f(dx^2) + o(t^2), t \rightarrow 0;
+  f(x^0 + t dx^1) - f(x^0) = \frac{t^2}{2} d^2_{x^0} f(dx^1) + o(t^2), t \rightarrow 0; \\
+  f(x^0 + t dx^2) - f(x^0) = \frac{t^2}{2} d^2_{x^0} f(dx^2) + o(t^2), t \rightarrow 0;
 \end{gather*}
 
 \begin{gather*}
-    \exists \delta>0: \;\forall t \in (0, \delta) \hookrightarrow f(x^0 + t dx^1) < f(x^0) < f(x^0 + t dx^2).
+  \exists \delta>0: \;\forall t \in (0, \delta) \hookrightarrow f(x^0 + t dx^1) < f(x^0) < f(x^0 + t dx^2).
 \end{gather*}
 
 \Endproof
 
-\textit{Примеры по 4-му пункту: $f_1(x_1, x_2) = x_1^4$, $f_2(x_1, x_2) = x_1^3$. В обоих случаях квадратичные формы зануляются в $(0, 0)$, но в одном случае это точка экстремума, а в другом нет.}
-
-
+\textit{Примеры по 3-му пункту: $f_1(x_1, x_2) = x_1^4$, $f_2(x_1, x_2) = x_1^3$. В обоих случаях квадратичные формы зануляются в $(0, 0)$, но в одном случае это точка
+экстремума, а в другом нет.}
