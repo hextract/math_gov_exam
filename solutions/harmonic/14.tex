@@ -1,98 +1,78 @@
 \subsection{Достаточные условия равномерной сходимости тригонометрического ряда Фурье.}
 
-\textbf{Представление частичной суммы ряда Фурье с ядром Фейера}
+\Theor{О скорости убывания коэффициентов Фурье}
 
-\Def Будем говорить, что $x_n$ сходится к $a$ по Чезаро, если $\frac{x_1 + \dots + x_n}{n} \to a$, при $n \to \infty$.
+Пусть $f \in C^{(m-1)} ([-\pi, \pi])$; $f^{(j)} (-\pi) = f^{(j)} (\pi) \;\forall j \in \{0, \dots, m-1\}$; $\exists f^{(m)}$ -- кусочно непрерывная на $[-\pi, \pi]$.
 
-Обозначим $\sigma_n(x) = \frac{\sum_{i=0}^n S_i(x)}{n+1}$ -- среднее арифметическое $n$ частичных сумм ряда Фурье.
-
-Распишем:
-
-\begin{gather*}
-  \sigma_n(x)  = \frac{1}{n+1} \sum_{i=0}^n \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) D_i(t) \,dt = \\
-  = \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) \frac{\sum_{i=0}^n D_i(t)}{n+1} \,dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(x-t) F_n(t) \,dt,
-\end{gather*}
-
-где $F_n(t)$ -- ядро Фейера. Распишем его:
-
-\begin{gather*}
-  F_n(t) \coloneqq \frac{\sum_{i=0}^n D_i(t)}{n+1} = \frac{1}{(n+1)\sin \frac{t}{2}} \sum_{k=0}^n \sin \left(\left(k + \frac{1}{2}\right)t\right) = \\
-  = \frac{1}{(n+1)\sin^2 \frac{t}{2}} \sum_{k=0}^n \sin\left(\frac{t}{2}\right) \sin \left(\left(k + \frac{1}{2}\right)t\right) =
-  \frac{1}{2 (n+1)\sin^2 \frac{t}{2}} \sum_{k=0}^n \left(\cos kt - \cos ((k+1) t)\right) \\
-  = \frac{1}{2 (n+1)\sin^2 \frac{t}{2}} \left(1 - \cos ((n+1)t)\right) = \frac{1}{n+1} \frac{\sin^2 \left(\frac{n+1}{2} t\right)}{\sin^2 \frac{t}{2}}
-\end{gather*}
-
-\textit{(Если $\sin \frac{t}{2} = 0$, то $F_n(t) = n+1$)}
-
-Свойства:
+Тогда 
 
 \begin{enumerate}
-  \item $F_n(t) \geq 0 \; \forall t \in \R$,
-  \item $F_n(t)$ -- $2\pi$-периодическая,
-  \item $\int_{-\pi}^\pi F_n(t) \,dt = 2\pi$.
+    \item $c_k (f^{(m)}) = (ik)^m c_k(f), \; k \in \Z$.
+    \item $|c_k (f)| = \overline{o}(\frac{1}{|k|^m}), \; k \to +\infty$, причем $|c_k(f)| = \frac{\gamma_k}{|k|^m}$, где $sum_{k=1}^{+\infty} \gamma_k^2 < +\infty$.
 \end{enumerate}
 
-\textbf{Теорема Фейера}
+\Theor{О равномерной сходимости ряда Фурье}
 
-Пусть $f: \R \to \Cmp$ -- $2\pi$-периодическая; $f \in |I|([-\pi, \pi])$.
+Пусть 
 
-Тогда
 \begin{enumerate}
-  \item Если $f$ равномерно непрерывна на $E \subset \R$, то $\sigma_n \overset{E}{\rightrightarrows} f$;
-  \item Если $f$ непрерывна на $\R$, то $\sigma_n \overset{\R}{\rightrightarrows} f$;
-  \item Если $f$ непрерывна в точке $x_0$, то $\sigma_n(x_0) \rightarrow f(x_0)$;
+    \item $f \in C^{(m-1)} [-\pi, \pi]$ ($m \geq 1$);
+    \item $\exists f^{(m)}$ -- кусочно непрерывная на $[-\pi, \pi]$;
+    \item $f^{(j)}(-\pi) = f^{(j)}(\pi) \;\forall j \in \{0, \dots, m-1\}$.
 \end{enumerate}
+
+Тогда ряд Фурье функции $f$ сходится к $f$ равномерно на $[-\pi, \pi]$, причем 
+
+\begin{equation*}
+    |f(x) - S_n(x)| \leq \frac{\delta_n}{n^{m-\frac{1}{2}}},
+\end{equation*}
+
+где $\delta_n \to 0$.
 
 \Proof
 
-\begin{enumerate}
-  \item
+По теореме о скорости сходимости коэффициентов, $|c_k(f)| = \frac{\gamma_k}{|k|^m}$, где $\sum \gamma_k^2 < \infty$ $\;\forall k \in \Z \setminus \{0\}$.
 
-    Обозначим
+Применим неравенство о среднем:
 
-    \begin{equation*}
-      \Delta_n(x) =
-      \begin{cases}
-        \frac{1}{2\pi} F_n(x), \; |x| \leq \pi, \\
-        0, \; |x| > \pi.
-      \end{cases}
-    \end{equation*}
+\begin{equation*}
+    \frac{\gamma_k}{|k|^m} \leq \frac{1}{2} \left(\gamma_k^2 + \frac{1}{|k|^{2m}}\right)
+\end{equation*}
 
-    Заметим свойство, что $\forall \delta > 0 \quad \int_\delta^{+\infty} \Delta_n(x) \,dx \to 0$ при $n \to \infty$.
+Ряд $\sum \frac{1}{|k|^{2m}}$ сходится, так как $2m > 1$. 
 
-    Действительно,
-    \begin{equation*}
-      \frac{1}{2\pi} \int_\delta^{+\infty} F_n(x) \leq \frac{1}{2\pi (n+1)} \underbrace{\int_\delta^{+\infty} \frac{dt}{\sin^2 \frac{t}{2}}}_{\text{сходится}} \to 0.
-    \end{equation*}
+Значит по признаку Вейерштрасса ряд $\sum_{k=1}^{\infty} \frac{\gamma_k}{|k|^m}$ сходится.
 
-    Тогда
-    \begin{gather*}
-      |\sigma_n(x) - f(x)| = |\int_{-\pi}^\pi f(x-t) \Delta_n(t) \,dt - f(x) \underbrace{\int_{-\pi}^\pi \Delta_n(t)\,dt}_{=1} | = \\
-      = |\int_{-\pi}^\pi \left(f(x-t)-f(x)\right) \Delta_n(t) \,dt| \leq |\int_{[-\delta, \delta]} \left(f(x-t)-f(x)\right) \,dt| + |\int_{[-\pi, \pi] \setminus
-      [-\delta, \delta]} \left(f(x-t)-f(x)\right) \,dt|
-    \end{gather*}
+Далее, 
 
-    В силу равномерной непрерывности $f$, для любого $\eps$ мы можем выбрать такое $\delta$, что первый интеграл оценивается $\int_{[-\delta, \delta]}
-    \left(f(x-t)-f(x)\right) \Delta_n(t) \,dt \leq \eps \int_{[-\delta, \delta]} \Delta_n(t) \,dt \leq \eps \cdot 1 $.
+\begin{equation*}
+    |S_n(x)| \leq \sum_{k=-n}^n |c_k| = \sum_{k=-n}^n \frac{\gamma_k}{|k|^m},
+\end{equation*}
 
-    Во втором интеграле воспользуемся ограниченностью $f$ в силу абсолютной интегрируемости: $\exists M>0 : |f(x)| \leq M$:
+откуда $\{S_n(x)\}$ сходится равномерно на $[-\pi, \pi]$ в силу признака Вейерштрасса для функциональных последовательностей.
 
-    \begin{equation*}
-      \int_{[-\pi, \pi] \setminus [-\delta, \delta]} \left(f(x-t)-f(x)\right) \Delta_n(t) \,dt \leq 2 \cdot 2M \cdot \int_{[\delta, \pi]} \Delta_n(t)
-    \end{equation*}
+Так как $f$ удовлетворяет условию Дини на $[-\pi, \pi]$ (в силу непрерывности), а также $f(-\pi)=f(\pi)$, значит ее можно продолжить на $\R$, так чтобы условие Дини было выполнено во всех точках.
 
-    Этот интеграл стремится к 0 по свойству $\Delta_n(x)$ выше.
+По теореме о поточечной сходимости, если в точке выполнено условие Дини, то ряд сходится к полусумме односторонних пределов. Но $f$ непрерывна, а значит $S_n$ сходится равномерно к $f$.
 
-    Итого, $|\sigma_n(x) - f(x)|$ стремится к 0 при $n \to \infty$ вне зависимости от $x$.
+Оценим теперь $|f(x) - S_n(x)|$:
 
-    Если $E \neq [-\pi, \pi]$, то $E = \cup_{k \in \Z} \left([\pi k - \pi, \pi k + \pi] \cap E\right)$ (пользуемся $2\pi$-периодичностью).
+\begin{gather*}
+    |f(x) - S_n(x)| = |S(x) - S_n(x)| = \left|\sum_{|k| \geq n+1} c_k e^{ikx}\right| \leq \\
+    \leq \sum_{|k| \geq n+1} |c_k| = \sum_{|k| \geq n+1} \frac{\gamma_k}{|k|^m} \leq \left(\sum_{|k| \geq n+1} \gamma_k^2\right)^{\frac{1}{2}} \left(\sum_{|k| \geq n+1} \frac{1}{|k|^{2m}}\right)^{\frac{1}{2}}
+\end{gather*}
 
-  \item
+Последняя оценка по неравенству КБШ в $l_2$. 
 
-    $f \in C(\R) \Rightarrow f \in C([-\pi, \pi]) \Rightarrow f \text{ равн. непр. на } [-\pi, \pi] \Rightarrow \sigma_n \overset{[-\pi, \pi]}{\rightrightarrows} f
-    \Rightarrow \sigma_n \overset{\R}{\rightrightarrows} f$.
+Первая скобка стремится к 0, так как ряд $\sum_{k=1}^{+\infty} \gamma_k^2$ сходится.
 
-  \item $E = {x_0}$.
-\end{enumerate}
+Вторая скобка оценить через интегральный признак:
+
+\begin{gather*}
+    (\sum_{|k| \geq n+1}^{+\infty} \frac{1}{k^{2m}})^{\frac{1}{2}} \leq (\int_n^{+\infty} \frac{1}{x^{2m}} dx)^{\frac{1}{2}} = (\frac{1}{2m-1} \frac{1}{n^{2m-1}})^{\frac{1}{2}} = \sqrt{\frac{1}{2m-1}} \frac{1}{n^{m-\frac{1}{2}}}.
+\end{gather*}
+
+В качестве $\delta_n$ берем первую скобку умноженную на $\frac{1}{n^{m-1/2}}$ и получаем искомое.
+
 
 \Endproof
