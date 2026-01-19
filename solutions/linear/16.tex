@@ -2,17 +2,17 @@
 
 \textbf{Линейное пространство}
 
-\Def Пусть $\mathcal{L} \neq \varnothing, "+": \mathcal{L}^2 \to \mathcal{L}, "\cdot": \R \times \mathcal{L} \to \mathcal{L}$. 
+\Def Пусть $\mathcal{L} \neq \varnothing, "+": \mathcal{L}^2 \to \mathcal{L}, "\cdot": \R \times \mathcal{L} \to \mathcal{L}$.
 Будем говорить, что тройка $(\mathcal{L}, +, \cdot)$ является линейным пространством, если выполнены следующие условия:
 \begin{itemize}
-    \item $\forall x, y \in \mathcal{L} \hookrightarrow x + y = y + x$
-    \item $\forall x, y, z \in \mathcal{L} \hookrightarrow (x + y) + z = x + (y + z)$
-    \item $\exists 0 \in \mathcal{L}: \forall x \in \mathcal{L} \hookrightarrow x + 0 = 0 + x$
-    \item $\forall x \in \mathcal{L} \, \exists (-x) \in \mathcal{L}: x + (-x) = 0$
-    \item $\forall \alpha, \beta \in \R, \forall x \in \mathcal{L} \hookrightarrow \alpha (\beta x) = (\alpha \beta) x$
-    \item $\forall \alpha, \beta \in \R, \forall x \in \mathcal{L} \hookrightarrow (\alpha + \beta) x = \alpha x + \beta x$
-    \item $\forall \alpha \in \R, \forall x, y \in \mathcal{L} \hookrightarrow \alpha (x + y) = \alpha x + \alpha y$
-    \item $\forall x \in \mathcal{L} \hookrightarrow 1 \cdot x = x$
+  \item $\forall x, y \in \mathcal{L} \hookrightarrow x + y = y + x$
+  \item $\forall x, y, z \in \mathcal{L} \hookrightarrow (x + y) + z = x + (y + z)$
+  \item $\exists 0 \in \mathcal{L}: \forall x \in \mathcal{L} \hookrightarrow x + 0 = 0 + x$
+  \item $\forall x \in \mathcal{L} \, \exists (-x) \in \mathcal{L}: x + (-x) = 0$
+  \item $\forall \alpha, \beta \in \R, \forall x \in \mathcal{L} \hookrightarrow \alpha (\beta x) = (\alpha \beta) x$
+  \item $\forall \alpha, \beta \in \R, \forall x \in \mathcal{L} \hookrightarrow (\alpha + \beta) x = \alpha x + \beta x$
+  \item $\forall \alpha \in \R, \forall x, y \in \mathcal{L} \hookrightarrow \alpha (x + y) = \alpha x + \alpha y$
+  \item $\forall x \in \mathcal{L} \hookrightarrow 1 \cdot x = x$
 \end{itemize}
 Элементы $\mathcal{L}$ называют векторами.
 
@@ -24,7 +24,8 @@
 
 \Def Линейную комбинацию будем называть тривиальной если $\alpha_1 = \alpha_2 = \dots = \alpha_n = 0$.
 
-\Def Пусть $\mathcal{L}$ - ЛП. Пусть $x_1, \dots x_n \in \mathcal{L}$. Будем говорить, что система векторов $x_1, \dots x_n$ линейно-независима (далее будем использовать сокращение ЛЗ), если только лишь тривиальная их линейная комбинация дает ноль.
+\Def Пусть $\mathcal{L}$ - ЛП. Пусть $x_1, \dots x_n \in \mathcal{L}$. Будем говорить, что система векторов $x_1, \dots x_n$ линейно-независима (далее будем использовать
+сокращение ЛНЗ), если только лишь тривиальная их линейная комбинация дает ноль.
 
 \Th Пусть $\mathcal{L}$ - ЛП. Пусть $x_1, \dots x_n \in \mathcal{L}$. $x_1, x_2 \dots x_n$ ЛЗ $\iff$ один из векторов является линейной комбинацией других.
 
@@ -36,7 +37,7 @@
 
 Пусть теперь один векторов является линейной комбинацией других. Будем считать, что это вектор $x_1 = \sum\limits_{k = 2}^n \alpha_k x_k$. Но тогда:
 \begin{equation*}
-    x_1 - \alpha_2 x_2 - \alpha_3 x_3 - \dots - \alpha_n x_n = 0
+  x_1 - \alpha_2 x_2 - \alpha_3 x_3 - \dots - \alpha_n x_n = 0
 \end{equation*}
 Получили нетривальную линейную комбинацию нуля, значит, по определению, система ЛЗ.
 
@@ -52,19 +53,21 @@
 
 Тогда имеем право записать следующее соотношение:
 \begin{equation*}
-    \sum\limits_{k = 1}^n \gamma_k x_k = x = \sum\limits_{k = 1}^n \alpha_k x_k
+  \sum\limits_{k = 1}^n \gamma_k x_k = x = \sum\limits_{k = 1}^n \alpha_k x_k
 \end{equation*}
 Тогда:
 \begin{equation*}
-    \sum\limits_{k = 1}^n (\gamma_k - \alpha_k) x_k = 0
+  \sum\limits_{k = 1}^n (\gamma_k - \alpha_k) x_k = 0
 \end{equation*}
-Заметим, что мы получили нетривиальную линейную комбинацию нуля, ведь наборы коэффицентов различны и $\exists k' \in 1 \dots n: \gamma_{k'} - \alpha_{k'} \neq 0$. Получили противоречие с ЛНЗ.
+Заметим, что мы получили нетривиальную линейную комбинацию нуля, ведь наборы коэффицентов различны и $\exists k' \in 1 \dots n: \gamma_{k'} - \alpha_{k'} \neq 0$.
+Получили противоречие с ЛНЗ.
 
 Пусть теперь разложение единственно. Предположим, что набор ЛЗ. Тогда есть нетривиальная линейная комбинация нуля: $\sum\limits_{k = 1}^n \gamma_k x_k = 0$.
 
 Тогда:
 \begin{equation*}
-    x = \sum\limits_{k = 1}^n \alpha_k x_k = \sum\limits_{k = 1}^n \alpha_k x_k + 0 = \sum\limits_{k = 1}^n \alpha_k x_k + \sum\limits_{k = 1}^n \gamma_k x_k = \sum\limits_{k = 1}^n (\alpha_k + \gamma_k) x_k
+  x = \sum\limits_{k = 1}^n \alpha_k x_k = \sum\limits_{k = 1}^n \alpha_k x_k + 0 = \sum\limits_{k = 1}^n \alpha_k x_k + \sum\limits_{k = 1}^n \gamma_k x_k =
+  \sum\limits_{k = 1}^n (\alpha_k + \gamma_k) x_k
 \end{equation*}
 
 Получили второе разложение $x$ - противоречие.
@@ -83,9 +86,9 @@
 
 \Endproof
 
-
-\Def Пусть $\mathcal{L}$ - ЛП. Пусть $e_1, e_2, \dots e_n$ - базис $\mathcal{L}$. Пусть $x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n$. Тогда $\begin{pmatrix}
-    x_1 & x_2 & \hdots & x_n
+\Def Пусть $\mathcal{L}$ - ЛП. Пусть $e_1, e_2, \dots e_n$ - базис $\mathcal{L}$. Пусть $x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n$. Тогда $
+\begin{pmatrix}
+  x_1 & x_2 & \hdots & x_n
 \end{pmatrix}^T$ будем называть координатами $x$ в базисе $e_1, e_2, \dots e_n$.
 
 \Statement Вектора ЛЗ $\iff$ их координатные столбцы ЛЗ.
@@ -96,20 +99,23 @@
 
 \Proof
 
-Покажем в начале, что больше быть не может. Предположим нашелся базис $f_1, f_2 \dots f_m, m > n$. Будем считать одновременно, что $f_1, f_2 \dots f_m$ - координатные столбцы в базисе $e_1, e_2, \dots e_n$.
+Покажем в начале, что больше быть не может. Предположим нашелся базис $f_1, f_2 \dots f_m, m > n$. Будем считать одновременно, что $f_1, f_2 \dots f_m$ - координатные
+столбцы в базисе $e_1, e_2, \dots e_n$.
 
-Тогда заметим, что $\operatorname{rg} \begin{pmatrix}
-    f_1 & f_2 & \hdots & f_m
+Тогда заметим, что $\operatorname{rg}
+\begin{pmatrix}
+  f_1 & f_2 & \hdots & f_m
 \end{pmatrix} = \min \{ n, m \} = n \Rightarrow$ $f_1, \dots f_n$ - ЛЗ. Противоречие.
 
-Покажем, что и меньше быть не может. Опять предположим обратное, что нашелся базис $f_1, f_2 \dots f_m, m < n$. Но тогда по все той же логике, $\operatorname{rg} \begin{pmatrix}
-    f_1 & f_2 & \hdots & f_m
+Покажем, что и меньше быть не может. Опять предположим обратное, что нашелся базис $f_1, f_2 \dots f_m, m < n$. Но тогда по все той же логике, $\operatorname{rg}
+\begin{pmatrix}
+  f_1 & f_2 & \hdots & f_m
 \end{pmatrix} = \min \{ n, m \} = m \Rightarrow$ $e_1, \dots e_n$ - ЛЗ. Противоречие.
 
 \Endproof
 
-
-\Def Пусть $\mathcal{L}$ - ЛП и $e_1, \dots e_n$ его базис. Тогда положим $\dim \mathcal{L} \overset{def}{=} n$, в частности $\dim \{0\} \overset{def}{=} 0$. $\dim \mathcal{L}$ называют размерностью ЛП $\mathcal{L}$.
+\Def Пусть $\mathcal{L}$ - ЛП и $e_1, \dots e_n$ его базис. Тогда положим $\dim \mathcal{L} \overset{def}{=} n$, в частности $\dim \{0\} \overset{def}{=} 0$. $\dim
+\mathcal{L}$ называют размерностью ЛП $\mathcal{L}$.
 
 \Statement $\dim \mathcal{L}$ определяется однозначно.
 
@@ -119,7 +125,6 @@
 
 \Endproof
 
-
 \Th Пусть $\mathcal{L}$ - ЛП, $\dim \mathcal{L} = n$ и $e_1, \dots e_n$ - ЛНЗ. Тогда $e_1, \dots e_n$ - базис.
 
 \Proof
@@ -127,79 +132,136 @@
 Пусть $x \in \mathcal{L}$. По теореме выше, $x, e_1, \dots e_n$ - ЛЗ. Значит, существует нетривиальная комбинация нуля:
 
 \begin{equation*}
-    \alpha x + \alpha_1 e_1 + \dots + \alpha_n e_n = 0
+  \alpha x + \alpha_1 e_1 + \dots + \alpha_n e_n = 0
 \end{equation*}
 
 Заметим, что $\alpha \neq 0$, ведь иначе бы $e_1, \dots e_n$ - ЛЗ. Поэтому:
 \begin{equation*}
-    x = \left( - \frac{\alpha_1}{\alpha} \right) e_1 + \left( - \frac{\alpha_2}{\alpha} \right) e_2 + \dots \left( - \frac{\alpha_n}{\alpha} \right) e_n
+  x = \left( - \frac{\alpha_1}{\alpha} \right) e_1 + \left( - \frac{\alpha_2}{\alpha} \right) e_2 + \dots \left( - \frac{\alpha_n}{\alpha} \right) e_n
 \end{equation*}
 
 \Endproof
 
 \textbf{Линейные отображения}
 
-\Def Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП. Пусть $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$. Будем говорить, что $\varphi$ - линейное отображение (ЛО), если выполнены следующие условия:
+\Def Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП. Пусть $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$. Будем говорить, что $\varphi$ - линейное отображение (ЛО), если
+выполнены следующие условия:
 \begin{enumerate}
-    \item $\forall x, y \in \mathcal{L}_1 \hookrightarrow \varphi(x + y) = \varphi(x) + \varphi(y)$
-    \item $\forall \alpha \in \R, \forall x \in \mathcal{L}_1 \hookrightarrow \varphi(\alpha x) = \alpha \varphi(x)$
+  \item $\forall x, y \in \mathcal{L}_1 \hookrightarrow \varphi(x + y) = \varphi(x) + \varphi(y)$
+  \item $\forall \alpha \in \R, \forall x \in \mathcal{L}_1 \hookrightarrow \varphi(\alpha x) = \alpha \varphi(x)$
 \end{enumerate}
 
-\Def Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП. Пусть $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - линейное отображение. Если $\mathcal{L}_1 = \mathcal{L}_2$, то будем говорить, что $\varphi$ - линейное преобразование (ЛП).
+\Def Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП. Пусть $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - линейное отображение. Если $\mathcal{L}_1 = \mathcal{L}_2$, то будем
+говорить, что $\varphi$ - линейное преобразование (ЛП).
 
-\Def Пусть $(\mathcal{L}, +, \cdot)$ - ЛП. Пусть $\mathcal{L}' \subset \mathcal{L}$. Будем говорить, что $(\mathcal{L}', +, \cdot)$ - линейное подпространство $(\mathcal{L}, +, \cdot)$, если выполнены следующие условия:
+\Def Пусть $(\mathcal{L}, +, \cdot)$ - ЛП. Пусть $\mathcal{L}' \subset \mathcal{L}$. Будем говорить, что $(\mathcal{L}', +, \cdot)$ - линейное подпространство
+$(\mathcal{L}, +, \cdot)$, если выполнены следующие условия:
 \begin{enumerate}
-    \item $\forall x, y \in \mathcal{L}' \hookrightarrow x + y \in \mathcal{L}'$
-    \item $\forall \alpha \in \R, \forall x \in \mathcal{L}' \hookrightarrow \alpha x \in \mathcal{L}'$
+  \item $\forall x, y \in \mathcal{L}' \hookrightarrow x + y \in \mathcal{L}'$
+  \item $\forall \alpha \in \R, \forall x \in \mathcal{L}' \hookrightarrow \alpha x \in \mathcal{L}'$
 \end{enumerate}
 
 \Note Если $\mathcal{L}'$ - линейное подпространство $\mathcal{L}$, если не возникает двойственных ситуаций, будем обозначать это $\mathcal{L}' \subset \mathcal{L}$.
 
 \Statement Пусть $\mathcal{L}$ - ЛП, $\mathcal{L}' \subset \mathcal{L}$ - линейное подпространство. Тогда $\mathcal{L}'$ - ЛП.
 
-\Statement Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $e_1, e_2, \dots e_n \in \mathcal{L}_1$ - ЛЗ, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО $\Rightarrow$ $\varphi(e_1), \dots, \varphi(e_n)$ - ЛЗ
+\Statement Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $e_1, e_2, \dots e_n \in \mathcal{L}_1$ - ЛЗ, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО $\Rightarrow$
+$\varphi(e_1), \dots, \varphi(e_n)$ - ЛЗ
 
 \Proof
 
-$e_1, e_2, \dots e_n \in \mathcal{L}$ - ЛЗ $\Rightarrow e_1 = \alpha_2 e_2 + \alpha_3 e_3 + \dots + \alpha_n e_n$ (без ограничения общности будем считать, что именно $e_1$ выразим).
+$e_1, e_2, \dots e_n \in \mathcal{L}$ - ЛЗ $\Rightarrow e_1 = \alpha_2 e_2 + \alpha_3 e_3 + \dots + \alpha_n e_n$ (без ограничения общности будем считать, что именно
+$e_1$ выразим).
 
 Но тогда $\varphi(e_1) = \varphi(\alpha_2 e_2 + \dots + \alpha_n e_n) = \alpha_2 \varphi(e_2) + \dots + \alpha_n \varphi(e_n)$. Получили требуемое.
 
 \Endproof
 
-\Statement Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО, $\mathcal{L}' \subset \mathcal{L}_1 \Rightarrow \varphi(\mathcal{L}_1) \subset \mathcal{L}_2$.
+\Statement Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО, $\mathcal{L}' \subset \mathcal{L}_1 \Rightarrow
+\varphi(\mathcal{L}') \subset \mathcal{L}_2$.
 
 \Proof
 
-Пусть $e_1, \dots e_n$ - базис $\mathcal{L}_1$. Заметим, что $0 \in \varphi(\mathcal{L}')$. Действительно, $\varphi(0 e_1 + \dots + 0 e_n) = 0 \varphi(e_1) + \dots + 0 \varphi(e_n) = 0$
+Пусть $e_1, \dots e_n$ - базис $\mathcal{L}'$. Заметим, что $0 \in \varphi(\mathcal{L}')$. Действительно, $\varphi(0 e_1 + \dots + 0 e_n) = 0 \varphi(e_1) + \dots + 0
+\varphi(e_n) = 0$
 
 Далее:
 \begin{equation*}
-    \forall \alpha, \beta \in \R, \forall x, y \in \mathcal{L}' \hookrightarrow \varphi(\alpha x) + \varphi(\beta y) = \varphi(\alpha x + \beta y) \in \mathcal{L}_2
+  \forall \alpha, \beta \in \R, \forall x, y \in \mathcal{L}' \hookrightarrow \varphi(\alpha x) + \varphi(\beta y) = \varphi(\alpha x + \beta y) \in \mathcal{L}_2
 \end{equation*}
 
 \Endproof
 
-\Statement. Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО, $\mathcal{L}' \subset \mathcal{L}_1 \Rightarrow \dim \varphi(\mathcal{L}') \leq \dim \mathcal{L}'$
+\Statement. Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО, $\mathcal{L}' \subset \mathcal{L}_1 \Rightarrow \dim
+\varphi(\mathcal{L}') \leq \dim \mathcal{L}'$
 
 \Proof
 
-Пусть $e_1, \dots e_n$ - базис $\mathcal{L}_1$. Пусть $x \in \mathcal{L}' \Rightarrow \varphi(x) = x_1 \varphi(e_1) + \dots + x_n \varphi(e_n) \Rightarrow \dim \varphi(\mathcal{L}') \leq \dim \mathcal{L}'$.
+Пусть $e_1, \dots e_n$ - базис $\mathcal{L}_1$. Пусть $x \in \mathcal{L}' \Rightarrow \varphi(x) = x_1 \varphi(e_1) + \dots + x_n \varphi(e_n) \Rightarrow \dim
+\varphi(\mathcal{L}') \leq \dim \mathcal{L}'$.
 
 \Endproof
 
-\Def Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО. Пусть $(e_1, \dots, e_n)$ - базис $\mathcal{L}_1$. Тогда матрицей $\varphi$ в базисе $(e_1, \dots e_n)$ будем называть матрицу $A_\varphi$, которая получена следующим образом:
+\Def Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО. Пусть $(e_1, \dots, e_n)$ - базис $\mathcal{L}_1$. Тогда матрицей
+$\varphi$ в базисе $(e_1, \dots e_n)$ будем называть матрицу $A_\varphi$, которая получена следующим образом:
 \begin{equation*}
-    A_\varphi = \begin{pmatrix}
-        \varphi(e_1) & \varphi(e_2) & \hdots & \varphi(e_n)
-    \end{pmatrix}
+  A_\varphi =
+  \begin{pmatrix}
+    \varphi(e_1) & \varphi(e_2) & \hdots & \varphi(e_n)
+  \end{pmatrix}
 \end{equation*}
 
-\Statement Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО. Пусть $(e_1, \dots, e_n)$ - базис $\mathcal{L}_1$. Тогда $\forall x \in \mathcal{L}_1 \hookrightarrow \varphi(x) = A_\varphi x$, если отождествить $x$ с его координатным столбцом в данном базисе.
+\Statement Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО. Пусть $(e_1, \dots, e_n)$ - базис $\mathcal{L}_1$. Тогда $\forall
+x \in \mathcal{L}_1 \hookrightarrow \varphi(x) = A_\varphi x$, если отождествить $x$ с его координатным столбцом в данном базисе.
 
 \Proof
 
-Лол, очев.
+Пусть $x \in \mathcal{L}_1$. Так как $(e_1, \dots, e_n)$ -- базис $\mathcal{L}_1$, то существует единственное разложение:
+\begin{equation*}
+  x = x_1 e_1 + x_2 e_2 + \dots + x_n e_n,
+\end{equation*}
+где $x_i \in \mathbb{R}$ (или $\mathbb{C}$) -- координаты вектора $x$ в данном базисе. Отождествим $x$ с координатным столбцом:
+\begin{equation*}
+  x \leftrightarrow
+  \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n
+  \end{pmatrix}.
+\end{equation*}
+
+Рассмотрим образ $\varphi(x)$. По линейности оператора $\varphi$:
+\begin{equation*}
+  \varphi(x) = \varphi\left( \sum_{j=1}^n x_j e_j \right) = \sum_{j=1}^n x_j \varphi(e_j).
+\end{equation*}
+
+Для каждого базисного вектора $e_j$ образ $\varphi(e_j) \in \mathcal{L}_2$ можно разложить по некоторому фиксированному базису $(f_1, \dots, f_m)$ пространства $\mathcal{L}_2$:
+\begin{equation*}
+  \varphi(e_j) = \sum_{i=1}^m a_{ij} f_i, \quad j = 1, \dots, n,
+\end{equation*}
+где $a_{ij}$ -- коэффициенты разложения, образующие матрицу $A_\varphi = (a_{ij})_{m \times n}$.
+
+Подставим это в выражение для $\varphi(x)$:
+\begin{align*}
+  \varphi(x) &= \sum_{j=1}^n x_j \left( \sum_{i=1}^m a_{ij} f_i \right) \\
+  &= \sum_{i=1}^m \left( \sum_{j=1}^n a_{ij} x_j \right) f_i.
+\end{align*}
+
+Координатный столбец $\varphi(x)$ в базисе $(f_1, \dots, f_m)$ пространства $\mathcal{L}_2$ имеет вид:
+\begin{equation*}
+  \begin{pmatrix}
+    \sum_{j=1}^n a_{1j} x_j \\
+    \sum_{j=1}^n a_{2j} x_j \\
+    \vdots \\
+    \sum_{j=1}^n a_{mj} x_j
+  \end{pmatrix}
+  = A_\varphi
+  \begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_n
+  \end{pmatrix}.
+\end{equation*}
+
+Таким образом, при отождествлении векторов с их координатными столбцами, действие линейного оператора $\varphi$ выражается матричным умножением: $\varphi(x) = A_\varphi x$.
 
 \Endproof
 
@@ -207,10 +269,10 @@ $e_1, e_2, \dots e_n \in \mathcal{L}$ - ЛЗ $\Rightarrow e_1 = \alpha_2 e_2 + \
 
 \Def Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО.
 \begin{equation*}
-    \Ima \varphi \overset{def}{=} \condset{\varphi(x)}{x \in \mathcal{L}_1}
+  \Ima \varphi \overset{def}{=} \condset{\varphi(x)}{x \in \mathcal{L}_1}
 \end{equation*}
 \begin{equation*}
-    \Ker \varphi \overset{def}{=} \condset{x}{x \in \mathcal{L}_1: \varphi(x) = 0}
+  \Ker \varphi \overset{def}{=} \condset{x}{x \in \mathcal{L}_1: \varphi(x) = 0}
 \end{equation*}
 
 \Def Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО. $\Rg \varphi \overset{def}{=} \dim \Ima \varphi$
@@ -218,7 +280,7 @@ $e_1, e_2, \dots e_n \in \mathcal{L}$ - ЛЗ $\Rightarrow e_1 = \alpha_2 e_2 + \
 \Th  Пусть $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО. $\Ker \varphi$ - линейное подпространство $\mathcal{L}_1$.
 
 \begin{center}
-    $\boxed{\text{Всюду далее $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО.}}$
+  $\boxed{\text{Всюду далее $\mathcal{L}_1, \mathcal{L}_2$ - ЛП, $\varphi: \mathcal{L}_1 \to \mathcal{L}_2$ - ЛО.}}$
 \end{center}
 
 \Def $\varphi$ - сюръекция $\overset{def}{\iff} \forall y \in \Lc_2 \, \exists x \in \Lc_1: \varphi(x) = y$.
@@ -231,7 +293,6 @@ $\Rg \varphi = \dim \Lc_2 \iff \dim \Ima \varphi = \dim \Lc_2 \overset{\Ima \var
 
 \Endproof
 
-
 \Def $\varphi$ - инъекция $\overset{def}{\iff} \forall x, y \in \Lc_1: x \neq y \Rightarrow \varphi(x) \neq \varphi(y)$.
 
 \Th $\Ker \varphi = \{ 0 \} \iff \varphi \text{ - инъекция}$
@@ -240,7 +301,8 @@ $\Rg \varphi = \dim \Lc_2 \iff \dim \Ima \varphi = \dim \Lc_2 \overset{\Ima \var
 
 Пусть $\varphi$ - инъекция. Пусть $\Ker \varphi \neq \{ 0 \}$. Т.е. $\exists x \in \Ker \varphi: x \neq 0$. Тогда $\varphi(x) = \varphi(0) = 0$ - противоречие с определением.
 
-Пусть $\Ker \varphi = \{ 0 \}$. Предположим $\varphi$ - не инъекция. Тогда $\exists x \neq y \in \Lc_1: \varphi(x) = \varphi(y) \Rightarrow \varphi(x - y) = 0 \Rightarrow x - y \in \Ker \varphi$. Противоречие.
+Пусть $\Ker \varphi = \{ 0 \}$. Предположим $\varphi$ - не инъекция. Тогда $\exists x \neq y \in \Lc_1: \varphi(x) = \varphi(y) \Rightarrow \varphi(x - y) = 0
+\Rightarrow x - y \in \Ker \varphi$. Противоречие.
 
 \Endproof
 
@@ -248,12 +310,12 @@ $\Rg \varphi = \dim \Lc_2 \iff \dim \Ima \varphi = \dim \Lc_2 \overset{\Ima \var
 
 \Proof
 
-Предположим противное, тогда существует нетривиальная комбинация $\sum\limits_{k = 1}^n \alpha_k \varphi(e_k) = 0 \iff \varphi\left(\sum\limits_{k=1}^n \alpha_k e_k \right) = 0 \overset{\Ker \varphi = \{0\}}{\iff} \sum\limits_{k=1}^n \alpha_k e_k = 0$. Противоречие.
+Предположим противное, тогда существует нетривиальная комбинация $\sum\limits_{k = 1}^n \alpha_k \varphi(e_k) = 0 \iff \varphi\left(\sum\limits_{k=1}^n \alpha_k e_k
+\right) = 0 \overset{\Ker \varphi = \{0\}}{\iff} \sum\limits_{k=1}^n \alpha_k e_k = 0$. Противоречие.
 
 \Endproof
 
 \Def $\varphi$ - биекция $\iff$ $\varphi$ - сюръекция и инъекция.
-
 
 \Th $\dim \Lc_1 = \dim \Ker \varphi + \dim \Ima \varphi$
 
@@ -261,12 +323,12 @@ $\Rg \varphi = \dim \Lc_2 \iff \dim \Ima \varphi = \dim \Lc_2 \overset{\Ima \var
 
 Очевидно, что $\Ker \varphi$ задается системой уравнений $A_\varphi x = 0$. А значит размерность ядра есть размерность ФСР данного уравнения, т.е.:
 \begin{equation*}
-    \dim \Ker \varphi = \Rg F(A_\varphi) = \dim \Lc_1 - \Rg A_\varphi = n - \Rg \varphi = n - \dim \Ima \varphi
+  \dim \Ker \varphi = \Rg F(A_\varphi) = \dim \Lc_1 - \Rg A_\varphi = n - \Rg \varphi = n - \dim \Ima \varphi
 \end{equation*}
 
 Тогда:
 \begin{equation*}
-    \dim \Lc_1 = \underbrace{\dim \Lc_1 - \dim \Ima \varphi}_{\dim \Ker \varphi} + \dim \Ima \varphi = \dim \Ker \varphi + \dim \Ima \varphi
+  \dim \Lc_1 = \underbrace{\dim \Lc_1 - \dim \Ima \varphi}_{\dim \Ker \varphi} + \dim \Ima \varphi = \dim \Ker \varphi + \dim \Ima \varphi
 \end{equation*}
 
 \Endproof
@@ -275,10 +337,9 @@ $\Rg \varphi = \dim \Lc_2 \iff \dim \Ima \varphi = \dim \Lc_2 \overset{\Ima \var
 
 \Proof
 
-Действительно, коль скоро отображение биективно, по критерию выше $\dim \Ker \varphi = 0$, а также $\dim \Im \varphi = \dim \Lc_2$. А значит:
+Действительно, коль скоро отображение биективно, по критерию выше $\dim \Ker \varphi = 0$, а также $\dim \Ima \varphi = \dim \Lc_2$. А значит:
 \begin{equation*}
-    \dim \Lc_1 = \dim \Ker \varphi + \dim \Ima \varphi = 0 + \dim \Lc_2 = \dim \Lc_2
+  \dim \Lc_1 = \dim \Ker \varphi + \dim \Ima \varphi = 0 + \dim \Lc_2 = \dim \Lc_2
 \end{equation*}
 
 \Endproof
-

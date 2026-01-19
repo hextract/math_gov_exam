@@ -3,13 +3,13 @@
 \Def Системой линейных однородных дифференциальных уравнений с постоянными коэффициентами называется система
 
 \begin{equation}
-    \begin{cases}
-        x_1' = a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n, \\
-        x_2' = a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n, \\
-        \dots \\
-        x_n' = a_{n1}x_1 + a_{n2}x_2 + \dots + a_{nn}x_n, \\
-    \end{cases}
-    \label{eq:sys_lin_diff_unodn_eq_const_coef}
+  \begin{cases}
+    x_1' = a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n, \\
+    x_2' = a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n, \\
+    \dots \\
+    x_n' = a_{n1}x_1 + a_{n2}x_2 + \dots + a_{nn}x_n, \\
+  \end{cases}
+  \label{eq:sys_lin_diff_unodn_eq_const_coef}
 \end{equation}
 
 или $\dot x = Ax$, где $A\in Matr_{n \times n}(\R);\; x: I \rightarrow \R^n, I \subset \R$.
@@ -18,12 +18,13 @@
 
 \textbf{Случай n различных собственных векторов}
 
-\Th Пусть $v_1, \dots, v_n$ -- попарно различные собственные векторы матрицы $A$, соответствующие \textbf{необязательно попарно различным} собственным значениям $\lambda_1, \dots, \lambda_n$.
+\Th Пусть $v_1, \dots, v_n$ -- попарно различные собственные векторы матрицы $A$, соответствующие \textbf{необязательно попарно различным} собственным значениям
+$\lambda_1, \dots, \lambda_n$.
 
 Тогда общее решение СЛОДУ имеет вид
 
 \begin{equation*}
-    x(t) = \sum_{j=1}^n C_j e^{\lambda_j t} v_j,
+  x(t) = \sum_{j=1}^n C_j e^{\lambda_j t} v_j,
 \end{equation*}
 
 где $C_1, \dots, C_n \in \Cmp$.
@@ -35,19 +36,21 @@
 Покажем, что любая функция вида $h(t) = e^{\lambda_j t} v_j$ удовлетворяет системе.
 
 \begin{equation*}
-    h' = \frac{d}{dt} (e^{\lambda_j t} v_j) = \lambda_j e^{\lambda_j t} v_j = e^{\lambda_j t} A(v_j) = A(e^{\lambda_j t} v_j) = Ah
+  h' = \frac{d}{dt} (e^{\lambda_j t} v_j) = \lambda_j e^{\lambda_j t} v_j = e^{\lambda_j t} A(v_j) = A(e^{\lambda_j t} v_j) = Ah
 \end{equation*}
 
 Теперь покажем, что любое решение $x$ представимо в данном виде.
 
 Обозначим $x_0 \coloneqq x(0)$.
-Так как $v_1, \dots, v_n$ линейно независимы (в частности, это верно, если они соответствуют попарно различным собственным значениям), то они образуют базис, по которому можно разложить $x_0$:
+Так как $v_1, \dots, v_n$ линейно независимы (в частности, это верно, если они соответствуют попарно различным собственным значениям), то они образуют базис, по которому
+можно разложить $x_0$:
 
 \begin{equation*}
-    \exists c_1, \dots, c_n \in \Cmp: x_0 = \sum_{k=1}^n c_k v_k.
+  \exists c_1, \dots, c_n \in \Cmp: x_0 = \sum_{k=1}^n c_k v_k.
 \end{equation*}
 
-Тогда функция $\hat{x}(t) \coloneqq \sum_{k=1}^n c_k v_k e^{\lambda_k t}$, во-первых, является решением (уже доказано, что любая функция в таком виде является решением), а во-вторых, совпадает с $x$ в точке $0$: $\hat{x}(0) = \sum_{k=1}^n c_k v_k e^{\lambda_k \cdot 0} = \sum_{k=1}^n c_k v_k = x_0 = x(0)$.
+Тогда функция $\hat{x}(t) \coloneqq \sum_{k=1}^n c_k v_k e^{\lambda_k t}$, во-первых, является решением (уже доказано, что любая функция в таком виде является решением),
+а во-вторых, совпадает с $x$ в точке $0$: $\hat{x}(0) = \sum_{k=1}^n c_k v_k e^{\lambda_k \cdot 0} = \sum_{k=1}^n c_k v_k = x_0 = x(0)$.
 Следовательно, по теореме Коши, $x = \hat{x}$, то есть мы нашли представление произвольного решения $x$ в искомом виде.
 
 \Endproof
@@ -57,15 +60,16 @@
 Если
 
 \begin{gather*}
-    \lambda_1 = \overline{\lambda_2}, \lambda_3 = \overline{\lambda_4}, \dots, \lambda_{2m-1} = \overline{\lambda_{2m}}; \lambda_{2m+1}, \dots, \lambda_n \in \R, \\
-    v_1 = \overline{v_2}, v_3 = \overline{v_4}, \dots, v_{2m-1} = \overline{v_{2m}}; v_{2m+1}, \dots, v_n \in \R^n, \\
-    \lambda_j = \alpha_j + i\beta_j, \; v_j = \xi_j + i\mu_j \quad \forall j = 1, \dots, 2m,
+  \lambda_1 = \overline{\lambda_2}, \lambda_3 = \overline{\lambda_4}, \dots, \lambda_{2m-1} = \overline{\lambda_{2m}}; \lambda_{2m+1}, \dots, \lambda_n \in \R, \\
+  v_1 = \overline{v_2}, v_3 = \overline{v_4}, \dots, v_{2m-1} = \overline{v_{2m}}; v_{2m+1}, \dots, v_n \in \R^n, \\
+  \lambda_j = \alpha_j + i\beta_j, \; v_j = \xi_j + i\mu_j \quad \forall j = 1, \dots, 2m,
 \end{gather*}
 
 то общее решение имеет вид
 
 \begin{equation*}
-    x(t) = \sum_{k=1}^m e^{\alpha_k t} \left( A_k \left( \xi_k \cos \beta_k t - \mu_k \sin \beta_k t \right) +  B_k \left(\mu_k \cos \beta_k t + \xi_k \sin \beta_k t \right) \right) + \sum_{s=2m+1}^n C_s v_s e^{\lambda_s t},
+  x(t) = \sum_{k=1}^m e^{\alpha_k t} \left( A_k \left( \xi_k \cos \beta_k t - \mu_k \sin \beta_k t \right) +  B_k \left(\mu_k \cos \beta_k t + \xi_k \sin \beta_k t
+  \right) \right) + \sum_{s=2m+1}^n C_s v_s e^{\lambda_s t},
 \end{equation*}
 
 где $A_k, B_k, C_k \in \R$ -- произвольные коэффициенты.
@@ -74,54 +78,57 @@
 Например, матрица системы из 2 уравнений может иметь всего одно собственное значение $\lambda$, которому соответствуют два \textbf{различных} собственных вектора $v_1, v_2$.
 Тогда мы все еще вправе записать общее решение в виде $x(t) = C_1 e^{\lambda t} v_1 + C_2 e^{\lambda t} v_2$.
 
-А вот если у какого-то из корней алгебраическая кратность не совпадает с геометрической, то есть его кратность как корня характеристического уравнения $(A - \lambda E) = 0$ \textbf{строго больше}, чем количество соответствующих ему собственных векторов, то для нахождения общего решения необходимо использовать Жордановы цепочки, как описано ниже.
+А вот если у какого-то из корней алгебраическая кратность не совпадает с геометрической, то есть его кратность как корня характеристического уравнения $(A - \lambda E) =
+0$ \textbf{строго больше}, чем количество соответствующих ему собственных векторов, то для нахождения общего решения необходимо использовать Жордановы цепочки, как описано ниже.
 
 \textbf{Жорданова нормальная форма}
 
-\Def Векторы $v_1, \dots, v_n$ называются Жордановой цепочкой присоединенных, или обобщенных, векторов к собственному вектору $v_1$ матрицы $A$, соответствующему собственному значению $\lambda$, если
+\Def Векторы $v_1, \dots, v_n$ называются Жордановой цепочкой присоединенных, или обобщенных, векторов к собственному вектору $v_1$ матрицы $A$, соответствующему
+собственному значению $\lambda$, если
 
 \begin{align*}
-    Av_1 &= \lambda v_1, \\
-    Av_k &= \lambda v_k + v_{k-1} \quad \forall k = 2, \dots, n, \\
-    (A - \lambda E) v &= v_k \text{ не имеет решений (относительно v)}
+  Av_1 &= \lambda v_1, \\
+  Av_k &= \lambda v_k + v_{k-1} \quad \forall k = 2, \dots, n, \\
+  (A - \lambda E) v &= v_k \text{ не имеет решений (относительно v)}
 \end{align*}
 
 \Note Первые две строки можно переписать немного по-другому, возможно понятнее:
 
 \begin{equation*}
-    \begin{cases}
-        (A - \lambda E) v_1 = 0, \\
-        (A - \lambda E) v_2 = v_1, \\
-        (A - \lambda E) v_3 = v_2, \\
-        \dots \\
-        (A - \lambda E) v_n = v_{n-1}
-    \end{cases}
+  \begin{cases}
+    (A - \lambda E) v_1 = 0, \\
+    (A - \lambda E) v_2 = v_1, \\
+    (A - \lambda E) v_3 = v_2, \\
+    \dots \\
+    (A - \lambda E) v_n = v_{n-1}
+  \end{cases}
 \end{equation*}
 
 или
 
 \begin{equation*}
-    \begin{cases}
+  \begin{cases}
     (A - \lambda E)^1 v_1 = 0, \\
     (A - \lambda E)^2 v_2 = 0, \\
     (A - \lambda E)^3 v_3 = 0, \\
     \dots \\
     (A - \lambda E)^n v_n = 0
-    \end{cases}
+  \end{cases}
 \end{equation*}
 
 \Thbd Для любой матрицы $A$ существует базис в $\Cmp^n$, называемый Жордановым, состоящий из Жордановых цепочек, соответствующих собственным векторам матрицы $A$.
 
-Причем если $A \in Matr(\R)$, то эти цепочки можно выбрать так, чтобы цепочки, соответствующие действительным собственным значениям, состояли из действительных векторов, а цепочки, соответствующие попарно сопряженным комлексным собственным значениям, состояли из попарно сопряженных комплексных векторов.
+Причем если $A \in Matr(\R)$, то эти цепочки можно выбрать так, чтобы цепочки, соответствующие действительным собственным значениям, состояли из действительных векторов,
+а цепочки, соответствующие попарно сопряженным комлексным собственным значениям, состояли из попарно сопряженных комплексных векторов.
 В этом базисе преобразование, задаваемое матрицей $A$, будет иметь блочно-диагональную матрицу, называемой нормальной жордановой формой:
 
 \begin{equation*}
-    \begin{pmatrix}
-          J_{k_1}(\lambda_1) & 0 & \cdots & 0\\[4pt]
-          0 & J_{k_2}(\lambda_2) & \ddots & \vdots\\[4pt]
-          \vdots & \ddots & \ddots & 0\\[4pt]
-          0 & \cdots & 0 & J_{k_m}(\lambda_m)
-    \end{pmatrix}
+  \begin{pmatrix}
+    J_{k_1}(\lambda_1) & 0 & \cdots & 0\\[4pt]
+    0 & J_{k_2}(\lambda_2) & \ddots & \vdots\\[4pt]
+    \vdots & \ddots & \ddots & 0\\[4pt]
+    0 & \cdots & 0 & J_{k_m}(\lambda_m)
+  \end{pmatrix}
 \end{equation*}
 
 Введем обозначения:
@@ -129,39 +136,40 @@
 Пусть $v_1, \dots, v_n$ -- Жорданов базис, а именно
 
 \begin{align*}
-    v_1, \dots, v_{k_1} &\text{ -- Жорданова цепочка, соответствующая собственному значению } \lambda_1, \\
-    v_{k_1+1}, \dots, v_{k_1+k_2} &\text{ -- Жорданова цепочка, соответствующая собственному значению } \lambda_2, \\
-    v_{k_1+k_2+1}, \dots, v_{k_1+k_2+k_3} &\text{ -- Жорданова цепочка, соответствующая собственному значению } \lambda_3, \\
-    \dots \\
-    v_{k_1+\dots+k_{n-1}+1}, \dots, v_{k_1+\dots+k_{n-1}+k_n} &\text{ -- Жорданова цепочка, соответствующая собственному значению } \lambda_n. \\
+  v_1, \dots, v_{k_1} &\text{ -- Жорданова цепочка, соответствующая собственному значению } \lambda_1, \\
+  v_{k_1+1}, \dots, v_{k_1+k_2} &\text{ -- Жорданова цепочка, соответствующая собственному значению } \lambda_2, \\
+  v_{k_1+k_2+1}, \dots, v_{k_1+k_2+k_3} &\text{ -- Жорданова цепочка, соответствующая собственному значению } \lambda_3, \\
+  \dots \\
+  v_{k_1+\dots+k_{n-1}+1}, \dots, v_{k_1+\dots+k_{n-1}+k_n} &\text{ -- Жорданова цепочка, соответствующая собственному значению } \lambda_n. \\
 \end{align*}
 
 Тогда:
 
 \begin{align*}
-    \begin{cases}
-        K_1 \coloneqq 0, \\
-        K_2 \coloneqq k_1, \\
-        \dots \\
-        K_j \coloneqq k_1 + \dots + k_{j-1},
-    \end{cases}
+  \begin{cases}
+    K_1 \coloneqq 0, \\
+    K_2 \coloneqq k_1, \\
+    \dots \\
+    K_j \coloneqq k_1 + \dots + k_{j-1},
+  \end{cases}
 \end{align*}
 
 \begin{align*}
-    \phi_{K_j+p}(t) \coloneqq \frac{t^{p-1}}{(p-1)!} v_{K_j + 1} + \frac{t^{p-2}}{(p-2)!} v_{K_j + 2} + \dots + \frac{t^1}{1!} v_{K_j + (p-1)} + v_{K_j + p} \qquad \forall j = 1, \dots, l;\; \forall p = 1, \dots, k_j,
+  \phi_{K_j+p}(t) \coloneqq \frac{t^{p-1}}{(p-1)!} v_{K_j + 1} + \frac{t^{p-2}}{(p-2)!} v_{K_j + 2} + \dots + \frac{t^1}{1!} v_{K_j + (p-1)} + v_{K_j + p} \qquad \forall
+  j = 1, \dots, l;\; \forall p = 1, \dots, k_j,
 \end{align*}
 
 \begin{align*}
-    \psi_{K_j + p}(t) \coloneqq \phi_{K_j+p}(t) e^{\lambda_j t}.
+  \psi_{K_j + p}(t) \coloneqq \phi_{K_j+p}(t) e^{\lambda_j t}.
 \end{align*}
 
 \Th Для введенных функций верны (и доказываются напрямую) следующие утверждения:
 
 \begin{enumerate}
-    \item $\phi'_{K_j+p}(t) = \phi_{K_j+p-1}(t)$,
-    \item $A\phi_{K_j+p}(t) = \lambda_j \phi_{K_j+p}(t) + \phi_{K_j+p-1}(t)$,
-    \item $\psi'_{K_j+p}(t) = \lambda_j \psi_{K_j+p}(t) + \psi_{K_j+p-1}(t)$,
-    \item $A\psi_{K_j+p}(t) = \lambda_j \psi_{K_j+p}(t) + \psi_{K_j+p-1}(t)$
+  \item $\phi'_{K_j+p}(t) = \phi_{K_j+p-1}(t)$,
+  \item $A\phi_{K_j+p}(t) = \lambda_j \phi_{K_j+p}(t) + \phi_{K_j+p-1}(t)$,
+  \item $\psi'_{K_j+p}(t) = \lambda_j \psi_{K_j+p}(t) + \psi_{K_j+p-1}(t)$,
+  \item $A\psi_{K_j+p}(t) = \lambda_j \psi_{K_j+p}(t) + \psi_{K_j+p-1}(t)$
 \end{enumerate}
 
 (Заметим, что правые части уравнений 3 и 4 равны, то есть $\psi'_{K_j+p}(t) = A\psi_{K_j+p}(t)$)
@@ -173,7 +181,7 @@
 Тогда общее решение СЛОДУ имеет вид
 
 \begin{equation*}
-    x(t) = \sum_{k=1}^n C_k \psi_k(t).
+  x(t) = \sum_{k=1}^n C_k \psi_k(t).
 \end{equation*}
 
 \Proof
@@ -195,17 +203,19 @@
 
 \Theor{Об овеществлении решений}
 
-Аналогично соответствующей теореме в простейшем случае, если собственные значения и Жордановы цепочки делятся на попарно комплексно сопряженные и вещественные, то общее решение можно записать в виде
+Аналогично соответствующей теореме в простейшем случае, если собственные значения и Жордановы цепочки делятся на попарно комплексно сопряженные и вещественные, то общее
+решение можно записать в виде
 
 \begin{equation*}
-    x(t) = \sum_{k=1}^m \left( a_k \Re \left( \psi_k(t) \right) + b_k \Im \left( \psi_k(t) \right) \right) + \sum_{s=2m+1}^n c_s \psi_s(t),
+  x(t) = \sum_{k=1}^m \left( a_k \Re \left( \psi_k(t) \right) + b_k \Ima \left( \psi_k(t) \right) \right) + \sum_{s=2m+1}^n c_s \psi_s(t),
 \end{equation*}
 
 где $a_k, b_k, c_k \in \R$.
 
 \textbf{Фундаментальная система решений}
 
-\Def Набор решений $z_1(t), z_2(t), \dots z_d(t), z_k: I \to \mathbb{R}^n$ образует ФСР ~\ref{eq:sys_lin_diff_unodn_eq_const_coef}, если он ЛНЗ и любое другое решение уравнения --- линейная комбинация этих решений.
+\Def Набор решений $z_1(t), z_2(t), \dots z_d(t), z_k: I \to \mathbb{R}^n$ образует ФСР ~\ref{eq:sys_lin_diff_unodn_eq_const_coef}, если он ЛНЗ и любое другое решение
+уравнения --- линейная комбинация этих решений.
 
 \Statement У уравнения ~\ref{eq:sys_lin_diff_unodn_eq_const_coef} $\exists$ ФСР, его размерность равна размерности $x$.
 
@@ -220,18 +230,19 @@
 Тогда задача Коши
 
 \begin{equation}
-    \begin{cases}
-        \dot X = AX \\
-        X(0) = X_0
-    \end{cases}
-    \label{eq:sys_lin_diff_unodn_eq_const_coef_matr}
+  \begin{cases}
+    \dot X = AX \\
+    X(0) = X_0
+  \end{cases}
+  \label{eq:sys_lin_diff_unodn_eq_const_coef_matr}
 \end{equation}
 
 имеет единственное решение.
 
 $\square$
 
-Пусть $x^j(t), x_0^j(t)$ --- $j$--ые столбцы матриц $X(t)$ и $X_0$ соответственно. Тогда $\dot x^j = Ax^j, x^j(0) = x^j_0 \quad \forall j = 1, 2, \dots n$. А это и есть $n$ задач Коши.
+Пусть $x^j(t), x_0^j(t)$ --- $j$--ые столбцы матриц $X(t)$ и $X_0$ соответственно. Тогда $\dot x^j = Ax^j, x^j(0) = x^j_0 \quad \forall j = 1, 2, \dots n$. А это и есть
+$n$ задач Коши.
 
 $\blacksquare$
 
@@ -242,20 +253,22 @@ $\blacksquare$
 Тогда:
 
 \begin{enumerate}
-    \item $\Phi(0) = E$.
-    \item $A \Phi(t) = \Phi(t)A \quad \forall t \in \mathbb{R}$.
-    \item $\Phi(t)\Phi(s) = \Phi(t + s) \quad \forall t, s \in \mathbb{R}$.
-    \item $\Phi^{-1}(t) = \Phi(-t) \quad \forall t \in \mathbb{R}$.
+  \item $\Phi(0) = E$.
+  \item $A \Phi(t) = \Phi(t)A \quad \forall t \in \mathbb{R}$.
+  \item $\Phi(t)\Phi(s) = \Phi(t + s) \quad \forall t, s \in \mathbb{R}$.
+  \item $\Phi^{-1}(t) = \Phi(-t) \quad \forall t \in \mathbb{R}$.
 \end{enumerate}
 
 $\square$
 
 \begin{enumerate}
-    \item Ну очев, просто подставить $x_j(0) = e_j = \underset{\quad j}{(0, 0 \dots 1 \dots 0)}$.
+  \item Ну очев, просто подставить $x_j(0) = e_j = \underset{\quad j}{(0, 0 \dots 1 \dots 0)}$.
 
-    \item Пусть $X :=  A\Phi - \Phi A$. Тогда $X(0) = AE - EA = O$. $\dot X = A\dot\Phi - \dot\Phi A$. Т. к. столбцы $\Phi$ --- решения, то $\dot \Phi = A \Phi \implies \dot X = A^2 \Phi - A \Phi A = A(A \Phi- \Phi A) =  AX$. Но $X \equiv O$ --- решение ~\ref{eq:sys_lin_diff_unodn_eq_const_coef_matr} с н. у. $X_0 = O \implies X(t) = A\Phi(t) - \Phi(t)A = O \quad \forall t \in \mathbb{R}$.
+  \item Пусть $X :=  A\Phi - \Phi A$. Тогда $X(0) = AE - EA = O$. $\dot X = A\dot\Phi - \dot\Phi A$. Т. к. столбцы $\Phi$ --- решения, то $\dot \Phi = A \Phi \implies
+    \dot X = A^2 \Phi - A \Phi A = A(A \Phi- \Phi A) =  AX$. Но $X \equiv O$ --- решение ~\ref{eq:sys_lin_diff_unodn_eq_const_coef_matr} с н. у. $X_0 = O \implies X(t) =
+    A\Phi(t) - \Phi(t)A = O \quad \forall t \in \mathbb{R}$.
 
-    \item Фиксируем $s \in \mathbb{R}$.
+  \item Фиксируем $s \in \mathbb{R}$.
 
     $\Psi_s(t) := \Phi(t + s) \Phi^{-1}(s)$
 
@@ -263,15 +276,15 @@ $\square$
 
     $\Psi_s(0) = \Phi(s) \Phi^{-1}(s) = E$
 
-    $\dot \Psi_s(t) = \dot \Phi(t + s) \Phi^{-1}(s) = A \Phi(t + s) \Phi^{-1}(s) = A \Psi_s(t)$. Значит $\Psi_s(t) \equiv \Phi(t)$ по теореме о существовании и единственности решения задачи Коши.
+    $\dot \Psi_s(t) = \dot \Phi(t + s) \Phi^{-1}(s) = A \Phi(t + s) \Phi^{-1}(s) = A \Psi_s(t)$. Значит $\Psi_s(t) \equiv \Phi(t)$ по теореме о существовании и
+    единственности решения задачи Коши.
 
     Следовательно $\Phi(t + s) \Phi^{-1}(s) = \Psi_s(t) = \Phi(t) \implies \Phi(t + s) = \Phi(t) \Phi(s)$.
 
-    \item Воспользуемся предыдущим пунктом при $s = -t$.
+  \item Воспользуемся предыдущим пунктом при $s = -t$.
 
     $E =\Phi(0) = \Phi(t) \Phi(-t) \implies \Phi^{-1}(t) = \Phi(t)$.
 \end{enumerate}
-
 
 $\blacksquare$
 
@@ -288,152 +301,164 @@ $\lVert \mathcal{A} \rVert := \underset{x \ne 0}{\sup} \frac{|Ax|}{|x|}$
 \Def
 
 \begin{equation}
-    e^A := E + \frac{A}{1!} + \frac{A^2}{2!} + \dots + \frac{A^n}{n!} + \dots
-    \label{eq:matr_exp_def}
+  e^A := E + \frac{A}{1!} + \frac{A^2}{2!} + \dots + \frac{A^n}{n!} + \dots
+  \label{eq:matr_exp_def}
 \end{equation}
 
 \Th
 
-$\forall A \in \mathcal{M}_n(\mathbb{R})$ ряд ~\ref{eq:matr_exp_def} cходится, при этом равномерно на $\mathcal{K}_a := \{A \in \mathcal{M}_n(\mathbb{R}) \mid \lVert \mathcal{A} \rVert \le a \} \quad \forall a > 0$.
+$\forall A \in \mathcal{M}_n(\mathbb{R})$ ряд ~\ref{eq:matr_exp_def} cходится, при этом равномерно на $\mathcal{K}_a := \{A \in \mathcal{M}_n(\mathbb{R}) \mid \lVert
+\mathcal{A} \rVert \le a \} \quad \forall a > 0$.
 
 $\square$
 
-$\lVert \mathcal{A}^n \rVert \le \lVert \mathcal{A} \rVert^n \le a^n$, $\displaystyle\sum_{n=0}^{\infty} \frac{a^n}{n!} = e^a < \infty \implies$ по признаку Вейерштрасса сходится равномерно на $\mathcal{K}_a$.
+$\lVert \mathcal{A}^n \rVert \le \lVert \mathcal{A} \rVert^n \le a^n$, $\displaystyle\sum_{n=0}^{\infty} \frac{a^n}{n!} = e^a < \infty \implies$ по признаку Вейерштрасса
+сходится равномерно на $\mathcal{K}_a$.
 
 $\blacksquare$
 
 \textbf{Свойства матричной экспоненты}
 
 \begin{enumerate}
-    \item $A = \text{diag}(\lambda_1, \lambda_2 \dots \lambda_n) \implies e^A = \text{diag}(e^{\lambda_1}, e^{\lambda_2} \dots e^{\lambda_n})$
-    \item $A$ --- блочно--диагональная
-        \begin{equation*}
-            A =\begin{pmatrix}
-                  B_1 & 0 & \cdots & 0\\[4pt]
-                  0 & B_2 & \ddots & \vdots\\[4pt]
-                  \vdots & \ddots & \ddots & 0\\[4pt]
-                  0 & \cdots & 0 & B_k
-            \end{pmatrix} \implies e^A = \begin{pmatrix}
-                  e^{B_1} & 0 & \cdots & 0\\[4pt]
-                  0 & e^{B_2} & \ddots & \vdots\\[4pt]
-                  \vdots & \ddots & \ddots & 0\\[4pt]
-                  0 & \cdots & 0 & e^{B_k}
-            \end{pmatrix}
-        \end{equation*}
-    \item $AB = BA \implies e^{A+B} = e^A \cdot e^B = e^B \cdot e^A$
-    
-        $\square$
+  \item $A = \text{diag}(\lambda_1, \lambda_2 \dots \lambda_n) \implies e^A = \text{diag}(e^{\lambda_1}, e^{\lambda_2} \dots e^{\lambda_n})$
+  \item $A$ --- блочно--диагональная
+    \begin{equation*}
+      A =
+      \begin{pmatrix}
+        B_1 & 0 & \cdots & 0\\[4pt]
+        0 & B_2 & \ddots & \vdots\\[4pt]
+        \vdots & \ddots & \ddots & 0\\[4pt]
+        0 & \cdots & 0 & B_k
+      \end{pmatrix} \implies e^A =
+      \begin{pmatrix}
+        e^{B_1} & 0 & \cdots & 0\\[4pt]
+        0 & e^{B_2} & \ddots & \vdots\\[4pt]
+        \vdots & \ddots & \ddots & 0\\[4pt]
+        0 & \cdots & 0 & e^{B_k}
+      \end{pmatrix}
+    \end{equation*}
+  \item $AB = BA \implies e^{A+B} = e^A \cdot e^B = e^B \cdot e^A$
 
-        $\forall l, s \in \mathbb{Z}_+ \quad A^lB^s = B^sA^l$
+    $\square$
 
-        $e^{A + B} = \displaystyle\sum_{n=0}^\infty \frac{(A + B)^n}{n!} = \displaystyle\sum_{n=0}^\infty\sum_{k=0}^n C_n^k \frac{A^kB^{n-k}}{n!} = \displaystyle\sum_{n=0}^\infty\sum_{k=0}^n \frac{A^kB^{n-k}}{k!(n-k)!}$
+    $\forall l, s \in \mathbb{Z}_+ \quad A^lB^s = B^sA^l$
 
-        $e^A \cdot e^B = e^B \cdot e^A = \left(E + \frac{A}{1!} + \dots + \frac{A^s}{s!} + \dots\right)\left(E + \frac{B}{1!} + \dots + \frac{B^l}{l!} \dots\right) = \displaystyle\sum_{n=0}^\infty\sum_{s+l = n} \frac{A^s}{s!} \cdot \frac{B^l}{l!}$
+    $e^{A + B} = \displaystyle\sum_{n=0}^\infty \frac{(A + B)^n}{n!} = \displaystyle\sum_{n=0}^\infty\sum_{k=0}^n C_n^k \frac{A^kB^{n-k}}{n!} =
+    \displaystyle\sum_{n=0}^\infty\sum_{k=0}^n \frac{A^kB^{n-k}}{k!(n-k)!}$
 
-        Заменой $s = k, l = n - k$ получим равенство с $e^{A+B}$
-    
-        $\blacksquare$
+    $e^A \cdot e^B = e^B \cdot e^A = \left(E + \frac{A}{1!} + \dots + \frac{A^s}{s!} + \dots\right)\left(E + \frac{B}{1!} + \dots + \frac{B^l}{l!} \dots\right) =
+    \displaystyle\sum_{n=0}^\infty\sum_{s+l = n} \frac{A^s}{s!} \cdot \frac{B^l}{l!}$
 
-        \item $N^k = O, k \in \mathbb{N}$ ($N$ --- нильпотентная матрица)
+    Заменой $s = k, l = n - k$ получим равенство с $e^{A+B}$
 
-        Тогда $e^N = E + \frac{N}{1!} + \frac{N^2}{2!} + \dots + \frac{N^{k-1}}{(k-1)!}$
+    $\blacksquare$
 
-        \item $J_n(\lambda)$ --- Жорданова клетка со стороной $n$.
-        \begin{equation*}
-            J_n(\lambda) = \begin{pmatrix}
-            \lambda & 1 & 0 & \cdots & 0 \\
-            0 & \lambda & 1 & \cdots & 0 \\
-            0 & 0 & \lambda & \ddots & \vdots \\
-            \vdots & \vdots & \ddots & \ddots & 1 \\
-            0 & 0 & \cdots & 0 & \lambda
-            \end{pmatrix} = \lambda E + N, 
-            N = \begin{pmatrix}
-            0 & 1 & 0 & \cdots & 0 \\
-            0 & 0 & 1 & \cdots & 0 \\
-            0 & 0 & 0 & \ddots & \vdots \\
-            \vdots & \vdots & \ddots & \ddots & 1 \\
-            0 & 0 & \cdots & 0 & 0
-            \end{pmatrix}
-        \end{equation*}
-        
-        Тогда $e^{J_n(\lambda) \cdot t} = e^{\lambda E t + Nt} \overset{*}{=} e^{\lambda t} \cdot e^{Nt} \overset{4.}{=} e^{\lambda t} \cdot \begin{pmatrix}
-            0 & 1 & t & \frac{t^2}{2} & \cdots & \frac{t^{n-1}}{(n-1)!} \\
-            0 & 0 & 1 & t & \cdots & \vdots \\
-            0 & 0 & 0 & 1 & \ddots & \vdots \\
-            0 & 0 & 0 & 0 & \ddots & \vdots \\
-            \vdots & \vdots & \ddots & \ddots & \ddots & 1 \\
-            0 & 0 & \cdots & 0 & 0 & 0
-        \end{pmatrix}$
+  \item $N^k = O, k \in \mathbb{N}$ ($N$ --- нильпотентная матрица)
 
-        $*$ --- т. к. $\lambda E$  перестановочна с любой другой.
+    Тогда $e^N = E + \frac{N}{1!} + \frac{N^2}{2!} + \dots + \frac{N^{k-1}}{(k-1)!}$
 
-        \item $B = S^{-1} A S \implies e^B = S^{-1} e^A S$
+  \item $J_n(\lambda)$ --- Жорданова клетка со стороной $n$.
+    \begin{equation*}
+      J_n(\lambda) =
+      \begin{pmatrix}
+        \lambda & 1 & 0 & \cdots & 0 \\
+        0 & \lambda & 1 & \cdots & 0 \\
+        0 & 0 & \lambda & \ddots & \vdots \\
+        \vdots & \vdots & \ddots & \ddots & 1 \\
+        0 & 0 & \cdots & 0 & \lambda
+      \end{pmatrix} = \lambda E + N,
+      N =
+      \begin{pmatrix}
+        0 & 1 & 0 & \cdots & 0 \\
+        0 & 0 & 1 & \cdots & 0 \\
+        0 & 0 & 0 & \ddots & \vdots \\
+        \vdots & \vdots & \ddots & \ddots & 1 \\
+        0 & 0 & \cdots & 0 & 0
+      \end{pmatrix}
+    \end{equation*}
 
-        $\square$
+    Тогда $e^{J_n(\lambda) \cdot t} = e^{\lambda E t + Nt} \overset{*}{=} e^{\lambda t} \cdot e^{Nt} \overset{4.}{=} e^{\lambda t} \cdot
+    \begin{pmatrix}
+      0 & 1 & t & \frac{t^2}{2} & \cdots & \frac{t^{n-1}}{(n-1)!} \\
+      0 & 0 & 1 & t & \cdots & \vdots \\
+      0 & 0 & 0 & 1 & \ddots & \vdots \\
+      0 & 0 & 0 & 0 & \ddots & \vdots \\
+      \vdots & \vdots & \ddots & \ddots & \ddots & 1 \\
+      0 & 0 & \cdots & 0 & 0 & 0
+    \end{pmatrix}$
 
-        $B^k = \left( S^{-1} A S \right)^k = S^{-1} A^k S$
+    $*$ --- т. к. $\lambda E$  перестановочна с любой другой.
 
-        $e^B = E + \frac{B}{1!} + \frac{B^2}{2!} + \dots + \frac{B^k}{k!} + \dots = S^{-1}S + \frac{S^{-1} A S}{1!} + \frac{S^{-1} A^2 S}{2!} + \dots = S^{-1} e^A S$
-        
-        $\blacksquare$
+  \item $B = S^{-1} A S \implies e^B = S^{-1} e^A S$
 
-        \item $\det e^A = e^{\text{tr} A}$
+    $\square$
 
-        $\square$
+    $B^k = \left( S^{-1} A S \right)^k = S^{-1} A^k S$
 
-        Пусть $J$ --- ЖНФ $A$, т. к. $A \in \mathcal{M}_N(\mathbb{R})$.
+    $e^B = E + \frac{B}{1!} + \frac{B^2}{2!} + \dots + \frac{B^k}{k!} + \dots = S^{-1}S + \frac{S^{-1} A S}{1!} + \frac{S^{-1} A^2 S}{2!} + \dots = S^{-1} e^A S$
 
-        $J = S^{-1} A S \implies A = S J S^{-1}$
+    $\blacksquare$
 
-        $\det e^A \overset{6.}{=} \det S \det e^J \det S^{-1} = \det e^J$, т. к. $\det S^{-1} \det S = \det (S^{-1} S) = 1$.
+  \item $\det e^A = e^{\text{tr} A}$
 
-        \begin{equation*}
-            J = \begin{pmatrix}
-                  J_{k_1}(\lambda_1) & 0 & \cdots & 0\\[4pt]
-                  0 & J_{k_2}(\lambda_2) & \ddots & \vdots\\[4pt]
-                  \vdots & \ddots & \ddots & 0\\[4pt]
-                  0 & \cdots & 0 & J_{k_m}(\lambda_m)
-            \end{pmatrix} \overset{2.}{\implies} e^J = \begin{pmatrix}
-                  e^{J_{k_1}(\lambda_1)} & 0 & \cdots & 0\\[4pt]
-                  0 & e^{J_{k_2}(\lambda_2)} & \ddots & \vdots\\[4pt]
-                  \vdots & \ddots & \ddots & 0\\[4pt]
-                  0 & \cdots & 0 & e^{J_{k_m}(\lambda_m)}
-            \end{pmatrix}
-        \end{equation*}
+    $\square$
 
-        Т. к. $e^J$ --- верхнетреугольная, то $\det e^J = \displaystyle\prod_{i=1}^m e^{\lambda_i k_k}$.
+    Пусть $J$ --- ЖНФ $A$, т. к. $A \in \mathcal{M}_N(\mathbb{R})$.
 
-        $\det e^A = \det e^J = e^{\text{tr} J} = e^{\text{tr} A}$, т. к. след матрицы инвариантен относительно замены базиса.
+    $J = S^{-1} A S \implies A = S J S^{-1}$
 
-        $\blacksquare$
+    $\det e^A \overset{6.}{=} \det S \det e^J \det S^{-1} = \det e^J$, т. к. $\det S^{-1} \det S = \det (S^{-1} S) = 1$.
 
-        \item $A^T = -A \implies (e^A)^T = (e^A)^{-1}$
+    \begin{equation*}
+      J =
+      \begin{pmatrix}
+        J_{k_1}(\lambda_1) & 0 & \cdots & 0\\[4pt]
+        0 & J_{k_2}(\lambda_2) & \ddots & \vdots\\[4pt]
+        \vdots & \ddots & \ddots & 0\\[4pt]
+        0 & \cdots & 0 & J_{k_m}(\lambda_m)
+      \end{pmatrix} \overset{2.}{\implies} e^J =
+      \begin{pmatrix}
+        e^{J_{k_1}(\lambda_1)} & 0 & \cdots & 0\\[4pt]
+        0 & e^{J_{k_2}(\lambda_2)} & \ddots & \vdots\\[4pt]
+        \vdots & \ddots & \ddots & 0\\[4pt]
+        0 & \cdots & 0 & e^{J_{k_m}(\lambda_m)}
+      \end{pmatrix}
+    \end{equation*}
 
-        $\square$
+    Т. к. $e^J$ --- верхнетреугольная, то $\det e^J = \displaystyle\prod_{i=1}^m e^{\lambda_i k_k}$.
 
-        $e^A \cdot (e^A)^T = e^A \cdot e^{A^T} = e^A \cdot e^{-A} = e^{A-A} = e^O = E$
-            
-        $\blacksquare$
+    $\det e^A = \det e^J = e^{\text{tr} J} = e^{\text{tr} A}$, т. к. след матрицы инвариантен относительно замены базиса.
 
-        \item Пусть $v$ --- собственный вектор $A$ с собственным значением $\lambda$. Тогда $v$ --- собственный вектор $e^A$ с собственным значением $e^\lambda$.
+    $\blacksquare$
 
-        $\square$
+  \item $A^T = -A \implies (e^A)^T = (e^A)^{-1}$
 
-        $A^k (v) = A^{k-1}(\lambda v) = \lambda A^{k-1}(v) = \lambda^kv \quad \forall k \in \mathbb{Z}_+$
+    $\square$
 
-        $e^A(v) = \left(E + \frac{A}{1!} + \frac{A^2}{2!} \dots \right) (v) = v + \frac{\lambda}{1!} v + \frac{\lambda^2}{2!} v + \dots = e^\lambda v$
-            
-        $\blacksquare$
+    $e^A \cdot (e^A)^T = e^A \cdot e^{A^T} = e^A \cdot e^{-A} = e^{A-A} = e^O = E$
 
-        \item $\frac{d}{dt} e^{At} = A e^{At}$
+    $\blacksquare$
 
-        $\square$
+  \item Пусть $v$ --- собственный вектор $A$ с собственным значением $\lambda$. Тогда $v$ --- собственный вектор $e^A$ с собственным значением $e^\lambda$.
 
-        $\frac{d}{dt} e^{At} = \frac{d}{dt} \left( \displaystyle\sum_{k=0}^{+\infty} \frac{A^k t^k}{k!} \right) \overset{*}{=} \displaystyle\sum_{k=1}^{+\infty} \frac{A^k t^{k-1}}{(k-1)!} = A\displaystyle\sum_{k=0}^{+\infty} \frac{A^k t^{k}}{k!} = Ae^{At}$
+    $\square$
 
-        $*$ --- по т. о почленном дифференцировании степенного ряда.
-            
-        $\blacksquare$
+    $A^k (v) = A^{k-1}(\lambda v) = \lambda A^{k-1}(v) = \lambda^kv \quad \forall k \in \mathbb{Z}_+$
+
+    $e^A(v) = \left(E + \frac{A}{1!} + \frac{A^2}{2!} \dots \right) (v) = v + \frac{\lambda}{1!} v + \frac{\lambda^2}{2!} v + \dots = e^\lambda v$
+
+    $\blacksquare$
+
+  \item $\frac{d}{dt} e^{At} = A e^{At}$
+
+    $\square$
+
+    $\frac{d}{dt} e^{At} = \frac{d}{dt} \left( \displaystyle\sum_{k=0}^{+\infty} \frac{A^k t^k}{k!} \right) \overset{*}{=} \displaystyle\sum_{k=1}^{+\infty} \frac{A^k
+    t^{k-1}}{(k-1)!} = A\displaystyle\sum_{k=0}^{+\infty} \frac{A^k t^{k}}{k!} = Ae^{At}$
+
+    $*$ --- по т. о почленном дифференцировании степенного ряда.
+
+    $\blacksquare$
 \end{enumerate}
 
 \textbf{Следствие}
@@ -444,20 +469,20 @@ $\square$
 $\det e^A \overset{7.}{=} e^{\text{tr} A} > 0$
 $\blacksquare$
 
-\Th 
+\Th
 
 Общее решение $\dot x = Ax, \; A \in \mathcal{M}_n(\mathbb{R})$ задается формулой $x(t) = e^{At} c, \; c \in \mathbb{R}^n$.
 
 В частности любое решение задачи Коши
 
 $
-    \begin{cases}
-        \dot x = Ax \\
-        x(0) = x_0
-    \end{cases}
+\begin{cases}
+  \dot x = Ax \\
+  x(0) = x_0
+\end{cases}
 $
 
-определенное при $t \in \mathbb{R}$ имеет вид 
+определенное при $t \in \mathbb{R}$ имеет вид
 
 $x(t) = e^{At}x_0, \quad \forall t \in \mathbb{R}$
 

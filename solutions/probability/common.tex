@@ -4,36 +4,41 @@
 
 \Def $\sigma$-\textit{алгебра} $\mathcal{F}$ — множество подмножеств $\Omega$, обладающее следующими свойствами:
 \begin{enumerate}
-    \item $\Omega \in \mathcal{F}$;
-    \item $A \in \mathcal{F} \implies \overline{A} \in \mathcal{F}$;
-    \item $A_1, A_2, \ldots, A_n, \ldots \in \mathcal{F} \implies \bigcup_{i=1}^\infty A_i \in \mathcal{F}$.
+  \item $\Omega \in \mathcal{F}$;
+  \item $A \in \mathcal{F} \implies \overline{A} \in \mathcal{F}$;
+  \item $A_1, A_2, \ldots, A_n, \ldots \in \mathcal{F} \implies \bigcup_{i=1}^\infty A_i \in \mathcal{F}$.
 \end{enumerate}
 
 \Example Множество всех подмножеств $2^{\Omega}$ и множество $\{\varnothing, \Omega\}$ — $\sigma$-алгебры над $\Omega$.
 
-\Def \textit{Борелевская $\sigma$-алгебра} $\mathcal{B}$ — $\sigma$-алгебра, порождённая множеством всех открытых интервалов на $\mathbb{R}$ (иными словами, минимальная $\sigma$-алгебра, содержащая все открытые интервалы). Элемент $B \in \mathcal{B}$ — \textit{борелевское множество}.
-
+\Def \textit{Борелевская $\sigma$-алгебра} $\mathcal{B}$ — $\sigma$-алгебра, порождённая множеством всех открытых интервалов на $\mathbb{R}$ (иными словами, минимальная
+$\sigma$-алгебра, содержащая все открытые интервалы). Элемент $B \in \mathcal{B}$ — \textit{борелевское множество}.
 
 \Def \textit{Вероятностная мера} или \textit{вероятность} — функция $\mathbb{P}:\mathcal{F} \mapsto \mathbb{R}$, обладающая следующими свойствами:
 \begin{enumerate}
-    \item $\mathbb{P}(A) \geq 0 \quad \forall A \in \mathcal{F}$ \; (неотрицательность);
-    \item $\mathbb{P}(\Omega) = 1$ \; (нормировка);
-    \item $\forall A_1, A_2, \ldots, A_n, \ldots \in \mathcal{F}$, $A_i \cap A_j = \varnothing$ $(i \neq j): \mathbb{P}\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \mathbb{P}(A_i)$ \; (счётная аддитивность).
+  \item $\mathbb{P}(A) \geq 0 \quad \forall A \in \mathcal{F}$ \; (неотрицательность);
+  \item $\mathbb{P}(\Omega) = 1$ \; (нормировка);
+  \item $\forall A_1, A_2, \ldots, A_n, \ldots \in \mathcal{F}$, $A_i \cap A_j = \varnothing$ $(i \neq j): \mathbb{P}\left(\bigcup_{i=1}^{\infty} A_i\right) =
+    \sum_{i=1}^{\infty} \mathbb{P}(A_i)$ \; (счётная аддитивность).
 \end{enumerate}
 
-\Def \textit{Вероятностное пространство} — тройка $(\Omega, \mathcal{F}, \mathbb{P})$, где $\Omega$ — множество элементарных исходов, $\mathcal{F}$ — $\sigma$-алгебра над $\Omega$, вероятность $\mathbb{P}$ определена на $\mathcal{F}$.
+\Def \textit{Вероятностное пространство} — тройка $(\Omega, \mathcal{F}, \mathbb{P})$, где $\Omega$ — множество элементарных исходов, $\mathcal{F}$ — $\sigma$-алгебра
+над $\Omega$, вероятность $\mathbb{P}$ определена на $\mathcal{F}$.
 
-\Def Пусть задано вероятностное пространство $(\Omega, \mathcal{F}, \mathbb{P})$. \textit{Случайной величиной} называется измеримая функция $X: \Omega \to \mathbb{R}$, т.е. такая функция, что для любого борелевского множества $B \subset \mathbb{R}$ множество $X^{-1}(B) = \{\omega \in \Omega : X(\omega) \in B\} \in \mathcal{F}$.
+\Def Пусть задано вероятностное пространство $(\Omega, \mathcal{F}, \mathbb{P})$. \textit{Случайной величиной} называется измеримая функция $X: \Omega \to \mathbb{R}$,
+т.е. такая функция, что для любого борелевского множества $B \subset \mathbb{R}$ множество $X^{-1}(B) = \{\omega \in \Omega : X(\omega) \in B\} \in \mathcal{F}$.
 
-\Def Случайная величина $X$ называется \textit{дискретной}, если множество её возможных значений $\{x_1, x_2, \ldots, x_n, \ldots\}$ не более чем счётно. \textit{Законом распределения} дискретной случайной величины называется последовательность $\{p_k\}$, где
+\Def Случайная величина $X$ называется \textit{дискретной}, если множество её возможных значений $\{x_1, x_2, \ldots, x_n, \ldots\}$ не более чем счётно. \textit{Законом
+распределения} дискретной случайной величины называется последовательность $\{p_k\}$, где
 \[
-p_k = \mathbb{P}(X = x_k), \quad k = 1, 2, \ldots
+  p_k = \mathbb{P}(X = x_k), \quad k = 1, 2, \ldots
 \]
 При этом $p_k \geq 0$ и $\sum\limits_{k} p_k = 1$.
 
-\Def Случайная величина $X$ называется \textit{абсолютно непрерывной}, если существует неотрицательная функция $f(x)$, называемая \textit{плотностью распределения}, такая что для любого множества $B \subset \mathbb{R}$
+\Def Случайная величина $X$ называется \textit{абсолютно непрерывной}, если существует неотрицательная функция $f(x)$, называемая \textit{плотностью распределения},
+такая что для любого множества $B \subset \mathbb{R}$
 \[
-\mathbb{P}(X \in B) = \int_B f(x) \, dx.
+  \mathbb{P}(X \in B) = \int_B f(x) \, dx.
 \]
 При этом $f(x) \geq 0$ и $\int\limits_{-\infty}^{+\infty} f(x) \, dx = 1$.
 
@@ -41,15 +46,15 @@ p_k = \mathbb{P}(X = x_k), \quad k = 1, 2, \ldots
 
 \Def \textit{Функция распределения} случайной величины $X$ — функция $F_X: \mathbb{R} \to [0,1]$, определённая как
 \[
-F_X(x) = \mathbb{P}(X \leq x).
+  F_X(x) = \mathbb{P}(X \leq x).
 \]
 
 \Props
 \begin{enumerate}
-    \item $F_X(x)$ — неубывающая функция;
-    \item $\lim\limits_{x \to -\infty} F_X(x) = 0$, $\lim\limits_{x \to +\infty} F_X(x) = 1$;
-    \item $F_X(x)$ непрерывна справа: $\lim\limits_{y \to x+} F_X(y) = F_X(x)$;
-    \item $\mathbb{P}(a < X \leq b) = F_X(b) - F_X(a)$.
+  \item $F_X(x)$ — неубывающая функция;
+  \item $\lim\limits_{x \to -\infty} F_X(x) = 0$, $\lim\limits_{x \to +\infty} F_X(x) = 1$;
+  \item $F_X(x)$ непрерывна справа: $\lim\limits_{y \to x+} F_X(y) = F_X(x)$;
+  \item $\mathbb{P}(a < X \leq b) = F_X(b) - F_X(a)$.
 \end{enumerate}
 
 \textbf{Замечание.} Для абсолютно непрерывной случайной величины $F_X(x) = \int\limits_{-\infty}^{x} f(t)\, dt$, откуда $f(x) = F'_X(x)$ в точках непрерывности плотности.
@@ -60,15 +65,15 @@ F_X(x) = \mathbb{P}(X \leq x).
 \vspace{0.3em}
 \textit{Дискретные:}
 \begin{itemize}
-    \item \textbf{Бернулли} $Bern(p)$: $\mathbb{P}(\xi = 1) = p$, $\mathbb{P}(\xi = 0) = 1-p$. $\mathbb{E}\xi = p$, $D\xi = p(1-p)$.
-    \item \textbf{Биномиальное} $Bin(n, p)$: $\mathbb{P}(\xi = k) = C_n^k p^k (1-p)^{n-k}$, $k = 0, \ldots, n$. $\mathbb{E}\xi = np$, $D\xi = np(1-p)$.
-    \item \textbf{Геометрическое} $Geom(p)$: $\mathbb{P}(\xi = k) = (1-p)^{k-1}p$, $k = 1, 2, \ldots$ $\mathbb{E}\xi = \frac{1}{p}$, $D\xi = \frac{1-p}{p^2}$.
-    \item \textbf{Пуассона} $Pois(\lambda)$: $\mathbb{P}(\xi = k) = \frac{\lambda^k e^{-\lambda}}{k!}$, $k = 0, 1, 2, \ldots$ $\mathbb{E}\xi = \lambda$, $D\xi = \lambda$.
+  \item \textbf{Бернулли} $Bern(p)$: $\mathbb{P}(\xi = 1) = p$, $\mathbb{P}(\xi = 0) = 1-p$. $\mathbb{E}\xi = p$, $D\xi = p(1-p)$.
+  \item \textbf{Биномиальное} $Bin(n, p)$: $\mathbb{P}(\xi = k) = C_n^k p^k (1-p)^{n-k}$, $k = 0, \ldots, n$. $\mathbb{E}\xi = np$, $D\xi = np(1-p)$.
+  \item \textbf{Геометрическое} $Geom(p)$: $\mathbb{P}(\xi = k) = (1-p)^{k-1}p$, $k = 1, 2, \ldots$ $\mathbb{E}\xi = \frac{1}{p}$, $D\xi = \frac{1-p}{p^2}$.
+  \item \textbf{Пуассона} $Pois(\lambda)$: $\mathbb{P}(\xi = k) = \frac{\lambda^k e^{-\lambda}}{k!}$, $k = 0, 1, 2, \ldots$ $\mathbb{E}\xi = \lambda$, $D\xi = \lambda$.
 \end{itemize}
 
 \textit{Абсолютно непрерывные:}
 \begin{itemize}
-    \item \textbf{Равномерное} $U[a,b]$: $f(x) = \frac{1}{b-a}$ при $x \in [a,b]$, иначе $0$. $\mathbb{E}\xi = \frac{a+b}{2}$, $D\xi = \frac{(b-a)^2}{12}$.
-    \item \textbf{Экспоненциальное} $Exp(\lambda)$: $f(x) = \lambda e^{-\lambda x}$ при $x > 0$, иначе $0$. $\mathbb{E}\xi = \frac{1}{\lambda}$, $D\xi = \frac{1}{\lambda^2}$.
-    \item \textbf{Нормальное} $\mathcal{N}(a, \sigma^2)$: $f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-a)^2}{2\sigma^2}}$. $\mathbb{E}\xi = a$, $D\xi = \sigma^2$.
+  \item \textbf{Равномерное} $U[a,b]$: $f(x) = \frac{1}{b-a}$ при $x \in [a,b]$, иначе $0$. $\mathbb{E}\xi = \frac{a+b}{2}$, $D\xi = \frac{(b-a)^2}{12}$.
+  \item \textbf{Экспоненциальное} $Exp(\lambda)$: $f(x) = \lambda e^{-\lambda x}$ при $x > 0$, иначе $0$. $\mathbb{E}\xi = \frac{1}{\lambda}$, $D\xi = \frac{1}{\lambda^2}$.
+  \item \textbf{Нормальное} $\mathcal{N}(a, \sigma^2)$: $f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-a)^2}{2\sigma^2}}$. $\mathbb{E}\xi = a$, $D\xi = \sigma^2$.
 \end{itemize}

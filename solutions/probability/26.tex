@@ -4,7 +4,7 @@
 
 $\varphi_\xi(t) = \mathbb{E}e^{it\xi}$ назовем \textbf{характеристической функцией} случайной величины $\xi$.
 
-\Example 
+\Example
 
 Посчитаем для $N(0, 1)$:
 $$
@@ -22,11 +22,11 @@ $$
 
 Последовательность случайных величин $\xi_1, \xi_2, \ldots$ сходится слабо к случайной величине $\xi$:
 \[
-\xi_n \xrightarrow{d} \xi \ (\xi_n \Rightarrow \xi),
+  \xi_n \xrightarrow{d} \xi \ (\xi_n \Rightarrow \xi),
 \]
 если для любого $x$ такого, что функция распределения $F_\xi$ непрерывна в точке $x$, имеет место сходимость
 \[
-F_{\xi_n}(x) \rightarrow F_\xi(x) \quad \text{при}\ n \rightarrow \infty.
+  F_{\xi_n}(x) \rightarrow F_\xi(x) \quad \text{при}\ n \rightarrow \infty.
 \]
 
 \Theor{О непрерывном соответствии}
@@ -42,7 +42,7 @@ F_{\xi_n}(x) \rightarrow F_\xi(x) \quad \text{при}\ n \rightarrow \infty.
 Тогда верно, что
 
 \[
-\frac{S_n - n a}{\sigma \sqrt{n}} = \frac{\xi_1 + \ldots + \xi_n - n a}{\sigma \sqrt{n}} \xrightarrow{d} N(0,1).
+  \frac{S_n - n a}{\sigma \sqrt{n}} = \frac{\xi_1 + \ldots + \xi_n - n a}{\sigma \sqrt{n}} \xrightarrow{d} N(0,1).
 \]
 
 (где а - матожидание, $\sigma^2$ - дисперсия случайной величины $\xi_i$)
@@ -52,33 +52,33 @@ F_{\xi_n}(x) \rightarrow F_\xi(x) \quad \text{при}\ n \rightarrow \infty.
 Введём стандартизованные случайные величины $\zeta_i = (\xi_i - a)/\sigma$ — независимые случайные величины с нулевыми математическими ожиданиями и единичными дисперсиями.
 Пусть $Z_n$ есть их сумма:
 \[
-Z_n = \zeta_1 + \ldots + \zeta_n = \frac{S_n - n a}{\sigma}
+  Z_n = \zeta_1 + \ldots + \zeta_n = \frac{S_n - n a}{\sigma}
 \]
 Требуется доказать, что $Z_n/\sqrt{n} \xrightarrow{d} N(0,1)$.
 
 Характеристическая функция величины $Z_n/\sqrt{n}$ равна:
 \[
-\varphi_{Z_n/\sqrt{n}}(t) = \varphi_{Z_n}\left( \frac{t}{\sqrt{n}} \right ) = \left[ \varphi_{\zeta_1}\left( \frac{t}{\sqrt{n}} \right ) \right]^n
+  \varphi_{Z_n/\sqrt{n}}(t) = \varphi_{Z_n}\left( \frac{t}{\sqrt{n}} \right ) = \left[ \varphi_{\zeta_1}\left( \frac{t}{\sqrt{n}} \right ) \right]^n
 \]
 
 Характеристическую функцию случайной величины $\zeta_1$ можно разложить по формуле Тейлора (сначала разложим, потом возьмем матожидание по линейности):
 \[
-\varphi_{\zeta_1}(t) = 1 + it \mathbb{E}\zeta_1 - \frac{t^2}{2}\mathbb{E}\zeta_1^2 + o(t^2)
-= 1 - \frac{t^2}{2} + o(t^2)
+  \varphi_{\zeta_1}(t) = 1 + it \mathbb{E}\zeta_1 - \frac{t^2}{2}\mathbb{E}\zeta_1^2 + o(t^2)
+  = 1 - \frac{t^2}{2} + o(t^2)
 \]
 
 Последний переход верен, т.к известно, что $\mathbb{E}\zeta_1 = 0$, $\mathbb{E}\zeta_1^2 = D\zeta_1 = 1$:
 
 Подставим это разложение в точке $t/\sqrt{n}$ и устремим $n$ к бесконечности:
 \[
-\varphi_{Z_n/\sqrt{n}}(t) =
-\left( 1 - \frac{t^2}{2n} + o\left( \frac{t^2}{n} \right ) \right)^n \rightarrow e^{-t^2/2}, \quad n \to \infty
+  \varphi_{Z_n/\sqrt{n}}(t) =
+  \left( 1 - \frac{t^2}{2n} + o\left( \frac{t^2}{n} \right ) \right)^n \rightarrow e^{-t^2/2}, \quad n \to \infty
 \]
 
 В пределе получили характеристическую функцию стандартного нормального распределения.
 По теореме о непрерывном соответствии между функциями распределения и характеристическими функциями можно сделать вывод о слабой сходимости:
 \[
-\frac{S_n - n a}{\sigma \sqrt{n}} \xrightarrow{d} N(0,1).
+  \frac{S_n - n a}{\sigma \sqrt{n}} \xrightarrow{d} N(0,1).
 \]
 
 \Endproof
@@ -95,7 +95,7 @@ Z_n = \zeta_1 + \ldots + \zeta_n = \frac{S_n - n a}{\sigma}
 
 Тогда:
 \[
-\mathbb{P}(45 \leq S_{100} \leq 55) = \mathbb{P}\left(\frac{45-50}{5} \leq \frac{S_{100}-50}{5} \leq \frac{55-50}{5}\right) \approx \mathbb{P}(-1 \leq Z \leq 1),
+  \mathbb{P}(45 \leq S_{100} \leq 55) = \mathbb{P}\left(\frac{45-50}{5} \leq \frac{S_{100}-50}{5} \leq \frac{55-50}{5}\right) \approx \mathbb{P}(-1 \leq Z \leq 1),
 \]
 где $Z \sim N(0,1)$.
 

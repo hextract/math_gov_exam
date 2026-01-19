@@ -1,25 +1,27 @@
 \subsection{NP-полные задачи. Теорема Кука--Левина.}
 
-\Def Язык $\mathcal{A}$ \textit{сводится по Карпу} к языку $\mathcal{B}$ ($\mathcal{A} \le_p \mathcal{B}$), если существует вычислимая за полиномиальное время на ДМТ функция $f : x \in \mathcal{A} \iff f(x) \in \mathcal{B}$.
+\Def Язык $\mathcal{A}$ \textit{сводится по Карпу} к языку $\mathcal{B}$ ($\mathcal{A} \le_p \mathcal{B}$), если существует вычислимая за полиномиальное время на ДМТ
+функция $f : x \in \mathcal{A} \iff f(x) \in \mathcal{B}$.
 
 \Def $\mathcal{L} \in \text{NPh}$ (NP -- трудный), если $\forall \mathcal{A} \in \text{NP} \quad \mathcal{A} \le_p \mathcal{L}$.
 
-\Def $\mathcal{L} \in \text{NPc}$ (NP -- полный), если 
+\Def $\mathcal{L} \in \text{NPc}$ (NP -- полный), если
 
-$\begin{cases} 
-\mathcal{L} \in \text{NPh} \\
-\mathcal{L} \in \text{NP}
+$
+\begin{cases}
+  \mathcal{L} \in \text{NPh} \\
+  \mathcal{L} \in \text{NP}
 \end{cases}$.
 
 \textbf{Свойства сводимости.}
 
 \begin{enumerate}
-    \item $\mathcal{A} \le_p \mathcal{A}$
-    \item $\mathcal{A} \le_p \mathcal{B}, \mathcal{B} \le_p \mathcal{C} \implies \mathcal{A} \le_p \mathcal{C}$ (с функцией $h = g \circ f$).
-    \item $\mathcal{B} \in \text{P}, \mathcal{A} \le_p \mathcal{B} \implies \mathcal{A} \in \text{P}$.
-    \item $\mathcal{B} \in \text{NP}, \mathcal{A} \le_p \mathcal{B} \implies \mathcal{A} \in \text{NP}$.
-    \item $\mathcal{A} \in \text{P} \implies \mathcal{A} \le_p \mathcal{B}$ для всех нетривиальных $\mathcal{B}$ ($\neq \varnothing, \Sigma^*$).
-    \item $\mathcal{A} \in \text{NPh}, \mathcal{A} \le_p \mathcal{B} \implies \mathcal{B} \in \text{NPh}$.
+  \item $\mathcal{A} \le_p \mathcal{A}$
+  \item $\mathcal{A} \le_p \mathcal{B}, \mathcal{B} \le_p \mathcal{C} \implies \mathcal{A} \le_p \mathcal{C}$ (с функцией $h = g \circ f$).
+  \item $\mathcal{B} \in \text{P}, \mathcal{A} \le_p \mathcal{B} \implies \mathcal{A} \in \text{P}$.
+  \item $\mathcal{B} \in \text{NP}, \mathcal{A} \le_p \mathcal{B} \implies \mathcal{A} \in \text{NP}$.
+  \item $\mathcal{A} \in \text{P} \implies \mathcal{A} \le_p \mathcal{B}$ для всех нетривиальных $\mathcal{B}$ ($\neq \varnothing, \Sigma^*$).
+  \item $\mathcal{A} \in \text{NPh}, \mathcal{A} \le_p \mathcal{B} \implies \mathcal{B} \in \text{NPh}$.
 \end{enumerate}
 
 \Def
@@ -39,13 +41,14 @@ SAT $\in$ NPc.
 $\square$
 
 \begin{enumerate}
-    \item Покажем, что SAT $\in$ NP.
+  \item Покажем, что SAT $\in$ NP.
 
-    Воспользуемся сертификатным определением. Сертификатом $s$ будет выполняющий набор (который не длиннее самой формулы). Верификатор $V(\varphi, s)$ будет подставлять $s$ в формулу и вычислять результат за полиномиальное от длины формулы время.
+    Воспользуемся сертификатным определением. Сертификатом $s$ будет выполняющий набор (который не длиннее самой формулы). Верификатор $V(\varphi, s)$ будет подставлять
+    $s$ в формулу и вычислять результат за полиномиальное от длины формулы время.
 
-    \item Покажем, что $\forall \mathcal{L} \in$ NP $\mathcal{L} \le_p$ SAT.
+  \item Покажем, что $\forall \mathcal{L} \in$ NP $\mathcal{L} \le_p$ SAT.
 
-    Рассмотрим произвольный язык $\mathcal{L} \in$ NP. 
+    Рассмотрим произвольный язык $\mathcal{L} \in$ NP.
 
     $\exists V_\mathcal{L}$ --- верификатор из сертификатного определения
 
@@ -53,33 +56,38 @@ $\square$
 
     $f_\mathcal{L}(x) = \varphi$ --- булева функция, $\varphi$ выполнима $ \iff x \in \mathcal{L} \iff \exists s : V(x, s) = 1$
 
-    Пусть $\Sigma = \{0, 1, \Lambda\}$. Рассмотрим $V_\mathcal{L}(x, s)$ как ДМТ с одной лентой бесконечной вправо. Пусть она делает $\le p(|x|)$ шагов. А длина сертификата не превышает $q(|x|)$. Добавим служебные символы: $\#, \blacktriangleright, \blacktriangleleft$. 
-    
-    Начальная конфигурация выглядит так: $\blacktriangleright q_0 x \# s \# \underbrace{\Lambda \Lambda \Lambda \Lambda \Lambda \Lambda \dots \Lambda}_{p(|x|) - q(|x|) - |x| - 2}\blacktriangleleft$
+    Пусть $\Sigma = \{0, 1, \Lambda\}$. Рассмотрим $V_\mathcal{L}(x, s)$ как ДМТ с одной лентой бесконечной вправо. Пусть она делает $\le p(|x|)$ шагов. А длина
+    сертификата не превышает $q(|x|)$. Добавим служебные символы: $\#, \blacktriangleright, \blacktriangleleft$.
 
-    Рассмотрим последовательность конфигураций при работе такой ДМТ (всего будет не более $p(|x|) + 1$). При этом выхода за символы $\blacktriangleright, \blacktriangleleft$ не будет.
+    Начальная конфигурация выглядит так: $\blacktriangleright q_0 x \# s \# \underbrace{\Lambda \Lambda \Lambda \Lambda \Lambda \Lambda \dots \Lambda}_{p(|x|) - q(|x|) -
+    |x| - 2}\blacktriangleleft$
 
-    Получим таблицу размера $(p(|x|) + 1) \times (p(|x|) + 2)$ над алфавитом $\{0, 1, \Lambda\} \cup \{\blacktriangleright, \blacktriangleleft, \# \} \cup Q$, который не зависит от $x$. Выделим на кодирование каждого символа $k(\mathcal{L})$ бит. 
+    Рассмотрим последовательность конфигураций при работе такой ДМТ (всего будет не более $p(|x|) + 1$). При этом выхода за символы $\blacktriangleright,
+    \blacktriangleleft$ не будет.
+
+    Получим таблицу размера $(p(|x|) + 1) \times (p(|x|) + 2)$ над алфавитом $\{0, 1, \Lambda\} \cup \{\blacktriangleright, \blacktriangleleft, \# \} \cup Q$, который не
+    зависит от $x$. Выделим на кодирование каждого символа $k(\mathcal{L})$ бит.
 
     Теперь соберем булеву формулу, которая:
 
     \begin{enumerate}
-        \item Проверяет, что в каждом срезе ровно одно состояние.
-        \item Проверяет, что каждый срез начинается и заканчивается на $\blacktriangleright \blacktriangleleft$. 
-        
+      \item Проверяет, что в каждом срезе ровно одно состояние.
+      \item Проверяет, что каждый срез начинается и заканчивается на $\blacktriangleright \blacktriangleleft$.
+
         ($(y_1, y_2 \dots y_k = \blacktriangleright) \land ( \dots = \blacktriangleleft)$).
-        \item Проверяет, что в последнем срезе состояние $q_{yes}$. (Дизъюнкция сравнений переменных с последнего слоя).
-        \item Проверяет корректность начальной конфигурации. 
-        
-        ($(y_{k+1}, y_{k+2}, \dots y_{2k} = q_0) \land (y_{2k+1}, y_{2k+2}, \dots y_{(|x| + 1)k} = x) \land (y_{(|x| + 1)k + 1}, y_{(|x| + 1)k + 2}, \dots y_{(|x| + 2)k} = \#) \land (\text{далее встречается еще одна } \#)$).
-        \item Проверяет корректность переходов между конфигурациями, проходя маской по строке таблицы.
+      \item Проверяет, что в последнем срезе состояние $q_{yes}$. (Дизъюнкция сравнений переменных с последнего слоя).
+      \item Проверяет корректность начальной конфигурации.
+
+        ($(y_{k+1}, y_{k+2}, \dots y_{2k} = q_0) \land (y_{2k+1}, y_{2k+2}, \dots y_{(|x| + 1)k} = x) \land (y_{(|x| + 1)k + 1}, y_{(|x| + 1)k + 2}, \dots y_{(|x| + 2)k}
+        = \#) \land (\text{далее встречается еще одна } \#)$).
+      \item Проверяет корректность переходов между конфигурациями, проходя маской по строке таблицы.
 
         Если в верхнем слое маски нет символа состояния, то в нижнем слое символ меняться не должен. Иначе изменение должно соответствовать функции перехода.
 
         \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.3\linewidth]{36_1.png}
-            \caption{Маска}
+          \centering
+          \includegraphics[width=0.3\linewidth]{36_1.png}
+          \caption{Маска}
         \end{figure}
 
         Каждая проверка выполняется за константное время.
