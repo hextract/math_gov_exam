@@ -2,18 +2,21 @@
 
 \textbf{Линейное пространство}
 
-\Def Пусть $\mathcal{L} \neq \varnothing, "+": \mathcal{L}^2 \to \mathcal{L}, "\cdot": \R \times \mathcal{L} \to \mathcal{L}$.
+\Def Пусть $\mathcal{L} \neq \varnothing, "+": \mathcal{L}^2 \to \mathcal{L}, "\cdot": \K \times \mathcal{L} \to \mathcal{L}$ ($\K$ здесь произвольное поле чисел, например $\R$).
 Будем говорить, что тройка $(\mathcal{L}, +, \cdot)$ является линейным пространством, если выполнены следующие условия:
 \begin{itemize}
   \item $\forall x, y \in \mathcal{L} \hookrightarrow x + y = y + x$
   \item $\forall x, y, z \in \mathcal{L} \hookrightarrow (x + y) + z = x + (y + z)$
   \item $\exists 0 \in \mathcal{L}: \forall x \in \mathcal{L} \hookrightarrow x + 0 = 0 + x$
   \item $\forall x \in \mathcal{L} \, \exists (-x) \in \mathcal{L}: x + (-x) = 0$
-  \item $\forall \alpha, \beta \in \R, \forall x \in \mathcal{L} \hookrightarrow \alpha (\beta x) = (\alpha \beta) x$
-  \item $\forall \alpha, \beta \in \R, \forall x \in \mathcal{L} \hookrightarrow (\alpha + \beta) x = \alpha x + \beta x$
-  \item $\forall \alpha \in \R, \forall x, y \in \mathcal{L} \hookrightarrow \alpha (x + y) = \alpha x + \alpha y$
+  \item $\forall \alpha, \beta \in \K, \forall x \in \mathcal{L} \hookrightarrow \alpha (\beta x) = (\alpha \beta) x$
+  \item $\forall \alpha, \beta \in \K, \forall x \in \mathcal{L} \hookrightarrow (\alpha + \beta) x = \alpha x + \beta x$
+  \item $\forall \alpha \in \K, \forall x, y \in \mathcal{L} \hookrightarrow \alpha (x + y) = \alpha x + \alpha y$
   \item $\forall x \in \mathcal{L} \hookrightarrow 1 \cdot x = x$
 \end{itemize}
+
+\Note Везде далее $\K = \R$ для удобства.
+
 Элементы $\mathcal{L}$ называют векторами.
 
 \Note Линейное пространство будем иногда сокращать до ЛП.
