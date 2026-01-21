@@ -5,19 +5,20 @@
 \textbf{Основные определения}
 
 \begin{enumerate}
-  \item $a \vdots b, b \ne 0$, если $\exists c : a = b \cdot c$
+  \item $a \mathrel{\vdots} b, b \ne 0$, если $\exists c : a = b \cdot c$, т.е $b$ является делителем $a$.
+  \item $a \mid d \iff \exists k : d = a \cdot m$, т.е $a$ является делителем $d$.
   \item $a$ делится на $b \ne 0$ с остатком $r$, где $0 \le r < |b|$, если $\exists q: a = bq + r$.
   \item Число $p$ называется \textbf{простым}, если не имеет натуральных делителей кроме $1$ и $p$. В противном случае называется \textbf{составным}. Единицу принято
     считать не простым и не составным.
   \item $(a, b) := d \in \mathbb{N}$, если $a = a'd$, $b = b'd$ и $d$ --- наибольший (является делителем любого другого).
   \item Если $(a, b) = 1$, то такие числа называют взаимнопростыми.
   \item (Лемма Евклида.) Пусть $(a, b) = 1$ и $a \mid (bc)$. Тогда $a \mid c$.
-  \item $[a, b]$ --- наименьшее $m \in \mathbb{N}: m \vdots a, m \vdots b$.
+  \item $[a, b]$ --- наименьшее $m \in \mathbb{N}: m \mathrel{\vdots} a, m \mathrel{\vdots} b$.
     $(a, b) \cdot [a, b] = a \cdot b$.
   \item \textbf{Основная теорема арифметики.} Любое $m \in \mathbb{N}$ единственным образом представимо в виде произведения простых делителей
 
     $m = p_1^{k_1} p_2^{k_2} \dots p_n^{k_n}, k_i \in \mathbb{N}, p_i$ --- простые.
-  \item $a \underset{m}{\equiv} b \iff a -b \vdots m$
+  \item $a \underset{m}{\equiv} b \iff a -b \mathrel{\vdots} m$
 \end{enumerate}
 
 \Statement
@@ -35,7 +36,7 @@
 Пусть $a \cdot c \underset{m}{\equiv} b \cdot c, (c, m) = 1$. Тогда $a \underset{m}{\equiv} b$
 
 $\square$
-$ac \underset{m}{\equiv} bc \implies ac - bc \vdots m \implies (a - b)c \vdots m \implies a -b \vdots m \implies a \underset{m}{\equiv} b$
+$ac \underset{m}{\equiv} bc \implies ac - bc \mathrel{\vdots} m \implies (a - b)c \mathrel{\vdots} m \implies a -b \mathrel{\vdots} m \implies a \underset{m}{\equiv} b$
 $\blacksquare$
 
 \textbf{Малая теорема Ферма.}
@@ -47,9 +48,9 @@ $\square$
 Покажем, что $\underset{p}{\equiv}$ действительно является отношением эквивалентности:
 
 \begin{enumerate}
-  \item $a \underset{p}{\equiv} a$, т. к. $a - a = 0 \vdots p$
-  \item $a \underset{p}{\equiv} b \implies b \underset{p}{\equiv} a$, т. к. $(a - b) \vdots p \implies (b -a) = -(a -b) \vdots p$.
-  \item $a \underset{p}{\equiv} b, b \underset{p}{\equiv} c \implies (a -b) \vdots p, (b - c) \vdots p \implies (a - b) + (b - c) = (a -c) \vdots p$
+  \item $a \underset{p}{\equiv} a$, т. к. $a - a = 0 \mathrel{\vdots} p$
+  \item $a \underset{p}{\equiv} b \implies b \underset{p}{\equiv} a$, т. к. $(a - b) \mathrel{\vdots} p \implies (b -a) = -(a -b) \mathrel{\vdots} p$.
+  \item $a \underset{p}{\equiv} b, b \underset{p}{\equiv} c \implies (a -b) \mathrel{\vdots} p, (b - c) \mathrel{\vdots} p \implies (a - b) + (b - c) = (a -c) \mathrel{\vdots} p$
 \end{enumerate}
 
 Значит разобьём все неотрицательные числа на классы эквивалентности по этому отношению, обозначая каждый наименьшим его представителем: $[0], [1], \dots [p-1]$.

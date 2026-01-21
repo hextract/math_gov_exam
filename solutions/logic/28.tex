@@ -8,7 +8,7 @@
   \item $\forall a \in G \; \exists a^{-1} \in G : a \circ a^{-1} = a^{-1} \circ a = e$
 \end{enumerate}
 
-\Def \textit{Подгруппой} группы $\langle G, \circ \rangle$ называется $H \subset G$, если $H$ образует группу относительно операции $\circ$.
+\Def \textit{Подгруппой} группы $\langle G, \circ \rangle$ называется $H \subset G$, если $H$ образует группу относительно операции $\circ$. Тогда обозначаем $H < G$.
 
 \Def Пусть $g \in G$, $H$ --- подгруппа $G$. Тогда $gH := \{ g \circ h | h \in H \}$ называется \textit{левым смежным классом} $g$ по подгруппе $H$.
 Аналогично определяется \textit{правый смежный класс} $Hg$.
@@ -27,7 +27,7 @@ $\Leftarrow$ Проверим аксиомы группы для $H$:
     % \setcounter{enumi}{-1}
   \item Возьмем произвольное $a \in H$. Тогда $a \circ a^{-1} = e \in H$. Получим наличие нейтрального элемента
   \item Возьмём $a, e \in H$. Тогда $e \circ a^{-1} = a^{-1} \in H$. Следовательно у любого элемента есть обратный в $H$.
-  \item Из второго пункта получаем и замкнутость $H$ относительно $\circ$.
+  \item Для произвольных $a, b$ покажем замкнутость. Из (2): $b^{-1} \in H$. По условию: $a \circ (b^{-1})^{-1} \in H \iff a \circ b \in H$. Замкнутость получили.
 \end{enumerate}
 
 $\blacksquare$
@@ -57,7 +57,7 @@ $\text{Im} \varphi := \{ \varphi(g) | g \in G \}$ --- \textit{образ}.
 
 \Def $G \cong H$, если между ними существует биективный гомоморфизм, называемый \textit{изоморфизмом}.
 
-\Th
+\Theor{О гомоморфизме} Гомоморфный образ группы изоморфен факторгруппе по ядру гомоморфизма
 
 \[
   G / \text{Ker} \varphi \cong \text{Im} \varphi
@@ -83,7 +83,7 @@ $\psi$ --- гомоморфизм.
   \item Если для $a, b \in G$ выполнено $\varphi(a) = \psi(a \text{Ker} \varphi) = \psi(b\text{Ker} \varphi) = \varphi(b)$, то $\varphi(a^{-1} b) = \varphi(a)^{-1} *
     \varphi(b) = e_{\varphi(G)}$. Значит $a^{-1} b \in \text{Ker} \varphi$, но смежные классы не пересекаются, либо совпадают. А т. к. $e_{\varphi(G)} \in \text{Ker}
     \varphi$ (т. е. оба смежных класса содержат $b$), то $a \text{Ker} \varphi = b \text{Ker} \varphi$. Значит $\psi$ --- инъекция.
-  \item Если $g' \in \varphi(G)$, то $g' = \varphi(g)$ для некоторого $g \in G$, т. к. $\varphi$ сюръективно. Значит $g' = \varphi(g) = \psi(g \text{Ker} \varphi)$.
+  \item Если $g' \in \Ima\varphi$, то $g' = \varphi(g)$ для некоторого $g \in G$, т. к. $\varphi$ сюръективно. Значит $g' = \varphi(g) = \psi(g \text{Ker} \varphi)$.
     Значит $\psi$ --- сюръекция.
 \end{itemize}
 
