@@ -35,6 +35,37 @@ $$
 
 Доказательство теоремы Леви (характеристические функции $\Leftrightarrow$ слабая сходимость) здесь опускается.
 
+\Statement $\varphi_\xi^{(n)}(t) = i^n \mathbb{E}\left[\xi^n e^{it\xi}\right]$
+\Proof
+
+Покажем по индукции.
+
+База. Пусть $n = 1$. Тогда:
+\begin{equation*}
+  \varphi_\xi'(t) = \frac{d}{dt} \int\limits_{\R} e^{itx} p(x) dx = \int\limits_{\R} \frac{d e^{itx}}{dt} p(x) dx = \int\limits_{\R} ix e^{itx} p(x) dx = i  \int\limits_{\R} x e^{itx} p(x) dx = i \mathbb{E} \left[\xi e^{it\xi}\right]
+\end{equation*}
+
+Переход. Пусть для $n_0 - 1$ верно, покажем для $n_0$.
+\begin{multline*}
+  \varphi_\xi^{(n_0)}(t) = \left(i^{n_0 - 1} \mathbb{E}\left[\xi^{n_0 - 1} e^{it\xi}\right]\right)' = i^{n_0 - 1} \left(\mathbb{E}\left[\xi^{n_0 - 1} e^{it\xi}\right]\right)' =
+   \\ = i^{n_0 - 1} \frac{d}{dt} \int\limits_{\R} x^{n_0 - 1} e^{itx} p(x) dx = i^{n_0 - 1} \int\limits_{\R} x^{n_0 - 1} \frac{d e^{itx}}{dt} p(x) dx = 
+   i^{n_0} \int\limits_{\R} x^{n_0} e^{itx} p(x) dx = i^{n_0} \mathbb{E}\left[ \xi^{x_0} e^{it\xi} \right]
+\end{multline*}
+
+\Endproof
+
+\Statement $\varphi_\xi(t) = 1 + it \mathbb{E}\xi - \frac{t^2}{2} \mathbb{E} \xi^2 + o\left(t^2\right), t \to 0$
+
+\Proof
+
+Разложим $\varphi_\xi$ по формуле Тейлора в окрестности нуля с остаточным членом в форме Пеано.
+
+\begin{equation*}
+  \varphi_\xi(t) = 1 + \varphi_\xi'(0) t +\varphi_\xi''(0) \frac{t^2}{2} + o(t^2) \overset{t \to 0}{=} \left\{ \varphi_\xi^{(n)}(t) = i^n \mathbb{E}\left[\xi^n e^{it\xi}\right] \right\}  \overset{t \to 0}{=} 1 + it \mathbb{E}\xi - \frac{t^2}{2} \mathbb{E} \xi^2 + o\left(t^2\right), t \to 0
+\end{equation*}
+
+\Endproof
+
 \Theor{Центральная предельная теорема}
 
 Пусть $\xi_1, \xi_2, \ldots$ — последовательность независимых в совокупности и одинаково распределённых случайных величин с конечной и ненулевой дисперсией.
